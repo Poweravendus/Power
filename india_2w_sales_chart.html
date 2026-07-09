@@ -1,0 +1,417 @@
+<title>India Two-Wheeler Sales, FY2002–FY2026</title>
+<style>
+  :root {
+    --page:       #f9f9f7;
+    --surface:    #fcfcfb;
+    --ink:        #0b0b0b;
+    --ink-2:      #52514e;
+    --muted:      #898781;
+    --grid:       #e1e0d9;
+    --baseline:   #c3c2b7;
+    --series:     #2a78d6;
+    --series-dim: #9ec5f4;
+    --up:         #006300;
+    --down:       #d03b3b;
+    --ring:       rgba(11,11,11,0.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page:       #0d0d0d;
+      --surface:    #1a1a19;
+      --ink:        #ffffff;
+      --ink-2:      #c3c2b7;
+      --muted:      #898781;
+      --grid:       #2c2c2a;
+      --baseline:   #383835;
+      --series:     #3987e5;
+      --series-dim: #1c5cab;
+      --up:         #0ca30c;
+      --down:       #e66767;
+      --ring:       rgba(255,255,255,0.10);
+    }
+  }
+  :root[data-theme="light"] {
+    --page:       #f9f9f7;
+    --surface:    #fcfcfb;
+    --ink:        #0b0b0b;
+    --ink-2:      #52514e;
+    --muted:      #898781;
+    --grid:       #e1e0d9;
+    --baseline:   #c3c2b7;
+    --series:     #2a78d6;
+    --series-dim: #9ec5f4;
+    --up:         #006300;
+    --down:       #d03b3b;
+    --ring:       rgba(11,11,11,0.10);
+  }
+  :root[data-theme="dark"] {
+    --page:       #0d0d0d;
+    --surface:    #1a1a19;
+    --ink:        #ffffff;
+    --ink-2:      #c3c2b7;
+    --muted:      #898781;
+    --grid:       #2c2c2a;
+    --baseline:   #383835;
+    --series:     #3987e5;
+    --series-dim: #1c5cab;
+    --up:         #0ca30c;
+    --down:       #e66767;
+    --ring:       rgba(255,255,255,0.10);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 20px 56px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+
+  header h1 {
+    font-size: 24px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  header p.sub {
+    margin: 0;
+    color: var(--ink-2);
+    max-width: 68ch;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 24px 0 16px;
+  }
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--ring);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .tile .label { font-size: 12.5px; color: var(--ink-2); margin: 0 0 2px; }
+  .tile .value { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  .tile .delta { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+  .tile .delta .updelta { color: var(--up); font-weight: 600; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--ring);
+    border-radius: 12px;
+    padding: 20px 20px 12px;
+    margin-top: 12px;
+  }
+  .card h2 { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+  .card .note { font-size: 12.5px; color: var(--muted); margin: 0 0 10px; }
+
+  .chartbox { position: relative; }
+  svg { display: block; width: 100%; height: auto; }
+
+  .bar { fill: var(--series); }
+  .bar-hit { fill: transparent; cursor: default; }
+  .bar-hit:focus { outline: none; }
+  .bar.is-hot { fill: var(--series-dim); }
+  .gridline { stroke: var(--grid); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  .tick, .xlab { font: 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .dlab  { font: 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink-2); }
+  .dlab .v { font-weight: 650; fill: var(--ink); }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--surface);
+    border: 1px solid var(--ring);
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    padding: 8px 11px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    opacity: 0;
+    transition: opacity 80ms linear;
+    white-space: nowrap;
+    z-index: 3;
+  }
+  @media (prefers-reduced-motion: reduce) { .tooltip { transition: none; } }
+  .tooltip .t-val { font-size: 15px; font-weight: 650; color: var(--ink); }
+  .tooltip .t-year { color: var(--ink-2); }
+  .tooltip .t-yoy { font-variant-numeric: tabular-nums; }
+  .tooltip .t-yoy.pos { color: var(--up); }
+  .tooltip .t-yoy.neg { color: var(--down); }
+
+  details.tableview { margin-top: 14px; }
+  details.tableview summary {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-2);
+    padding: 6px 2px;
+  }
+  details.tableview summary:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; border-radius: 4px; }
+  .tscroll { overflow-x: auto; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  th, td { padding: 6px 12px; text-align: right; border-bottom: 1px solid var(--grid); }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  td { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  td:first-child { color: var(--ink); }
+  td.pos { color: var(--up); }
+  td.neg { color: var(--down); }
+
+  footer {
+    margin-top: 20px;
+    font-size: 12.5px;
+    color: var(--muted);
+    max-width: 80ch;
+  }
+  footer a { color: var(--ink-2); }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">SIAM · domestic wholesales · fiscal years (Apr–Mar)</p>
+    <h1>India two-wheeler sales: a 25-year history</h1>
+    <p class="sub">Annual domestic two-wheeler dispatches reported by the Society of Indian
+    Automobile Manufacturers. Sales quintupled from FY2002 to the FY2019 peak, fell for
+    three straight years through COVID, then recovered to a new all-time high in FY2026.</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile">
+      <p class="label">FY2025-26 sales — all-time high</p>
+      <div class="value">21.71M</div>
+      <div class="delta"><span class="updelta">+10.7%</span> vs FY2024-25</div>
+    </div>
+    <div class="tile">
+      <p class="label">Previous peak, FY2018-19</p>
+      <div class="value">21.18M</div>
+      <div class="delta">reclaimed after 7 years</div>
+    </div>
+    <div class="tile">
+      <p class="label">Growth since FY2001-02</p>
+      <div class="value">5.2×</div>
+      <div class="delta">≈ 7.1% CAGR over 24 years</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Domestic two-wheeler sales by fiscal year</h2>
+    <p class="note">Millions of units · hover or tab across bars for exact figures</p>
+    <div class="chartbox" id="chartbox">
+      <svg id="chart" viewBox="0 0 940 380" role="img"
+           aria-label="Column chart of annual two-wheeler domestic sales in India from fiscal year 2002 to fiscal year 2026. Sales rose from 4.2 million to a 21.2 million peak in fiscal 2019, dipped to 13.5 million in fiscal 2022, and reached a record 21.7 million in fiscal 2026. Exact values are in the data table below."></svg>
+      <div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+    </div>
+
+    <details class="tableview">
+      <summary>View data table</summary>
+      <div class="tscroll">
+        <table id="dtable">
+          <thead><tr><th>Fiscal year</th><th>Units sold</th><th>YoY change</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <footer>
+    <p>Source: Society of Indian Automobile Manufacturers (SIAM) — domestic sales
+    (factory wholesales, not retail registrations), fiscal years ending March. FY2002–FY2014
+    from SIAM statistics tables; FY2015–FY2026 from SIAM annual press releases. FY2025-26
+    figure of 2,17,05,974 units is SIAM's April 2026 release. Minor revisions between SIAM
+    publications can shift individual years by ~0.1M.</p>
+  </footer>
+</div>
+
+<script>
+  const DATA = [
+    ["2001-02",  4203725],
+    ["2002-03",  4812126],
+    ["2003-04",  5364249],
+    ["2004-05",  6209765],
+    ["2005-06",  7052391],
+    ["2006-07",  7872334],
+    ["2007-08",  7249278],
+    ["2008-09",  7437619],
+    ["2009-10",  9370951],
+    ["2010-11", 11768910],
+    ["2011-12", 13409150],
+    ["2012-13", 13797185],
+    ["2013-14", 14805481],
+    ["2014-15", 15975561],
+    ["2015-16", 16455851],
+    ["2016-17", 17589738],
+    ["2017-18", 20200117],
+    ["2018-19", 21181390],
+    ["2019-20", 17417616],
+    ["2020-21", 15120783],
+    ["2021-22", 13466412],
+    ["2022-23", 15862087],
+    ["2023-24", 17974365],
+    ["2024-25", 19607332],
+    ["2025-26", 21705974],
+  ];
+
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("chart");
+  const tip = document.getElementById("tip");
+  const box = document.getElementById("chartbox");
+
+  const W = 940, H = 380;
+  const M = { top: 34, right: 16, bottom: 30, left: 44 };
+  const plotW = W - M.left - M.right;
+  const plotH = H - M.top - M.bottom;
+  const yMax = 25e6;
+
+  const band = plotW / DATA.length;
+  const barW = Math.min(24, band - 8);
+  const x = i => M.left + i * band + (band - barW) / 2;
+  const y = v => M.top + plotH * (1 - v / yMax);
+
+  function el(name, attrs, parent) {
+    const n = document.createElementNS(NS, name);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(n);
+    return n;
+  }
+
+  // gridlines + y ticks (5M steps)
+  for (let v = 0; v <= yMax; v += 5e6) {
+    const yy = y(v);
+    if (v > 0) el("line", { class: "gridline", x1: M.left, x2: W - M.right, y1: yy, y2: yy });
+    const t = el("text", { class: "tick", x: M.left - 8, y: yy + 4, "text-anchor": "end" });
+    t.textContent = v === 0 ? "0" : (v / 1e6) + "M";
+  }
+  el("line", { class: "baseline", x1: M.left, x2: W - M.right, y1: y(0), y2: y(0) });
+
+  // bars: 4px rounded cap, square baseline (rounded rect clipped at baseline)
+  const bars = [];
+  DATA.forEach(([fy, v], i) => {
+    const top = y(v), h = y(0) - top;
+    const bar = el("path", {
+      class: "bar",
+      d: `M ${x(i)} ${y(0)}
+          L ${x(i)} ${top + 4}
+          Q ${x(i)} ${top} ${x(i) + 4} ${top}
+          L ${x(i) + barW - 4} ${top}
+          Q ${x(i) + barW} ${top} ${x(i) + barW} ${top + 4}
+          L ${x(i) + barW} ${y(0)} Z`,
+    });
+    bars.push(bar);
+  });
+
+  // x labels: every other fiscal year, as 'FY02 style end-year
+  DATA.forEach(([fy], i) => {
+    if (i % 2 !== 0) return;
+    const lab = el("text", {
+      class: "xlab",
+      x: x(i) + barW / 2,
+      y: y(0) + 18,
+      "text-anchor": "middle",
+    });
+    lab.textContent = "’" + fy.slice(-2);
+  });
+
+  // selective direct labels: first year, previous peak, record year
+  function directLabel(i, text, anchor) {
+    const g = el("text", {
+      class: "dlab",
+      x: x(i) + barW / 2,
+      y: y(DATA[i][1]) - 8,
+      "text-anchor": anchor || "middle",
+    });
+    const strong = document.createElementNS(NS, "tspan");
+    strong.setAttribute("class", "v");
+    strong.textContent = (DATA[i][1] / 1e6).toFixed(2) + "M";
+    g.appendChild(strong);
+    if (text) {
+      const rest = document.createElementNS(NS, "tspan");
+      rest.textContent = " " + text;
+      g.appendChild(rest);
+    }
+  }
+  directLabel(0, "", "start");
+  directLabel(17, "peak");
+  directLabel(24, "record", "end");
+
+  // hover/focus layer: full-band hit targets, one per year
+  const fmt = new Intl.NumberFormat("en-IN");
+  DATA.forEach(([fy, v], i) => {
+    const hit = el("rect", {
+      class: "bar-hit",
+      x: M.left + i * band, y: M.top,
+      width: band, height: plotH,
+      tabindex: "0",
+      role: "img",
+      "aria-label": `FY${fy}: ${fmt.format(v)} units`,
+    });
+    const show = () => {
+      bars[i].classList.add("is-hot");
+      tip.replaceChildren();
+      const val = document.createElement("div");
+      val.className = "t-val";
+      val.textContent = fmt.format(v) + " units";
+      const yr = document.createElement("div");
+      yr.className = "t-year";
+      yr.textContent = "FY" + fy;
+      tip.append(val, yr);
+      if (i > 0) {
+        const prev = DATA[i - 1][1];
+        const yoy = (v / prev - 1) * 100;
+        const d = document.createElement("div");
+        d.className = "t-yoy " + (yoy >= 0 ? "pos" : "neg");
+        d.textContent = (yoy >= 0 ? "+" : "−") + Math.abs(yoy).toFixed(1) + "% YoY";
+        tip.appendChild(d);
+      }
+      const bw = box.clientWidth, scale = bw / W;
+      const cx = (x(i) + barW / 2) * scale;
+      tip.style.opacity = 1;
+      const tw = tip.offsetWidth;
+      tip.style.left = Math.max(0, Math.min(bw - tw, cx - tw / 2)) + "px";
+      tip.style.top = Math.max(0, y(v) * scale - tip.offsetHeight - 10) + "px";
+    };
+    const hide = () => { bars[i].classList.remove("is-hot"); tip.style.opacity = 0; };
+    hit.addEventListener("pointerenter", show);
+    hit.addEventListener("pointerleave", hide);
+    hit.addEventListener("focus", show);
+    hit.addEventListener("blur", hide);
+  });
+
+  // data table
+  const tbody = document.querySelector("#dtable tbody");
+  DATA.forEach(([fy, v], i) => {
+    const tr = document.createElement("tr");
+    const c1 = document.createElement("td");
+    c1.textContent = "FY" + fy;
+    const c2 = document.createElement("td");
+    c2.textContent = fmt.format(v);
+    const c3 = document.createElement("td");
+    if (i > 0) {
+      const yoy = (v / DATA[i - 1][1] - 1) * 100;
+      c3.textContent = (yoy >= 0 ? "+" : "−") + Math.abs(yoy).toFixed(1) + "%";
+      c3.className = yoy >= 0 ? "pos" : "neg";
+    } else {
+      c3.textContent = "—";
+    }
+    tr.append(c1, c2, c3);
+    tbody.appendChild(tr);
+  });
+</script>
