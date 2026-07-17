@@ -85,6 +85,30 @@ mentor's 2% stops — is strongly supported: at 2% the raw pattern has PF 0.48
 stops only work with entry timing precise enough to avoid the initial dip
 (intraday technique, which daily bars cannot capture).
 
+## Portfolio simulation
+
+`portfolio_sim.py` trades the 518 core-template signals with the taught
+position management (20% of equity per trade, max 5 concurrent names, 5%
+stop, R-ladder exits), marked to market daily. 2015–2026:
+
+| strategy | final | CAGR | max drawdown |
+|---|---|---|---|
+| Deep dive portfolio (always trade) | 4.9x | 14.9% | **−16.6%** |
+| Deep dive + environment filter (no entries in weak breadth) | 4.6x | 14.2% | **−10.2%** |
+| Nifty Midcap 50 buy & hold | 5.2x | 15.6% | −49.1% |
+
+The system's value is not beating the index on raw return — it is matching
+index returns with roughly **one-third of the drawdown**, because it goes
+to cash when no qualifying setups exist (e.g., flat through the 2020 crash
+while the index halved). The environment filter's main contribution is also
+drawdown reduction, not extra return. Note the simulation is unleveraged
+and often far below 100% invested. See `results/equity_curve.png`.
+
+**Robustness:** the relative-volume filter (the strongest condition) holds
+in both halves of the sample at every threshold tested — PF 1.5–1.9 in
+2015–2020 and 1.4–1.7 in 2021–2026 (`results/relvol_stability.md`), so the
+edge is not an artifact of one period or a tuned cutoff.
+
 ## Caveats
 
 - **Survivorship bias:** universe = *current* index constituents; delisted
