@@ -13,7 +13,8 @@ STOPS = (2, 3, 5, 8)
 def stats(df, col):
     r = df[col].dropna()
     if len(r) == 0:
-        return dict(trades=0)
+        return {"trades": 0, "win rate %": None, "avg R": None,
+                "median R": None, "profit factor": None}
     losses = r[r <= 0]
     pf = r[r > 0].sum() / abs(losses.sum()) if losses.sum() != 0 else np.inf
     return {"trades": len(r), "win rate %": round((r > 0).mean() * 100, 1),

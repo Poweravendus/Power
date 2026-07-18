@@ -109,6 +109,32 @@ in both halves of the sample at every threshold tested — PF 1.5–1.9 in
 2015–2020 and 1.4–1.7 in 2021–2026 (`results/relvol_stability.md`), so the
 edge is not an artifact of one period or a tuned cutoff.
 
+## Restricted universe: MidSmallcap 400, liquid, ex-F&O
+
+`filter_universe.py` re-runs everything on Nifty MidSmallcap 400
+constituents only (midcap 150 + smallcap 250, microcaps dropped), keeping
+only entries with ≥25 crore average daily turnover and excluding current
+F&O (derivatives) stocks (211 names). 2,692 entries across 259 symbols;
+breadth recomputed over the restricted universe. Results in
+`results_midsmall400/`.
+
+Findings vs the broad universe:
+- Raw entries are unchanged (~34% win, PF 1.06) but the **core template's
+  5% -stop edge thins** (PF 1.23 vs 1.65) — the outsized winners were
+  disproportionately microcaps and sub-25cr names.
+- **Tighter stops now work best**: core template at a 2–3% stop → 45–46%
+  win rate, PF 1.6–1.7 (on the broad universe 2% stops were disastrous).
+  Liquid non-F&O mid/smallcaps are less noisy, so stops can sit closer.
+- Relative volume remains the strongest condition (PF 1.56 vs 0.99).
+- A volume-confirmed signal set (relvol ≥1.2 + consolidation ≤20% +
+  undercut rule) yields 266 trades, 45.5% win, **PF 1.57 at a 3% stop**.
+- Portfolio-level compounding is weak on this universe (~23 signals/yr,
+  ~4-bar median holds → only ~8% average capital deployed → 4.4% CAGR
+  despite the healthy per-trade edge, max DD −6.4%). To actually compound
+  here you need more concurrent exposure: a wider signal set, re-entries,
+  or a larger watch universe. The F&O list is today's — like the index
+  constituents, historical membership cannot be reconstructed for free.
+
 ## Caveats
 
 - **Survivorship bias:** universe = *current* index constituents; delisted

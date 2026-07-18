@@ -21,10 +21,12 @@ import pandas as pd
 
 RES = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("results")
 CACHE = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("data")
+STOP_PCT = int(sys.argv[3]) if len(sys.argv) > 3 else 5     # 2/3/5/8
+MODE = sys.argv[4] if len(sys.argv) > 4 else "core"         # core | loose
 
 ALLOC = 0.20
 MAX_POS = 5
-STOP = 0.05
+STOP = STOP_PCT / 100
 
 
 def undercut_ok(t):
@@ -38,12 +40,16 @@ def undercut_ok(t):
 def load_trades():
     tr = pd.read_parquet(RES / "trades.parquet")
     tr["undercut_rule_ok"] = tr.apply(undercut_ok, axis=1)
-    core = ((tr["cons_dd"] <= 0.20) & tr["prior_narrow"] & (~tr["purple_red_10d"])
-            & tr["undercut_rule_ok"] & (tr["relvol_entry"] >= 1.2)
-            & (tr["cause_gain"] <= 1.0))
-    tr = tr[core].sort_values("entry_date").reset_index(drop=True)
-    tr["ret"] = tr["r_5"] * STOP          # return on allocated capital
-    tr["hold"] = tr["days_5"].astype(int)
+    if MODE == "loose":
+        mask = ((tr["cons_dd"] <= 0.20) & tr["undercut_rule_ok"]
+                & (tr["relvol_entry"] >= 1.2))
+    else:
+        mask = ((tr["cons_dd"] <= 0.20) & tr["prior_narrow"] & (~tr["purple_red_10d"])
+                & tr["undercut_rule_ok"] & (tr["relvol_entry"] >= 1.2)
+                & (tr["cause_gain"] <= 1.0))
+    tr = tr[mask].sort_values("entry_date").reset_index(drop=True)
+    tr["ret"] = tr[f"r_{STOP_PCT}"] * STOP    # return on allocated capital
+    tr["hold"] = tr[f"days_{STOP_PCT}"].astype(int)
     return tr
 
 
@@ -125,7 +131,7 @@ def main():
             f"skipped (slots full) A/B: {infoA['skipped_slots']}/{infoB['skipped_slots']} · "
             f"skipped by env filter B: {infoB['skipped_env']}")
     print(md + info)
-    (RES / "portfolio_stats.md").write_text(md + info + "\n")
+    (RES / f"portfolio_stats_{MODE}_{STOP_PCT}.md").write_text(md + info + "\n")
 
     # ---- chart (dataviz spec: 2px lines, recessive grid, direct labels) ----
     import matplotlib
@@ -164,15 +170,15 @@ def main():
                     color=col if col != C_BENCH else INK2,
                     fontsize=10, fontweight="bold", va="center")
     ax.set_xlim(calendar[0], calendar[-1] + pd.Timedelta(days=1250))
-    ax.set_title("Deep dive setup: portfolio simulation, 2015–2026",
+    ax.set_title(f"Deep dive portfolio ({MODE} signals, {STOP_PCT}% stop), 2015–2026",
                  color=INK, fontsize=13, fontweight="bold", loc="left", pad=14)
-    ax.text(0, 1.005, "20% of equity per trade · max 5 positions · 5% stop, R-ladder exits · "
-            "core-template signals only · log scale",
+    ax.text(0, 1.005, f"20% of equity per trade · max 5 positions · {STOP_PCT}% stop, R-ladder exits · "
+            f"{MODE} signal set · log scale",
             transform=ax.transAxes, color=INK2, fontsize=9)
     fig.tight_layout()
-    fig.savefig(RES / "equity_curve.png", facecolor=SURFACE,
+    fig.savefig(RES / f"equity_curve_{MODE}_{STOP_PCT}.png", facecolor=SURFACE,
                 bbox_inches="tight")
-    print("wrote", RES / "equity_curve.png")
+    print("wrote", RES / f"equity_curve_{MODE}_{STOP_PCT}.png")
 
 
 if __name__ == "__main__":
