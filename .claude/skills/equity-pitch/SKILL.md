@@ -1,7 +1,6 @@
 ---
 name: equity-pitch
-description: Produce an institutional-quality equity research note (Word doc) plus a matching pitch deck (PPTX) on a listed company, in the analyst's fixed 15-section format - researching the company website for annual reports, earnings call transcripts, and investor presentations first. Use whenever the user asks for a pitch, research note, initiating-coverage note, stock analysis, company analysis, investment thesis, or says "analyse <company>" or "make a pitch on <company>" for any listed company, even if they don't say "research note" or name a format.
-argument-hint: [company name / ticker] [CMP]
+description: Produce an institutional-quality equity research note (Word doc) plus a matching pitch deck (PPTX) on a listed company, in the analyst's fixed 15-section format - researching the company website for annual reports, earnings call transcripts, and investor presentations first. Use whenever the user asks for a pitch, research note, initiating-coverage note, stock analysis, company analysis, investment thesis, or says "analyse this company" or "make a pitch on" any listed company, even if they don't say "research note" or name a format.
 ---
 
 # Equity Research Pitch
