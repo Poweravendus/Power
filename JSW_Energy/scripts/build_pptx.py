@@ -176,14 +176,16 @@ r.text = ("The build is real: 13,454MW at FY26A to 25,905MW by FY30E, EBITDA "
           "value and every 1.0x of EV/EBITDA is worth Rs.87 per share — 15.5% of "
           "the price. Reversion to the 16-year mean multiple of 9.0x is Rs.373.")
 r.font.size = Pt(14); r.font.color.rgb = INK; r.font.name = "Calibri"
-footer(s, "Estimates: attached analyst model, used as given. Market data 17 July "
-          "2026. Strictly Confidential — internal circulation only. Not investment advice.")
+footer(s, "Estimates: attached analyst model, used as given. Primary sources: FY26 "
+          "annual report, Q4FY26 and Q1FY27 calls. Market data 17 July 2026. Strictly Confidential — internal circulation only. Not investment advice.")
 
 # ------------------------------------------------------------------ 2 overview
 s = slide("Company overview", "India's fifth-largest private generator, mid-transformation")
 bullets(s, [
     ("What it is.  ", "5,658MW thermal, 1,631MW hydro and 6,165MW renewables — "
-     "13,454MW operational at FY26A, 14,535MW at 30 June 2026, 61% renewable."),
+     "13.45GW at FY26A and 14.6GW after Q1FY27, 61% renewable. A further 14GW is "
+     "under construction, all tied under long-term PPAs; locked-in capacity is "
+     "32.1GW against a 30GW-by-2030 target."),
     ("How it grew.  ", "Almost entirely by acquisition: Mytrah (1,753MW, FY23), "
      "Ind-Barath (700MW, FY24–25), KSK Mahanadi (1,800MW via NCLT, FY25), "
      "O2 Power (4.7GW, Rs.12,468cr EV, FY26). No proprietary technology."),
@@ -191,7 +193,12 @@ bullets(s, [
      "Rs.10,064cr — almost entirely first-time consolidation of KSK and O2. "
      "Reported PAT rose only 15%, and only because of a Rs.777cr net tax credit."),
     ("What it cost.  ", "Net debt rose Rs.25,155cr in FY26A alone, to Rs.70,081cr. "
-     "Leverage 7.0x EBITDA; interest cover 1.70x."),
+     "Leverage 7.0x on the model's measure, 5.2x on the company's (ex-CWIP debt); "
+     "interest cover 1.70x."),
+    ("The funding is done.  ", "Rs.10,150cr raised across FY26 and Q1FY27 — "
+     "Rs.3,000cr promoter preferential, Rs.3,150cr from the JSW Steel stake, "
+     "Rs.4,000cr QIP. Leverage improved to 4.95x, inside the 5.0–5.5x guardrail. "
+     "Cash Rs.12,881cr."),
     ("Where it trades.  ", "11.2x FY28E EV/EBITDA, 3.2x FY26A book. Its own 12-month "
      "forward multiple has averaged 9.0x since 2010 and sits at 13.9x today."),
 ], size=15.5, gap=13)
@@ -204,12 +211,12 @@ bullets(s, [
     "The listed parent owns three old thermal plants (2,078MW).",
     "The entire renewable build sits two levels down, inside JSW Neo Energy.",
     "KSK Mahanadi — the largest single EBITDA contributor in FY26A at Rs.3,343cr — "
-    "is only 74% owned.",
+    "is 74% owned, and the call option on the balance 26% has been served.",
     "Capital sinks: 'Others' lost Rs.642cr of EBITDA in FY26A. The 1GW solar module "
     "plant is on hold; SECI BESS-1 (500MW) is in dispute with no impairment taken.",
     "Entity-level PAT is not disclosed by the company and is not in the model.",
 ], left=9.25, top=1.75, width=3.5, size=11.5, gap=10)
-footer(s, "Source: FY25 annual report (AOC-1), Q4FY26 and Q1FY27 filings, analyst model.")
+footer(s, "Source: FY26 Integrated Annual Report (AOC-1), Q4FY26 and Q1FY27 calls, analyst model.")
 
 # ------------------------------------------------------------------ 4 cycles
 s = slide("Six business cycles", "Every previous growth cycle ended on a lower return on capital")
@@ -372,9 +379,10 @@ tbl(s, ["Rs. cr", "FY26A", "FY27E", "FY28E", "FY29E", "FY30E"],
     col_w=[2.2, 1.0, 1.0, 1.0, 1.0, 1.0], width=7.4, height=3.9)
 pic(s, "ex1_revenue_margin.png", 8.15, 1.75, 4.6)
 bullets(s, [
-    "FY26A's tax charge was NEGATIVE Rs.777cr on positive PBT. At the 25% rate the "
-    "model uses from FY27E, FY26A PAT would be ~Rs.969cr, not Rs.2,239cr — reported "
-    "earnings growth of +15% becomes about –50%.",
+    "FY26A's tax charge was NEGATIVE Rs.777cr on positive PBT — deferred tax "
+    "assets recognised at Utkal and KSK once PPAs were signed. Explained and "
+    "legitimate, but not repeatable: management guides 23–24% from here. "
+    "Normalised, FY26A PAT is ~Rs.969cr, not Rs.2,239cr — +15% becomes about –50%.",
 ], top=5.95, size=13.5, width=7.4)
 footer(s)
 
@@ -424,10 +432,13 @@ bullets(s, [
     ("The path from here.  ", "Net debt rises every single year, Rs.70,081cr to "
      "Rs.115,314cr. Leverage falls from 7.0x to 4.9x only because EBITDA rises "
      "faster. Management's sub-5.0x target is reached in FY29E at the earliest."),
-    ("Two flags.  ", "A dividend maintained through four years of large negative "
-     "free cash flow; and Rs.8,265cr of idle JSW Steel shares held while borrowing "
-     "at an implied 8–9%. The model assumes Rs.2,887cr of that is sold in FY27E — "
-     "we could not verify the disposal has been announced."),
+    ("The plan is funded.  ", "Rs.10,150cr raised; Rs.24,184cr of capex is now "
+     "contractually committed in the audited accounts; reported cost of debt fell "
+     "67bp to 8.36%. The CFO says FY27's Rs.20,000cr needs no further equity."),
+    ("Two flags remain.  ", "A dividend maintained through four years of large "
+     "negative free cash flow; and Rs.7,862cr of JSW Steel shares still held while "
+     "borrowing at 8.36% — a cross-holding that runs both ways, since JSW Steel "
+     "owns 4.86% of JSW Energy."),
 ], left=7.35, top=1.85, width=5.4, size=12.5, gap=11)
 footer(s)
 
@@ -465,10 +476,11 @@ tbl(s, ["Scenario", "Mult.", "Applied to", "EBITDA", "Equity value", "Target",
 bullets(s, [
     ("Sensitivity.  ", "FY28E EBITDA 10% below forecast → Rs.522, a 7% DOWNSIDE. "
      "Margin at 50.0% instead of 52.5% → Rs.576. Mean-reversion to 9.0x → Rs.373."),
-    ("Minority adjustment.  ", "EV/EBITDA values 100% of KSK but the parent owns "
-     "74%. Deducting the minority share of FY28E KSK EBITDA at 11.9x removes Rs.43 "
-     "per share — an adjusted base of ~Rs.582, under 4% upside."),
-    ("Not credited in the base.  ", "JSW Steel stake Rs.36/share; Salboni 1,600MW; "
+    ("Minority adjustment.  ", "The call option on KSK's 26% has been served, so "
+     "full consolidation is right — but the ~Rs.1,170cr price is not in FY27E net "
+     "debt. Adjusting takes the base to ~Rs.619, not the ~Rs.582 it would have been "
+     "without the buyout."),
+    ("Not credited in the base.  ", "Residual JSW Steel stake Rs.34/share; Salboni 3,200MW; "
      "KSK units 3–6."),
     ("The cross-check.  ", "The model's own asset-based SOTP is Rs.510 — BELOW the "
      "market price. The two methods bracket the CMP. That is what fairly valued "
@@ -480,7 +492,7 @@ bullets(s, [
 footer(s)
 
 # ------------------------------------------------------------------ 16 governance
-s = slide("Governance and management", "Good disclosure, aligned promoter, unverified tail risks")
+s = slide("Governance and management", "Clean audit, aligned promoter, one open item")
 tbl(s, ["Parameter", "Status", "Comment"],
     [
         ["Promoter holding", "66.5% (Jun-26) from 69.3% (Sep-24)",
@@ -493,17 +505,24 @@ tbl(s, ["Parameter", "Status", "Comment"],
          "Segment and commissioning detail above sector norm."],
         ["Related party", "Material, quantum unverified",
          "~1,730MW sold to JSW Steel, Cement, Paints; fuel JV with a state entity."],
-        ["Pledge / auditor / board / litigation", "NOT VERIFIED",
-         "Could not be confirmed for this note. Read the FY26 AR notes before "
-         "sizing a position."],
+        ["Auditor", "Deloitte Haskins & Sells LLP — unmodified",
+         "Clean FY26 opinion, no emphasis of matter. One key audit matter: tariff "
+         "disputes with customers."],
+        ["Contingent liabilities", "~Rs.4,506cr, ~15% of net worth",
+         "Claims Rs.2,520cr (down yoy), tariff disputes Rs.340cr, guarantees "
+         "Rs.605cr, JV share Rs.1,041cr. Not growing."],
+        ["Promoter pledge", "Not disclosed in the AR",
+         "Only project-level lender pledges. Still to be checked in the quarterly "
+         "shareholding filing — the one open item."],
         ["Guidance vs delivery", "On plan in aggregate, late on projects",
          "Kutehr 18 months late; Hetero wind 3 years late; SECI BESS-1 stalled; "
          "solar module plant on hold. But 2,579MW did commission in FY26A."],
     ], top=1.85, size=12, hdr_size=12, col_w=[2.4, 2.6, 5.1], height=3.6)
 bullets(s, [
     "Sajjan Jindal (Chairman & MD) — the key-man and capital-allocation authority. "
-    "Sharad Mahendra (Joint MD & CEO since Feb-2024). Pritesh Vinay (Director "
-    "Finance & CFO).",
+    "Sharad Mahendra (Joint MD & CEO since Feb-2024). Chandrasekaran Prabhakaran "
+    "(CFO since 1 Jan 2026, replacing Pritesh Vinay) — a CFO change six months "
+    "before the sector's largest capital raise, which was then delivered.",
     "The model's own target of 28.3GW by FY30E is ~6% below the company's stated "
     "30GW — the estimates used here are slightly more conservative than guidance.",
 ], top=5.7, size=13, gap=8)
@@ -520,11 +539,14 @@ for t in ["Q2FY27 (Oct-2026): EBITDA must run Rs.3,360cr/quarter for 9 months vs
           "Rs.2,873cr in 1QFY27.",
           "Standalone segment revenue: FY27E assumes Rs.6,612cr vs Rs.3,030cr in "
           "FY26A and Rs.1,101cr delivered in 1QFY27.",
-          "QIP completion and price — Rs.4,000cr at Rs.525 is already in the share "
-          "count.",
-          "Promoter warrant conversion — Rs.1,875cr still payable at Rs.525.",
+          "KSK minority buyout price — not yet crystallised, expected end-Q2FY27; "
+          "~Rs.1,170cr is absent from the model's net debt.",
+          "First 600MW of KSK units 3-6, mid-FY27 — pure upside, ~Rs.35/share.",
+          "Rajasthan evacuation line, July 2026 — ends the curtailment that cost "
+          "Rs.50cr in FY26A.",
           "Quarterly MW commissioned — 3,155MW needed in FY27E, 873MW came in Q1.",
-          "JSW Steel stake sale — Rs.2,887cr is booked in FY27E."]:
+          "Final DSM regulations — 1.5-2% of RE revenue on management's worst case; "
+          "substation-level grouping would reduce it."]:
     p = tf.add_paragraph(); p.space_after = Pt(7)
     r = p.add_run(); r.text = "▪  " + t
     r.font.size = Pt(12.5); r.font.color.rgb = INK; r.font.name = "Calibri"
@@ -539,14 +561,16 @@ for t in ["Multiple compression. Each 1.0x = Rs.87/share. Mean reversion to 9.0x
           "Rs.373, a 33% loss with no operational change.",
           "Renewable execution slippage. A one-year slip removes Rs.3,000–4,000cr of "
           "FY30E EBITDA — over Rs.200/share of target.",
-          "Funding. Rs.53,993cr of negative post-interest FCF; needs Rs.40,532cr of "
-          "new debt on 1.7–2.2x interest cover.",
-          "Merchant and curtailment. 700MW at Ind-Barath has no PPA; supply is "
-          "growing faster than demand.",
-          "Earnings quality. FY26A's tax credit, and minority interest modelled to "
-          "fall from Rs.523cr to Rs.24cr — worth 18% of FY28E EPS.",
-          "Analytical risk. Contingent liabilities, litigation, auditor opinion, "
-          "pledge and RPT quantum are all unverified."]:
+          "Funding. De-risked for FY27 (raise complete, cash Rs.12,881cr); "
+          "unresolved for FY29-30, ~Rs.46,000cr on 2.1x interest cover.",
+          "Evacuation, not merchant price. Only 9,500 of a planned 15,000 ckm built; "
+          "eases ~2029. Open capacity is just ~5% of the base.",
+          "Three items the model omits: the non-repeatable FY26A tax credit, the "
+          "cost of the KSK minority buyout, and the Supreme Court's 18% Himachal "
+          "free-power ruling (~287 MU/yr, permanent).",
+          "Per-MW economics. The model implies Rs.1.02cr/MW of incremental RE "
+          "EBITDA against management's own Rs.0.75cr/MW steady state — a "
+          "Rs.3,325cr gap to FY30E."]:
     p = tf.add_paragraph(); p.space_after = Pt(7)
     r = p.add_run(); r.text = "▪  " + t
     r.font.size = Pt(12.5); r.font.color.rgb = INK; r.font.name = "Calibri"
@@ -563,8 +587,8 @@ r.font.name = "Calibri"
 r = p.add_run()
 r.text = ("sell if FY27 EBITDA lands below Rs.11,500cr AND net debt/EBITDA is above "
           "6.5x at FY27-end — the build has neither delivered nor been funded. "
-          "Upgrade to buy if FY27 EBITDA exceeds Rs.13,000cr, leverage closes below "
-          "5.5x and the QIP prices at or above Rs.525.")
+          "Upgrade to buy if FY27 EBITDA exceeds Rs.13,000cr and leverage closes "
+          "below 5.5x on the model's all-in measure.")
 r.font.size = Pt(12.5); r.font.color.rgb = INK; r.font.name = "Calibri"
 footer(s)
 
@@ -584,18 +608,20 @@ bullets(s, [
     ("The base target requires nothing heroic.  ",
      "Only that FY28E EBITDA of Rs.15,942cr is delivered and the market keeps paying "
      "roughly what it pays today. No re-rating, no acquisition, and no credit for "
-     "Salboni, KSK units 3–6 or the Rs.36/share JSW Steel stake."),
+     "Salboni, KSK units 3–6 or the Rs.34/share residual JSW Steel stake."),
     ("But the risk-reward is not asymmetric.  ",
      "11% base upside against 33% downside on a mean-reverting multiple; a 10% "
      "EBITDA miss alone flips +11% to –7%; and terminal ROCE of 8.8% is still below "
      "the model's own 10% WACC. An asset-based SOTP of Rs.510 and a forward-multiple "
      "target of Rs.625 bracket the current price."),
     ("What caps position sizing.  ",
-     "Unverified contingent liabilities, litigation, auditor commentary, pledge and "
-     "RPT quantum, inside a promoter-controlled structure where 26% of the best "
-     "asset already belongs to someone else. Buy on evidence — FY27 EBITDA above "
-     "Rs.13,000cr with leverage under 5.5x — or nearer Rs.480."),
-], top=3.55, size=13.5, gap=10)
+     "Less than we thought before reading the primary sources — the audit is clean "
+     "and contingent exposure is ~15% of net worth and not growing. What remains: "
+     "~Rs.46,000cr of FY29-30 capex on 2.1x interest cover, the Himachal free-power "
+     "ruling absent from the forecast, per-MW economics 36% above management's own "
+     "benchmark, and an unseen promoter pledge position. Buy on evidence — FY27 "
+     "EBITDA above Rs.13,000cr with leverage under 5.5x — or nearer Rs.480."),
+], top=3.45, size=12.6, gap=8)
 footer(s)
 
 prs.save("JSW_Energy_Pitch_Deck_July2026.pptx")

@@ -25,17 +25,17 @@ doc = Document()
 sec = doc.sections[0]
 sec.page_width, sec.page_height = Cm(21.0), Cm(29.7)
 for m in ("top_margin", "bottom_margin"):
-    setattr(sec, m, Cm(1.7))
-sec.left_margin = sec.right_margin = Cm(1.8)
+    setattr(sec, m, Cm(1.45))
+sec.left_margin = sec.right_margin = Cm(1.5)
 
 st = doc.styles["Normal"]
 st.font.name = "Calibri"
-st.font.size = Pt(9.1)
+st.font.size = Pt(8.8)
 st.font.color.rgb = INK
 st._element.rPr.rFonts.set(qn("w:eastAsia"), "Calibri")
-st.paragraph_format.space_after = Pt(4)
+st.paragraph_format.space_after = Pt(3.5)
 st.paragraph_format.space_before = Pt(0)
-st.paragraph_format.line_spacing = 1.03
+st.paragraph_format.line_spacing = 1.0
 
 
 
@@ -117,7 +117,7 @@ def _keep_with_next(p):
     _ordered_insert(pPr, kn, _PPR_ORDER)
 
 
-def para(text="", size=9.1, bold=False, italic=False, colour=INK,
+def para(text="", size=8.8, bold=False, italic=False, colour=INK,
          before=0, after=5, align=None, style=None):
     p = doc.add_paragraph(style=style)
     r = p.add_run(text)
@@ -130,7 +130,7 @@ def para(text="", size=9.1, bold=False, italic=False, colour=INK,
     return p
 
 
-def rich(parts, size=9.1, before=0, after=5, align=None):
+def rich(parts, size=8.8, before=0, after=5, align=None):
     """parts: list of (text, bold, italic, colour)."""
     p = doc.add_paragraph()
     for t, b, i, c in parts:
@@ -174,9 +174,9 @@ def h2(num, text):
 def bullet(text, bold_lead=None):
     p = doc.add_paragraph(style="List Bullet")
     if bold_lead:
-        r = p.add_run(bold_lead); r.bold = True; r.font.size = Pt(9.1)
+        r = p.add_run(bold_lead); r.bold = True; r.font.size = Pt(8.8)
         r.font.color.rgb = INK
-    r = p.add_run(text); r.font.size = Pt(9.1); r.font.color.rgb = INK
+    r = p.add_run(text); r.font.size = Pt(8.8); r.font.color.rgb = INK
     p.paragraph_format.space_after = Pt(2.5)
     p.paragraph_format.left_indent = Cm(0.55)
     p.paragraph_format.line_spacing = 1.05
@@ -186,8 +186,8 @@ def bullet(text, bold_lead=None):
 def numbered(text, bold_lead=None):
     p = doc.add_paragraph(style="List Number")
     if bold_lead:
-        r = p.add_run(bold_lead); r.bold = True; r.font.size = Pt(9.1)
-    r = p.add_run(text); r.font.size = Pt(9.1)
+        r = p.add_run(bold_lead); r.bold = True; r.font.size = Pt(8.8)
+    r = p.add_run(text); r.font.size = Pt(8.8)
     p.paragraph_format.space_after = Pt(3)
     p.paragraph_format.left_indent = Cm(0.6)
     return p
@@ -211,7 +211,7 @@ def table(headers, rows, widths=None, first_col_left=True, size=8.2,
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     t.autofit = False
     _borders(t)
-    total = 17.4
+    total = 18.0
     if widths is None:
         first = total * 0.30
         rest = (total - first) / (len(headers) - 1)
@@ -259,7 +259,7 @@ def table(headers, rows, widths=None, first_col_left=True, size=8.2,
     return t
 
 
-def exhibit(png, caption, width_cm=15.0):
+def exhibit(png, caption, width_cm=13.6):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_before = Pt(6)
@@ -325,10 +325,12 @@ for txt, bold in [("NSE: JSWENERGY", True), ("  |  CMP Rs.561", False),
 
 rich([("Market data as of 17 July 2026 (multiple history to 23 July 2026). "
        "Consolidated basis throughout. Estimates are the attached analyst model, "
-       "used exactly as given; FY26 results reported 30 March 2026, 1QFY27 "
-       "reported July 2026. Base target price = 11.9x FY28E EV/EBITDA less "
-       "FY27E-end net debt, on 1,833mn post-QIP shares — the same construction "
-       "the model carries.", False, True, GREY)], size=8.3, after=10)
+       "used exactly as given. Primary sources: FY26 Integrated Annual Report "
+       "(consolidated financial statements, audited by Deloitte Haskins & Sells "
+       "LLP), the Q4FY26 earnings call transcript of 11 May 2026, and the Q1FY27 "
+       "results and call of 22 July 2026. Base target price = 11.9x FY28E "
+       "EV/EBITDA less FY27E-end net debt, on 1,833mn post-QIP shares — the same "
+       "construction the model carries.", False, True, GREY)], size=8.3, after=10)
 
 # =============================================================== PART A
 h1("Part A — The business")
@@ -337,11 +339,19 @@ h1("Part A — The business")
 h2(2, "Company Overview")
 bullet("JSW Energy generates and sells electricity in India. It runs 5,658MW of "
        "coal and lignite thermal at Ratnagiri, Vijayanagar, Nandyal, Barmer, "
-       "Ind-Barath (Odisha) and KSK Mahanadi (Chhattisgarh); 1,631MW of Himalayan "
-       "hydro at Karcham Wangtoo, Baspa II and Kutehr; and 6,165MW of solar, wind "
-       "and hybrid renewables held under JSW Neo Energy. Total operational capacity "
-       "was 13,454MW at FY26A end and 14,535MW at 30 June 2026, of which the company "
-       "says 61% is renewable.")
+       "Ind-Barath (Odisha) and KSK Mahanadi (Chhattisgarh); Himalayan hydro at "
+       "Karcham Wangtoo, Baspa II, Kutehr and the newly acquired Tidong (150MW, "
+       "from Statkraft, first 50MW commissioned 8 May 2026); and 6,165MW of solar, "
+       "wind and hybrid renewables held under JSW Neo Energy. Operational capacity "
+       "was 13.45GW at FY26A end and 14.6GW after Q1FY27, of which 61% is "
+       "renewable. A further 14GW of generation is under construction, all tied up "
+       "under long-term PPAs, and total locked-in capacity is 32.1GW against the "
+       "company's 30GW-by-2030 target.")
+bullet("The stock trades at 11.2x FY28E EV/EBITDA and 3.2x FY26A book. Its own "
+       "12-month forward multiple has averaged 9.0x since 2010; it sits at 13.9x "
+       "today, roughly +1 standard deviation. The equity is 29% of enterprise "
+       "value, so the share price is geared to the exit multiple more than to the "
+       "operations.")
 bullet("The company is the power arm of the Sajjan Jindal group, listed since 2010. "
        "It began as a captive supplier to JSW Steel at Vijayanagar and has grown "
        "almost entirely by acquisition and tender since: Mytrah (1,753MW, FY23), "
@@ -349,15 +359,18 @@ bullet("The company is the power arm of the Sajjan Jindal group, listed since 20
        "O2 Power platform (4.7GW, Rs.12,468cr EV, FY26). There is no meaningful "
        "proprietary technology or IP — this is an assets-and-contracts business.")
 bullet("FY26A was the largest step-change in the company's history: revenue rose 61% "
-       "to Rs.18,901cr and EBITDA 93% to Rs.10,064cr, almost entirely because KSK "
+       "to Rs.18,901cr and EBITDA 93% to Rs.10,064cr (Rs.11,041cr on the company's "
+       "definition, which includes other income), almost entirely because KSK "
        "Mahanadi and the O2 platform consolidated for the first time. Reported PAT "
        "rose only 15% to Rs.2,239cr — and, as Section 22 sets out, that figure was "
-       "flattered by a Rs.777cr net tax credit. Net debt rose Rs.25,155cr to "
-       "Rs.70,081cr over the same year.")
-bullet("The stock trades at 11.2x FY28E EV/EBITDA and 3.2x FY26A book. Its own "
-       "12-month forward multiple has averaged 9.0x since 2010; it sits at 13.9x "
-       "today, roughly +1 standard deviation. The equity is 29% of enterprise value, "
-       "so the share price is geared to the exit multiple more than to the operations.")
+       "flattered by a Rs.777cr net tax credit that management has explained but "
+       "which is not repeatable. Net debt rose Rs.25,155cr to Rs.70,081cr in the "
+       "same year.")
+bullet("The funding is done. Across FY26 and Q1FY27 the company raised Rs.10,150cr "
+       "— a Rs.3,000cr promoter preferential issue, Rs.3,150cr from monetising part "
+       "of the JSW Steel cross-holding, and a Rs.4,000cr QIP. All three are in the "
+       "model. Leverage on the company's own measure improved to 4.95x after the "
+       "raise, inside its 5.0–5.5x guardrail.")
 
 # ---- 3 Corporate structure
 h2(3, "Corporate Structure — Standalone, Subsidiaries and JVs")
@@ -373,7 +386,7 @@ para("In plain language: the listed company you buy is a minority of the busines
 exhibit("ex7_structure.png",
         "Exhibit 1  Corporate structure. Source: FY25 annual report (AOC-1 and "
         "salient-features statement), Q4FY26 and Q1FY27 filings, analyst model.",
-        width_cm=17.0)
+        width_cm=16.5)
 
 table(
     ["Entity", "Type", "%", "What sits here", "Formed / acquired",
@@ -388,14 +401,17 @@ table(
         ["Ind-Barath Energy (Utkal) Ltd", "Subsidiary", "100%",
          "700MW coal, no PPA, fully merchant", "Acquired FY24–25",
          "1,912", "644"],
-        ["JSW Thermal Energy One Ltd", "Subsidiary", "74%",
-         "KSK Mahanadi 1,800MW coal", "NCLT approval Feb 2025",
-         "6,071", "3,343"],
+        ["JSW Thermal Energy One Ltd", "Subsidiary", "74% → 100%",
+         "KSK Mahanadi 1,800MW coal; call option served on the balance 26%",
+         "NCLT approval Feb 2025", "6,071", "3,343"],
         ["JSW Hydro Energy Ltd", "Subsidiary", "100%",
          "Karcham Wangtoo 1,091MW, Baspa II 300MW", "2011 / 2006",
          "1,112", "1,077"],
         ["JSW Energy (Kutehr) Ltd", "Step-down (under JSW Hydro)", "100%",
          "240MW hydro, 35+35yr Haryana PPA", "CoD FY26", "incl. in hydro", "incl."],
+        ["Tidong Power Generation", "Step-down", "100%",
+         "150MW hydro, acquired from Statkraft", "50MW CoD 8 May 2026",
+         "not yet material", "—"],
         ["JSW Neo Energy Ltd", "Subsidiary (holdco)", "100%",
          "All solar, wind, hybrid, BESS and PSP", "Formed 2020",
          "4,701", "3,994"],
@@ -422,7 +438,8 @@ table(
          "inside the hydro segment and the acquired platforms inside renewables.")
 
 para("Which entity actually earns the money? KSK Mahanadi — acquired 17 months ago, "
-     "74% owned — was the largest single contributor in FY26A at Rs.3,343cr of "
+     "74% owned but with a call option now served on the remaining 26% — was the "
+     "largest single contributor in FY26A at Rs.3,343cr of "
      "segment EBITDA, ahead of the whole renewable portfolio at Rs.3,994cr and more "
      "than the listed standalone entity's Rs.1,957cr. Why each other entity exists: "
      "Barmer and Jaigad Transco are regulated-return vehicles built to house "
@@ -437,8 +454,8 @@ para("Which entities absorb capital without revenue? The 'Others' segment lost "
      "solar PV module plant that the model's own tracker marks 'Project on Hold' "
      "after Rs.1,600cr of planned capex. The 500MW/1,000MWh SECI BESS-1 project, "
      "with a July 2022 letter of award, is marked 'Project under Dispute' and the "
-     "model explicitly assumes no impairment against it. Ind-Barath operates without "
-     "a PPA at all. Name changes and reorganisations in the period: RajWest Power "
+     "model explicitly assumes no impairment against it. Name changes and "
+     "reorganisations in the period: RajWest Power "
      "became JSW Energy (Barmer); KSK Mahanadi Power Company was acquired through "
      "insolvency and now sits under JSW Thermal Energy One Ltd.")
 
@@ -452,24 +469,23 @@ table(
     [
         ["1. FY05–FY08  Captive merchant", "491 → 1,574", "44% → 74%",
          "2.9x → 1.7x", "7% → 29%",
-         "Vijayanagar only, selling to JSW Steel and merchant. Peak-cycle "
-         "merchant tariffs; the best margins the company has ever earned."],
+         "Vijayanagar only, merchant and captive. Peak-cycle tariffs; the best "
+         "margins ever earned."],
         ["2. FY09–FY13  The first build", "1,591 → 8,934", "18% → 31%",
          "20.0x → 3.6x", "2% → 9%",
-         "Ratnagiri (1,200MW) and Barmer (1,080MW) commissioned. Debt to "
-         "Rs.10,377cr. Margin collapsed to 18% in FY09 on imported coal."],
+         "Ratnagiri and Barmer commissioned; debt to Rs.10,377cr. Margin "
+         "collapsed to 18% in FY09 on imported coal."],
         ["3. FY14–FY19  Stagnation", "8,705 → 9,138", "37% → 31%",
          "2.9x → 3.6x", "8% → 7%",
-         "No new capacity. Merchant glut: Vijayanagar PLF fell from 95% to 50%. "
-         "EBITDA peaked at Rs.4,026cr in FY16 and fell for three years."],
+         "No new capacity; merchant glut. Vijayanagar PLF 95% to 50%; EBITDA "
+         "peaked in FY16 and fell for three years."],
         ["4. FY20–FY22  Deleveraging", "8,273 → 8,167", "36% → 44%",
          "3.3x → 2.2x", "9% → 7%",
-         "Cash harvest. Net debt cut to Rs.7,758cr — the cleanest balance sheet "
-         "in a decade. FY22 PAT Rs.1,729cr on flat revenue."],
+         "Cash harvest; net debt cut to Rs.7,758cr, the cleanest in a decade."],
         ["5. FY23–FY26A  Re-levering", "10,332 → 18,901", "32% → 53%",
          "6.3x → 7.0x", "4% → 6%",
-         "Mytrah, Ind-Barath, KSK Mahanadi and O2 acquired. Net debt up 3.4x to "
-         "Rs.70,081cr. Peak leverage 8.6x in FY25A."],
+         "Mytrah, Ind-Barath, KSK and O2 acquired; net debt up 3.4x. Peak "
+         "leverage 8.6x in FY25A."],
         ["6. FY27E–FY30E  The renewable cycle", "26,535 → 39,506", "49% → 60%",
          "6.1x → 4.9x", "6% → 9%",
          "12,451MW of new capacity, 92% of the EBITDA growth from renewables. "
@@ -531,12 +547,21 @@ bullet("thermal (5,958MW from FY27E). Sells to Rajasthan discoms (Barmer, 1,080M
        "Capacity is fully built; growth is realisation-led, not volume-led, and the "
        "only volume unlock is PLF at KSK and Ind-Barath.",
        bold_lead="Thermal — 42% of FY26A revenue, 55% of FY26A EBITDA, but shrinking. ")
-bullet("hydro (1,631MW). Karcham Wangtoo and Baspa II sell 88% of output on long-term "
-       "PPAs running to 2046 and 2043; 12% is free power to Himachal Pradesh. Kutehr "
-       "(240MW) commissioned in FY26 on a 35+35 year Haryana PPA at Rs.4.45/unit. "
-       "Margins are structurally high (97% of hydro revenue converted to EBITDA in "
-       "FY26A) and the only variable is hydrology — 1QFY27 hydro generation fell on "
-       "weak monsoon inflows. No further hydro capacity is in the plan.",
+bullet("hydro (1,631MW, plus Tidong 150MW acquired in FY27). Karcham Wangtoo and "
+       "Baspa II sell on long-term PPAs running to 2046 and 2043. The free-power "
+       "obligation to Himachal Pradesh has just worsened permanently: the Supreme "
+       "Court, on 16 July 2025, set aside a favourable High Court judgment and "
+       "directed JSW Hydro to supply 18% free power — not 12% — with effect from 14 "
+       "September 2023. The company began supplying 18% from 19 July 2025 and, in a "
+       "meeting of 12 November 2025, agreed to make good the additional 6% for the "
+       "back period from future untied generation at Karcham Wangtoo. That is a "
+       "permanent six-percentage-point reduction in saleable output from the "
+       "company's highest-margin asset, and it is not flagged anywhere in the "
+       "model. Kutehr (240MW) commissioned in FY26 on a 35+35 year Haryana PPA at "
+       "Rs.4.45/unit. Hydro margins remain structurally high (97% of hydro revenue "
+       "converted to EBITDA in FY26A); the swing factor is hydrology, and "
+       "management argues run-of-river output is resilient to a 6–8% below-normal "
+       "monsoon because snowmelt substitutes for rainfall.",
        bold_lead="Hydro — 6% of FY26A revenue, 9% of FY26A EBITDA. ")
 bullet("renewables (6,165MW at FY26A, 18,316MW by FY30E). Sells almost entirely on "
        "25-year fixed-tariff PPAs won in SECI, NTPC, SJVN, GUVNL and state tenders, "
@@ -577,12 +602,10 @@ para("Where the moat sits, in layers. There is no technology moat. The first lay
      "panels and turbines, the cheapest funder wins the tender. JSW Energy's AA "
      "rating supports this; its 2.3x net-debt-to-equity works against it.")
 para("Capital intensity is the defining feature. Gross block was Rs.88,885cr at "
-     "FY26A against Rs.18,901cr of revenue — a fixed-asset turn of 0.25x, and the "
-     "model has it falling to 0.24x by FY30E as more low-turn renewable and storage "
-     "assets are added. At that asset turn, a business simply cannot self-fund "
-     "growth: cumulative operating cash flow of Rs.70,428cr over FY27E–FY30E does "
-     "not cover Rs.89,565cr of capex, let alone Rs.33,098cr of interest. Growth is "
-     "funded by the balance sheet, and Section 18 sets out how.")
+     "FY26A against Rs.18,901cr of revenue — a 0.25x fixed-asset turn, falling to "
+     "0.24x by FY30E as lower-turn renewable and storage assets are added. At that "
+     "turn a business cannot self-fund growth; Sections 17 and 18 set out how it is "
+     "financed instead.")
 
 # ---- 7 Capacity
 h2(7, "Capacity, Utilisation and Capex Plan")
@@ -603,15 +626,21 @@ table(
         ["Barmer", "Rajasthan", "1,080", "67%", "70%", "Captive lignite (BLMCL)",
          "Operating since 2009–13"],
         ["Ind-Barath (Utkal)", "Odisha", "700", "67%", "60%", "Shakti e-auction coal",
-         "Full 700MW from FY25; no PPA"],
+         "Both units operational; 400MW now on a 25-yr PPA at Rs.5.78/unit plus "
+         "115MW to Assam from 1 Apr 2026"],
         ["KSK Mahanadi", "Chhattisgarh", "1,800", "78%", "75%", "FSA with Coal India",
-         "Acquired FY25; units 3–6 (1,600MW) an option, not in the model"],
+         "Q4FY26 PLF 93%, a top-10 plant nationally. First 600MW of the expansion "
+         "guided for mid-FY27; not in the model"],
         ["Karcham Wangtoo", "Himachal Pradesh", "1,091", "48%", "50%", "Hydro",
          "Operating since 2011"],
         ["Baspa II", "Himachal Pradesh", "300", "48%", "50%", "Hydro",
          "Operating since 2006"],
         ["Kutehr", "Himachal Pradesh", "240", "48%", "50%", "Hydro",
-         "CoD FY26 against an original target of Sep 2024 — an 18-month slip"],
+         "CoD Q2FY26 against an original target of Sep 2024; management calls it "
+         "one of the fastest builds of its scale"],
+        ["Tidong", "Himachal Pradesh", "150", "—", "—", "Hydro",
+         "Acquired from Statkraft; 50MW commissioned 8 May 2026, balance by Jun-26. "
+         "Not in the model's capacity build"],
         ["Solar portfolio", "Multi-state", "2,058", "21%", "25%", "Solar",
          "3,978MW by FY27E, 6,540MW by FY30E"],
         ["Wind portfolio", "Multi-state", "3,656", "25%", "25%", "Wind",
@@ -621,9 +650,11 @@ table(
         ["BESS and PSP", "Rajasthan, Maharashtra, UP", "0", "n/a", "n/a",
          "Storage", "875MW BESS from FY28E; 1,500MW Bhavali PSP in FY30E. "
          "SECI BESS-1 (500MW, LoA Jul-2022) under dispute"],
-        ["Salboni, West Bengal", "West Bengal", "1,600", "—", "—", "Coal",
-         "Under construction, PPA signed — NOT in the model's capacity or "
-         "earnings; valued separately in the SOTP"],
+        ["Salboni, West Bengal", "West Bengal", "3,200", "—", "—", "Coal",
+         "A second 1,600MW PPA was signed in FY26, making this the largest single "
+         "site at 3,200MW. First 1,600MW under construction, equipment on "
+         "schedule — NOT in the model's capacity or earnings; valued separately in "
+         "the SOTP"],
     ],
     widths=[2.4, 2.4, 1.1, 1.3, 1.3, 3.0, 5.9], size=7.2,
     note="Source: analyst model (Key and Assumptions sheets). PLFs are the model's "
@@ -651,13 +682,30 @@ table(
          "Rs.88,885cr gross block, a conventional 1.5% maintenance charge would be "
          "roughly Rs.1,300cr a year, meaning approximately 94% of FY27E capex is "
          "growth capex. That split is an inference, not a disclosure.")
-para("Where expansion has slipped. Three cases are visible in the model's own "
-     "project tracker and all three are dated. Kutehr hydro carried an original CoD "
-     "of 1 September 2024 and commissioned in FY26 — roughly 18 months late. The "
-     "125MW Hetero wind acquisition carries a CoD of 31 March 2023 in the tracker "
-     "and is still listed as under construction three years later. SECI BESS-1 "
-     "(500MW / 1,000MWh) has a letter of award dated 15 July 2022, is marked under "
-     "dispute, and the model assumes no impairment against it.")
+para("Where expansion has slipped, and why. Three cases are dated in the model's "
+     "own project tracker. Kutehr carried an original CoD of 1 September 2024 and "
+     "commissioned in Q2FY26. The 125MW Hetero wind acquisition carries a CoD of 31 "
+     "March 2023 and is still under construction. SECI BESS-1 (500MW / 1,000MWh) "
+     "has a letter of award dated 15 July 2022, is marked under dispute, and the "
+     "model assumes no impairment against it. Management's stated cause for "
+     "renewable slippage is grid evacuation, and it is corroborated: against a "
+     "government plan of 15,000 circuit-km of transmission last year, only 9,500 "
+     "circuit-km were built, and management says the constraint eases only around "
+     "2029. Its response is to deliberately defer investment until connectivity is "
+     "available — on the call it said it starts work only when land and connectivity "
+     "are 100% secured, which avoids stranded capital and penalties but does push "
+     "commissioning right. Curtailment is the visible cost: about 160 million units "
+     "were curtailed in Q4FY26, most under permanent grid access where the tariff is "
+     "still received, leaving a revenue loss of roughly Rs.15cr in the quarter and "
+     "Rs.50cr for FY26A, concentrated in two Rajasthan assets. Management expects "
+     "this to end with a new evacuation line around July 2026.")
+para("The scale of the commitment is now in the audited accounts. Capital contracts "
+     "remaining to be executed stood at Rs.24,184cr at 31 March 2026, against "
+     "Rs.8,796cr a year earlier — a 2.7x increase that independently corroborates "
+     "the model's Rs.21,229cr FY27E capex line and management's own guidance of "
+     "about Rs.20,000cr for FY27, of which Rs.4,000–5,000cr is earmarked for the "
+     "thermal and pumped-storage projects and the balance for wind, solar and "
+     "batteries.")
 
 # ---- 8 Customers
 h2(8, "Customers, Contracts and Revenue Visibility")
@@ -680,31 +728,43 @@ table(
          "25-year fixed-tariff PPA", "25 years", "No fuel cost"],
         ["Merchant / power exchange", "~13% of 1QFY27 sales", "Spot", "None",
          "JSW — full price and volume risk"],
-        ["Ind-Barath (Utkal)", "700", "No PPA signed", "—",
-         "JSW — the whole plant is uncontracted"],
+        ["Ind-Barath (Utkal)", "400 + 115", "25-yr PPA at Rs.5.78/unit; 2-yr Assam PPA",
+         "25 years / 2 years", "Largely JSW — bid tariff"],
     ],
     widths=[5.2, 2.4, 3.2, 2.2, 4.4], size=7.4,
-    note="Source: analyst model (Key sheet), FY25 annual report, Q1FY27 company "
-         "commentary. Top-5 and top-10 customer concentration is not disclosed by the "
-         "company and is not in the model.")
-para("Revenue visibility is genuinely good and genuinely concentrated at the same "
-     "time. Roughly 87% of 1QFY27 sales were contracted, and the renewable build "
-     "converts uncontracted capacity into 25-year fixed-tariff revenue as it "
-     "commissions — that is the strongest argument in the bull case. But three "
-     "things qualify it. First, 700MW at Ind-Barath has no PPA at all and is a pure "
-     "merchant bet; it earned Rs.644cr of EBITDA in FY26A at a 67% PLF and a "
-     "Rs.6/unit realisation, and none of that is contracted. Second, roughly 1,730MW "
-     "is sold to the promoter's own steel, cement and paints companies — reliable, "
-     "but a related-party arrangement whose pricing is not independently verifiable "
-     "from public disclosure. Third, customer concentration is not disclosed. The "
-     "company does not publish a top-5 or top-10 revenue split, so we cannot confirm "
-     "diversification and treat the absence as an analytical risk rather than as "
-     "evidence of a broad base.")
-para("One disclosure conflict is worth naming. The Q1FY27 commentary in the model "
-     "records receivable days of 'zero versus 58 days year-on-year'. The FY26A "
-     "balance sheet carries Rs.2,973cr of trade receivables on Rs.18,901cr of "
-     "revenue, which is 57 days. We use the balance sheet figure throughout and "
-     "treat the zero-day claim as either an overdue-only measure or a data error.")
+    note="Source: analyst model (Key sheet), FY26 annual report, Q4FY26 and Q1FY27 "
+         "calls. The company does not publish a top-5 or top-10 split, but note 46 of "
+         "the FY26 consolidated accounts discloses that one customer accounted for "
+         "Rs.1,956.70cr of revenue — 10.4% of the total (FY25A: one customer, "
+         "Rs.1,238.79cr, 10.5%) — and names JSW Steel and state distribution "
+         "companies as the major customers.")
+para("Revenue visibility improved materially during FY26 and this is the single "
+     "most under-appreciated fact in the story. Ind-Barath, which we would "
+     "previously have described as an uncontracted merchant plant, signed a 25-year "
+     "PPA for 400MW at Rs.5.78/unit and a two-year 115MW arrangement with the Assam "
+     "discom effective 1 April 2026. Management now puts open, untied capacity at "
+     "about 5% of the installed base, and states there is no open capacity at all in "
+     "the solar portfolio. The 14GW under construction is fully tied under long-term "
+     "PPAs. What remains merchant is predominantly domestic-coal thermal sited close "
+     "to mines, which keeps the merchant breakeven low: FY26A merchant realisations "
+     "ran at a 20%-plus premium to the exchange average of Rs.3.86/unit, achieved "
+     "through bilateral back-to-back short-term contracts rather than spot selling.")
+para("Two qualifications remain. Concentration is real and now quantified: one "
+     "customer took Rs.1,956.70cr of FY26A revenue, 10.4% of the total. And related-"
+     "party sales are structural — power sold to JSW Steel (Rs.743.90cr), JSW Cement "
+     "(Rs.30.85cr), JSW Paints, Severfield, Epsilon Carbon, Jindal Saw and JSW "
+     "Jaigarh Port totalled roughly Rs.804cr, about 4.3% of revenue. That is smaller "
+     "than the ~1,730MW of group captive capacity would suggest, because much of the "
+     "captive arrangement is billed as job-work generation (Rs.1,214.85cr in FY26A) "
+     "rather than as a power sale.")
+para("One disclosure conflict is worth naming and is now resolved. The Q1FY27 "
+     "commentary in the model records receivable days of 'zero versus 58 days "
+     "year-on-year', which is a data error. Management's own figure is total "
+     "receivables of Rs.3,240cr at 31 March 2026, or 62 debtor days, improved from "
+     "76 days a year earlier. The model's balance sheet carries a narrower "
+     "Rs.2,973cr of trade receivables (57 days). We use the company's 62 days as the "
+     "reported measure and the model's balance for the ratio tables in Section 17, "
+     "and flag the Rs.267cr difference as definitional.")
 
 pagebreak()
 
@@ -719,8 +779,9 @@ para("The market JSW Energy actually sells into is Indian utility-scale electric
      "2.7% of national capacity.")
 para("The structural growth drivers, separated into those already visible in "
      "reported numbers and those still prospective:")
-bullet("Solar generation grew 24% and wind 11% year-on-year in Q4FY26, against total "
-       "generation growth of just 3%. Renewables are taking share, not riding demand.",
+bullet("India added 64.9GW of capacity in FY26, of which renewables were 50.9GW — "
+       "78% of all additions — and non-fossil crossed 50% of installed capacity for "
+       "the first time. Renewables are taking share, not riding demand.",
        bold_lead="Visible now — renewable share gain. ")
 bullet("India's stated target is 500GW of non-fossil capacity by 2030, requiring "
        "roughly 54GW of additions a year from a 283.5GW base. The tender pipeline "
@@ -737,14 +798,26 @@ bullet("Thermal PLFs across the fleet sit at 67–78%. There is headroom, but "
        "utilisation depends on discom offtake discipline and on merchant prices, "
        "both of which are cyclical and currently soft.",
        bold_lead="Prospective — thermal utilisation recovery. ")
-para("Where we sit in the cycle, and the tension in the story: generation growth of "
-     "3% in Q4FY26 was the slowest fourth quarter in six years while renewable "
-     "capacity kept compounding. That combination — flat demand, fast supply — is "
-     "the classic setup for curtailment and for merchant tariff compression. Grid "
-     "integration, transmission bottlenecks and storage readiness are the "
-     "acknowledged constraints on the 500GW path. For a company whose entire "
-     "forecast growth is renewable capacity, an industry that adds capacity faster "
-     "than it adds demand is not an unambiguous tailwind.")
+para("Where we sit in the cycle, and the tension in the story. National power "
+     "demand grew just 0.9% in FY26 — the weakest in five years, on an extended "
+     "monsoon — against 50.9GW of renewable capacity added in the same year. That "
+     "combination is the classic setup for curtailment and merchant tariff "
+     "compression, and it showed up in a soft FY26 exchange average of Rs.3.86/unit. "
+     "Demand has since recovered: Q4FY26 grew 2.2% and FY27 year-to-date is running "
+     "at 4.6%, with peak demand of 256GW already reached on 25 April 2026 against a "
+     "system positioned for roughly 270GW this summer. Management and the CEA both "
+     "point to a 5–6% medium-term demand CAGR. The binding constraint is not demand "
+     "but evacuation: against a plan of 15,000 circuit-km of transmission last year, "
+     "only 9,500 circuit-km were delivered, and management expects the bottleneck to "
+     "persist until about 2029. For a company whose entire forecast growth is "
+     "renewable capacity, that is the single most important sector fact in this note.")
+para("One regulatory change is worth pricing in. The CERC's revised Deviation "
+     "Settlement Mechanism, if implemented as drafted, would cost JSW roughly "
+     "1.5–2% of renewable revenue on management's own worst-case estimate — that is "
+     "an increase from a non-zero base, not a new charge, and it would be reduced if "
+     "the industry secures substation-level grouping of settlement rather than "
+     "plant-level. About 1GW of operational group-captive capacity is off-grid and "
+     "insulated from it entirely.")
 para("The demand-side counterparty is dominated by state distribution companies and "
      "central intermediaries (SECI, NTPC, SJVN). Their financial health determines "
      "payment cycles and their tender calendar determines the growth rate. This is a "
@@ -826,14 +899,20 @@ table(
 para("The single number that matters in this bridge: the model implies incremental "
      "renewable capacity earns about Rs.1.02cr of EBITDA per MW (Rs.12,438cr of "
      "additional EBITDA on 12,151MW of additional capacity), against Rs.0.70cr/MW "
-     "for the FY26A renewable fleet as it stands. Some of that step-up is legitimate "
-     "— the FY26A fleet includes assets commissioned part-way through the year, and "
-     "hybrid and FDRE tariffs are genuinely higher than plain solar. But it is an "
-     "assumption of improving unit economics on a rapidly growing base, in an "
-     "auction market where tariffs have generally fallen, and it is the assumption "
-     "most worth tracking quarter by quarter.")
+     "for the FY26A renewable fleet as it stands. Management gave the benchmark "
+     "explicitly on the Q4FY26 call: assume steady-state EBITDA of about Rs.75 lakh "
+     "per MW — Rs.0.75cr/MW — for a fully available wind and solar portfolio. The "
+     "model is therefore running incremental economics roughly 36% above the "
+     "company's own stated steady-state figure for wind and solar. Part of that gap "
+     "is defensible, because the incremental mix is richer than the existing one: "
+     "hybrid capacity goes from 451MW to 4,798MW, FDRE and round-the-clock tenders "
+     "price above plain solar, and 875MW of BESS plus 1,500MW of pumped storage "
+     "carry different economics again. But applying management's Rs.0.75cr/MW to the "
+     "12,151MW of incremental capacity would produce roughly Rs.9,113cr of "
+     "additional EBITDA rather than Rs.12,438cr — a Rs.3,325cr shortfall against "
+     "FY30E, about 14% of forecast group EBITDA. This is the most consequential "
+     "assumption in the model and the one to track quarter by quarter.")
 
-pagebreak()
 
 # =============================================================== PART C
 h1("Part C — The numbers")
@@ -849,11 +928,14 @@ rich([("The variant perception. ", True, False, NAVY),
        "on the exit multiple, not on the operations — and the multiple is already at "
        "+1 standard deviation of its own 16-year history.", False, False, INK)])
 numbered("Capacity goes from 13,454MW at FY26A to 25,905MW by FY30E and EBITDA from "
-         "Rs.10,064cr to Rs.23,536cr, a 24% CAGR. This is checkable every quarter: "
-         "2,579MW commissioned in FY26A and 1,081MW since April 2026, against a "
-         "3,155MW requirement for FY27E. It is not a narrative — it is a "
-         "construction schedule with dates.",
-         bold_lead="The build is real, contracted and largely funded. ")
+         "Rs.10,064cr to Rs.23,536cr, a 24% CAGR. Three independent facts now "
+         "support it rather than one: 14GW is under construction with every megawatt "
+         "tied under a long-term PPA; capital commitments contracted and not "
+         "provided for stood at Rs.24,184cr in the audited FY26 accounts, up 2.7x; "
+         "and 1,081MW has already commissioned since April 2026 against a 3,155MW "
+         "FY27E requirement. The Rs.10,150cr of funding is raised. This is a "
+         "construction schedule with dates, not a narrative.",
+         bold_lead="The build is real, contracted and now funded. ")
 numbered("Renewables converted 85% of revenue to EBITDA in FY26A against 49% for "
          "thermal, so consolidated margin rises from 53.2% to 59.6% by FY30E "
          "purely on mix. Section 16 shows the mechanism in the cost lines: fuel "
@@ -893,7 +975,8 @@ table(
         ["EBITDA margin", "53.2%", "48.8%", "52.5%", "56.9%", "59.6%"],
         ["Fuel cost as % of revenue", "29.5%", "32.3%", "30.0%", "27.2%", "25.5%"],
         ["Staff + other cost growth", "63%", "48%", "3%", "6%", "4%"],
-        ["Effective tax rate", "(39.3%)", "25.0%", "25.0%", "25.0%", "25.0%"],
+        ["Effective tax rate (model)", "(39.3%)", "25.0%", "25.0%", "25.0%", "25.0%"],
+        ["— management guidance", "—", "23–24%", "23–24%", "23–24%", "23–24%"],
         ["Capex (Rs.cr)", "10,112", "21,229", "21,864", "21,656", "24,816"],
         ["Working capital days", "44.6", "38.0", "38.0", "38.0", "38.0"],
         ["Diluted shares (mn)", "1,757", "1,833", "1,881", "1,881", "1,881"],
@@ -912,11 +995,20 @@ para("What the forecast does not assume. No Salboni (1,600MW thermal, under "
      "than forecasts: working capital days pinned at 38.0 from FY27E, and minority "
      "interest falling from Rs.523cr in FY26A to Rs.24cr in FY28E despite 26% of KSK "
      "Mahanadi being owned by someone else (see Section 22).")
-para("Reconciling the model to the company's own guidance: management targets 30GW "
-     "of generation capacity and 40GWh of storage by 2030. The model reaches "
-     "25,905MW of generation plus 2,375MW of storage — about 28.3GW, roughly 6% "
-     "short of the stated target. The estimates used here are therefore slightly "
-     "more conservative than company guidance, not more aggressive.")
+para("Reconciling the model to the company's own guidance, now that the FY26 "
+     "results and both calls are available. The model is conservative against "
+     "management on four counts and aggressive on one. Conservative: it reaches "
+     "25,905MW of generation plus 2,375MW of storage — about 28.3GW against a 30GW "
+     "target, and against 32.1GW of already locked-in capacity and 29.6GWh of "
+     "locked-in storage; it carries FY27E capex of Rs.21,229cr against guidance of "
+     "about Rs.20,000cr and audited capital commitments of Rs.24,184cr; it applies a "
+     "25% tax rate against management guidance of 23–24%; and it puts KSK Mahanadi "
+     "EBITDA at Rs.2,464cr in FY27E and Rs.2,543cr in FY28E, below the Rs.2,700cr "
+     "steady state the investor-relations team asked analysts to use. Aggressive: "
+     "the Rs.1.02cr/MW of incremental renewable EBITDA discussed in Section 11 sits "
+     "36% above management's own Rs.0.75cr/MW steady-state benchmark for wind and "
+     "solar. On balance the model is defensible, but the growth is concentrated in "
+     "the one line where it is most optimistic.")
 
 h2(14, "Quarterly Trend")
 qi = list(range(1, 9))
@@ -1071,26 +1163,37 @@ table(
         ["Implied cost of debt"] + ["n/a"] +
         [f"{d.interest[i] / ((d.totdebt[i] + d.totdebt[i-1]) / 2) * 100:.1f}%"
          for i in range(1, 9)],
+        ["Reported weighted avg cost of debt", "", "", "", "", "8.36%", "", "", "",
+         ""],
         ["Net worth"] + [fmt(v) for v in d.networth],
         ["Book value per share (Rs.)"] + [f"{v:.0f}" for v in d.bvps],
     ],
     widths=[3.9] + [1.5] * 9, size=7.6, bold_rows=(2, 3),
-    note="Source: analyst model. Implied cost of debt is interest expense over "
-         "average gross debt and will overstate the marginal rate where interest on "
-         "assets under construction is not capitalised. Covenant terms and the "
-         "maturity profile are not disclosed in the model and could not be verified — "
-         "this is a gap. Credit ratings are AA (stable) from ICRA and India Ratings "
-         "per company statements.")
+    note="Source: analyst model; reported cost of debt from the Q4FY26 call. The "
+         "implied rate is interest expense over average gross debt and overstates the "
+         "marginal rate where construction-period interest is capitalised — "
+         "management's reported weighted average cost of debt was 8.36% at March "
+         "2026, down 67bp year-on-year, with holdco borrowing at about 8.2%. Of "
+         "roughly Rs.15,000cr of debt at the standalone/holdco level, about "
+         "Rs.4,500cr is short-term and the balance runs beyond three years; the "
+         "short-term portion is acquisition bridge finance for the KSK rail and water "
+         "SPVs, to be refinanced at asset level. Covenant terms are still not "
+         "disclosed. Credit ratings are AA (stable) from ICRA and India Ratings.")
 exhibit("ex5_leverage.png",
         "Exhibit 6  Net debt and leverage, FY22A–FY30E. Source: analyst model.")
-para("The deleveraging path is real but slow and entirely growth-dependent. Net debt "
-     "keeps rising in absolute terms every single year of the forecast, from "
-     "Rs.70,081cr to Rs.115,314cr; leverage falls from 7.0x to 4.9x only because "
-     "EBITDA rises faster. Management's stated target is below 5.0x, which on these "
-     "numbers is reached in FY29E at the earliest. Interest cover of 1.70x in FY26A "
-     "is the number a credit analyst would look at first, and the model has it at "
-     "2.05x–2.17x through the forecast — adequate but not comfortable for an AA "
-     "credit.")
+para("The deleveraging path is real but slow and entirely growth-dependent, and the "
+     "two available measures of it differ enough to matter. On the model's basis — "
+     "total net debt over total EBITDA — leverage falls from 7.0x in FY26A to 4.9x "
+     "in FY30E, and net debt still rises in absolute terms every single year, from "
+     "Rs.70,081cr to Rs.115,314cr. On the company's basis, which excludes debt "
+     "funding capital work-in-progress that is not yet earning, leverage was about "
+     "5.2x at FY26A and improved to 4.95x after the Q1FY27 capital raise. "
+     "Management's 2030 target is approximately 5.0–5.5x on its own measure, not "
+     "'below 5.0x' — a distinction worth holding, because it means the company is "
+     "already inside its guardrail while the model shows it outside one for another "
+     "three years. Interest cover of 1.70x in FY26A is the number a credit analyst "
+     "looks at first, and the model has it at 2.05x–2.17x through the forecast — "
+     "adequate but not comfortable for an AA credit.")
 para("The capital allocation record, FY22A–FY26A. Over five years the company "
      "generated about Rs.25,007cr of post-tax operating cash flow. It spent "
      "Rs.31,382cr on capex and a further Rs.26,537cr on acquiring equity in "
@@ -1101,22 +1204,32 @@ para("The capital allocation record, FY22A–FY26A. Over five years the company 
      "Rs.73,000cr of new capital: ROCE moved from 7.1% to 6.4%. That is the honest "
      "scorecard, and it is the strongest single argument against paying a growth "
      "multiple today.")
-para("What management says it will do next: 30GW of generation and 40GWh of storage "
-     "by 2030, funded by internal accruals, project debt and further equity. The "
-     "model builds in Rs.4,000cr of QIP at Rs.525 and Rs.1,875cr of promoter warrant "
-     "conversion at Rs.525 — the promoter has already paid the 25% deposit of "
-     "Rs.625cr, which is a genuine alignment signal at a strike below the current "
-     "Rs.561 price. Two capital-allocation items deserve flagging. First, the "
-     "company continues to pay a dividend (Rs.352cr in FY26A, rising to Rs.451cr by "
-     "FY28E in the model) while running Rs.13,000cr a year of negative post-interest "
-     "free cash flow — Rs.1,758cr of dividends over FY27E–FY30E funded, at the "
-     "margin, with debt. Second, JSW Energy holds shares in JSW Steel worth roughly "
-     "Rs.8,265cr at a Rs.1,100 reference price, an idle cross-holding in a group "
-     "company while the company borrows at an implied 8–9%. The model assumes 25mn "
-     "of those shares are sold in FY27E at Rs.1,260 for Rs.2,887cr net of tax. We "
-     "could not verify that this disposal has been announced; it is a modelled "
-     "inflow, and if it does not happen the FY27E funding plan is short by that "
-     "amount.")
+para("The funding plan is no longer an assumption — it has been executed. Across "
+     "FY26 and Q1FY27 the company raised Rs.10,150cr in what it describes as the "
+     "largest growth capital raise in the Indian power sector: a Rs.3,000cr "
+     "preferential issue to the promoter vehicle JTPM Metal Traders (Rs.500cr of "
+     "equity at Rs.525 plus Rs.2,500cr of warrants, of which Rs.1,125cr had been "
+     "received by Q4FY26 and roughly Rs.1,800cr remains callable at the company's "
+     "option), Rs.3,150cr from monetising part of the JSW Steel cross-holding, and a "
+     "Rs.4,000cr QIP anchored by institutional investors. All three appear in the "
+     "model, and cash and equivalents stood at Rs.12,881cr after the raise. This "
+     "materially de-risks the FY27E plan and removes what we would otherwise have "
+     "flagged as the largest single execution risk in the note. On the Q4FY26 call "
+     "the CFO went further, saying the Rs.20,000cr FY27 capex is manageable from "
+     "operating cash flow, the preferential proceeds and the warrants within existing "
+     "leverage ratios — implying no further equity is needed for the current plan, "
+     "though the board has enabling approval for up to Rs.10,000cr more.")
+para("Two capital-allocation observations remain. First, the company pays a dividend "
+     "(Rs.352cr in FY26A, rising to Rs.451cr by FY28E in the model) while running "
+     "roughly Rs.13,000cr a year of negative post-interest free cash flow — "
+     "Rs.1,758cr over FY27E–FY30E funded, at the margin, with debt. Second, the "
+     "residual JSW Steel holding is still large: 7.00cr shares carried at a fair "
+     "value of Rs.7,861.80cr at 31 March 2026, up from Rs.7,446.48cr, an idle "
+     "cross-holding while the group borrows at 8.36%. The relationship runs both "
+     "ways — JSW Steel itself holds 4.86% of JSW Energy. Management defends the "
+     "position by quoting cash returns on net worth of about 18% adjusted for it, "
+     "which is a fair way of saying the operating business earns well once the "
+     "non-earning asset is stripped out; it is not a reason to keep holding it.")
 
 h2(19, "Stock Price History — Price and Business Story")
 exhibit("ex6_evband.png",
@@ -1129,26 +1242,19 @@ para("A monthly closing-price series is not in the model, so the price narrative
      "Rs.427.75 to Rs.617.35. Where a phase description refers to the share price "
      "rather than the multiple it should be read as directional, not precise. That "
      "is a gap in this section.")
-bullet("The multiple derated from 9–11x to 5–6x and troughed at 3.9x in March 2020. "
-       "The business explains it: no new capacity between FY14 and FY19, Vijayanagar "
-       "PLF falling from 95% to 50% in a merchant glut, EBITDA peaking in FY16 and "
-       "falling for three years. The market was correctly pricing a shrinking "
-       "thermal utility.",
+bullet("The multiple derated from 9–11x to 5–6x and troughed at 3.9x in March 2020 — "
+       "correctly pricing a shrinking thermal utility with no new capacity, "
+       "Vijayanagar PLF falling from 95% to 50%, and EBITDA down three years running.",
        bold_lead="FY11–FY20, the lost decade. ")
-bullet("From 5.8x to 22.4x in about eighteen months. JSW Neo Energy was formed, the "
-       "20GW-by-2030 target was announced, and the balance sheet was at its "
-       "strongest in a decade at 2.2x net debt/EBITDA with positive free cash flow. "
-       "The market paid for an option on the renewable transition before any of it "
-       "was built.",
+bullet("From 5.8x to 22.4x in eighteen months. JSW Neo was formed, the 20GW target "
+       "announced, and leverage was 2.2x with positive free cash flow. The market "
+       "paid for an option on the transition before any of it was built.",
        bold_lead="FY21–FY22, the renewable re-rating. ")
-bullet("Back down to a 10.3x low. FY23 EBITDA fell 8% as imported coal costs spiked, "
-       "and net debt/EBITDA jumped from 2.2x to 6.3x on the Mytrah acquisition. The "
-       "market discovered what the transition would cost.",
-       bold_lead="FY23, the reality check. ")
-bullet("Back to a 20.1x peak in 2024 on the Ind-Barath and KSK Mahanadi acquisitions "
-       "and a Rs.4,944cr QIP. Cheap distressed thermal capacity was, correctly, "
-       "read as accretive.",
-       bold_lead="FY24–FY25, the acquisition re-rating. ")
+bullet("Down to 10.3x as FY23 EBITDA fell 8% on imported coal and leverage jumped to "
+       "6.3x on Mytrah; then back to a 20.1x peak in 2024 on the Ind-Barath and KSK "
+       "acquisitions and a Rs.4,944cr QIP. The market learned what the transition "
+       "would cost, then decided cheap distressed thermal was accretive anyway.",
+       bold_lead="FY23–FY25, the reality check and the acquisition re-rating. ")
 bullet("The multiple has traded between 12.0x and 14.9x and sits at 13.9x. The "
        "revealing fact is what happened underneath it: consolidated EBITDA nearly "
        "doubled in FY26A while the multiple compressed from a 16.9x average in 2024 "
@@ -1156,16 +1262,13 @@ bullet("The multiple has traded between 12.0x and 14.9x and sits at 13.9x. The "
        "keep paying the same multiple for it, which is a rational response to net "
        "debt rising by Rs.25,155cr in the same year.",
        bold_lead="FY26A to date, consolidation. ")
-para("Current price against business reality: at Rs.561 the stock is 9% below its "
-     "52-week high and 31% above its 52-week low, and the forward multiple is 0.55 "
-     "standard deviations above a 16-year mean that includes a decade in which this "
-     "was a very different, much lower-quality company. The business today is "
-     "objectively better contracted than at any point in that history. It is also "
-     "three times as leveraged as it was in FY22. The multiple sitting between "
-     "+1sd and the mean is, on that reading, close to fair rather than obviously "
-     "wrong in either direction.")
+para("Current price against business reality: at Rs.561 the stock sits 9% below its "
+     "52-week high and 31% above its low, on a multiple 0.55 standard deviations "
+     "above a 16-year mean that includes a decade in which this was a much "
+     "lower-quality company. The business is better contracted than at any point in "
+     "that history and three times as leveraged as in FY22. A multiple between the "
+     "mean and +1sd is, on that reading, close to fair.")
 
-pagebreak()
 
 h2(20, "Valuation")
 para("We value JSW Energy on EV/EBITDA. The reasons are specific rather than "
@@ -1177,15 +1280,14 @@ para("We value JSW Energy on EV/EBITDA. The reasons are specific rather than "
      "values the assets and then makes the reader confront the debt explicitly, "
      "which in this case is the whole point.")
 para("Comparables. Adani Green (>17x) is the anchor the market implicitly applies to "
-     "the renewable arm, and it is not a fair one for the consolidated company: "
-     "Adani Green has no thermal fleet and no merchant exposure. NTPC (~11.0x) is a "
-     "fair floor — a regulated-return generator with a far stronger balance sheet, "
-     "and it is a genuine question why a 2.3x-geared private generator earning 6.4% "
-     "ROCE should trade above it. Tata Power (~13.8x) is the closest structural "
-     "comparable — an integrated Indian private utility mid-transition — and JSW "
-     "trades roughly in line with it on a forward basis. The model's own sum-of-the-"
-     "parts applies 10x to thermal and hydro and 12x to renewables, which is a "
-     "defensible split and is the origin of the 11.9x blended base multiple.")
+     "the renewable arm and is not a fair one for the consolidated company, which "
+     "carries a thermal fleet and merchant exposure. NTPC (~11.0x) is the fair "
+     "floor, and it is a genuine question why a 2.3x-geared private generator "
+     "earning 6.4% ROCE should trade above a regulated-return generator with a far "
+     "stronger balance sheet. Tata Power (~13.8x) is the closest structural "
+     "comparable and JSW trades roughly in line with it. The model's sum-of-the-"
+     "parts applies 10x to thermal and hydro and 12x to renewables — the origin of "
+     "the 11.9x blended base multiple.")
 table(
     ["Scenario", "Multiple", "Applied to", "EBITDA (Rs.cr)", "Enterprise value",
      "Less net debt", "Equity value", "Target price", "vs CMP"],
@@ -1212,8 +1314,9 @@ table(
          "EV/EBITDA at the current price is 11.16x FY28E.")
 para("Treasury and the parts the base target does not credit. The base target "
      "deducts cash and current investments but does not add back the non-current "
-     "investment in JSW Steel shares, worth roughly Rs.8,265cr, or Rs.36 per share "
-     "after a 20% holding-company discount. Nor does it value Salboni (1,600MW under "
+     "residual holding in JSW Steel — 7.00cr shares carried at "
+     "Rs.7,861.80cr in the audited FY26 accounts, or about Rs.34 per share "
+     "after a 20% holding-company discount. Nor does it value Salboni (3,200MW, first 1,600MW under "
      "construction) or the KSK units 3–6 option. The model's separate sum-of-the-"
      "parts, which does credit all of these and values the operational portfolio "
      "asset by asset — thermal and hydro at 1.5x price-to-book, renewables at 12x "
@@ -1237,11 +1340,14 @@ bullet("EBITDA of Rs.15,180cr and a target of Rs.576, or +3%.",
        bold_lead="FY28E EBITDA margin of 50.0% instead of 52.5%: ")
 bullet("target of Rs.373, or 33% below the current price.",
        bold_lead="Multiple reverting to the 16-year mean of 9.0x: ")
-bullet("EV/EBITDA values 100% of KSK Mahanadi's EBITDA but the parent owns 74%. "
-       "Deducting the minority share of FY28E KSK EBITDA (Rs.661cr) at 11.9x "
-       "removes Rs.43 per share, taking the base target to about Rs.582 and the "
-       "upside to under 4%. Our base target of Rs.625 is the model's construction, "
-       "used as given; we flag that it is generous by that amount.",
+bullet("EV/EBITDA values 100% of KSK Mahanadi's EBITDA but the parent owns 74% "
+       "today. The company has served notice to buy the balance 26%, so the "
+       "full-consolidation treatment will be correct — but the purchase price, of "
+       "the order of Rs.1,170cr on the SOTP's own 1.5x book, is not in the model's "
+       "FY27E net debt of Rs.78,303cr. Adding it reduces the base target by about "
+       "Rs.6 per share to roughly Rs.619. This replaces the Rs.43 haircut we would "
+       "have applied had the buyout not been under way, and is the single largest "
+       "favourable revision in this note.",
        bold_lead="Adjusting for the 26% minority in KSK Mahanadi: ")
 rich([("Rating and target. ", True, False, NAVY),
       ("HOLD, base target price Rs.625, +11.4% against a CMP of Rs.561, derived as "
@@ -1264,11 +1370,14 @@ table(
          "The decline is dilution from the FY25 QIP and the FY27 raise, not promoter "
          "selling. Promoters have subscribed Rs.625cr of warrants at Rs.525 with "
          "Rs.1,875cr still to pay — money going in, not out."],
-        ["Promoter pledge", "Not verified", "Could not be confirmed from the model "
-         "or from the sources available for this note. Treat as unverified; the JSW "
-         "group has historically pledged and released promoter shares across group "
-         "companies. This should be checked in the latest shareholding filing before "
-         "acting."],
+        ["Promoter pledge", "Not disclosed in the annual report",
+         "The FY26 accounts disclose no pledge of JSW Energy shares by promoters. "
+         "They do disclose extensive lender security at subsidiary level — a first-"
+         "ranking pari passu pledge over 51% of JSW Hydro's equity with a negative "
+         "pledge over the remaining 49%, a 30% share pledge plus a 21% non-disposal "
+         "undertaking at another borrowing entity, and a 100% share pledge under an "
+         "ECB. That is normal project finance, not distress. Promoter-level pledge "
+         "must still be checked in the quarterly shareholding filing."],
         ["Institutional holding trend",
          "FII 14.92% → 11.41%; DII 9.78% → 16.16% over 8 quarters",
          "The direction is the signal: foreign investors have been steady sellers "
@@ -1276,78 +1385,99 @@ table(
          "QIP. Combined institutional holding rose from 24.7% to 27.6%."],
         ["Free float and liquidity", "33.5% free float; Rs.98,584cr market cap",
          "Large-cap, index-weight, liquid. Daily traded value not verified."],
-        ["Independent directors", "Not verified",
-         "Board composition was not obtainable for this note. Named executives: "
-         "Sajjan Jindal (Chairman & MD), Sharad Mahendra (Joint MD & CEO since Feb "
-         "2024), Pritesh Vinay (Director Finance & CFO)."],
+        ["Promoter structure", "66.53% across 12+ entities",
+         "Largest holders: an entity at 17.73%, Indusglobe Multiventures 14.57%, "
+         "Siddeshwari Tradex 13.14%, JSL Ltd 8.27%, Virtuous Tradecorp 4.87% and JSW "
+         "Steel Ltd 4.86% — a reciprocal cross-holding, since JSW Energy also owns "
+         "Rs.7,862cr of JSW Steel. Family holdings (Tarini Jindal Handa, Tanvi Shete, "
+         "Parth Jindal) are ~1.4% each."],
         ["Investor concalls", "Held quarterly",
          "The company holds quarterly earnings calls with detailed segment and "
          "commissioning disclosure — better than sector norm and reflected in the "
          "granularity of Section 5."],
-        ["Related party transactions", "Material and structural, quantum not verified",
-         "Roughly 1,730MW is sold to JSW Steel, JSW Cement, JSW Paints, JSW "
-         "Severfield and Epsilon Carbon under group captive arrangements — see "
-         "Section 3. Barmer's fuel comes from a 51% JV with a Rajasthan state "
-         "entity; Jaigad Transco is a 74% JV with MSETCL. The RPT quantum in the "
-         "FY26 accounts was not obtainable and is a gap."],
-        ["Auditor", "Not verified", "The FY25 consolidated financials carry an "
-         "independent auditor's report; we could not retrieve it to confirm whether "
-         "the opinion was unmodified or whether there are key audit matters or "
-         "emphasis-of-matter paragraphs."],
-        ["SEBI / exchange penalties", "Not verified", "No penalties are recorded in "
-         "the model. This is an absence of evidence, not evidence of absence."],
+        ["Related party transactions", "Quantified: ~Rs.804cr of power sales, 4.3% of revenue",
+         "JSW Steel Rs.743.90cr, JSW Cement Rs.30.85cr, JSW Jaigarh Port Rs.10.48cr, "
+         "Epsilon Rs.6.57cr, Severfield Rs.5.23cr, Jindal Saw Rs.3.90cr, JSW Paints "
+         "Rs.3.41cr. Smaller than the ~1,730MW of captive capacity implies, because "
+         "much is billed as job-work generation. The group has also guaranteed "
+         "Rs.599.80cr of a related party's borrowings (FY25: Rs.711.89cr)."],
+        ["Auditor", "Deloitte Haskins & Sells LLP — unmodified opinion",
+         "Clean opinion on the FY26 standalone and consolidated accounts. No "
+         "emphasis-of-matter paragraph. One key audit matter: tariff-related disputes "
+         "with customers, flagged for the judgement involved and the magnitude of "
+         "potential exposure. No auditor change in the period."],
+        ["SEBI / exchange penalties", "None disclosed",
+         "No penalty or regulatory action is disclosed in the FY26 accounts and none "
+         "is recorded in the model."],
         ["Dividend track record", "Rs.2.00/share paid in each of FY22A–FY26A",
          "Unbroken but static, and a 0.36% yield. Payout has fallen from 22% to 16% "
          "as earnings grew. The model raises DPS to Rs.2.40 by FY28E."],
-        ["Treasury deployment", "Rs.8,265cr of JSW Steel shares held",
-         "An idle cross-holding in a group company financed, at the margin, by "
-         "borrowing at 8–9%. The model assumes Rs.3,150cr of it is sold in FY27E."],
+        ["Treasury deployment", "Rs.7,862cr of JSW Steel shares still held",
+         "Rs.3,150cr was monetised in the FY27 capital raise. The residual 7.00cr "
+         "shares are carried at fair value through OCI. Still an idle cross-holding "
+         "financed at the margin by 8.36% debt."],
         ["Credit rating", "AA (stable), ICRA and India Ratings",
-         "Reaffirmed per company statements. Interest cover of 1.70x in FY26A is "
-         "thin for the rating category."],
+         "Reaffirmed. Weighted average cost of debt fell 67bp to 8.36% in FY26, "
+         "which is the market's verdict on the credit. Interest cover of 1.70x in "
+         "FY26A remains thin for the category."],
+        ["Capital commitments", "Rs.24,184cr contracted at 31 Mar 2026",
+         "Up 2.7x from Rs.8,796cr. Contractually committed, so the capex programme "
+         "is not discretionary from here."],
     ],
     widths=[3.4, 4.4, 9.6], size=7.4)
-para("Separating red flags from structural quirks. The structural quirks: a 74% "
-     "stake in the best asset, a holdco layer for renewables, a captive relationship "
-     "with the promoter's steel business, and a JV with a state mining company for "
-     "fuel. None of these is a governance problem — they are how Indian power assets "
-     "are financed and contracted, and the JSW Steel captive book is a genuine "
-     "commercial advantage. The items we would actually flag: the idle JSW Steel "
-     "cross-holding while the company borrows to fund capex; a dividend maintained "
-     "through four years of large negative free cash flow; and the model's "
-     "assumption that minority interest all but disappears from FY28E, which if "
-     "wrong transfers roughly 18% of forecast EPS to someone else. And the honest "
-     "caveat: promoter pledge, auditor opinion, board composition and related-party "
-     "quantum could not be verified for this note, so this section is incomplete in "
-     "exactly the places where a small governance problem would hide.")
+para("Separating red flags from structural quirks. Having now read the audited FY26 "
+     "accounts, this section reads better than we expected. The auditor's opinion is "
+     "unmodified with no emphasis of matter, the single key audit matter is a tariff "
+     "dispute rather than an accounting judgement about revenue or asset values, no "
+     "regulatory penalty is disclosed, and related-party power sales are 4.3% of "
+     "revenue rather than the far larger number the captive capacity implies. The "
+     "structural quirks — a 74% stake in the best asset (now being bought in), a "
+     "holdco layer for renewables, project-level share pledges to lenders, a fuel JV "
+     "with a Rajasthan state entity — are how Indian power assets are financed and "
+     "contracted. What we would still flag: the reciprocal cross-holding with JSW "
+     "Steel in both directions; a dividend maintained through four years of large "
+     "negative free cash flow; and the Rs.599.80cr guarantee of a related party's "
+     "borrowings. The one item that remains genuinely unverified is promoter-level "
+     "pledge, which is disclosed in the quarterly shareholding filing rather than in "
+     "the annual report and should be checked before acting.")
 
 h2(22, "Contingent Liabilities, Litigation and Accounting Quality")
-para("Contingent liabilities, material litigation, tax disputes and auditor "
-     "qualifications are not in the financial model, and the FY25 and FY26 annual "
-     "report notes could not be retrieved for this note. That is a genuine gap and "
-     "we state it rather than fill it: the size of contingent liabilities relative "
-     "to a Rs.30,752cr net worth is unknown to us. Anyone acting on this note should "
-     "read Note 'Contingent liabilities and commitments' in the FY26 consolidated "
-     "accounts before sizing a position. What follows is what is verifiable from the "
-     "model and the reported numbers.")
+para("None of this is in the financial model, so it is taken from note 33 of the "
+     "FY26 consolidated accounts. Claims against the group not acknowledged as debt "
+     "totalled Rs.2,519.61cr at 31 March 2026, marginally lower than Rs.2,646.67cr a "
+     "year earlier. Adding tariff disputes with customers of Rs.340.23cr, financial "
+     "guarantees of Rs.604.80cr (Rs.599.80cr of it for a related party) and the "
+     "group's Rs.1,041.13cr share of Barmer Lignite Mining's claims gives roughly "
+     "Rs.4,506cr of aggregate contingent exposure, about 15% of the Rs.30,752cr net "
+     "worth. That is a manageable number for a company of this size and, importantly, "
+     "it is not growing.")
 bullet("The consolidated tax charge in FY26A was negative Rs.777cr on a positive PBT "
        "of Rs.1,974cr — an effective rate of minus 39%, driven by a Rs.946cr "
-       "deferred-tax credit in 3QFY26 and a further Rs.371cr in 4QFY26. Normalising "
-       "to the 25% rate the model itself uses from FY27E would put FY26A PAT after "
-       "minority at roughly Rs.969cr rather than the reported Rs.2,239cr. Reported "
-       "FY26A earnings growth of 15% becomes a decline of about 50% on a normalised "
-       "basis. The cause is most plausibly recognition of deferred tax assets on "
-       "acquired losses at KSK Mahanadi, but the model does not say so and we have "
-       "not confirmed it against the accounts.",
-       bold_lead="A negative tax rate carried FY26A earnings. ")
+       "deferred-tax credit in 3QFY26 and a further Rs.371cr in 4QFY26. The CFO "
+       "explained it on the Q4FY26 call: deferred tax assets were recognised at "
+       "Utkal, where unabsorbed depreciation and business losses became recoverable "
+       "once the PPAs were signed, and at KSK. It is therefore a legitimate, "
+       "explained, one-off recognition rather than an accounting concern — but it is "
+       "not repeatable, and management guided the effective rate to 23–24% from here. "
+       "Normalising FY26A to 25% puts PAT after minority at roughly Rs.969cr against "
+       "the reported Rs.2,239cr: reported earnings growth of +15% becomes about "
+       "–50%. Anyone anchoring on FY26A EPS of Rs.12.74 is anchoring on a "
+       "tax-assisted number.",
+       bold_lead="A negative tax rate carried FY26A earnings — now explained. ")
 bullet("Minority interest was Rs.523cr in FY26A — 19% of pre-minority PAT, "
        "consistent with 26% of KSK Mahanadi sitting outside the group. The model "
-       "then forecasts minority interest of Rs.232cr in FY27E and Rs.24cr in FY28E, "
-       "while KSK continues to generate Rs.2,543cr of EBITDA in FY28E. If minority "
-       "interest instead held at its FY26A share of profit, FY28E EPS would be "
-       "roughly Rs.15.72 rather than Rs.19.28 — 18% lower. No buyout of the minority "
-       "appears in the cash flow statement to justify the drop.",
-       bold_lead="The minority-interest assumption. ")
+       "forecasts it collapsing to Rs.232cr in FY27E and Rs.24cr in FY28E. We had "
+       "flagged this as unexplained; it is not. Management confirmed on the Q4FY26 "
+       "call that it has already served notice to exercise its call option over the "
+       "balance 26% of KSK Mahanadi, and that the minority outflow will fall "
+       "materially once the purchase completes. The assumption is therefore "
+       "directionally right. What is missing is the other side of it: the "
+       "consideration is not yet crystallised — the CFO expected a number by the end "
+       "of Q2FY27 — and no cash outflow for it appears anywhere in the model's "
+       "investing line. On the SOTP's own 1.5x price-to-book for KSK, 26% would be "
+       "roughly Rs.1,170cr of cash, which is not in the Rs.78,303cr FY27E net debt. "
+       "The earnings are in the forecast; the cost of buying them is not.",
+       bold_lead="The minority-interest assumption — resolved, but only half of it. ")
 bullet("Capital work-in-progress stood at Rs.17,465cr at FY26A, 20% of gross block, "
        "and the model has it peaking at Rs.25,603cr in FY27E. That is normal for a "
        "company mid-build, but it is also the account where cost overruns and "
@@ -1363,11 +1493,39 @@ bullet("Other current liabilities rose from Rs.2,244cr in FY24A to Rs.5,439cr in
        "reading the note; holding it flat for four years while the balance sheet "
        "grows 50% is a modelling convention, not a forecast.",
        bold_lead="A balance-sheet line worth reading. ")
-bullet("Receivables at 57 days in FY26A against 81 days in FY25A, and inventory at "
-       "19 days against 28 — both improving, both consistent with a shift towards "
-       "contracted renewable revenue. Nothing here looks inconsistent with reported "
-       "growth.",
+bullet("Receivables at 62 days on the company's measure against 76 a year earlier, "
+       "and inventory at 19 days against 28 — both improving, both consistent with a "
+       "shift towards contracted renewable revenue and a better counterparty mix. "
+       "Nothing here looks inconsistent with reported growth.",
        bold_lead="Receivable and inventory ageing. ")
+bullet("The largest single items are water cess of Rs.645.47cr (up from Rs.406.93cr, "
+       "and recoverable from customers under the agreements if it goes against the "
+       "company), a Rs.468.10cr penalty from the Water Resources Department on raw "
+       "water charges, Rs.422.53cr of interest on a generation tax demand, "
+       "Rs.243.99cr of customs duty, and Rs.139.83cr on survey and investigation "
+       "work. Two items disappeared in FY26 — Rs.285.45cr of rail charges and "
+       "Rs.381.58cr of water transport charges — because the group bought the "
+       "counterparties (the KSK rail and water SPVs) and both cases are being "
+       "withdrawn. New this year: Rs.98cr of contract-employee provident fund dues "
+       "predating the KSK insolvency acquisition, Rs.58.36cr of Telangana deviation "
+       "settlement charges and Rs.48.72cr disputed with HPPTCL on transmission. The "
+       "51%-owned Barmer Lignite JV carries a further Rs.789.52cr service tax claim "
+       "within its Rs.1,041.13cr total.",
+       bold_lead="What is actually in the Rs.2,520cr. ")
+bullet("This is the one item in the accounts that permanently reduces earnings and "
+       "is nowhere in the model. JSW Hydro was obliged to supply 12% free power to "
+       "Himachal Pradesh for the first twelve years and 18% thereafter; a CERC order "
+       "of March 2022 capped it at 12%, the Himachal High Court agreed in May 2024, "
+       "and the Supreme Court then set that aside on 16 July 2025 and directed 18% "
+       "free power from 14 September 2023. The company began supplying 18% on 19 "
+       "July 2025 and agreed on 12 November 2025 to make good the arrears of 6% for "
+       "the intervening 22 months out of future untied generation at Karcham "
+       "Wangtoo. Karcham Wangtoo generates roughly 4,780 million units a year, so "
+       "six percentage points is of the order of 287 million units annually, "
+       "permanently, from the company's highest-margin asset — plus a back-period "
+       "catch-up. The model's hydro EBITDA of Rs.1,376cr in FY27E does not visibly "
+       "reflect it.",
+       bold_lead="The Himachal free-power ruling. ")
 
 h2(23, "Management Team and Guidance vs Delivery")
 table(
@@ -1386,27 +1544,35 @@ table(
          "history. Operating disclosure has improved on his watch — quarterly "
          "segment and commissioning detail is above sector norm. Unproven on a "
          "downcycle."],
-        ["Pritesh Vinay — Director Finance & CFO",
-         "~22 years across corporate finance, fundraising, IR, M&A and equity "
-         "research",
-         "The right background for a company whose central task is raising and "
-         "pricing Rs.40,000cr of incremental debt and Rs.5,875cr of equity. "
-         "Execution on the AA rating through a tripling of debt is the test."],
-        ["Board composition", "Not verified",
-         "Independent-director count and committee composition were not obtainable "
-         "for this note — a gap in an otherwise assessable section."],
+        ["Chandrasekaran Prabhakaran — CFO since 1 January 2026",
+         "Appointed by the board on 12 December 2025 on the retirement of the "
+         "previous Director (Finance), Pritesh Vinay, who stepped down from the "
+         "board on 31 December 2025",
+         "A CFO change six months before the largest capital raise in the sector's "
+         "history is a genuine risk item, and it appears to have been managed: the "
+         "Rs.10,150cr programme was completed on his watch and the weighted average "
+         "cost of debt fell 67bp in the same year. His disclosure on the calls — "
+         "CWIP split, holdco maturity profile, the deferred-tax explanation — is "
+         "specific and unprompted, which is a good sign."],
+        ["Bikash Chowdhury — Head, Investor Relations and ERM",
+         "Fronts the quarterly calls alongside the CEO and CFO",
+         "Notably, IR explicitly asked analysts on the Q4FY26 call to model KSK "
+         "Mahanadi at Rs.2,700cr of steady-state EBITDA rather than the Rs.3,300cr+ "
+         "actually delivered in FY26. Guiding analysts down from a good year is "
+         "unusual and is a mark in favour of this management's candour."],
     ],
     widths=[3.6, 5.2, 8.6], size=7.4)
-para("Guidance versus delivery. Management credibility here is testable from public "
-     "documents and from the analyst's own project tracker, and the record is mixed "
-     "rather than bad.")
+para("Guidance versus delivery. With both FY26 calls and the FY26 annual report in "
+     "hand this is now testable against what management actually said, and the "
+     "record is better than the project tracker alone suggests.")
 table(
     ["What was promised", "When and where", "What was delivered"],
     [
         ["20GW of generation capacity by 2030", "announced c.2021",
-         "Target raised to 30GW plus 40GWh of storage in 2026. Raised, not missed — "
-         "though the analyst model reaches only 28.3GW on its own numbers, 6% short "
-         "of the current target."],
+         "Raised to 30GW plus 40GWh of storage under 'Strategy 3.0'. Locked-in "
+         "capacity is already 32.1GW and locked-in storage 29.6GWh, with 14GW under "
+         "construction fully tied under PPAs. Raised and, on the company's own "
+         "pipeline, over-covered — though the analyst model reaches only 28.3GW."],
         ["Kutehr hydro 240MW, CoD September 2024",
          "project tracker in the model",
          "Commissioned in FY26 — approximately 18 months late."],
@@ -1416,10 +1582,33 @@ table(
          "project tracker in the model",
          "Not commissioned; marked under dispute. No impairment taken."],
         ["1GW solar PV module manufacturing", "announced, capex Rs.1,600cr",
-         "Marked 'Project on Hold'."],
-        ["Net debt/EBITDA below 5.0x", "management guidance, 2026",
-         "6.96x at FY26A. The model reaches 5.04x in FY29E and 4.90x in FY30E — "
-         "three to four years out."],
+         "Marked 'Project on Hold' in the model's tracker. Vertical integration has "
+         "instead gone into a 5GWh battery assembly plant at Pune (commissioned "
+         "Q4FY26, commercial sales started) and a wind blade plant at Halol (due "
+         "H1FY27) — a redirection rather than a straight miss."],
+        ["Net debt/EBITDA of approximately 5.0–5.5x by 2030",
+         "Q4FY26 call, 11 May 2026",
+         "On the company's measure (excluding CWIP debt) 5.2x at FY26A, improving to "
+         "4.95x after the Q1FY27 raise — already inside the guardrail. On the model's "
+         "all-in measure, 6.96x at FY26A reaching 4.90x only in FY30E."],
+        ["Rs.20,000cr of FY27 capex and about 3GW of additions",
+         "Q4FY26 call, 11 May 2026",
+         "Corroborated by Rs.24,184cr of contracted capital commitments in the "
+         "audited accounts. 873MW added in Q1FY27, 1,081MW since April — roughly 36% "
+         "of the annual target in the first quarter."],
+        ["KSK Mahanadi steady-state EBITDA of Rs.2,700cr",
+         "Q4FY26 call, investor relations",
+         "FY26A delivered over Rs.3,300cr against Rs.2,650cr in the year before "
+         "acquisition. Management guided analysts down, citing a UPPCL tariff "
+         "step-down, partly offset by fuel logistics savings after buying the KSK "
+         "rail and water SPVs."],
+        ["Mid-teen return thresholds on every investment",
+         "Q4FY26 call, 11 May 2026",
+         "Not yet visible at group level: consolidated ROCE was 6.4% in FY26A and "
+         "the model reaches 8.8% by FY30E. Either project returns are materially "
+         "above group returns because of the drag from CWIP and acquired thermal, or "
+         "the threshold is aspirational. This is the single most useful thing to "
+         "test as the build matures."],
         ["FY26 capacity addition", "quarterly disclosure",
          "2,579MW added in FY26A against 3,585MW in FY25A; 1,081MW added since "
          "April 2026 including 873MW in 1QFY27. Delivery on the aggregate build has "
@@ -1432,14 +1621,17 @@ table(
 para("Verdict on the promoter structure and who it suits. This is a promoter-"
      "controlled, group-embedded utility executing the largest capital programme in "
      "its history with a balance sheet that has tripled its debt in four years. The "
-     "promoter is aligned in the way that matters most — subscribing equity at "
-     "Rs.525 rather than selling — and disclosure quality is genuinely good. But the "
-     "aggregate delivery record is 'roughly on plan in total, consistently late on "
-     "individual projects', and that is exactly the profile that turns a 24% EBITDA "
-     "CAGR into an 18% one. This suits investors with a three-to-five year horizon "
-     "who are underwriting an asset base rather than an earnings trajectory, and who "
-     "can tolerate a 30%+ drawdown if the multiple mean-reverts. It does not suit "
-     "anyone underwriting the FY27E or FY28E EPS.")
+     "promoter is aligned in the way that matters most — subscribing Rs.3,000cr of "
+     "equity and warrants at Rs.525 and Rs.515 rather than selling — and disclosure "
+     "quality is genuinely good: the calls give CWIP splits, holdco maturity "
+     "profiles, per-MW EBITDA benchmarks and a candid deferred-tax explanation, and "
+     "investor relations guided analysts down on KSK rather than up. The aggregate "
+     "delivery record is 'on plan in total, late on individual projects, and honest "
+     "about why' — the evacuation constraint is real and externally verifiable. That "
+     "is a better profile than we credited before reading the transcripts. It still "
+     "suits investors with a three-to-five year horizon underwriting an asset base "
+     "rather than an earnings trajectory, and who can tolerate a 30%-plus drawdown "
+     "if the multiple mean-reverts. It does not suit anyone underwriting FY27E EPS.")
 
 h2(24, "Triggers to Watch")
 numbered("consolidated EBITDA must run at Rs.3,360cr a quarter for the remaining "
@@ -1452,23 +1644,32 @@ numbered("the model assumes Rs.6,612cr in FY27E against Rs.3,030cr in FY26A and 
          "Rs.4,000cr, roughly Rs.1,500cr of FY27E revenue does not exist. This is "
          "the least-explained line in the model.",
          bold_lead="Standalone segment revenue through FY27. ")
-numbered("Rs.4,000cr at Rs.525 is in the share count. A raise priced below Rs.525, "
-         "or larger than Rs.4,000cr, cuts the FY27E EPS of Rs.15.40 and the base "
-         "target with it. Confirms or denies the funding assumption.",
-         bold_lead="Completion and pricing of the modelled FY27 QIP. ")
-numbered("Rs.1,875cr remains payable at Rs.525 on warrants already 25% paid. "
-         "Conversion confirms promoter commitment and delivers the cash; lapse "
-         "forfeits Rs.625cr and leaves a funding hole. Watch the exchange filing.",
-         bold_lead="Promoter warrant conversion. ")
+numbered("the consideration for the balance 26% of KSK Mahanadi is not yet "
+         "crystallised; the CFO expected a number by the end of Q2FY27. On the "
+         "SOTP's 1.5x book it is of the order of Rs.1,170cr, and it is not in the "
+         "model's cash flow. A materially larger number raises FY27E net debt and "
+         "cuts the target; completion also validates the collapse in minority "
+         "interest that carries 18% of FY28E EPS.",
+         bold_lead="KSK Mahanadi minority buyout price, by end-Q2FY27. ")
+numbered("management guided the first 600MW of the KSK expansion for mid-FY27. It "
+         "is not in the model's capacity or earnings at all, so it is pure upside to "
+         "FY28E — roughly Rs.500–600cr of annualised EBITDA on the plant's current "
+         "unit economics, or about Rs.35 per share at 11.9x.",
+         bold_lead="First 600MW of KSK Mahanadi units 3–6, mid-FY27. ")
 numbered("3,155MW is scheduled for FY27E and 873MW came in 1QFY27. A quarterly "
          "commissioning run-rate below roughly 750MW confirms slippage in the driver "
          "that is 92% of the growth story.",
          bold_lead="Quarterly MW commissioned. ")
-numbered("the model books Rs.2,887cr net in FY27E from selling 25mn shares at "
-         "Rs.1,260. An announcement confirms the funding plan; silence through FY27 "
-         "means the plan is short by that amount and net debt ends higher than "
-         "Rs.78,303cr.",
-         bold_lead="Disposal of the JSW Steel cross-holding. ")
+numbered("management expects the Rajasthan evacuation line around July 2026, which "
+         "should end the curtailment that cost Rs.50cr of revenue in FY26A. If it "
+         "slips, curtailment persists into a year in which 3GW is being added, and "
+         "the Rs.0.75cr/MW steady-state benchmark becomes the ceiling rather than "
+         "the base.",
+         bold_lead="Commissioning of the new evacuation line, July 2026. ")
+numbered("the CERC's revised Deviation Settlement Mechanism would cost 1.5–2% of "
+         "renewable revenue on management's worst case. Watch whether the industry "
+         "secures substation-level grouping, which materially reduces it.",
+         bold_lead="Final DSM regulations. ")
 
 h2(25, "Key Risks")
 numbered("The equity is 29% of enterprise value, so each 1.0x of EV/EBITDA is "
@@ -1486,31 +1687,44 @@ numbered("12,151MW of renewables must be built in four years to deliver 92% of t
          "target. What would confirm it: quarterly commissioning below 750MW.",
          bold_lead="Renewable execution slippage. ")
 numbered("Cumulative free cash flow after interest is negative Rs.53,993cr over "
-         "FY27E–FY30E. The plan requires Rs.40,532cr of net new debt and Rs.5,875cr "
-         "of new equity, on interest cover of 1.7–2.2x and an AA rating. A rating "
-         "action, a closed equity window or a repricing of project debt forces capex "
-         "deferral, which directly reduces the EBITDA the valuation rests on. What "
-         "would confirm it: any negative rating action, or interest cover falling "
-         "below 1.7x.",
-         bold_lead="Funding — the plan does not self-fund in any forecast year. ")
-numbered("India's total generation grew 3% in Q4FY26 while solar generation grew "
-         "24%. An oversupplied grid compresses merchant tariffs and raises "
-         "curtailment. JSW has 700MW at Ind-Barath with no PPA at all and roughly "
-         "13% of sales merchant. What would confirm it: sustained weakness in "
-         "exchange day-ahead prices, or curtailment disclosure in the quarterly deck.",
-         bold_lead="Merchant and curtailment risk in an oversupplied market. ")
+         "FY27E–FY30E and the business does not self-fund in any forecast year. The "
+         "near-term risk has, however, largely been retired: the Rs.10,150cr raise is "
+         "complete, cash stands at Rs.12,881cr, Rs.24,184cr of capex is contractually "
+         "committed and the CFO states the FY27 programme needs no further equity. "
+         "The residual risk is FY29–FY30, where roughly Rs.46,000cr of further "
+         "capex must be financed on 2.1x interest cover. What would confirm it: a "
+         "negative rating action, interest cover below 1.7x, or a second QIP under "
+         "the Rs.10,000cr enabling approval.",
+         bold_lead="Funding — de-risked for FY27, unresolved for FY29–30. ")
+numbered("National demand grew 0.9% in FY26 while 50.9GW of renewables was added, "
+         "and only 9,500 of a planned 15,000 circuit-km of transmission was built. "
+         "Curtailment cost Rs.50cr of revenue in FY26A and management says the "
+         "constraint eases only around 2029. The merchant exposure itself is smaller "
+         "than we first assessed — open capacity is about 5% of the base and "
+         "Ind-Barath is now largely contracted — but the sector-level evacuation "
+         "shortfall directly gates the commissioning schedule that is 92% of the "
+         "growth. What would confirm it: quarterly curtailment above Rs.25cr, or "
+         "slippage in the July 2026 Rajasthan line.",
+         bold_lead="Evacuation and curtailment, not merchant price, is the real "
+                   "sector risk. ")
 numbered("FY26A reported PAT of Rs.2,239cr becomes roughly Rs.969cr at a normal tax "
-         "rate. The model assumes minority interest collapses from Rs.523cr to "
-         "Rs.24cr by FY28E despite 26% of KSK Mahanadi being outside the group — "
-         "worth 18% of FY28E EPS. What would confirm it: the quarterly minority-"
-         "interest line staying near its FY26A level.",
-         bold_lead="Earnings quality — the tax credit and the minority assumption. ")
-numbered("Contingent liabilities, litigation, tax disputes, auditor opinion, board "
-         "composition, promoter pledge and related-party quantum could not be "
-         "verified for this note. Each is a place where a material negative could "
-         "sit undetected. We treat this as a risk in its own right rather than "
-         "assuming the absence of evidence is favourable.",
-         bold_lead="Analytical risk — what we could not verify. ")
+         "rate — the deferred-tax recognition at Utkal and KSK is explained and "
+         "legitimate but not repeatable, and management guides 23–24% from here. The "
+         "minority-interest collapse is now corroborated by the KSK call option, but "
+         "its cost is absent from the model. And the Supreme Court's 18% Himachal "
+         "free-power ruling permanently removes roughly 287 million units a year "
+         "from the highest-margin asset without appearing in the forecast. What would "
+         "confirm it: hydro segment EBITDA in FY27 coming in below the model's "
+         "Rs.1,376cr.",
+         bold_lead="Earnings quality — three items the model does not carry. ")
+numbered("The FY26 accounts have now been read: the auditor's opinion is unmodified, "
+         "contingent exposure is about 15% of net worth and not growing, and "
+         "related-party sales are 4.3% of revenue. The residual unverified items are "
+         "narrow — promoter-level share pledge, which sits in the quarterly "
+         "shareholding filing, and the quantum of the KSK minority consideration. "
+         "This risk is much smaller than we assessed before reading the primary "
+         "sources, and we downgrade it accordingly.",
+         bold_lead="Analytical risk — now largely closed. ")
 numbered("5,958MW of coal and lignite capacity with PPAs running into the 2040s "
          "faces tightening renewable purchase obligations, potential carbon pricing "
          "and eventual stranding pressure. On a 10-to-20 year horizon this is real; "
@@ -1531,44 +1745,48 @@ rich([("The falsification test. ", True, False, RED),
 h2(26, "Final Outlook")
 rich([("HOLD  |  Base target price Rs.625  |  Upside +11.4%  |  "
        "CMP Rs.561  |  Market cap Rs.98,584cr", True, False, NAVY)], size=11, after=7)
-para("JSW Energy is in the middle of the largest transformation in its twenty-year "
-     "listed history, and the transformation is real. In four years it has gone from "
-     "6,605MW to 13,454MW of operational capacity, from a thermal generator with a "
-     "stagnant asset base to a company where renewables will supply 71% of EBITDA by "
-     "FY30E. The contracts behind that shift are 25-to-40 year fixed-tariff PPAs "
-     "with sovereign-adjacent counterparties. The company holds an AA rating, runs "
-     "quarterly calls with better segment disclosure than most of its peers, and its "
-     "promoter is subscribing equity at Rs.525 rather than selling. None of this is "
-     "a bad business.")
-para("The valuation anchor and what it requires. Our base target of Rs.625 is 11.9x "
-     "FY28E EV/EBITDA less FY27E-end net debt — the same construction the model "
-     "carries, and a multiple consistent with where Tata Power trades and with the "
-     "10x/12x thermal-and-renewables split in the sum-of-the-parts. It requires only "
-     "that the model's FY28E EBITDA of Rs.15,942cr is delivered and that the market "
-     "keeps paying roughly what it pays today. It requires no re-rating, no "
-     "acquisition and no upside from Salboni, from KSK units 3–6, or from the "
-     "Rs.36-per-share JSW Steel cross-holding, none of which are in the number.")
+para("The transformation is real. In four years JSW Energy has gone from 6,605MW to "
+     "13,454MW, from a stagnant thermal generator to a company where renewables "
+     "supply 71% of EBITDA by FY30E, on 25-to-40 year fixed-tariff PPAs with "
+     "sovereign-adjacent counterparties. It holds an AA rating, discloses more than "
+     "most peers, has completed a Rs.10,150cr raise, and its promoter is subscribing "
+     "equity rather than selling. None of this is a bad business.")
+para("The valuation anchor and what it requires. The base target of Rs.625 is 11.9x "
+     "FY28E EV/EBITDA less FY27E-end net debt — the model's own construction, "
+     "consistent with where Tata Power trades. It requires only that FY28E EBITDA of "
+     "Rs.15,942cr is delivered and that the market keeps paying what it pays today: "
+     "no re-rating, no acquisition, and no credit for Salboni, KSK units 3–6 or the "
+     "residual JSW Steel stake.")
 para("Why the risk-reward is not asymmetric, which is the reason for the rating. "
-     "Three structural facts. First, net debt at FY27E-end is 4.7x FY28E EBITDA, so "
-     "the equity is a 29% residual claim and every 1.0x of multiple is worth 15.5% "
-     "of the share price — the downside to a mean-reverting multiple is 33% against "
-     "an 11% base upside. Second, a 10% miss on FY28E EBITDA alone turns the +11% "
-     "into –7%, and the 1QFY27 run-rate is currently 11% below what FY27E requires. "
-     "Third, after nine years of growth capex the model's own terminal ROCE of 8.8% "
-     "is still below the 10% WACC it discounts at, and the model's own asset-based "
-     "sum-of-the-parts values the company at Rs.510 — below the market price. The "
-     "two valuation methods bracket the current price rather than pointing the same "
-     "way, which is the definition of fairly valued.")
-para("What caps position sizing. The unverifiable items, principally: contingent "
-     "liabilities, litigation, auditor commentary, promoter pledge and related-party "
-     "quantum are all outside what this note could confirm, and they sit in a "
-     "promoter-controlled group structure where 26% of the best asset already "
-     "belongs to someone else. Add a funding plan that needs Rs.46,407cr of new "
-     "capital across four years on 1.7–2.2x interest cover, and the correct response "
-     "is a position that survives a 30% drawdown, not one that requires the bull "
-     "case. We would become buyers on evidence — an FY27 EBITDA above Rs.13,000cr "
-     "with leverage below 5.5x — or on a price closer to Rs.480, where the "
-     "downside-case multiple of 10.2x is already in the price.")
+     "Three structural facts, none of which the primary sources change. First, net "
+     "debt at FY27E-end is 4.7x FY28E EBITDA, so the equity is a 29% residual claim "
+     "and every 1.0x of multiple is worth 15.5% of the share price — the downside to "
+     "a mean-reverting multiple is 33% against an 11% base upside. Second, a 10% "
+     "miss on FY28E EBITDA alone turns the +11% into –7%, and the 1QFY27 run-rate is "
+     "currently 11% below what FY27E requires. Third, after nine years of growth "
+     "capex the model's terminal ROCE of 8.8% is still below the 10% WACC it "
+     "discounts at — and management's claim that every investment clears a mid-teen "
+     "hurdle has not yet shown up anywhere in group returns. The model's own "
+     "asset-based sum-of-the-parts values the company at Rs.510, below the market "
+     "price, while the forward-multiple approach gives Rs.625 above it. The two "
+     "methods bracket the current price rather than pointing the same way, which is "
+     "the definition of fairly valued.")
+para("What caps position sizing. Less than we thought before reading the primary "
+     "sources. The audited FY26 accounts carry an unmodified Deloitte opinion, a "
+     "single key audit matter on tariff disputes, contingent exposure of about 15% "
+     "of net worth that is not growing, and related-party power sales of 4.3% of "
+     "revenue. The Rs.10,150cr raise is complete and leverage on the company's "
+     "measure is already inside its guardrail at 4.95x. What still caps it: an "
+     "FY29–FY30 capex programme of roughly Rs.46,000cr yet to be financed on 2.1x "
+     "interest cover; a Supreme Court ruling that permanently takes six percentage "
+     "points of free power out of the highest-margin asset and is absent from the "
+     "forecast; an incremental renewable EBITDA assumption running 36% above "
+     "management's own per-MW benchmark; and a promoter-level pledge position we "
+     "still have not seen. The correct response is a position that survives a 30% "
+     "drawdown, not one that requires the bull case. We would become buyers on "
+     "evidence — FY27 EBITDA above Rs.13,000cr with leverage below 5.5x — or on a "
+     "price closer to Rs.480, where the downside-case multiple of 10.2x is already "
+     "in the price.")
 
 # ---------------------------------------------------------------- footer
 footer = sec.footer
