@@ -1,0 +1,3 @@
+# Raw daily bhavcopy CSVs (~85 MB, 247 files). Fully regenerable:
+#   python3 scripts/download_bhavcopy.py --days 366
+raw_bhavcopy/

@@ -1,0 +1,7 @@
+# Historical NSE ticker aliases: CURRENT_SYMBOL = OLD_SYMBOL[,OLD_SYMBOL...]
+# Rows traded under an old ticker are folded into the current symbol so the
+# one-year series is not truncated by a rename. Verified by price continuity
+# (old ticker's last close == new ticker's first PREV_CLOSE).
+#
+# MIRC Electronics renamed to Onida with effect from 19-Jun-2026.
+ONIDA = MIRCELECTR
