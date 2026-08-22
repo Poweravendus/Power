@@ -113,6 +113,26 @@ def build_master(symbols, old_to_new):
     return df.reset_index(drop=True)
 
 
+def check_session_continuity(df):
+    """Every row's PREV_CLOSE should equal the previous row's CLOSE.
+
+    A market-wide mismatch on one date means a whole session is missing from
+    the download (NSE runs occasional live weekend sessions). A mismatch on a
+    single symbol means a corporate action -- prices in bhavcopy are NOT
+    split/bonus adjusted, but NSE does restate PREV_CLOSE across an ex-date.
+    """
+    d = df.sort_values(["Symbol", "Date"]).copy()
+    d["prior_close"] = d.groupby("Symbol")["Close"].shift(1)
+    d["gap"] = (d["Prev_Close"] / d["prior_close"] - 1).abs()
+    breaks = d[d["gap"] > 0.01].dropna(subset=["gap"])
+
+    per_date = breaks.groupby("Date").size()
+    symbols_live = d.groupby("Date")["Symbol"].nunique()
+    missing_sessions = [dte for dte, n in per_date.items() if n >= 0.8 * symbols_live[dte]]
+    corp_actions = breaks[~breaks["Date"].isin(missing_sessions)]
+    return missing_sessions, corp_actions[["Symbol", "Date", "prior_close", "Prev_Close"]]
+
+
 def build_summary(df):
     rows = []
     for sym, g in df.groupby("Symbol", sort=True):
@@ -311,6 +331,8 @@ def main():
         "days": df["Date"].nunique(),
     }
 
+    missing_sessions, corp_actions = check_session_continuity(df)
+
     df.to_csv(CSV_PATH, index=False, date_format="%Y-%m-%d")
     write_sqlite(df, summary)
     write_excel(df, summary, symbols, stats)
@@ -321,6 +343,19 @@ def main():
     print(f"Trading days  : {stats['days']}  ({stats['start']} -> {stats['end']})")
     if missing:
         print(f"NOT FOUND     : {', '.join(missing)}")
+    if missing_sessions:
+        print("WARNING: a trading session appears to be missing just before: "
+              + ", ".join(d.strftime("%Y-%m-%d") for d in missing_sessions))
+        print("         (market-wide PREV_CLOSE break -- re-run the downloader)")
+    else:
+        print("Continuity    : OK, no missing sessions")
+    if len(corp_actions):
+        print(f"Corporate actions flagged ({len(corp_actions)}) -- prices are unadjusted:")
+        for _, r in corp_actions.iterrows():
+            print(f"  {r['Symbol']:<12} {r['Date']:%Y-%m-%d}  close {r['prior_close']:.2f}"
+                  f" -> restated prev_close {r['Prev_Close']:.2f}")
+    else:
+        print("Corp actions  : none detected in window")
     print(f"Excel         : {XLSX_PATH}")
     print(f"SQLite        : {DB_PATH}")
     print(f"CSV           : {CSV_PATH}")

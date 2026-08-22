@@ -15,6 +15,13 @@ Two quirks of that archive are handled here:
 2. On some trading holidays the archive serves the PREVIOUS session's file
    under the holiday's filename. Each download is therefore checked against
    the date inside the file and discarded when it does not match.
+
+Every calendar day is probed, not just weekdays: NSE runs occasional live
+weekend sessions (e.g. the Union Budget session on Sunday 01-Feb-2026).
+Weekend dates get a smaller retry budget so the ~104 normally-empty probes stay
+cheap; build_database.py independently verifies that no session is missing by
+checking PREV_CLOSE continuity, so a throttled weekend probe cannot pass
+unnoticed.
 """
 
 import argparse
@@ -41,11 +48,10 @@ HEADERS = {
 RAW_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "raw_bhavcopy")
 
 
-def weekdays(start, end):
+def all_days(start, end):
     days, d = [], start
     while d <= end:
-        if d.weekday() < 5:
-            days.append(d)
+        days.append(d)
         d += dt.timedelta(days=1)
     return days
 
@@ -59,7 +65,9 @@ def file_date(text):
         return None
 
 
-def fetch_one(day, retries=6):
+def fetch_one(day, retries=6, weekend_retries=3):
+    if day.weekday() >= 5:
+        retries = weekend_retries  # almost always genuinely empty
     stamp = day.strftime("%d%m%Y")
     path = os.path.join(RAW_DIR, f"sec_bhavdata_full_{stamp}.csv")
     if os.path.exists(path) and os.path.getsize(path) > 50_000:
@@ -94,8 +102,8 @@ def main():
     os.makedirs(RAW_DIR, exist_ok=True)
     end = dt.date.fromisoformat(args.end) if args.end else dt.date.today()
     start = end - dt.timedelta(days=args.days)
-    days = weekdays(start, end)
-    print(f"Window {start} -> {end}: {len(days)} weekday candidates", flush=True)
+    days = all_days(start, end)
+    print(f"Window {start} -> {end}: {len(days)} calendar days to probe", flush=True)
 
     counts = {"downloaded": 0, "cached": 0, "holiday": 0, "unavailable": 0}
     unavailable = []
@@ -110,9 +118,10 @@ def main():
                 print(f"  {i}/{len(days)} ... {counts}", flush=True)
 
     print(f"DONE {counts}", flush=True)
-    if unavailable:
-        print("UNAVAILABLE (holiday or archive gap): "
-              + ", ".join(d.isoformat() for d in sorted(unavailable)), flush=True)
+    weekday_gaps = [d for d in unavailable if d.weekday() < 5]
+    if weekday_gaps:
+        print("NO WEEKDAY FILE (trading holiday, or archive gap): "
+              + ", ".join(d.isoformat() for d in sorted(weekday_gaps)), flush=True)
     return 0
 
 
