@@ -135,81 +135,111 @@ Checks run on the built dataset, all passing:
 
 ---
 
-# Backtest: "Open = Low" entry
+# Backtest: four-rule entry
 
-`scripts/backtest.py` tests the entry rule: buy at the close on days where the
-stock's **Open equals its Low** and the day's up-move is under 3%; stop 3% below
-that open=low; target +15%.
+`scripts/backtest.py` tests a stacked entry:
 
-## Result: no edge
+1. **Open == Low** — never traded below the open all session
+2. **Close +3–5%** vs the previous close
+3. **Open > previous close** — gapped up
+4. **Volume ≥ 1.5×** the prior 30-session average *(swept as a sensitivity parameter)*
 
-| | Rule 2 = vs prev close | Rule 2 = vs open |
+Entry at that day's close, stop 3% below the open=low, target +15%.
+
+## Result: positive, but not measurable
+
+**14 trades. +1.35% per trade, 95% CI −3.42% to +7.28%.** A random sample of 14
+ordinary days beats it 37% of the time. Remove the single best trade and the
+average falls to +0.30%; remove the best two and it is negative.
+
+The funnel: 11,796 rows → 526 (Open=Low) → 107 (+3–5%) → 72 (gap up) → 66 (has
+30 sessions of volume history) → **14**.
+
+## Which rules earn their place
+
+Each rule alone, and the full set with each rule removed, on the identical stop
+and target. `p` = share of random same-size samples of all days that beat the
+subset.
+
+| Filter | Trades | Avg % | 95% CI | p |
+|---|---|---|---|---|
+| **volume ≥1.5× alone** | 1,692 | **+1.86** | +1.38 … +2.34 | **<0.001** |
+| **close +3–5% alone** | 818 | **+1.23** | +0.47 … +1.98 | **0.030** |
+| gap up alone | 6,807 | +0.59 | +0.37 … +0.80 | 0.694 |
+| Open = Low alone | 526 | +0.52 | −0.27 … +1.32 | 0.617 |
+| **without Open = Low** | 191 | **+1.60** | +0.15 … +3.06 | **0.069** |
+| without close band | 68 | +1.77 | −0.71 … +4.26 | 0.151 |
+| without volume | 72 | +1.41 | −0.87 … +3.78 | 0.227 |
+| without gap up | 19 | +1.66 | −2.88 … +6.41 | 0.304 |
+| ALL FOUR | 14 | +1.35 | −3.42 … +7.28 | 0.375 |
+| every day (baseline) | 11,796 | +0.64 | +0.48 … +0.80 | — |
+
+- **Volume is the only rule that clearly works** — the one interval that never
+  touches the baseline.
+- **The 3–5% band is a real but smaller effect.** It is also what turned the
+  strategy around: the earlier "under 3%" version returned −0.39% per trade.
+- **Open = Low and gap-up contribute nothing.** Open = Low returns *below* the
+  baseline; gap-up matches 6,807 of 11,796 rows, so it barely filters at all.
+- **Dropping Open = Low gives the best-supported combination in the study:**
+  191 trades at +1.60%, p = 0.069 — 13× the sample for a higher return.
+
+## Volume threshold sweep (rules 1–3 fixed)
+
+| Threshold | Trades | Avg % | 95% CI |
+|---|---|---|---|
+| none | 72 | +1.41 | −0.88 … +3.74 |
+| ≥1.0× | 35 | +0.98 | −2.19 … +4.59 |
+| ≥1.25× | 23 | +0.16 | −3.62 … +4.06 |
+| ≥1.5× | 14 | +1.35 | −3.39 … +7.33 |
+| ≥2.0× | 5 | −1.90 | −6.70 … +6.70 |
+| ≥3.0× | 3 | +0.63 | −7.37 … +15.00 |
+
+Non-monotonic, and every interval crosses zero. Tightening the threshold shrinks
+the sample without improving the result.
+
+## The regime problem
+
+Splitting the window at 19 Feb 2026 — the universe fell 7.0% in the first half
+and rose 51.1% in the second:
+
+| Filter | H1 avg | H2 avg |
 |---|---|---|
-| Trades | 338 | 331 |
-| Target hit / stopped | 67 / 251 | 72 / 240 |
-| Win rate | 23.1% | 24.8% |
-| **Expectancy per trade** | **−0.39%** | **+0.10%** |
-| Profit factor | 0.89 | 1.03 |
+| volume ≥1.5× alone | −2.76 | +4.67 |
+| close +3–5% alone | −2.44 | +3.53 |
+| Open = Low alone | −2.06 | +2.59 |
+| gap up alone | −1.64 | +2.59 |
+| ALL FOUR | −0.95 | +2.26 |
+| every day (baseline) | −1.68 | +2.79 |
 
-"Below 3% up that day" is ambiguous, so both readings are run. Neither produces
-an edge, so the ambiguity does not change the conclusion. Excluding overlapping
-positions gives −0.17% and +0.37% respectively — same answer.
-
-The arithmetic is the whole story: average win +13.7%, average loss −4.6%, so
-the strategy needs a **25.2%** win rate to break even and delivers **23.1%**.
-
-## Three independent checks
-
-1. **The filter picks below-average days.** Running the identical stop and
-   target on all 11,458 non-signal days returns **+0.55%** per trade at profit
-   factor 1.16, versus **−0.19%** and 0.94 on signal days. Both sets use the
-   same stop distance from entry (4.63%) — without that correction non-signal
-   days get a wider stop by construction and the comparison is meaningless.
-2. **The stop, not the entry, is the problem.** The same 338 signals held for a
-   fixed period with no stop and no target return +1.56% at 10 days, +2.93% at
-   20 and +6.27% at 40, winning 55% of the time at 40 days.
-3. **A 3% stop is inside the noise.** Real risk averages 4.63% from entry
-   (the close sits above the open), against a median 14-day ATR of 3.90% —
-   1.19× one average day's range. 21% of trades that eventually reached +15%
-   first traded more than 3% below entry.
-
-Context: equal-weight buy-and-hold of the same 51 names returned **+43.0%** over
-the window. Costs are excluded; Indian round-trip delivery costs of 0.3–0.6%
-would make a marginal result clearly negative.
-
-## Sensitivity
-
-Average return per trade, Rule 2 vs previous close:
-
-| stop ↓ / target → | +8% | +10% | +15% | +20% | +25% |
-|---|---|---|---|---|---|
-| −2% | −0.70 | −0.65 | −0.37 | −0.21 | +0.37 |
-| **−3%** | −0.74 | −0.75 | **−0.39** | −0.07 | +0.66 |
-| −5% | −0.65 | −0.77 | −0.16 | +0.25 | +1.16 |
-| −8% | −0.16 | −0.06 | +0.64 | +1.42 | +2.46 |
-
-The gradient runs one way: wider stop, larger target. The best cell (−8% / +25%)
-returns +2.46% per trade, but it is one unvalidated peak in a 20-cell grid fitted
-on a single year — a direction to investigate, not a setting to trade.
+**Every filter is negative in the falling half and positive in the rising half,
+including the do-nothing baseline.** In the falling half the volume filter did
+*worse* than doing nothing. These filters amplify market direction rather than
+predict it — beta, not alpha. Over a window that rose 43%, beta looks like skill.
 
 ## Engine
 
+- Volume benchmark is the 30 sessions *before* the signal, so a high-volume day
+  cannot inflate its own benchmark. A full 30-session history is required
+  (6 otherwise-qualifying days dropped, all recent listings).
 - Entry at the signal day's close; exits checked from the next session.
-- Stop = signal-day low × 0.97. Target = entry × 1.15.
-- Gaps exit at the open, not the level — no look-ahead in either direction.
-- A bar touching both levels is scored as a stop (conservative). It never
-  occurred: no single bar spanned both a 4.6% loss and a 15% gain.
-- Trades still live at the end of the window are marked to the last close.
+- Stop = signal-day low × 0.97, target = entry × 1.15. Because a 3–5% up day
+  closes well above its open, real risk averages 6.08% from entry, not 3%.
+- Gaps exit at the open, not the level. A bar touching both levels scores as a
+  stop (never occurred here).
+- Confidence intervals bootstrapped and p-values permuted, 20,000 resamples each.
+- One position per symbol gives 13 trades at +1.92% — same conclusion.
+- Costs excluded; Indian round-trip delivery costs run 0.3–0.6%.
 
 ```bash
-python3 scripts/backtest.py                      # defaults: SL 3%, target 15%
-python3 scripts/backtest.py --sl 8 --target 25   # any variant
+python3 scripts/backtest.py                                   # defaults above
+python3 scripts/backtest.py --vol-mult 2.5 --up-min 2 --up-max 6
+python3 scripts/backtest.py --sl 8 --target 25
 ```
 
-Outputs `backtest/Backtest_Results.xlsx` (headline, sensitivity grid,
-fixed-hold reference, risk-matched benchmark, portfolio, monthly, per-symbol,
-full trade logs), per-variant trade CSVs, and `backtest/report.html`.
+Outputs `backtest/Backtest_Results.xlsx` (volume sweep, rule attribution, period
+split, sensitivity grid, fixed-hold reference, risk-matched benchmark, trade
+logs) and `backtest/report.html`.
 
-**Limits.** One year, 51 hand-picked names, one strongly bullish regime. Enough
-to say these rules have no edge here; not enough to say the idea is dead in
-every regime, or that the wide-stop corner of the grid is real.
+**Limits.** One year, 51 hand-picked names, a market that rose 43%. Enough to
+rank the four rules against each other. Not enough to certify any of them for
+live trading.

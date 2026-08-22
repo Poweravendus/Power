@@ -89,6 +89,8 @@ header p.lede{font-size:17px; color:var(--text-2); max-width:62ch; margin:0}
 }
 .flag.no{background:color-mix(in srgb,var(--bad) 13%,transparent); color:var(--bad);
   border:1px solid color-mix(in srgb,var(--bad) 34%,transparent)}
+.flag.warn{background:color-mix(in srgb,var(--warn) 15%,transparent); color:var(--warn);
+  border:1px solid color-mix(in srgb,var(--warn) 38%,transparent)}
 .flag .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
 
 /* ---------- sections ---------- */
@@ -175,18 +177,17 @@ footer code{font-family:"IBM Plex Mono",monospace; font-size:12.5px;
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 </style>
-
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Strategy backtest &middot; NSE cash equity</div>
-  <h1>Buy the day a stock never trades below its open</h1>
-  <p class="lede">Entry on <strong>Open = Low</strong> days with a sub-3% move, bought at the close, stopped 3% under the open, targeting +15%. Tested across 51 NSE names and 248 sessions of official NSE end-of-day data.</p>
+  <div class="eyebrow">Strategy backtest &middot; revision 2 &middot; NSE cash equity</div>
+  <h1>Four rules, fourteen trades</h1>
+  <p class="lede">Open = Low, closing 3–5% up, gapping up, on 150%+ of average volume — bought at the close, stopped 3% under the open, targeting +15%. Each rule is defensible. Stacked, they leave 14 trades out of 11,796 rows.</p>
   <dl class="spec">
     <div><dt>Universe</dt><dd>51 symbols</dd></div>
     <div><dt>Window</dt><dd>21 Aug 25 – 21 Aug 26</dd></div>
     <div><dt>Sessions</dt><dd>248</dd></div>
-    <div><dt>Signals</dt><dd>338</dd></div>
+    <div><dt>Signals</dt><dd>14</dd></div>
     <div><dt>Stop</dt><dd>&minus;3% of open</dd></div>
     <div><dt>Target</dt><dd>+15%</dd></div>
   </dl>
@@ -194,419 +195,397 @@ footer code{font-family:"IBM Plex Mono",monospace; font-size:12.5px;
 
 <div class="verdict">
   <div>
-    <div class="flag no"><span class="dot"></span>No edge found</div>
-    <div class="bignum neg" id="hero">&minus;0.39<span class="unit">% / trade</span></div>
-    <div class="eyebrow" style="margin-top:10px">Expectancy over 338 trades</div>
+    <div class="flag warn"><span class="dot"></span>Not measurable</div>
+    <div class="bignum pos" id="hero">+1.35<span class="unit">% / trade</span></div>
+    <div class="eyebrow" style="margin-top:10px">14 trades &middot; 95% CI &minus;3.42% to +7.28%</div>
   </div>
   <div>
-    <h2>The rules work exactly as designed. They just don't make money.</h2>
-    <p>Seventy-four percent of trades hit the stop. The 15% target lands 20% of the time. Those two numbers very nearly cancel: the strategy needs a <strong>25.2%</strong> win rate to break even and delivers <strong>23.1%</strong>.</p>
-    <p>Read the other way — as a move measured from the open rather than the previous close — it lands on <strong>+0.10%</strong> per trade. Either way the result sits within a percentage point of zero. That is not a small edge; it is the absence of one.</p>
+    <h2>The number is positive. The confidence interval is ten points wide.</h2>
+    <p>Five targets, nine stops, across 11 symbols. A random sample of 14 ordinary days beats this result <strong>37% of the time</strong> — so on its own evidence the full rule set is indistinguishable from picking days at random.</p>
+    <p>It is also carried by two trades. Remove the single best and the average falls to <strong>+0.30%</strong>; remove the best two and it turns <strong>negative</strong>.</p>
   </div>
 </div>
 
 <section>
-  <div class="eyebrow">Headline</div>
-  <h2>What 338 trades did</h2>
-  <p class="intro">Every figure below uses Rule&nbsp;2 read as “up less than 3% versus the previous close”. Open trades are marked to the last available close.</p>
-  <div class="tiles">
-    <div class="tile"><div class="k">Target hit</div><div class="v">67</div><div class="n">19.8% of all trades</div></div>
-    <div class="tile"><div class="k">Stopped out</div><div class="v">251</div><div class="n">74.3% of all trades</div></div>
-    <div class="tile"><div class="k">Still open</div><div class="v">20</div><div class="n">marked to last close</div></div>
-    <div class="tile"><div class="k">Avg win</div><div class="v pos">+13.7<span style="font-size:.55em">%</span></div><div class="n">15.4 days to target</div></div>
-    <div class="tile"><div class="k">Avg loss</div><div class="v neg">&minus;4.6<span style="font-size:.55em">%</span></div><div class="n">8.7 days to stop</div></div>
-    <div class="tile"><div class="k">Profit factor</div><div class="v">0.89</div><div class="n">below 1.0 = losing</div></div>
+  <div class="eyebrow">Funnel</div>
+  <h2>Where 11,796 rows become 14</h2>
+  <p class="intro">Each rule is applied in turn. The volume filter is the expensive one — it removes 79% of what survives everything else.</p>
+  <div class="card">
+    <svg id="c-funnel" viewBox="0 0 700 250" role="img" aria-label="Signal funnel: 11,796 rows, 526 Open equals Low, 107 also closing 3 to 5 percent up, 72 also gapping up, 66 with 30-day volume history, 14 also on 1.5 times average volume."></svg>
   </div>
+</section>
 
+<section>
+  <div class="eyebrow">Rule 4 sensitivity</div>
+  <h2>The volume threshold, swept</h2>
+  <p class="intro">Rules 1–3 held fixed; only the volume multiple varies. If volume confirmation carried information, the line would climb with the threshold. It doesn't — it wanders, and every interval crosses zero.</p>
+  <div class="card">
+    <h3>Average return per trade by volume threshold</h3>
+    <p class="sub">Point estimate with bootstrap 95% confidence interval &middot; trade count above each point</p>
+    <svg id="c-sweep" viewBox="0 0 700 300" role="img" aria-label="Average return by volume threshold: no filter plus 1.41% over 72 trades, 1.0x plus 0.98% over 35, 1.25x plus 0.16% over 23, 1.5x plus 1.35% over 14, 2.0x minus 1.90% over 5, 3.0x plus 0.63% over 3. Every confidence interval crosses zero."></svg>
+  </div>
+  <div class="callout"><p><strong>Tightening the volume rule does not improve the result — it only shrinks the sample.</strong> At 2× the average the strategy is <em>negative</em> across five trades; at 3× there are three trades left. None of these differences mean anything at these sample sizes.</p></div>
+</section>
+
+<section>
+  <div class="eyebrow">Attribution</div>
+  <h2>Which rules actually do work?</h2>
+  <p class="intro">Each rule run alone, then the full set with each rule removed in turn — all on the identical stop and target. The dashed line is the do-nothing baseline: every day in the dataset, same exits. A rule earns its place only if it beats that line by more than its interval.</p>
+  <div class="card">
+    <h3>Average return per trade, with 95% confidence intervals</h3>
+    <p class="sub">Dashed line = all-days baseline (+0.64%, n=11,796) &middot; p = share of random same-size samples that beat this subset</p>
+    <svg id="c-forest" viewBox="0 0 700 424" role="img" aria-label="Forest plot of average return by filter. Volume 1.5x alone: plus 1.86%, interval 1.38 to 2.34, p 0.000. Close band alone: plus 1.23%, interval 0.47 to 1.98, p 0.030. Open equals Low alone: plus 0.52%, interval minus 0.27 to 1.32, p 0.617. Gap up alone: plus 0.59%, interval 0.37 to 0.80, p 0.694. All four: plus 1.35%, interval minus 3.42 to 7.28, p 0.375."></svg>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="callout" style="border-left-color:var(--good)"><p><strong>Volume is the only rule that clearly works.</strong> On its own it produces 1,692 trades at +1.86% — nearly three times the baseline, with an interval that never touches it (p &lt; 0.001). The 3–5% close band is a real but smaller effect (+1.23%, p = 0.03).</p></div>
+    <div class="callout" style="border-left-color:var(--bad)"><p><strong>Open = Low and gap-up contribute nothing.</strong> Open = Low returns +0.52% against a +0.64% baseline — <em>below</em> average, p = 0.62. Gap-up returns +0.59% and matches 6,807 of 11,796 rows, so it barely filters at all: p = 0.69.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Fragility</div>
+  <h2>Two trades hold up the entire result</h2>
+  <p class="intro">With 14 trades and five winners all exiting at exactly +15%, the average is hostage to a couple of outcomes.</p>
   <div class="grid2">
     <div class="card">
-      <h3>Break-even sits above the win rate</h3>
-      <p class="sub">Required vs achieved, both readings of Rule 2</p>
-      <svg id="c-breakeven" viewBox="0 0 460 190" role="img" aria-label="Required break-even win rate versus achieved win rate. Versus previous close: 25.2% required, 23.1% achieved. Versus open: 24.2% required, 24.8% achieved."></svg>
-      <div class="legend">
-        <span><i class="swatch" style="background:var(--accent)"></i>Achieved win rate</span>
-        <span><i class="swatch" style="background:var(--text-3)"></i>Break-even requirement</span>
+      <h3>Average return after removing the best trades</h3>
+      <p class="sub">Full rule set, 14 trades</p>
+      <svg id="c-frag" viewBox="0 0 460 220" role="img" aria-label="Average return per trade: 1.35% with all 14 trades, 0.30% dropping the best, minus 0.93% dropping the best two, minus 2.38% dropping the best three."></svg>
+    </div>
+    <div class="card">
+      <h3>What the 14 trades are made of</h3>
+      <p class="sub">Concentration across the sample</p>
+      <div class="tiles" style="grid-template-columns:repeat(2,1fr); margin:0">
+        <div class="tile"><div class="k">Distinct symbols</div><div class="v">11</div><div class="n">3 names traded twice</div></div>
+        <div class="tile"><div class="k">Winners</div><div class="v pos">5</div><div class="n">all exited at exactly +15%</div></div>
+        <div class="tile"><div class="k">In the falling half</div><div class="v">4</div><div class="n">Aug 25 – Feb 26</div></div>
+        <div class="tile"><div class="k">In the rising half</div><div class="v">10</div><div class="n">Feb 26 – Aug 26</div></div>
       </div>
     </div>
-    <div class="card">
-      <h3>Stops arrive fast, targets don't</h3>
-      <p class="sub">Cumulative share of the 251 stop-outs by trading day</p>
-      <svg id="c-stoptime" viewBox="0 0 460 190" role="img" aria-label="Cumulative share of stop-outs by day: 9% within 1 day, 23% within 2, 38% within 3, 56% within 5, 74% within 10 days."></svg>
-      <p style="font-size:13px;color:var(--text-2);margin:14px 0 0">Over a third of losers are gone inside three sessions — before the trade has any room to work.</p>
-    </div>
   </div>
 </section>
 
 <section>
-  <div class="eyebrow">Evidence 01</div>
-  <h2>The Open = Low filter selects <em>worse</em> days than average</h2>
-  <p class="intro">The obvious test: run the identical stop and target on every <em>other</em> day in the dataset. One catch — on an ordinary day the low sits further below the close, so “3% under the low” would hand non-signal days a wider stop and fewer stop-outs. To make it a fair fight, both sets get an identical stop distance from entry (4.63%, the signal set's own average).</p>
+  <div class="eyebrow">Regime</div>
+  <h2>Every filter loses in a falling market and wins in a rising one</h2>
+  <p class="intro">Splitting the window in half is the clearest test of whether any of this is a signal. The universe fell 7.0% in the first half and rose 51.1% in the second. Every filter — and the do-nothing baseline — flips sign with it.</p>
   <div class="card">
-    <h3>Same stop, same target, different days</h3>
-    <p class="sub">338 signal days vs 11,458 non-signal days, stop 4.63% under entry, target +15%</p>
-    <svg id="c-bench" viewBox="0 0 700 260" role="img" aria-label="Risk-matched benchmark. Signal days: 23.96% win rate, minus 0.19% average return, 0.94 profit factor. Non-signal days: 28.30% win rate, plus 0.55% average return, 1.16 profit factor."></svg>
+    <h3>Average return per trade, first half vs second half</h3>
+    <p class="sub">Split at 19 Feb 2026 &middot; universe equal-weight: &minus;7.0% then +51.1%</p>
+    <svg id="c-halves" viewBox="0 0 700 330" role="img" aria-label="First half versus second half average return. All filters negative in the first half and positive in the second, tracking the baseline which goes from minus 1.68% to plus 2.79%."></svg>
     <div class="legend">
-      <span><i class="swatch" style="background:var(--accent)"></i>Open = Low signal days (338)</span>
-      <span><i class="swatch" style="background:var(--accent-2)"></i>Every other day (11,458)</span>
+      <span><i class="swatch" style="background:var(--accent-2)"></i>H1 &middot; universe &minus;7.0%</span>
+      <span><i class="swatch" style="background:var(--accent)"></i>H2 &middot; universe +51.1%</span>
     </div>
   </div>
-  <div class="callout"><p><strong>Ordinary days beat the signal on all three measures.</strong> The filter isn't neutral — it costs you. A day that opens on its low and closes up less than 3% is, if anything, a marginally <em>below</em>-average day to buy.</p></div>
+  <div class="callout"><p><strong>The filters are amplifying market direction, not predicting it.</strong> In the falling half the volume filter did <em>worse</em> than doing nothing (&minus;2.76% vs &minus;1.68%); in the rising half it did better (+4.67% vs +2.79%). That is the signature of beta, not alpha. Over a window that happened to rise 43%, beta looks exactly like skill.</p></div>
 </section>
 
 <section>
-  <div class="eyebrow">Evidence 02</div>
-  <h2>The stop is doing the damage, not the entry</h2>
-  <p class="intro">Take the same 338 signals and remove the stop and target entirely — just hold for a fixed number of days. The signals turn profitable. The entry isn't the problem; the exit is.</p>
-  <div class="card">
-    <h3>Same signals, pure time exit, no stop and no target</h3>
-    <p class="sub">Average return per trade by holding period</p>
-    <svg id="c-hold" viewBox="0 0 700 250" role="img" aria-label="Average return by fixed holding period with no stop or target. Versus previous close: minus 0.19% at 1 day, minus 0.13% at 3, plus 0.25% at 5, plus 1.56% at 10, plus 2.93% at 20, plus 6.27% at 40 days."></svg>
-    <div class="legend">
-      <span><i class="swatch" style="background:var(--accent)"></i>Rule 2 vs previous close</span>
-      <span><i class="swatch" style="background:var(--accent-2)"></i>Rule 2 vs open</span>
-    </div>
-  </div>
-  <div class="callout"><p><strong>Held 40 days with no stop, the same signals return +6.3% each and win 55% of the time.</strong> Bolting a 3% stop onto them converts that into &minus;0.39%. The stop is not protecting the strategy — it is the strategy's largest cost.</p></div>
-</section>
-
-<section>
-  <div class="eyebrow">Evidence 03</div>
-  <h2>Why: a 3% stop is inside the daily noise</h2>
-  <p class="intro">Because entry is the close and the stop is anchored under the open, the real risk is 4.63% — but these are high-beta Indian mid and small caps.</p>
-  <div class="tiles">
-    <div class="tile"><div class="k">Median 14-day ATR</div><div class="v">3.90<span style="font-size:.55em">%</span></div><div class="n">of price, across the universe</div></div>
-    <div class="tile"><div class="k">Stop distance</div><div class="v">4.63<span style="font-size:.55em">%</span></div><div class="n">from entry, on average</div></div>
-    <div class="tile"><div class="k">Stop in ATR terms</div><div class="v neg">1.19<span style="font-size:.55em">&times;</span></div><div class="n">barely one day's range</div></div>
-    <div class="tile"><div class="k">Winners that dipped &gt;3%</div><div class="v">21<span style="font-size:.55em">%</span></div><div class="n">before reaching target</div></div>
-  </div>
-  <div class="callout"><p><strong>A stop 1.19&times; the average daily range is a coin toss on noise alone.</strong> One in five trades that eventually reached +15% first traded more than 3% below entry — those are winners a tighter stop would have thrown away, and this one nearly does.</p></div>
-</section>
-
-<section>
-  <div class="eyebrow">Where it turns</div>
-  <h2>Widen the stop, extend the target</h2>
-  <p class="intro">Average return per trade across stop and target combinations. The requested setting is outlined. The gradient runs in one direction — every step toward a wider stop and a larger target improves the result, which is what you would expect if the tight stop is the binding constraint.</p>
-  <div class="grid2">
-    <div class="card">
-      <h3>Rule 2 vs previous close</h3>
-      <p class="sub">Avg return % per trade &middot; rows = stop, columns = target</p>
-      <div class="scroller"><table class="hm" id="hm-prev"></table></div>
-    </div>
-    <div class="card">
-      <h3>Rule 2 vs open</h3>
-      <p class="sub">Avg return % per trade &middot; rows = stop, columns = target</p>
-      <div class="scroller"><table class="hm" id="hm-open"></table></div>
-    </div>
-  </div>
-  <div class="legend" style="margin-top:18px">
-    <span><i class="swatch" style="background:var(--neg-3)"></i>Loss</span>
-    <span><i class="swatch" style="background:var(--mid);border:1px solid var(--border-strong)"></i>Break-even</span>
-    <span><i class="swatch" style="background:var(--pos-3)"></i>Profit</span>
-    <span style="color:var(--text-3)">Blue/red rather than green/red so the gradient survives colour-blindness; every cell is labelled.</span>
-  </div>
-  <div class="callout"><p><strong>The best cell tested — an 8% stop with a 25% target — returns +2.46% per trade.</strong> But note what that is: a stop twice the daily range and a target held for months. At that point almost nothing of the original idea remains, and it is a single unvalidated peak in a 20-cell grid fitted on one year. Treat it as a direction to investigate, not a setting to trade.</p></div>
-</section>
-
-<section>
-  <div class="eyebrow">Stability</div>
-  <h2>The result is a market-regime read, not a strategy</h2>
-  <p class="intro">Monthly average return per signal. Eight months negative, five positive — and the positive ones are exactly the months the broad market ran.</p>
-  <div class="card">
-    <h3>Average return per signal by month</h3>
-    <p class="sub">Bar label = avg return % &middot; count beneath each month = signals generated</p>
-    <svg id="c-monthly" viewBox="0 0 700 300" role="img" aria-label="Monthly average return per signal, ranging from minus 3.79% in February 2026 to plus 5.98% in May 2026, with eight negative months and five positive."></svg>
-  </div>
-  <div class="callout"><p><strong>Context: an equal-weight buy-and-hold of these same 51 names returned +43.0% over the window.</strong> The strategy turned a strongly rising market into roughly zero, while taking 338 round trips of risk and cost to do it.</p></div>
-</section>
-
-<section>
-  <div class="eyebrow">Dispersion</div>
-  <h2>Nineteen of 49 names finished positive</h2>
-  <p class="intro">Total return summed across each symbol's trades. Two of the 51 symbols never produced a signal. The spread is wide and concentrated in a handful of names — another sign of noise rather than a repeatable effect.</p>
+  <div class="eyebrow">Trade log</div>
+  <h2>All fourteen</h2>
   <div class="card">
     <div class="scroller">
-      <table class="data" id="t-symbols">
-        <thead><tr><th>Symbol</th><th>Trades</th><th>Target</th><th>Stopped</th><th>Avg %</th><th>Total %</th><th style="text-align:left">&nbsp;</th></tr></thead>
+      <table class="data" id="t-trades">
+        <thead><tr><th>Symbol</th><th>Signal</th><th>Up %</th><th>Vol &times;</th><th>Entry</th><th>Stop</th><th>Outcome</th><th>Exit</th><th>Return %</th><th>Days</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
-    <p style="font-size:13px;color:var(--text-3);margin:16px 0 0">Best and worst eight shown. ONIDA generated 25 signals — the most of any name — and lost 92 points across them; 23 of the 25 were stopped.</p>
+    <p style="font-size:13px;color:var(--text-3);margin:16px 0 0">ATGL's 28.75&times; volume ratio is the 1 Jan 2026 session — a thin holiday-period base inflating the denominator. It stopped out.</p>
   </div>
+</section>
+
+<section>
+  <div class="eyebrow">Exits</div>
+  <h2>Stop and target grid</h2>
+  <p class="intro">Average return per trade across stop and target combinations, on the full rule set. The same one-way gradient as before — wider stop, larger target — but across 14 trades these numbers carry no weight. Shown for completeness, not as a recommendation.</p>
+  <div class="card" style="max-width:560px">
+    <div class="scroller"><table class="hm" id="hm-grid"></table></div>
+    <div class="legend" style="margin-top:14px">
+      <span><i class="swatch" style="background:var(--neg-3)"></i>Loss</span>
+      <span><i class="swatch" style="background:var(--mid);border:1px solid var(--border-strong)"></i>Break-even</span>
+      <span><i class="swatch" style="background:var(--pos-3)"></i>Profit</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Read</div>
+  <h2>What the data supports</h2>
+  <ul class="notes">
+    <li><span class="num">01</span><div><strong>Drop Open = Low and the gap-up rule.</strong><p>Neither beats the baseline on its own (p = 0.62 and p = 0.69), and removing Open = Low from the full set gives the best-supported combination in the whole study: 191 trades at +1.60%, p = 0.069. More than 13&times; the sample for a higher return.</p></div></li>
+    <li><span class="num">02</span><div><strong>Keep the volume rule — it is the one real find.</strong><p>1,692 trades at +1.86% against a +0.64% baseline, p &lt; 0.001. It is the only filter here whose interval clears the baseline outright.</p></div></li>
+    <li><span class="num">03</span><div><strong>Keep the 3–5% band, with lower confidence.</strong><p>818 trades at +1.23%, p = 0.03. A genuine but modest effect, and it is the rule that turned the original strategy around: the earlier &ldquo;under 3%&rdquo; version returned &minus;0.39% per trade.</p></div></li>
+    <li><span class="num">04</span><div><strong>Do not trade the four-rule set as specified.</strong><p>Not because it lost — it made +1.35% — but because 14 trades cannot tell you whether that is skill or luck, and the fragility test says luck. Two trades are the difference between +1.35% and negative.</p></div></li>
+    <li><span class="num">05</span><div><strong>None of it survives the regime test yet.</strong><p>Every filter, including the volume rule, was negative in the falling half of the window. Before trading any of this, it needs a multi-year history spanning at least one real drawdown.</p></div></li>
+  </ul>
 </section>
 
 <section>
   <div class="eyebrow">Method</div>
   <h2>How the test was run</h2>
   <ul class="notes">
-    <li><span class="num">01</span><div><strong>Rule 2 is ambiguous, so both readings were tested.</strong><p>“Below 3% up that day” can mean the move from the previous close (338 signals, &minus;0.39%/trade) or the move from the open, which is also the low (331 signals, +0.10%/trade). Neither produces an edge, so the ambiguity doesn't change the conclusion.</p></div></li>
-    <li><span class="num">02</span><div><strong>Entry is the signal day's close; exits start the next session.</strong><p>Stop = signal-day low &times; 0.97. Target = entry &times; 1.15. Because the close is at or above the open, real risk averages 4.63%, not 3%.</p></div></li>
-    <li><span class="num">03</span><div><strong>Gaps exit at the open, not the level.</strong><p>A bar that opens through the stop fills at the open — worse than the stop. A bar that opens through the target fills at the open — better. No look-ahead in either direction.</p></div></li>
-    <li><span class="num">04</span><div><strong>A bar touching both levels is scored as a stop.</strong><p>Daily bars can't reveal intraday sequence, so the conservative reading is used. It never actually occurred here: no single bar spanned both a 4.6% loss and a 15% gain.</p></div></li>
-    <li><span class="num">05</span><div><strong>Overlapping signals were checked separately.</strong><p>Allowing only one live position per symbol gives 244 trades at &minus;0.17%/trade (vs open: 250 trades at +0.37%). Same conclusion.</p></div></li>
-    <li><span class="num">06</span><div><strong>Costs are excluded.</strong><p>No brokerage, STT, exchange fees, GST, stamp duty, or slippage. Indian round-trip delivery costs run roughly 0.3–0.6%. Applied to a &minus;0.39% expectancy over 338 trades, costs make a marginal result clearly negative.</p></div></li>
-    <li><span class="num">07</span><div><strong>Data is unadjusted, and verified not to need adjustment.</strong><p>Prices come from NSE's official security-wise bhavcopy. Every row's previous close was reconciled against the prior session's close: no corporate action affected any of these 51 names in the window, and no session is missing.</p></div></li>
+    <li><span class="num">01</span><div><strong>Volume benchmark excludes the signal day.</strong><p>The 30-session average is taken over the sessions <em>before</em> the signal, so a high-volume day cannot inflate its own benchmark. A symbol needs a full 30 sessions of history to be eligible — 6 otherwise-qualifying days were dropped for that reason, all in recently listed names.</p></div></li>
+    <li><span class="num">02</span><div><strong>Entry at the signal day's close; exits start the next session.</strong><p>Stop = signal-day low &times; 0.97, target = entry &times; 1.15. Because a 3–5% up day closes well above its open, real risk averages 6.08% from entry, not 3%.</p></div></li>
+    <li><span class="num">03</span><div><strong>Gaps exit at the open; a bar touching both levels is scored as a stop.</strong><p>No look-ahead in either direction, and the ambiguous case is resolved against the strategy. It never occurred in this window.</p></div></li>
+    <li><span class="num">04</span><div><strong>Confidence intervals are bootstrapped, p-values permuted.</strong><p>20,000 resamples for each. The p-value is the share of random same-size samples drawn from all 11,796 days that beat the subset's mean — a direct answer to &ldquo;could this be chance?&rdquo;</p></div></li>
+    <li><span class="num">05</span><div><strong>Overlaps, costs, and data integrity.</strong><p>One position per symbol gives 13 trades at +1.92% — same conclusion. Costs are excluded; Indian round-trip delivery costs run 0.3–0.6%. Prices are NSE's official bhavcopy, reconciled session by session: no missing sessions, no corporate actions in the window.</p></div></li>
   </ul>
-  <div class="callout"><p><strong>The honest limit of this test:</strong> one year, 51 hand-picked names, one market regime — and a strongly bullish one. That is enough to say the rules as specified have no edge here. It is not enough to say the underlying idea is dead in every regime, or that the wider-stop variants at the corner of the grid are real. Those need a longer history and a broader universe.</p></div>
+  <div class="callout"><p><strong>The limit that matters most:</strong> one year, 51 hand-picked names, and a market that rose 43%. That is enough to rank the four rules against each other, which is what this page does. It is not enough to certify any of them for live trading.</p></div>
 </section>
 
 <footer>
-  <p>Built from <code>nse_data/output/nse_ohlcv.db</code> — 11,796 rows, 51 symbols, 248 NSE sessions. Backtest engine: <code>nse_data/scripts/backtest.py</code>. Full trade log, sensitivity grid, monthly and per-symbol tables: <code>nse_data/backtest/Backtest_Results.xlsx</code>.</p>
+  <p>Built from <code>nse_data/output/nse_ohlcv.db</code> — 11,796 rows, 51 symbols, 248 NSE sessions. Engine: <code>nse_data/scripts/backtest.py</code>. Full sweep, attribution, period split and trade logs: <code>nse_data/backtest/Backtest_Results.xlsx</code>.</p>
   <p style="margin-bottom:0">Past results describe what these rules did on this data. They are not a forecast, and this is not investment advice.</p>
 </footer>
 </div>
 
 <div id="tip" role="status"></div>
-
 <script>
 const $ = s => document.querySelector(s);
 const NS = "http://www.w3.org/2000/svg";
 const tip = $("#tip");
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-
-function el(p, n, a, txt){
-  const e = document.createElementNS(NS, n);
-  for (const k in a) e.setAttribute(k, a[k]);
-  if (txt != null) e.textContent = txt;
-  p.appendChild(e); return e;
-}
-function hover(node, html){
-  node.style.cursor = "default";
-  node.addEventListener("pointerenter", ev => { tip.innerHTML = html; tip.style.opacity = 1; move(ev); });
-  node.addEventListener("pointermove", move);
-  node.addEventListener("pointerleave", () => tip.style.opacity = 0);
-  function move(ev){
-    const r = tip.getBoundingClientRect();
-    let x = ev.clientX + 14, y = ev.clientY - r.height - 12;
-    if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 14;
-    if (y < 8) y = ev.clientY + 18;
-    tip.style.left = x + "px"; tip.style.top = y + "px";
-  }
+function el(p,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);
+  if(t!=null)e.textContent=t;p.appendChild(e);return e;}
+function hover(node,html){
+  node.addEventListener("pointerenter",ev=>{tip.innerHTML=html;tip.style.opacity=1;move(ev);});
+  node.addEventListener("pointermove",move);
+  node.addEventListener("pointerleave",()=>tip.style.opacity=0);
+  function move(ev){const r=tip.getBoundingClientRect();
+    let x=ev.clientX+14,y=ev.clientY-r.height-12;
+    if(x+r.width>innerWidth-8)x=ev.clientX-r.width-14;
+    if(y<8)y=ev.clientY+18;
+    tip.style.left=x+"px";tip.style.top=y+"px";}
 }
 
-/* ---------- 1. break-even vs achieved ---------- */
+/* ---- 1. funnel ---- */
 (function(){
-  const svg = $("#c-breakeven"), W = 460, H = 190, L = 96, R = 30, T = 16, B = 34;
-  const rows = [
-    {n:"vs prev close", req:25.2, got:23.08},
-    {n:"vs open",       req:24.2, got:24.77},
-  ];
-  const max = 30, x = v => L + v/max*(W-L-R);
-  for (let g=0; g<=30; g+=10){
-    el(svg,"line",{x1:x(g),y1:T,x2:x(g),y2:H-B,class:"grid-ln"});
-    el(svg,"text",{x:x(g),y:H-B+16,"text-anchor":"middle",class:"axis-lbl"}, g+"%");
-  }
-  rows.forEach((r,i) => {
-    const y = T + 22 + i*66;
-    el(svg,"text",{x:L-12,y:y+22,"text-anchor":"end",class:"axis-lbl"}, r.n);
-    const g1 = el(svg,"g",{});
-    el(g1,"rect",{x:L,y:y,width:Math.max(x(r.got)-L,2),height:20,rx:4,fill:css("--accent")});
-    hover(g1, `<b>${r.n}</b><br>achieved ${r.got}%`);
-    const g2 = el(svg,"g",{});
-    el(g2,"rect",{x:L,y:y+24,width:Math.max(x(r.req)-L,2),height:20,rx:4,fill:css("--text-3")});
-    hover(g2, `<b>${r.n}</b><br>needs ${r.req}% to break even`);
-    const short = r.got < r.req;
-    el(svg,"text",{x:x(Math.max(r.got,r.req))+8,y:y+27,class:"val-lbl",
-      fill: short ? css("--bad") : css("--good")},
-      (short?"−":"+") + Math.abs(r.got-r.req).toFixed(1) + " pts");
+  const svg=$("#c-funnel"),W=700,H=250,L=250,R=70,T=14;
+  const rows=[["all rows",11796],["Open = Low",526],["+ close +3–5%",107],
+              ["+ gap up",72],["+ 30d volume history",66],["+ volume ≥ 1.5×",14]];
+  const max=11796, bh=26, gap=12;
+  const w=v=>Math.max(Math.sqrt(v/max)*(W-L-R),3);   // sqrt so the tail stays visible
+  rows.forEach((r,i)=>{
+    const y=T+i*(bh+gap);
+    el(svg,"text",{x:L-14,y:y+bh/2+4,"text-anchor":"end",class:"axis-lbl",
+      "font-size":"12px",fill:i===rows.length-1?css("--text"):css("--text-2"),
+      "font-weight":i===rows.length-1?"600":"400"},r[0]);
+    const g=el(svg,"g",{});
+    el(g,"rect",{x:L,y:y,width:w(r[1]),height:bh,rx:4,
+      fill:i===rows.length-1?css("--accent"):css("--accent"),
+      opacity:i===rows.length-1?1:0.28+i*0.11});
+    el(g,"rect",{x:L,y:y,width:W-L-R,height:bh,fill:"transparent"});
+    const pct=(r[1]/max*100);
+    hover(g,`<b>${r[0]}</b><br>${r[1].toLocaleString()} rows<br>${pct<0.15?pct.toFixed(2):pct.toFixed(1)}% of all rows`);
+    el(svg,"text",{x:L+w(r[1])+9,y:y+bh/2+4,class:"val-lbl",
+      fill:i===rows.length-1?css("--accent"):css("--text")},r[1].toLocaleString());
   });
+  el(svg,"text",{x:L,y:H-6,class:"axis-lbl",fill:css("--text-3")},
+    "bar length on a square-root scale so the final step stays visible");
 })();
 
-/* ---------- 2. cumulative stop timing ---------- */
+/* ---- 2. volume sweep with CI whiskers ---- */
 (function(){
-  const svg = $("#c-stoptime"), W=460, H=190, L=42, R=18, T=14, B=36;
-  const pts = [[0,0],[1,9],[2,23],[3,38],[5,56],[10,74]];
-  const x = d => L + d/10*(W-L-R), y = p => H-B - p/100*(H-B-T);
-  for (let p=0;p<=100;p+=25){
-    el(svg,"line",{x1:L,y1:y(p),x2:W-R,y2:y(p),class:"grid-ln"});
-    el(svg,"text",{x:L-8,y:y(p)+4,"text-anchor":"end",class:"axis-lbl"}, p+"%");
+  const svg=$("#c-sweep"),W=700,H=300,L=54,R=26,T=26,B=58;
+  const pts=[["none",72,1.41,-0.88,3.74],["1.0×",35,0.98,-2.19,4.59],["1.25×",23,0.16,-3.62,4.06],
+             ["1.5×",14,1.35,-3.39,7.33],["2.0×",5,-1.90,-6.70,6.70],["3.0×",3,0.63,-7.37,15.00]];
+  const lo=-8,hi=15.5;
+  const x=i=>L+(i+0.5)/pts.length*(W-L-R);
+  const y=v=>(H-B)-(v-lo)/(hi-lo)*(H-B-T);
+  for(let g=-5;g<=15;g+=5){
+    el(svg,"line",{x1:L,y1:y(g),x2:W-R,y2:y(g),class:"grid-ln"});
+    el(svg,"text",{x:L-9,y:y(g)+4,"text-anchor":"end",class:"axis-lbl"},(g>0?"+":"")+g+"%");
   }
-  [0,1,2,3,5,10].forEach(d => el(svg,"text",{x:x(d),y:H-B+16,"text-anchor":"middle",class:"axis-lbl"}, d));
-  el(svg,"text",{x:(L+W-R)/2,y:H-4,"text-anchor":"middle",class:"axis-lbl"},"trading days after entry");
-  const area = pts.map(p=>`${x(p[0])},${y(p[1])}`).join(" ");
-  el(svg,"polygon",{points:`${L},${y(0)} ${area} ${x(10)},${y(0)}`,
-    fill:css("--accent"),opacity:.14});
-  el(svg,"polyline",{points:area,fill:"none",stroke:css("--accent"),"stroke-width":2,
-    "stroke-linejoin":"round","stroke-linecap":"round"});
-  pts.slice(1).forEach(p => {
-    const g = el(svg,"g",{});
-    el(g,"circle",{cx:x(p[0]),cy:y(p[1]),r:4.5,fill:css("--accent"),
+  el(svg,"line",{x1:L,y1:y(0),x2:W-R,y2:y(0),class:"zero-ln"});
+  pts.forEach((p,i)=>{
+    const [nm,n,v,cl,ch]=p, X=x(i);
+    const g=el(svg,"g",{});
+    el(g,"line",{x1:X,y1:y(cl),x2:X,y2:y(ch),stroke:css("--text-3"),"stroke-width":1.5});
+    [cl,ch].forEach(c=>el(g,"line",{x1:X-7,y1:y(c),x2:X+7,y2:y(c),stroke:css("--text-3"),"stroke-width":1.5}));
+    el(g,"circle",{cx:X,cy:y(v),r:6,fill:v>=0?css("--accent"):css("--bad"),
       stroke:css("--surface"),"stroke-width":2});
-    el(g,"circle",{cx:x(p[0]),cy:y(p[1]),r:11,fill:"transparent"});
-    hover(g, `<b>within ${p[0]} day${p[0]>1?"s":""}</b><br>${p[1]}% of stops<br>${Math.round(p[1]/100*251)} of 251 trades`);
+    el(g,"rect",{x:X-26,y:T-16,width:52,height:H-B-T+22,fill:"transparent"});
+    hover(g,`<b>volume ≥ ${nm}</b><br>${n} trades<br>${(v>0?"+":"")+v.toFixed(2)}% per trade<br>`+
+      `<span style="color:var(--text-3)">95% CI ${cl.toFixed(2)} to ${ch.toFixed(2)}</span>`);
+    el(svg,"text",{x:X,y:y(ch)-11,"text-anchor":"middle",class:"val-lbl",fill:css("--text-3")},"n="+n);
+    el(svg,"text",{x:X,y:H-B+18,"text-anchor":"middle",class:"axis-lbl",
+      "font-weight":nm==="1.5×"?"600":"400",fill:nm==="1.5×"?css("--accent"):css("--text-3")},nm);
   });
-  el(svg,"text",{x:x(10)-4,y:y(74)-13,"text-anchor":"end",class:"val-lbl"},"74%");
+  el(svg,"text",{x:(L+W-R)/2,y:H-8,"text-anchor":"middle",class:"axis-lbl"},
+    "volume threshold, multiple of the 30-session average");
 })();
 
-/* ---------- 3. risk-matched benchmark ---------- */
+/* ---- 3. forest plot ---- */
 (function(){
-  const svg = $("#c-bench"), W=700, H=260, T=26, B=44;
-  const panels = [
-    {t:"Win rate", u:"%",  a:23.96, b:28.30, max:34, fmt:v=>v.toFixed(2)+"%"},
-    {t:"Avg return per trade", u:"%", a:-0.19, b:0.55, max:.75, min:-.4, fmt:v=>(v>0?"+":"")+v.toFixed(2)+"%"},
-    {t:"Profit factor", u:"", a:0.94, b:1.16, max:1.3, fmt:v=>v.toFixed(2)},
+  const svg=$("#c-forest"),W=700,H=424,L=196,R=112,T=34;
+  const BASE=0.64;
+  const rows=[
+    {h:"Each rule on its own"},
+    {n:"volume ≥ 1.5×",         t:1692, v:1.86, lo:1.38,  hi:2.34, p:"< 0.001", win:true},
+    {n:"close +3–5%",           t:818,  v:1.23, lo:0.47,  hi:1.98, p:"0.030",   win:true},
+    {n:"gap up",                t:6807, v:0.59, lo:0.37,  hi:0.80, p:"0.694"},
+    {n:"Open = Low",            t:526,  v:0.52, lo:-0.27, hi:1.32, p:"0.617"},
+    {h:"Full set, one rule removed"},
+    {n:"without Open = Low",    t:191,  v:1.60, lo:0.15,  hi:3.06, p:"0.069", win:true},
+    {n:"without close band",    t:68,   v:1.77, lo:-0.71, hi:4.26, p:"0.151"},
+    {n:"without volume",        t:72,   v:1.41, lo:-0.87, hi:3.78, p:"0.227"},
+    {n:"without gap up",        t:19,   v:1.66, lo:-2.88, hi:6.41, p:"0.304"},
+    {h:""},
+    {n:"ALL FOUR RULES",        t:14,   v:1.35, lo:-3.42, hi:7.28, p:"0.375", bold:true},
   ];
-  const pw = W/3;
-  panels.forEach((p,i) => {
-    const ox = i*pw + 46, iw = pw - 74;
-    const lo = p.min ?? 0, hi = p.max;
-    const y = v => (H-B) - (v-lo)/(hi-lo)*(H-B-T);
-    el(svg,"text",{x:ox,y:14,class:"axis-lbl","font-weight":"600",fill:css("--text-2")}, p.t);
-    el(svg,"line",{x1:ox-6,y1:y(lo),x2:ox+iw+6,y2:y(lo),class:"zero-ln"});
-    if (p.min != null){
-      el(svg,"line",{x1:ox-6,y1:y(0),x2:ox+iw+6,y2:y(0),class:"zero-ln"});
-      el(svg,"text",{x:ox-10,y:y(0)+4,"text-anchor":"end",class:"axis-lbl"},"0");
+  const lo=-4,hi=8;
+  const x=v=>L+(v-lo)/(hi-lo)*(W-L-R);
+  let y=T;
+  const ys=[];
+  rows.forEach(r=>{ ys.push(y); y += r.h!==undefined ? 26 : 32; });
+  const bottom=y;
+  for(let g=-4;g<=8;g+=2){
+    el(svg,"line",{x1:x(g),y1:T-12,x2:x(g),y2:bottom-8,class:"grid-ln"});
+    el(svg,"text",{x:x(g),y:bottom+10,"text-anchor":"middle",class:"axis-lbl"},(g>0?"+":"")+g+"%");
+  }
+  el(svg,"line",{x1:x(0),y1:T-12,x2:x(0),y2:bottom-8,class:"zero-ln"});
+  el(svg,"line",{x1:x(BASE),y1:T-12,x2:x(BASE),y2:bottom-8,stroke:css("--accent-2"),
+    "stroke-width":1.5,"stroke-dasharray":"5 3"});
+  el(svg,"text",{x:x(BASE),y:T-18,"text-anchor":"middle",class:"val-lbl",fill:css("--accent-2")},
+    "baseline +0.64%");
+  el(svg,"text",{x:W-R+16,y:T-18,class:"axis-lbl","font-weight":"600"},"trades");
+  el(svg,"text",{x:W-R+64,y:T-18,class:"axis-lbl","font-weight":"600"},"p");
+
+  rows.forEach((r,i)=>{
+    const Y=ys[i]+11;
+    if(r.h!==undefined){
+      if(r.h) el(svg,"text",{x:12,y:Y+2,class:"axis-lbl","font-weight":"600",
+        fill:css("--text-2"),"letter-spacing":"0.06em"},r.h.toUpperCase());
+      return;
     }
-    if (p.t === "Profit factor"){
-      el(svg,"line",{x1:ox-6,y1:y(1),x2:ox+iw+6,y2:y(1),stroke:css("--text-3"),
-        "stroke-width":1,"stroke-dasharray":"4 3"});
-      el(svg,"text",{x:ox-10,y:y(1)+4,"text-anchor":"end",class:"axis-lbl"},"1.0");
-    }
-    [["a",css("--accent"),"Signal days"],["b",css("--accent-2"),"Every other day"]].forEach((s,j) => {
-      const v = p[s[0]], bw = iw/2 - 9, bx = ox + j*(bw+18);
-      const top = v >= 0 ? y(v) : y(0), h = Math.abs(y(v)-y(Math.max(lo,0)));
-      const g = el(svg,"g",{});
-      el(g,"rect",{x:bx,y:top,width:bw,height:Math.max(h,2),rx:4,fill:s[1]});
-      el(g,"rect",{x:bx,y:T-10,width:bw,height:H-B-T+14,fill:"transparent"});
-      hover(g, `<b>${s[2]}</b><br>${p.t}: ${p.fmt(v)}`);
-      el(svg,"text",{x:bx+bw/2,y: v>=0 ? top-7 : top+h+15,"text-anchor":"middle",
-        class:"val-lbl", fill: (p.t!=="Win rate" && v < (p.t==="Profit factor"?1:0)) ? css("--bad") : css("--text")},
-        p.fmt(v));
-    });
+    const col = r.win ? css("--good") : (r.bold ? css("--accent") : css("--text-3"));
+    el(svg,"text",{x:L-14,y:Y+4,"text-anchor":"end",class:"axis-lbl","font-size":"12px",
+      "font-weight":r.bold?"600":"400",fill:r.bold?css("--text"):css("--text-2")},r.n);
+    const g=el(svg,"g",{});
+    el(g,"line",{x1:x(r.lo),y1:Y,x2:x(r.hi),y2:Y,stroke:col,"stroke-width":1.5,opacity:.65});
+    [r.lo,r.hi].forEach(c=>el(g,"line",{x1:x(c),y1:Y-5,x2:x(c),y2:Y+5,stroke:col,"stroke-width":1.5,opacity:.65}));
+    el(g,"circle",{cx:x(r.v),cy:Y,r:r.bold?6.5:5.5,fill:col,stroke:css("--surface"),"stroke-width":2});
+    el(g,"rect",{x:L-150,y:Y-14,width:W-L+150,height:28,fill:"transparent"});
+    hover(g,`<b>${r.n}</b><br>${r.t.toLocaleString()} trades<br>${(r.v>0?"+":"")+r.v.toFixed(2)}% per trade<br>`+
+      `<span style="color:var(--text-3)">95% CI ${r.lo.toFixed(2)} to ${r.hi.toFixed(2)}<br>p = ${r.p}</span>`);
+    el(svg,"text",{x:W-R+40,y:Y+4,"text-anchor":"end",class:"axis-lbl",
+      fill:css("--text-2")},r.t.toLocaleString());
+    el(svg,"text",{x:W-R+92,y:Y+4,"text-anchor":"end",class:"axis-lbl",
+      fill:r.win?css("--good"):css("--text-3"),"font-weight":r.win?"600":"400"},r.p);
   });
 })();
 
-/* ---------- 4. fixed holding period ---------- */
+/* ---- 4. fragility ---- */
 (function(){
-  const svg = $("#c-hold"), W=700, H=250, L=52, R=110, T=20, B=44;
-  const days = [1,3,5,10,20,40];
-  const A = [-0.19,-0.13,0.25,1.56,2.93,6.27];
-  const Bv = [-0.08,0.10,0.54,1.92,3.41,7.01];
-  const lo=-1, hi=7.5;
-  const x = i => L + i/(days.length-1)*(W-L-R);
-  const y = v => (H-B) - (v-lo)/(hi-lo)*(H-B-T);
-  for (let g=0; g<=7; g++){
-    el(svg,"line",{x1:L,y1:y(g),x2:W-R,y2:y(g),class:"grid-ln"});
-    el(svg,"text",{x:L-9,y:y(g)+4,"text-anchor":"end",class:"axis-lbl"}, (g>0?"+":"")+g+"%");
+  const svg=$("#c-frag"),W=460,H=220,L=96,R=40,T=18,B=42;
+  const rows=[["all 14 trades",1.35],["drop best 1",0.30],["drop best 2",-0.93],["drop best 3",-2.38]];
+  const lo=-3,hi=2;
+  const x=v=>L+(v-lo)/(hi-lo)*(W-L-R);
+  rows.forEach((r,i)=>{
+    const y=T+i*38, v=r[1];
+    el(svg,"text",{x:L-12,y:y+16,"text-anchor":"end",class:"axis-lbl"},r[0]);
+    const x0=x(0), x1=x(v);
+    const g=el(svg,"g",{});
+    el(g,"rect",{x:Math.min(x0,x1),y:y+3,width:Math.max(Math.abs(x1-x0),2),height:22,rx:4,
+      fill:v>=0?css("--pos-3"):css("--neg-3")});
+    el(g,"rect",{x:L,y:y,width:W-L-R,height:28,fill:"transparent"});
+    hover(g,`<b>${r[0]}</b><br>${(v>0?"+":"")+v.toFixed(2)}% per trade`);
+    // negatives label inside the bar; outside they would collide with the row label
+    el(svg,"text",{x:v>=0?x1+8:x0-8,y:y+19,"text-anchor":v>=0?"start":"end",class:"val-lbl",
+      stroke:"none", fill:v>=0?css("--good"):"#fff"},(v>0?"+":"−")+Math.abs(v).toFixed(2)+"%");
+  });
+  el(svg,"line",{x1:x(0),y1:T-4,x2:x(0),y2:H-B+6,class:"zero-ln"});
+  [-3,-2,-1,0,1,2].forEach(g=>el(svg,"text",{x:x(g),y:H-B+22,"text-anchor":"middle",class:"axis-lbl"},
+    (g>0?"+":"")+g+"%"));
+})();
+
+/* ---- 5. H1 vs H2 ---- */
+(function(){
+  const svg=$("#c-halves"),W=700,H=330,L=168,R=24,T=18,B=44;
+  const rows=[["volume ≥1.5× alone",-2.76,4.67],["close +3–5% alone",-2.44,3.53],
+              ["Open = Low alone",-2.06,2.59],["gap up alone",-1.64,2.59],
+              ["without Open = Low",-2.48,3.75],["ALL FOUR",-0.95,2.26],
+              ["every day (baseline)",-1.68,2.79]];
+  const lo=-4,hi=5.5, bh=13;
+  const x=v=>L+(v-lo)/(hi-lo)*(W-L-R);
+  for(let g=-4;g<=5;g++){
+    el(svg,"line",{x1:x(g),y1:T-6,x2:x(g),y2:H-B+2,class:"grid-ln"});
+    el(svg,"text",{x:x(g),y:H-B+18,"text-anchor":"middle",class:"axis-lbl"},(g>0?"+":"")+g+"%");
   }
-  el(svg,"line",{x1:L,y1:y(0),x2:W-R,y2:y(0),class:"zero-ln"});
-  days.forEach((d,i) => el(svg,"text",{x:x(i),y:H-B+18,"text-anchor":"middle",class:"axis-lbl"}, d));
-  el(svg,"text",{x:(L+W-R)/2,y:H-6,"text-anchor":"middle",class:"axis-lbl"},"holding period, trading days");
-  [[A,css("--accent"),"vs prev close"],[Bv,css("--accent-2"),"vs open"]].forEach(([arr,col,nm]) => {
-    el(svg,"polyline",{points:arr.map((v,i)=>`${x(i)},${y(v)}`).join(" "),fill:"none",
-      stroke:col,"stroke-width":2,"stroke-linejoin":"round","stroke-linecap":"round"});
-    arr.forEach((v,i) => {
-      const g = el(svg,"g",{});
-      el(g,"circle",{cx:x(i),cy:y(v),r:4.5,fill:col,stroke:css("--surface"),"stroke-width":2});
-      el(g,"circle",{cx:x(i),cy:y(v),r:12,fill:"transparent"});
-      hover(g, `<b>${nm}</b><br>hold ${days[i]} day${days[i]>1?"s":""}<br>${(v>0?"+":"")+v.toFixed(2)}% per trade`);
+  el(svg,"line",{x1:x(0),y1:T-6,x2:x(0),y2:H-B+2,class:"zero-ln"});
+  rows.forEach((r,i)=>{
+    const y=T+i*38, base=r[0]==="every day (baseline)";
+    el(svg,"text",{x:L-14,y:y+18,"text-anchor":"end",class:"axis-lbl","font-size":"12px",
+      "font-weight":base?"600":"400",fill:base?css("--text"):css("--text-2")},r[0]);
+    [[r[1],css("--accent-2"),"H1"],[r[2],css("--accent"),"H2"]].forEach((s,j)=>{
+      const v=s[0], y0=y+j*(bh+3), x0=x(0), x1=x(v);
+      const g=el(svg,"g",{});
+      el(g,"rect",{x:Math.min(x0,x1),y:y0,width:Math.max(Math.abs(x1-x0),2),height:bh,rx:3,fill:s[1]});
+      el(g,"rect",{x:L,y:y0,width:W-L-R,height:bh,fill:"transparent"});
+      hover(g,`<b>${r[0]}</b><br>${s[2]}: ${(v>0?"+":"")+v.toFixed(2)}% per trade`);
+      el(svg,"text",{x:v>=0?x1+7:x1-7,y:y0+11,"text-anchor":v>=0?"start":"end",class:"val-lbl",
+        "font-size":"10.5px",fill:v>=0?css("--good"):css("--bad")},(v>0?"+":"−")+Math.abs(v).toFixed(2));
     });
-    el(svg,"text",{x:x(days.length-1)+11,y:y(arr[arr.length-1])+4,class:"val-lbl",fill:col},
-      nm+"  "+(arr[arr.length-1]>0?"+":"")+arr[arr.length-1].toFixed(2)+"%");
   });
-  el(svg,"circle",{cx:x(0),cy:y(A[0]),r:9.5,fill:"none",stroke:css("--bad"),"stroke-width":1.5});
 })();
 
-/* ---------- 5. sensitivity heatmaps ---------- */
+/* ---- 6. trade log ---- */
 (function(){
-  const targets = [8,10,15,20,25], stops = [2,3,5,8];
-  const data = {
-    "hm-prev": [[-0.70,-0.65,-0.37,-0.21,0.37],[-0.74,-0.75,-0.39,-0.07,0.66],
-                [-0.65,-0.77,-0.16,0.25,1.16],[-0.16,-0.06,0.64,1.42,2.46]],
-    "hm-open": [[-0.40,-0.38,-0.01,0.06,0.62],[-0.31,-0.33,0.10,0.27,0.94],
-                [-0.18,-0.41,0.26,0.47,1.34],[0.42,0.26,1.15,1.72,2.75]],
+  const T=[["ATGL","2026-01-01",4.84,28.75,594.10,550.33,"SL","2026-01-12",-7.37,7],
+    ["ATHERENERG","2026-05-26",3.17,1.59,950.60,897.64,"TARGET","2026-06-29",15.00,22],
+    ["DELHIVERY","2026-04-01",3.53,1.50,431.40,414.19,"TARGET","2026-07-01",15.00,60],
+    ["HSCL","2025-11-25",4.42,6.88,440.65,412.25,"TARGET","2026-04-21",15.00,98],
+    ["HSCL","2026-03-05",3.43,2.30,457.45,429.86,"SL","2026-03-09",-6.03,2],
+    ["LLOYDSENT","2026-03-10",4.91,1.79,49.32,45.75,"SL","2026-03-16",-7.23,4],
+    ["LLOYDSENT","2026-03-25",3.88,2.31,44.49,42.10,"SL","2026-03-27",-5.38,1],
+    ["RATNAVEER","2025-10-23",3.38,1.88,156.41,147.53,"SL","2025-11-04",-5.68,8],
+    ["RATNAVEER","2025-12-22",4.34,3.47,166.81,157.24,"SL","2025-12-24",-5.74,2],
+    ["REDINGTON","2026-06-09",4.69,1.75,240.30,223.66,"TARGET","2026-06-19",15.00,8],
+    ["RPTECH","2026-03-25",4.34,1.72,360.55,337.56,"SL","2026-03-30",-6.38,2],
+    ["SAREGAMA","2026-04-10",3.89,1.95,329.50,309.33,"TARGET","2026-05-14",15.00,22],
+    ["VINCOFE","2026-03-20",3.99,1.69,131.84,123.14,"SL","2026-05-18",-6.60,36],
+    ["WELCORP","2026-02-26",3.47,1.63,824.90,777.55,"SL","2026-03-02",-5.74,2]];
+  const tb=document.querySelector("#t-trades tbody");
+  T.forEach(r=>{
+    const tr=tb.insertRow();
+    const cells=[r[0],r[1],r[2].toFixed(2),r[3].toFixed(2)+"×",r[4].toFixed(2),r[5].toFixed(2),
+      r[6],r[7],(r[8]>0?"+":"−")+Math.abs(r[8]).toFixed(2),r[9]];
+    cells.forEach((v,j)=>{
+      const td=tr.insertCell(); td.textContent=v;
+      if(j===6){td.style.color=r[6]==="TARGET"?"var(--good)":"var(--bad)";td.style.fontWeight="600";}
+      if(j===8) td.style.color=r[8]>0?"var(--good)":"var(--bad)";
+    });
+  });
+})();
+
+/* ---- 7. stop/target grid ---- */
+(function(){
+  const targets=[8,10,15,20,25], stops=[2,3,5,8];
+  const data=[[-0.39,0.32,0.63,2.06,3.72],[-0.11,0.75,1.35,3.13,3.68],
+              [2.23,2.23,5.09,7.95,9.56],[3.99,3.93,7.48,11.17,13.38]];
+  const scale=v=>{
+    if(Math.abs(v)<0.09) return {bg:css("--mid"),ink:css("--text-2")};
+    const i=Math.min(Math.floor(Math.min(Math.abs(v)/8,1)*4),3);
+    return {bg:css((v>0?["--pos-1","--pos-2","--pos-3","--pos-4"]:["--neg-1","--neg-2","--neg-3","--neg-4"])[i]),
+            ink:i>=2?"#fff":css("--text")};
   };
-  const scale = v => {
-    const m = Math.min(Math.abs(v)/2.0, 1);
-    const stepsP = ["--pos-1","--pos-2","--pos-3","--pos-4"];
-    const stepsN = ["--neg-1","--neg-2","--neg-3","--neg-4"];
-    if (Math.abs(v) < 0.09) return {bg:css("--mid"), ink:css("--text-2")};
-    const i = Math.min(Math.floor(m*4), 3);
-    return {bg: css((v>0?stepsP:stepsN)[i]), ink: i>=2 ? "#fff" : css("--text")};
-  };
-  for (const id in data){
-    const tbl = document.getElementById(id);
-    const th = tbl.insertRow();
-    th.appendChild(document.createElement("th")).textContent = "SL ↓ / TGT →";
-    targets.forEach(t => th.appendChild(document.createElement("th")).textContent = "+"+t+"%");
-    data[id].forEach((row,ri) => {
-      const tr = tbl.insertRow();
-      const rh = tr.insertCell(); rh.className = "rowhdr"; rh.textContent = "−"+stops[ri]+"%";
-      row.forEach((v,ci) => {
-        const td = tr.insertCell();
-        const s = scale(v);
-        td.style.background = s.bg; td.style.color = s.ink;
-        td.textContent = (v>0?"+":"−") + Math.abs(v).toFixed(2);
-        if (stops[ri]===3 && targets[ci]===15) td.classList.add("mark");
-        hover(td, `<b>stop −${stops[ri]}% · target +${targets[ci]}%</b><br>` +
-          `${(v>0?"+":"")+v.toFixed(2)}% avg per trade` +
-          (stops[ri]===3&&targets[ci]===15 ? "<br><span style='color:var(--accent)'>← the setting you specified</span>" : ""));
-      });
+  const tbl=document.getElementById("hm-grid");
+  const th=tbl.insertRow();
+  th.appendChild(document.createElement("th")).textContent="SL ↓ / TGT →";
+  targets.forEach(t=>th.appendChild(document.createElement("th")).textContent="+"+t+"%");
+  data.forEach((row,ri)=>{
+    const tr=tbl.insertRow();
+    const rh=tr.insertCell(); rh.className="rowhdr"; rh.textContent="−"+stops[ri]+"%";
+    row.forEach((v,ci)=>{
+      const td=tr.insertCell(); const s=scale(v);
+      td.style.background=s.bg; td.style.color=s.ink;
+      td.textContent=(v>0?"+":"−")+Math.abs(v).toFixed(2);
+      if(stops[ri]===3&&targets[ci]===15) td.classList.add("mark");
+      hover(td,`<b>stop −${stops[ri]}% · target +${targets[ci]}%</b><br>${(v>0?"+":"")+v.toFixed(2)}% avg per trade`+
+        (stops[ri]===3&&targets[ci]===15?"<br><span style='color:var(--accent)'>← as specified</span>":"")+
+        `<br><span style="color:var(--text-3)">n = 14</span>`);
     });
-  }
-})();
-
-/* ---------- 6. monthly ---------- */
-(function(){
-  const svg = $("#c-monthly"), W=700, H=300, L=46, R=16, T=30, B=62;
-  const m = [["Aug 25",8,0.32],["Sep",25,0.28],["Oct",42,-2.67],["Nov",34,-3.47],["Dec",27,-2.28],
-             ["Jan 26",25,-2.47],["Feb",17,-3.79],["Mar",40,-1.29],["Apr",21,4.04],["May",24,5.98],
-             ["Jun",30,0.76],["Jul",17,3.67],["Aug",28,0.50]];
-  const lo=-4.5, hi=6.5, iw = W-L-R, bw = iw/m.length - 9;
-  const y = v => (H-B) - (v-lo)/(hi-lo)*(H-B-T);
-  for (let g=-4; g<=6; g+=2){
-    el(svg,"line",{x1:L,y1:y(g),x2:W-R,y2:y(g),class:"grid-ln"});
-    el(svg,"text",{x:L-9,y:y(g)+4,"text-anchor":"end",class:"axis-lbl"}, (g>0?"+":"")+g+"%");
-  }
-  el(svg,"line",{x1:L,y1:y(0),x2:W-R,y2:y(0),class:"zero-ln"});
-  m.forEach((d,i) => {
-    const bx = L + i*(iw/m.length) + 4, v = d[2];
-    const top = v>=0 ? y(v) : y(0), h = Math.abs(y(v)-y(0));
-    const g = el(svg,"g",{});
-    el(g,"rect",{x:bx,y:top,width:bw,height:Math.max(h,2),rx:3.5,
-      fill: v>=0 ? css("--pos-3") : css("--neg-3")});
-    el(g,"rect",{x:bx,y:T-14,width:bw,height:H-B-T+18,fill:"transparent"});
-    hover(g, `<b>${d[0]}</b><br>${d[1]} signals<br>${(v>0?"+":"")+v.toFixed(2)}% avg per trade`);
-    el(svg,"text",{x:bx+bw/2,y: v>=0 ? top-6 : top+h+13,"text-anchor":"middle",class:"val-lbl",
-      fill: v>=0 ? css("--good") : css("--bad")}, (v>0?"+":"−")+Math.abs(v).toFixed(1));
-    el(svg,"text",{x:bx+bw/2,y:H-B+16,"text-anchor":"middle",class:"axis-lbl"}, d[0]);
-    el(svg,"text",{x:bx+bw/2,y:H-B+31,"text-anchor":"middle",class:"axis-lbl",
-      fill:css("--text-3"),"font-size":"9.5px"}, d[1]);
-  });
-  el(svg,"text",{x:L,y:H-6,class:"axis-lbl",fill:css("--text-3")},"lower figure = signals that month");
-})();
-
-/* ---------- 7. per-symbol table ---------- */
-(function(){
-  const rows = [
-    ["THANGAMAYL",6,4,2,8.18,49.06],["WSTCSTPAPR",22,7,14,1.87,41.14],["AEQUS",4,3,1,9.93,39.73],
-    ["WELCORP",5,3,2,7.48,37.40],["LENSKART",8,3,4,3.82,30.54],["MOREPENLAB",10,4,6,3.03,30.30],
-    ["AVALON",6,3,3,4.94,29.63],["RAIN",4,2,2,6.00,24.00],
-    ["DELHIVERY",8,1,7,-2.49,-19.90],["ADANIGREEN",6,0,5,-3.38,-20.26],["ADANIPORTS",9,1,8,-2.39,-21.48],
-    ["LLOYDSENGG",5,0,4,-4.30,-21.49],["SAREGAMA",6,0,5,-4.63,-27.81],["SKYGOLD",7,0,7,-5.40,-37.81],
-    ["SHILCTECH",8,0,7,-5.56,-44.51],["ONIDA",25,2,23,-3.68,-92.11],
-  ];
-  const maxAbs = 92.11, tb = document.querySelector("#t-symbols tbody");
-  rows.forEach((r,i) => {
-    const tr = tb.insertRow();
-
-    [r[0], r[1], r[2], r[3],
-     (r[4]>0?"+":"−")+Math.abs(r[4]).toFixed(2),
-     (r[5]>0?"+":"−")+Math.abs(r[5]).toFixed(2)].forEach((v,j) => {
-      const td = tr.insertCell(); td.textContent = v;
-      if (j>=4) td.style.color = r[j===4?4:5] > 0 ? "var(--good)" : "var(--bad)";
-      if (i === 8) td.style.borderTop = "2px solid var(--border-strong)";
-    });
-    const c = tr.insertCell(); c.className = "barcell";
-    if (i === 8) c.style.borderTop = "2px solid var(--border-strong)";
-    const w = Math.abs(r[5])/maxAbs*100;
-    const bar = document.createElement("div");
-    bar.className = "bar";
-    bar.style.width = w + "%";
-    bar.style.left = "0";
-    bar.style.background = r[5] > 0 ? "var(--pos-3)" : "var(--neg-3)";
-    c.appendChild(bar);
-    hover(tr, `<b>${r[0]}</b><br>${r[1]} trades · ${r[2]} target · ${r[3]} stopped<br>` +
-      `${(r[4]>0?"+":"")+r[4].toFixed(2)}% avg · ${(r[5]>0?"+":"")+r[5].toFixed(2)}% total`);
   });
 })();
 </script>
