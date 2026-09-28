@@ -110,3 +110,7 @@ Subsidaries,AM175,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-
 Subsidaries,AM179,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Bidar Transmission Limited
 Subsidaries,AM180,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Ananthpuram Kurnool
 Subsidaries,AM208,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID Neemrana Bareilly Transmission
+TBCB,BD2064:BG2079,13-row build-up,(removed),replaced by single fixed merged tariff
+TBCB,F2076,=TBCBsum!H122,18984.938,single fixed merged tariff for all 13 projects
+TBCB,S2068,1.19,0.877556,"FY27 part-year factor (Ananthpuram partial, Neemrana pre-COD)"
+TBCB,S2079:BB2079,punched / linked to build-up,=$F$2076*<yr>2068,same construction as every other block
