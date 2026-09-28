@@ -114,3 +114,279 @@ TBCB,BD2064:BG2079,13-row build-up,(removed),replaced by single fixed merged tar
 TBCB,F2076,=TBCBsum!H122,18984.938,single fixed merged tariff for all 13 projects
 TBCB,S2068,1.19,0.877556,"FY27 part-year factor (Ananthpuram partial, Neemrana pre-COD)"
 TBCB,S2079:BB2079,punched / linked to build-up,=$F$2076*<yr>2068,same construction as every other block
+TBCB,P2662,None,0.0,FY2024 restated to filed merged balance sheet (6 SPVs)
+TBCB,P2665,222.518,2398.1,FY2024 restated to filed merged balance sheet (6 SPVs)
+TBCB,P2659,677.155,4646.4,FY2024 restated to filed merged balance sheet (6 SPVs)
+TBCB,P2654,0.1,0.2,FY2024 restated to filed merged balance sheet (6 SPVs)
+TBCB,P2655,-0.034,-13.9,FY2024 restated to filed merged balance sheet (6 SPVs)
+TBCB,Q2662,0,2770.2,FY2025 restated to filed merged balance sheet (6 SPVs)
+TBCB,Q2665,11684.512,65064.2,FY2025 restated to filed merged balance sheet (6 SPVs)
+TBCB,Q2659,9347.61,53241.5,FY2025 restated to filed merged balance sheet (6 SPVs)
+TBCB,Q2654,0,6617.0,FY2025 restated to filed merged balance sheet (6 SPVs)
+TBCB,Q2655,0,-140.0,FY2025 restated to filed merged balance sheet (6 SPVs)
+TBCB,R2662,0,36189.8,FY2026 restated to filed merged balance sheet (6 SPVs)
+TBCB,R2665,31693.896,94726.0,FY2026 restated to filed merged balance sheet (6 SPVs)
+TBCB,R2659,25355.117,99822.0,FY2026 restated to filed merged balance sheet (6 SPVs)
+TBCB,R2654,6338.779,16497.7,FY2026 restated to filed merged balance sheet (6 SPVs)
+TBCB,R2655,0,-170.7,FY2026 restated to filed merged balance sheet (6 SPVs)
+TBCB,C2628,=TBCBsum!$D$132,147575.3,"Project cost = Vataman 42,310 + 5 transferors 105,265"
+TBCB,C2629,=C2628*0.8,118060.23999999999,Debt assumption = 80% of merged project cost
+TBCB,C2630,=C2628-C2629,29515.059999999998,Equity assumption = 20% of merged project cost
+TBCB,F2637,=TBCBsum!H132,13564.5,Merged tariff - sum of the adopted charges of all 6 projects
+TBCB,S2662,"=IF(DATE(2027,3,31)>=$E$2627,$C2628*SUM($R$2682:$AC$2682),R2",100165.3,"Gross block FY27 = Vataman, Bhadla-III, Beawar Dausa, Ramgarh II, Sikar Khetri"
+TBCB,S2665,"=IFERROR(IF(DATE(2027,3,31)>=$E$2627,0,MAX(0,$C2628*SUM($R$2",30750.7,CWIP FY27 = spend to date on Bikaner Neemrana (COD FY28)
+TBCB,T2662,"=IF(DATE(2028,3,31)>=$E$2627,$C2628*SUM($R$2682:$AC$2682),S2",147575.3,Gross block FY28 = all 6 commissioned
+TBCB,T2665,"=IFERROR(IF(DATE(2028,3,31)>=$E$2627,0,MAX(0,$C2628*SUM($R$2",0.0,CWIP FY28 = nil
+TBCB,S2639,0.2493,0.768705,FY27 part-year - Bikaner Neemrana not yet commissioned (COD FY28)
+TBCB,T2639,1,1,All 6 operational
+TBCB,U2639,1,1,All 6 operational
+TBCB,V2639,1,1,All 6 operational
+TBCB,W2639,1,1,All 6 operational
+TBCB,X2639,1,1,All 6 operational
+TBCB,Y2639,1,1,All 6 operational
+TBCB,Z2639,1,1,All 6 operational
+TBCB,AA2639,1,1,All 6 operational
+TBCB,AB2639,1,1,All 6 operational
+TBCB,AC2639,1,1,All 6 operational
+TBCB,AD2639,1,1,All 6 operational
+TBCB,AE2639,1,1,All 6 operational
+TBCB,AF2639,1,1,All 6 operational
+TBCB,AG2639,1,1,All 6 operational
+TBCB,AH2639,1,1,All 6 operational
+TBCB,AI2639,1,1,All 6 operational
+TBCB,AJ2639,1,1,All 6 operational
+TBCB,AK2639,1,1,All 6 operational
+TBCB,AL2639,1,1,All 6 operational
+TBCB,AM2639,1,1,All 6 operational
+TBCB,AN2639,1,1,All 6 operational
+TBCB,AO2639,1,1,All 6 operational
+TBCB,AP2639,1,1,All 6 operational
+TBCB,AQ2639,1,1,All 6 operational
+TBCB,AR2639,1,1,All 6 operational
+TBCB,AS2639,1,1,All 6 operational
+TBCB,AT2639,1,1,All 6 operational
+TBCB,AU2639,1,1,All 6 operational
+TBCB,AV2639,1,1,All 6 operational
+TBCB,AW2639,1,1,All 6 operational
+TBCB,AX2639,1,1,All 6 operational
+TBCB,AY2639,1,1,All 6 operational
+TBCB,AZ2639,1,1,All 6 operational
+TBCB,BA2639,1,1,All 6 operational
+TBCB,BB2639,0.7534,1,All 6 operational
+TBCB,S2640,=$F$2637,=$F$2637*S2639,Merged tariff x operating fraction
+TBCB,T2640,=$F$2637,=$F$2637*T2639,Merged tariff x operating fraction
+TBCB,U2640,=$F$2637,=$F$2637*U2639,Merged tariff x operating fraction
+TBCB,V2640,=$F$2637,=$F$2637*V2639,Merged tariff x operating fraction
+TBCB,W2640,=$F$2637,=$F$2637*W2639,Merged tariff x operating fraction
+TBCB,X2640,=$F$2637,=$F$2637*X2639,Merged tariff x operating fraction
+TBCB,Y2640,=$F$2637,=$F$2637*Y2639,Merged tariff x operating fraction
+TBCB,Z2640,=$F$2637,=$F$2637*Z2639,Merged tariff x operating fraction
+TBCB,AA2640,=$F$2637,=$F$2637*AA2639,Merged tariff x operating fraction
+TBCB,AB2640,=$F$2637,=$F$2637*AB2639,Merged tariff x operating fraction
+TBCB,AC2640,=$F$2637,=$F$2637*AC2639,Merged tariff x operating fraction
+TBCB,AD2640,=$F$2637,=$F$2637*AD2639,Merged tariff x operating fraction
+TBCB,AE2640,=$F$2637,=$F$2637*AE2639,Merged tariff x operating fraction
+TBCB,AF2640,=$F$2637,=$F$2637*AF2639,Merged tariff x operating fraction
+TBCB,AG2640,=$F$2637,=$F$2637*AG2639,Merged tariff x operating fraction
+TBCB,AH2640,=$F$2637,=$F$2637*AH2639,Merged tariff x operating fraction
+TBCB,AI2640,=$F$2637,=$F$2637*AI2639,Merged tariff x operating fraction
+TBCB,AJ2640,=$F$2637,=$F$2637*AJ2639,Merged tariff x operating fraction
+TBCB,AK2640,=$F$2637,=$F$2637*AK2639,Merged tariff x operating fraction
+TBCB,AL2640,=$F$2637,=$F$2637*AL2639,Merged tariff x operating fraction
+TBCB,AM2640,=$F$2637,=$F$2637*AM2639,Merged tariff x operating fraction
+TBCB,AN2640,=$F$2637,=$F$2637*AN2639,Merged tariff x operating fraction
+TBCB,AO2640,=$F$2637,=$F$2637*AO2639,Merged tariff x operating fraction
+TBCB,AP2640,=$F$2637,=$F$2637*AP2639,Merged tariff x operating fraction
+TBCB,AQ2640,=$F$2637,=$F$2637*AQ2639,Merged tariff x operating fraction
+TBCB,AR2640,=$F$2637,=$F$2637*AR2639,Merged tariff x operating fraction
+TBCB,AS2640,=$F$2637,=$F$2637*AS2639,Merged tariff x operating fraction
+TBCB,AT2640,=$F$2637,=$F$2637*AT2639,Merged tariff x operating fraction
+TBCB,AU2640,=$F$2637,=$F$2637*AU2639,Merged tariff x operating fraction
+TBCB,AV2640,=$F$2637,=$F$2637*AV2639,Merged tariff x operating fraction
+TBCB,AW2640,=$F$2637,=$F$2637*AW2639,Merged tariff x operating fraction
+TBCB,AX2640,=$F$2637,=$F$2637*AX2639,Merged tariff x operating fraction
+TBCB,AY2640,=$F$2637,=$F$2637*AY2639,Merged tariff x operating fraction
+TBCB,AZ2640,=$F$2637,=$F$2637*AZ2639,Merged tariff x operating fraction
+TBCB,BA2640,=$F$2637,=$F$2637*BA2639,Merged tariff x operating fraction
+TBCB,BB2640,=$F$2637,=$F$2637*BB2639,Merged tariff x operating fraction
+TBCB,H4308,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID Bhadla-III Power Transmission Ltd
+TBCB,H2346,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID BEAWAR DAUSA TRANSMISSION LIMITED
+TBCB,H2514,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID RAMGARH II TRANSMISSION LIMITED
+TBCB,H2402,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID BIKANER NEEMRANA TRANSMISSION LIMITED
+TBCB,H2571,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID SIKAR KHETRI TRANSMISSION LIMITED
+TBCBsum,AU127,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Group B merged SPV
+TBCBsum,AU128,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Group B merged SPV
+TBCBsum,AU130,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Group B merged SPV
+TBCBsum,AU131,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Group B merged SPV
+TBCBsum,AU162,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Group B merged SPV
+Subsidaries,AM52,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Beawar Dausa Transmission Limi
+Subsidaries,AM53,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Bikaner Neemrana Transmission 
+Subsidaries,AM55,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Ramgarh II Transmission Limite
+Subsidaries,AM56,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Sikar Khetri Transmission Limi
+Subsidaries,AM86,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),POWERGRID Bhadla-III Power Transmission 
+Subsidaries,AM173,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Beawar Dausa Transmission Limi
+Subsidaries,AM174,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Bikaner Neemrana Transmission 
+Subsidaries,AM176,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Ramgarh II Transmission Limite
+Subsidaries,AM177,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Powergrid Sikar Khetri Transmission Limi
+Subsidaries,AM186,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),Bhadla‑III Power Transmission Limited
+TBCB,S2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,S2101-R2102)),0)","=IFERROR(MIN(S2101*$C2073/100,MAX(0,S2101-R2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,S2081,=$C2067*$C2070%,=S2101*$C2070%*(100%+$C2071%)^0,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,T2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,T2101-S2102)),0)","=IFERROR(MIN(T2101*$C2073/100,MAX(0,T2101-S2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,T2081,=+S2081*(100%+$C2071%),=T2101*$C2070%*(100%+$C2071%)^1,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,U2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,U2101-T2102)),0)","=IFERROR(MIN(U2101*$C2073/100,MAX(0,U2101-T2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,U2081,=+T2081*(100%+$C2071%),=U2101*$C2070%*(100%+$C2071%)^2,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,V2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,V2101-U2102)),0)","=IFERROR(MIN(V2101*$C2073/100,MAX(0,V2101-U2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,V2081,=+U2081*(100%+$C2071%),=V2101*$C2070%*(100%+$C2071%)^3,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,W2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,W2101-V2102)),0)","=IFERROR(MIN(W2101*$C2073/100,MAX(0,W2101-V2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,W2081,=+V2081*(100%+$C2071%),=W2101*$C2070%*(100%+$C2071%)^4,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,X2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,X2101-W2102)),0)","=IFERROR(MIN(X2101*$C2073/100,MAX(0,X2101-W2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,X2081,=+W2081*(100%+$C2071%),=X2101*$C2070%*(100%+$C2071%)^5,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,Y2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,Y2101-X2102)),0)","=IFERROR(MIN(Y2101*$C2073/100,MAX(0,Y2101-X2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,Y2081,=+X2081*(100%+$C2071%),=Y2101*$C2070%*(100%+$C2071%)^6,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,Z2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,Z2101-Y2102)),0)","=IFERROR(MIN(Z2101*$C2073/100,MAX(0,Z2101-Y2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,Z2081,=+Y2081*(100%+$C2071%),=Z2101*$C2070%*(100%+$C2071%)^7,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AA2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AA2101-Z2102)),0)","=IFERROR(MIN(AA2101*$C2073/100,MAX(0,AA2101-Z2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AA2081,=+Z2081*(100%+$C2071%),=AA2101*$C2070%*(100%+$C2071%)^8,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AB2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AB2101-AA2102)),0)","=IFERROR(MIN(AB2101*$C2073/100,MAX(0,AB2101-AA2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AB2081,=+AA2081*(100%+$C2071%),=AB2101*$C2070%*(100%+$C2071%)^9,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AC2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AC2101-AB2102)),0)","=IFERROR(MIN(AC2101*$C2073/100,MAX(0,AC2101-AB2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AC2081,=+AB2081*(100%+$C2071%),=AC2101*$C2070%*(100%+$C2071%)^10,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AD2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AD2101-AC2102)),0)","=IFERROR(MIN(AD2101*$C2073/100,MAX(0,AD2101-AC2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AD2081,=+AC2081*(100%+$C2071%),=AD2101*$C2070%*(100%+$C2071%)^11,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AE2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AE2101-AD2102)),0)","=IFERROR(MIN(AE2101*$C2073/100,MAX(0,AE2101-AD2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AE2081,=+AD2081*(100%+$C2071%),=AE2101*$C2070%*(100%+$C2071%)^12,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AF2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AF2101-AE2102)),0)","=IFERROR(MIN(AF2101*$C2073/100,MAX(0,AF2101-AE2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AF2081,=+AE2081*(100%+$C2071%),=AF2101*$C2070%*(100%+$C2071%)^13,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AG2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AG2101-AF2102)),0)","=IFERROR(MIN(AG2101*$C2073/100,MAX(0,AG2101-AF2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AG2081,=+AF2081*(100%+$C2071%),=AG2101*$C2070%*(100%+$C2071%)^14,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AH2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AH2101-AG2102)),0)","=IFERROR(MIN(AH2101*$C2073/100,MAX(0,AH2101-AG2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AH2081,=+AG2081*(100%+$C2071%),=AH2101*$C2070%*(100%+$C2071%)^15,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AI2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AI2101-AH2102)),0)","=IFERROR(MIN(AI2101*$C2073/100,MAX(0,AI2101-AH2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AI2081,=+AH2081*(100%+$C2071%),=AI2101*$C2070%*(100%+$C2071%)^16,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AJ2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AJ2101-AI2102)),0)","=IFERROR(MIN(AJ2101*$C2073/100,MAX(0,AJ2101-AI2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AJ2081,=+AI2081*(100%+$C2071%),=AJ2101*$C2070%*(100%+$C2071%)^17,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AK2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AK2101-AJ2102)),0)","=IFERROR(MIN(AK2101*$C2073/100,MAX(0,AK2101-AJ2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AK2081,=+AJ2081*(100%+$C2071%),=AK2101*$C2070%*(100%+$C2071%)^18,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AL2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AL2101-AK2102)),0)","=IFERROR(MIN(AL2101*$C2073/100,MAX(0,AL2101-AK2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AL2081,=+AK2081*(100%+$C2071%),=AL2101*$C2070%*(100%+$C2071%)^19,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AM2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AM2101-AL2102)),0)","=IFERROR(MIN(AM2101*$C2073/100,MAX(0,AM2101-AL2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AM2081,=+AL2081*(100%+$C2071%),=AM2101*$C2070%*(100%+$C2071%)^20,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AN2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AN2101-AM2102)),0)","=IFERROR(MIN(AN2101*$C2073/100,MAX(0,AN2101-AM2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AN2081,=+AM2081*(100%+$C2071%),=AN2101*$C2070%*(100%+$C2071%)^21,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AO2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AO2101-AN2102)),0)","=IFERROR(MIN(AO2101*$C2073/100,MAX(0,AO2101-AN2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AO2081,=+AN2081*(100%+$C2071%),=AO2101*$C2070%*(100%+$C2071%)^22,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AP2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AP2101-AO2102)),0)","=IFERROR(MIN(AP2101*$C2073/100,MAX(0,AP2101-AO2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AP2081,=+AO2081*(100%+$C2071%),=AP2101*$C2070%*(100%+$C2071%)^23,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AQ2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AQ2101-AP2102)),0)","=IFERROR(MIN(AQ2101*$C2073/100,MAX(0,AQ2101-AP2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AQ2081,=+AP2081*(100%+$C2071%),=AQ2101*$C2070%*(100%+$C2071%)^24,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AR2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AR2101-AQ2102)),0)","=IFERROR(MIN(AR2101*$C2073/100,MAX(0,AR2101-AQ2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AR2081,=+AQ2081*(100%+$C2071%),=AR2101*$C2070%*(100%+$C2071%)^25,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AS2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AS2101-AR2102)),0)","=IFERROR(MIN(AS2101*$C2073/100,MAX(0,AS2101-AR2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AS2081,=+AR2081*(100%+$C2071%),=AS2101*$C2070%*(100%+$C2071%)^26,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AT2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AT2101-AS2102)),0)","=IFERROR(MIN(AT2101*$C2073/100,MAX(0,AT2101-AS2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AT2081,=+AS2081*(100%+$C2071%),=AT2101*$C2070%*(100%+$C2071%)^27,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AU2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AU2101-AT2102)),0)","=IFERROR(MIN(AU2101*$C2073/100,MAX(0,AU2101-AT2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AU2081,=+AT2081*(100%+$C2071%),=AU2101*$C2070%*(100%+$C2071%)^28,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AV2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AV2101-AU2102)),0)","=IFERROR(MIN(AV2101*$C2073/100,MAX(0,AV2101-AU2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AV2081,=+AU2081*(100%+$C2071%),=AV2101*$C2070%*(100%+$C2071%)^29,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AW2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AW2101-AV2102)),0)","=IFERROR(MIN(AW2101*$C2073/100,MAX(0,AW2101-AV2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AW2081,=+AV2081*(100%+$C2071%),=AW2101*$C2070%*(100%+$C2071%)^30,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AX2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AX2101-AW2102)),0)","=IFERROR(MIN(AX2101*$C2073/100,MAX(0,AX2101-AW2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AX2081,=+AW2081*(100%+$C2071%),=AX2101*$C2070%*(100%+$C2071%)^31,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AY2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AY2101-AX2102)),0)","=IFERROR(MIN(AY2101*$C2073/100,MAX(0,AY2101-AX2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AY2081,=+AX2081*(100%+$C2071%),=AY2101*$C2070%*(100%+$C2071%)^32,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,AZ2085,"=IFERROR(MIN($C2067*$C2073/100,MAX(0,AZ2101-AY2102)),0)","=IFERROR(MIN(AZ2101*$C2073/100,MAX(0,AZ2101-AY2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,AZ2081,=+AY2081*(100%+$C2071%),=AZ2101*$C2070%*(100%+$C2071%)^33,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,BA2085,None,"=IFERROR(MIN(BA2101*$C2073/100,MAX(0,BA2101-AZ2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,BA2081,None,=BA2101*$C2070%*(100%+$C2071%)^34,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,BB2085,None,"=IFERROR(MIN(BB2101*$C2073/100,MAX(0,BB2101-BA2102)),0)","Khavda II-C: depreciation on gross block, not project cost"
+TBCB,BB2081,None,=BB2101*$C2070%*(100%+$C2071%)^35,"Khavda II-C: O&M on gross block, not project cost"
+TBCB,S2646,"=IFERROR(MIN($C2628*$C2634/100*S2639,MAX(0,$C2628-R2663)),0)","=IFERROR(MIN(S2662*$C2634/100,MAX(0,S2662-R2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,S2642,=$C2628*$C2631%*S2639*(100%+$C2632%)^0,=S2662*$C2631%*(100%+$C2632%)^0,"Vataman: O&M on gross block, not project cost"
+TBCB,T2646,"=IFERROR(MIN($C2628*$C2634/100*T2639,MAX(0,$C2628-S2663)),0)","=IFERROR(MIN(T2662*$C2634/100,MAX(0,T2662-S2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,T2642,=$C2628*$C2631%*T2639*(100%+$C2632%)^1,=T2662*$C2631%*(100%+$C2632%)^1,"Vataman: O&M on gross block, not project cost"
+TBCB,U2646,"=IFERROR(MIN($C2628*$C2634/100*U2639,MAX(0,$C2628-T2663)),0)","=IFERROR(MIN(U2662*$C2634/100,MAX(0,U2662-T2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,U2642,=$C2628*$C2631%*U2639*(100%+$C2632%)^2,=U2662*$C2631%*(100%+$C2632%)^2,"Vataman: O&M on gross block, not project cost"
+TBCB,V2646,"=IFERROR(MIN($C2628*$C2634/100*V2639,MAX(0,$C2628-U2663)),0)","=IFERROR(MIN(V2662*$C2634/100,MAX(0,V2662-U2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,V2642,=$C2628*$C2631%*V2639*(100%+$C2632%)^3,=V2662*$C2631%*(100%+$C2632%)^3,"Vataman: O&M on gross block, not project cost"
+TBCB,W2646,"=IFERROR(MIN($C2628*$C2634/100*W2639,MAX(0,$C2628-V2663)),0)","=IFERROR(MIN(W2662*$C2634/100,MAX(0,W2662-V2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,W2642,=$C2628*$C2631%*W2639*(100%+$C2632%)^4,=W2662*$C2631%*(100%+$C2632%)^4,"Vataman: O&M on gross block, not project cost"
+TBCB,X2646,"=IFERROR(MIN($C2628*$C2634/100*X2639,MAX(0,$C2628-W2663)),0)","=IFERROR(MIN(X2662*$C2634/100,MAX(0,X2662-W2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,X2642,=$C2628*$C2631%*X2639*(100%+$C2632%)^5,=X2662*$C2631%*(100%+$C2632%)^5,"Vataman: O&M on gross block, not project cost"
+TBCB,Y2646,"=IFERROR(MIN($C2628*$C2634/100*Y2639,MAX(0,$C2628-X2663)),0)","=IFERROR(MIN(Y2662*$C2634/100,MAX(0,Y2662-X2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,Y2642,=$C2628*$C2631%*Y2639*(100%+$C2632%)^6,=Y2662*$C2631%*(100%+$C2632%)^6,"Vataman: O&M on gross block, not project cost"
+TBCB,Z2646,"=IFERROR(MIN($C2628*$C2634/100*Z2639,MAX(0,$C2628-Y2663)),0)","=IFERROR(MIN(Z2662*$C2634/100,MAX(0,Z2662-Y2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,Z2642,=$C2628*$C2631%*Z2639*(100%+$C2632%)^7,=Z2662*$C2631%*(100%+$C2632%)^7,"Vataman: O&M on gross block, not project cost"
+TBCB,AA2646,"=IFERROR(MIN($C2628*$C2634/100*AA2639,MAX(0,$C2628-Z2663)),0","=IFERROR(MIN(AA2662*$C2634/100,MAX(0,AA2662-Z2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AA2642,=$C2628*$C2631%*AA2639*(100%+$C2632%)^8,=AA2662*$C2631%*(100%+$C2632%)^8,"Vataman: O&M on gross block, not project cost"
+TBCB,AB2646,"=IFERROR(MIN($C2628*$C2634/100*AB2639,MAX(0,$C2628-AA2663)),","=IFERROR(MIN(AB2662*$C2634/100,MAX(0,AB2662-AA2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AB2642,=$C2628*$C2631%*AB2639*(100%+$C2632%)^9,=AB2662*$C2631%*(100%+$C2632%)^9,"Vataman: O&M on gross block, not project cost"
+TBCB,AC2646,"=IFERROR(MIN($C2628*$C2634/100*AC2639,MAX(0,$C2628-AB2663)),","=IFERROR(MIN(AC2662*$C2634/100,MAX(0,AC2662-AB2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AC2642,=$C2628*$C2631%*AC2639*(100%+$C2632%)^10,=AC2662*$C2631%*(100%+$C2632%)^10,"Vataman: O&M on gross block, not project cost"
+TBCB,AD2646,"=IFERROR(MIN($C2628*$C2634/100*AD2639,MAX(0,$C2628-AC2663)),","=IFERROR(MIN(AD2662*$C2634/100,MAX(0,AD2662-AC2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AD2642,=$C2628*$C2631%*AD2639*(100%+$C2632%)^11,=AD2662*$C2631%*(100%+$C2632%)^11,"Vataman: O&M on gross block, not project cost"
+TBCB,AE2646,"=IFERROR(MIN($C2628*$C2634/100*AE2639,MAX(0,$C2628-AD2663)),","=IFERROR(MIN(AE2662*$C2634/100,MAX(0,AE2662-AD2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AE2642,=$C2628*$C2631%*AE2639*(100%+$C2632%)^12,=AE2662*$C2631%*(100%+$C2632%)^12,"Vataman: O&M on gross block, not project cost"
+TBCB,AF2646,"=IFERROR(MIN($C2628*$C2634/100*AF2639,MAX(0,$C2628-AE2663)),","=IFERROR(MIN(AF2662*$C2634/100,MAX(0,AF2662-AE2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AF2642,=$C2628*$C2631%*AF2639*(100%+$C2632%)^13,=AF2662*$C2631%*(100%+$C2632%)^13,"Vataman: O&M on gross block, not project cost"
+TBCB,AG2646,"=IFERROR(MIN($C2628*$C2634/100*AG2639,MAX(0,$C2628-AF2663)),","=IFERROR(MIN(AG2662*$C2634/100,MAX(0,AG2662-AF2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AG2642,=$C2628*$C2631%*AG2639*(100%+$C2632%)^14,=AG2662*$C2631%*(100%+$C2632%)^14,"Vataman: O&M on gross block, not project cost"
+TBCB,AH2646,"=IFERROR(MIN($C2628*$C2634/100*AH2639,MAX(0,$C2628-AG2663)),","=IFERROR(MIN(AH2662*$C2634/100,MAX(0,AH2662-AG2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AH2642,=$C2628*$C2631%*AH2639*(100%+$C2632%)^15,=AH2662*$C2631%*(100%+$C2632%)^15,"Vataman: O&M on gross block, not project cost"
+TBCB,AI2646,"=IFERROR(MIN($C2628*$C2634/100*AI2639,MAX(0,$C2628-AH2663)),","=IFERROR(MIN(AI2662*$C2634/100,MAX(0,AI2662-AH2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AI2642,=$C2628*$C2631%*AI2639*(100%+$C2632%)^16,=AI2662*$C2631%*(100%+$C2632%)^16,"Vataman: O&M on gross block, not project cost"
+TBCB,AJ2646,"=IFERROR(MIN($C2628*$C2634/100*AJ2639,MAX(0,$C2628-AI2663)),","=IFERROR(MIN(AJ2662*$C2634/100,MAX(0,AJ2662-AI2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AJ2642,=$C2628*$C2631%*AJ2639*(100%+$C2632%)^17,=AJ2662*$C2631%*(100%+$C2632%)^17,"Vataman: O&M on gross block, not project cost"
+TBCB,AK2646,"=IFERROR(MIN($C2628*$C2634/100*AK2639,MAX(0,$C2628-AJ2663)),","=IFERROR(MIN(AK2662*$C2634/100,MAX(0,AK2662-AJ2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AK2642,=$C2628*$C2631%*AK2639*(100%+$C2632%)^18,=AK2662*$C2631%*(100%+$C2632%)^18,"Vataman: O&M on gross block, not project cost"
+TBCB,AL2646,"=IFERROR(MIN($C2628*$C2634/100*AL2639,MAX(0,$C2628-AK2663)),","=IFERROR(MIN(AL2662*$C2634/100,MAX(0,AL2662-AK2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AL2642,=$C2628*$C2631%*AL2639*(100%+$C2632%)^19,=AL2662*$C2631%*(100%+$C2632%)^19,"Vataman: O&M on gross block, not project cost"
+TBCB,AM2646,"=IFERROR(MIN($C2628*$C2634/100*AM2639,MAX(0,$C2628-AL2663)),","=IFERROR(MIN(AM2662*$C2634/100,MAX(0,AM2662-AL2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AM2642,=$C2628*$C2631%*AM2639*(100%+$C2632%)^20,=AM2662*$C2631%*(100%+$C2632%)^20,"Vataman: O&M on gross block, not project cost"
+TBCB,AN2646,"=IFERROR(MIN($C2628*$C2634/100*AN2639,MAX(0,$C2628-AM2663)),","=IFERROR(MIN(AN2662*$C2634/100,MAX(0,AN2662-AM2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AN2642,=$C2628*$C2631%*AN2639*(100%+$C2632%)^21,=AN2662*$C2631%*(100%+$C2632%)^21,"Vataman: O&M on gross block, not project cost"
+TBCB,AO2646,"=IFERROR(MIN($C2628*$C2634/100*AO2639,MAX(0,$C2628-AN2663)),","=IFERROR(MIN(AO2662*$C2634/100,MAX(0,AO2662-AN2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AO2642,=$C2628*$C2631%*AO2639*(100%+$C2632%)^22,=AO2662*$C2631%*(100%+$C2632%)^22,"Vataman: O&M on gross block, not project cost"
+TBCB,AP2646,"=IFERROR(MIN($C2628*$C2634/100*AP2639,MAX(0,$C2628-AO2663)),","=IFERROR(MIN(AP2662*$C2634/100,MAX(0,AP2662-AO2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AP2642,=$C2628*$C2631%*AP2639*(100%+$C2632%)^23,=AP2662*$C2631%*(100%+$C2632%)^23,"Vataman: O&M on gross block, not project cost"
+TBCB,AQ2646,"=IFERROR(MIN($C2628*$C2634/100*AQ2639,MAX(0,$C2628-AP2663)),","=IFERROR(MIN(AQ2662*$C2634/100,MAX(0,AQ2662-AP2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AQ2642,=$C2628*$C2631%*AQ2639*(100%+$C2632%)^24,=AQ2662*$C2631%*(100%+$C2632%)^24,"Vataman: O&M on gross block, not project cost"
+TBCB,AR2646,"=IFERROR(MIN($C2628*$C2634/100*AR2639,MAX(0,$C2628-AQ2663)),","=IFERROR(MIN(AR2662*$C2634/100,MAX(0,AR2662-AQ2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AR2642,=$C2628*$C2631%*AR2639*(100%+$C2632%)^25,=AR2662*$C2631%*(100%+$C2632%)^25,"Vataman: O&M on gross block, not project cost"
+TBCB,AS2646,"=IFERROR(MIN($C2628*$C2634/100*AS2639,MAX(0,$C2628-AR2663)),","=IFERROR(MIN(AS2662*$C2634/100,MAX(0,AS2662-AR2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AS2642,=$C2628*$C2631%*AS2639*(100%+$C2632%)^26,=AS2662*$C2631%*(100%+$C2632%)^26,"Vataman: O&M on gross block, not project cost"
+TBCB,AT2646,"=IFERROR(MIN($C2628*$C2634/100*AT2639,MAX(0,$C2628-AS2663)),","=IFERROR(MIN(AT2662*$C2634/100,MAX(0,AT2662-AS2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AT2642,=$C2628*$C2631%*AT2639*(100%+$C2632%)^27,=AT2662*$C2631%*(100%+$C2632%)^27,"Vataman: O&M on gross block, not project cost"
+TBCB,AU2646,"=IFERROR(MIN($C2628*$C2634/100*AU2639,MAX(0,$C2628-AT2663)),","=IFERROR(MIN(AU2662*$C2634/100,MAX(0,AU2662-AT2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AU2642,=$C2628*$C2631%*AU2639*(100%+$C2632%)^28,=AU2662*$C2631%*(100%+$C2632%)^28,"Vataman: O&M on gross block, not project cost"
+TBCB,AV2646,"=IFERROR(MIN($C2628*$C2634/100*AV2639,MAX(0,$C2628-AU2663)),","=IFERROR(MIN(AV2662*$C2634/100,MAX(0,AV2662-AU2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AV2642,=$C2628*$C2631%*AV2639*(100%+$C2632%)^29,=AV2662*$C2631%*(100%+$C2632%)^29,"Vataman: O&M on gross block, not project cost"
+TBCB,AW2646,"=IFERROR(MIN($C2628*$C2634/100*AW2639,MAX(0,$C2628-AV2663)),","=IFERROR(MIN(AW2662*$C2634/100,MAX(0,AW2662-AV2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AW2642,=$C2628*$C2631%*AW2639*(100%+$C2632%)^30,=AW2662*$C2631%*(100%+$C2632%)^30,"Vataman: O&M on gross block, not project cost"
+TBCB,AX2646,"=IFERROR(MIN($C2628*$C2634/100*AX2639,MAX(0,$C2628-AW2663)),","=IFERROR(MIN(AX2662*$C2634/100,MAX(0,AX2662-AW2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AX2642,=$C2628*$C2631%*AX2639*(100%+$C2632%)^31,=AX2662*$C2631%*(100%+$C2632%)^31,"Vataman: O&M on gross block, not project cost"
+TBCB,AY2646,"=IFERROR(MIN($C2628*$C2634/100*AY2639,MAX(0,$C2628-AX2663)),","=IFERROR(MIN(AY2662*$C2634/100,MAX(0,AY2662-AX2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AY2642,=$C2628*$C2631%*AY2639*(100%+$C2632%)^32,=AY2662*$C2631%*(100%+$C2632%)^32,"Vataman: O&M on gross block, not project cost"
+TBCB,AZ2646,"=IFERROR(MIN($C2628*$C2634/100*AZ2639,MAX(0,$C2628-AY2663)),","=IFERROR(MIN(AZ2662*$C2634/100,MAX(0,AZ2662-AY2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,AZ2642,=$C2628*$C2631%*AZ2639*(100%+$C2632%)^33,=AZ2662*$C2631%*(100%+$C2632%)^33,"Vataman: O&M on gross block, not project cost"
+TBCB,BA2646,"=IFERROR(MIN($C2628*$C2634/100*BA2639,MAX(0,$C2628-AZ2663)),","=IFERROR(MIN(BA2662*$C2634/100,MAX(0,BA2662-AZ2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,BA2642,=$C2628*$C2631%*BA2639*(100%+$C2632%)^34,=BA2662*$C2631%*(100%+$C2632%)^34,"Vataman: O&M on gross block, not project cost"
+TBCB,BB2646,"=IFERROR(MIN($C2628*$C2634/100*BB2639,MAX(0,$C2628-BA2663)),","=IFERROR(MIN(BB2662*$C2634/100,MAX(0,BB2662-BA2663)),0)","Vataman: depreciation on gross block, not project cost"
+TBCB,BB2642,=$C2628*$C2631%*BB2639*(100%+$C2632%)^35,=BB2662*$C2631%*(100%+$C2632%)^35,"Vataman: O&M on gross block, not project cost"
+TBCB,Q1674,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid Dharamjaigarh Transmission Limited
+TBCB,Q1730,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid Khavda II B Transmission Limited
+TBCB,Q1786,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powegrid ERWR Power Tranmission Limited
+TBCB,Q1842,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid KPS3 Tranmission Limited
+TBCB,Q1954,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid KPS2 Tranmission Limited
+TBCB,Q2010,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid Raipur Pool Dhamtari Station Limited
+TBCB,Q2178,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid Khavda RE Transmission Limited
+TBCB,Q2234,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Powergrid Bhadla Sikar
+TBCB,Q2458,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - POWERGRID KOPPAL GADAG TRANSMISSION LIMITED
+TBCB,Q2683,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - POWERGRID BIDAR TRANSMISSION LIMITED
+TBCB,Q2740,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - POWERGRID ANANTHPURAM KURNOOL
+TBCB,Q4028,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - POWERGRID Neemrana Bareilly Transmission Ltd
+TBCB,Q4308,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Bhadla-III
+TBCB,Q2346,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Beawar Dausa
+TBCB,Q2514,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Ramgarh II
+TBCB,Q2402,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Bikaner Neemrana
+TBCB,Q2571,,Merged into POWERGRID Vataman Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),red note in FY25 column - Sikar Khetri
