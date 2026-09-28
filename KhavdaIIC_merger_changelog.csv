@@ -1,0 +1,111 @@
+sheet,cell,old,new,why
+TBCB,P2101,None,54.927,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,P2104,9774.029,25909.796,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,P2098,8981.084,22177.058,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,P2093,0.5,568.179,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,P2094,-0.108,-126.156,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,P2080,=P2077+P2079,0.0,FY2024 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2101,1169.083,6327.905,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2104,21150.404,98739.607,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2098,17822.441,79852.213,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2093,1985.717,11767.235,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2094,-25.566,-311.953,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,Q2080,0,5.096,FY2025 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2101,18005.736,101158.375,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2104,78622.123,78622.123,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2098,129887.025,129887.025,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2093,29352.503,29352.503,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2094,160.609,160.609,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,R2080,3086.675,3086.675,FY2026 restated to merged filed balance sheet (13 SPVs)
+TBCB,C2067,=TBCBsum!D122,257830.722,"Project cost = Khavda II-C 96,627.9 + 12 transferors 161,202.8"
+TBCB,C2068,=+C2067*0.8,206264.57760000002,Debt assumption = 80% of merged project cost
+TBCB,C2069,=R2093,45123.3,"Equity = FY26 actual 29,513.1 + 20% of remaining capex 78,050"
+TBCB,S2101,=$C2067,225120.704,"Gross block FY27 = 9 assets commissioned by FY26 + Koppal Gadag, Bidar, Ananthpuram"
+TBCB,S2104,=0,6710.246,CWIP FY27 = spend to date on Neemrana Bareilly (COD FY28)
+TBCB,S2079,=$F$2076*S2068,16660.212,Merged tariff FY27 = sum of 13 SPV tariffs (Neemrana not yet on)
+TBCB,T2079,=$F$2076*T2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,U2079,=$F$2076*U2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,V2079,=$F$2076*V2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,W2079,=$F$2076*W2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,X2079,=$F$2076*X2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,Y2079,=$F$2076*Y2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,Z2079,=$F$2076*Z2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AA2079,=$F$2076*AA2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AB2079,=$F$2076*AB2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AC2079,=$F$2076*AC2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AD2079,=$F$2076*AD2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AE2079,=$F$2076*AE2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AF2079,=$F$2076*AF2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AG2079,=$F$2076*AG2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AH2079,=$F$2076*AH2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AI2079,=$F$2076*AI2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AJ2079,=$F$2076*AJ2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AK2079,=$F$2076*AK2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AL2079,=$F$2076*AL2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AM2079,=$F$2076*AM2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AN2079,=$F$2076*AN2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AO2079,=$F$2076*AO2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AP2079,=$F$2076*AP2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AQ2079,=$F$2076*AQ2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AR2079,=$F$2076*AR2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AS2079,=$F$2076*AS2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AT2079,=$F$2076*AT2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AU2079,=$F$2076*AU2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AV2079,=$F$2076*AV2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AW2079,=$F$2076*AW2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AX2079,=$F$2076*AX2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AY2079,=$F$2076*AY2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,AZ2079,=$F$2076*AZ2068,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,BA2079,None,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,BB2079,None,18984.938,"Merged tariff = sum of all 13 SPV tariffs, flat (no revenue escalation)"
+TBCB,S2093,=C2069,39923.4,Equity FY27 = FY26 actual + 20% of FY27 capex
+TBCB,S2098,=S2096-S2097,=S2096-S2097+0.8*(S2101+S2104-R2101-R2104),Closing debt FY27 = opening - repayment + 80% of capex
+TBCB,T2098,=T2096-T2097,=T2096-T2097+0.8*(T2101+T2104-S2101-S2104),Closing debt FY28 = opening - repayment + 80% of capex
+TBCB,H1674,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid Dharamjaigarh Transmission Limited
+TBCB,H1730,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid Khavda II B Transmission Limited
+TBCB,H1786,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powegrid ERWR Power Tranmission Limited
+TBCB,H1842,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid KPS3 Tranmission Limited
+TBCB,H1954,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid KPS2 Tranmission Limited
+TBCB,H2010,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid Raipur Pool Dhamtari Station Limited
+TBCB,H2178,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid Khavda RE Transmission Limited
+TBCB,H2234,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - Powergrid Bhadla Sikar
+TBCB,H2458,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - POWERGRID KOPPAL GADAG TRANSMISSION LIMITED
+TBCB,H2683,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - POWERGRID BIDAR TRANSMISSION LIMITED
+TBCB,H2740,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - POWERGRID ANANTHPURAM KURNOOL
+TBCB,H4028,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),note added - POWERGRID Neemrana Bareilly Transmission Ltd
+TBCBsum,AU116,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU117,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU118,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU119,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU120,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU121,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU124,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU125,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU129,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU133,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU134,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+TBCBsum,AU158,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged
+Subsidaries,AM41,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Dharamjaigarh Transmission Limited)
+Subsidaries,AM42,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Khavda II B Transmission Limited)
+Subsidaries,AM43,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powegrid ERWR Power Tranmission Limited)
+Subsidaries,AM44,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid KPS3 Tranmission Limited)
+Subsidaries,AM45,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid KPS2 Tranmission Limited)
+Subsidaries,AM46,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Raipur Pool Dhamtari Station Limited)
+Subsidaries,AM49,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Khavda RE Transmission Limited)
+Subsidaries,AM50,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Bhadla Sikar)
+Subsidaries,AM54,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Koppal Gadag Transmission Limited)
+Subsidaries,AM58,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Bidar Transmission Limited)
+Subsidaries,AM59,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Ananthpuram Kurnool)
+Subsidaries,AM82,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (POWERGRID Neemrana Bareilly Transmission Ltd)
+Subsidaries,AM162,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Dharamjaigarh Transmission Limited)
+Subsidaries,AM163,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Khavda II B Transmission Limited)
+Subsidaries,AM164,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powegrid ERWR Power Tranmission Limited)
+Subsidaries,AM165,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid KPS3 Tranmission Limited)
+Subsidaries,AM166,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid KPS2 Tranmission Limited)
+Subsidaries,AM167,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Raipur Pool Dhamtari Station Limited)
+Subsidaries,AM170,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Khavda RE Transmission Limited)
+Subsidaries,AM171,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Bhadla Sikar)
+Subsidaries,AM175,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Koppal Gadag Transmission Limited)
+Subsidaries,AM179,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Bidar Transmission Limited)
+Subsidaries,AM180,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (Powergrid Ananthpuram Kurnool)
+Subsidaries,AM208,,Merged into POWERGRID Khavda II-C Transmission Ltd w.e.f. 01-Apr-2024 (MCA order 27-Jan-2026),merged SPV flagged (POWERGRID Neemrana Bareilly Transmission Ltd)
