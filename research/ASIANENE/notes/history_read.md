@@ -1,5 +1,5 @@
 # Asian Energy Services (ASIANENE) - history read, Stage 1
-Basis: consolidated, Rs. crore, ACE dump FY09-FY26 (FY05-FY08 standalone, not comparable). Model: ASIANENE_Model_v1.xlsx. Tags: [S] ACE secondary, verified to [A] audited ARs FY16-FY26 on revenue, PBT, PAT, total assets, OCF, closing cash.
+Basis: consolidated, Rs. crore, ACE dump FY09-FY26 (FY05-FY08 standalone, not comparable). Model: ASIANENE_Model_v1.xlsx. v2 (18-Oct-2026): two Stage 1 statements corrected after reading the AR notes in Stage 2 (see FY17 bullet and question 7). Tags: [S] ACE secondary, verified to [A] audited ARs FY16-FY26 on revenue, PBT, PAT, total assets, OCF, closing cash.
 
 ## Phases
 
@@ -17,7 +17,7 @@ Basis: consolidated, Rs. crore, ACE dump FY09-FY26 (FY05-FY08 standalone, not co
 - FY12: EBITDA turns negative (-Rs.6cr); stays negative to FY17.
 - FY14: Rs.108cr capex year, 7.7x depreciation; the asset base that then had to be written down (gross block Rs.173cr in FY16 to Rs.95cr in FY17, part Ind AS deemed cost, part impairment).
 - FY16: net worth Rs.10cr, net debt Rs.101cr. Near-insolvent.
-- FY17: control change and Ind AS. Rs.89cr equity in, Rs.19cr liabilities written back (sits in other income Rs.29cr), Rs.43cr ESOP charge.
+- FY17: control change and Ind AS. Rs.89cr equity in; Rs.30.8cr of bad debts written off and Rs.5.1cr of doubtful-debt provisions; a Rs.19.2cr write-back of trade payables and inter-corporate deposits booked as an exceptional gain (without it the PBT loss would have been Rs.37cr). [Corrected in v2: Stage 1 wrongly called the Rs.43cr of non-cash adjustments an ESOP charge.]
 - FY20: peak margin 24%, PAT Rs.29cr, CFO Rs.89cr, net cash Rs.82cr.
 - FY23: revenue -58%, PAT -Rs.44cr, receivables 362 days. The single most important year to explain.
 - FY26: +70% revenue, mostly inorganic; EBITDA margin down to 12%; net cash of Rs.72cr at FY25 becomes net debt of Rs.11cr (gross debt Rs.158cr).
