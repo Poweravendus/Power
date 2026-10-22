@@ -137,131 +137,136 @@ def group_of(player):
     return player
 
 
-# --- 3. load and label ------------------------------------------------------
-df = pd.read_csv(os.path.join(HERE, "dam_volumes.csv"))
-df["norm"] = df["entity"].map(normalize)
-df["player"] = df["norm"].map(player_of)
-df["group"] = df["player"].map(group_of)
-df["cy"] = df["month"].str[:4]
-yr, mo = df["month"].str[:4].astype(int), df["month"].str[5:7].astype(int)
-fy_start = yr.where(mo >= 4, yr - 1)
-df["fy"] = "FY" + fy_start.astype(str) + "-" + ((fy_start + 1) % 100).astype(str).str.zfill(2)
+def main():
+    # --- 3. load and label ------------------------------------------------------
+    df = pd.read_csv(os.path.join(HERE, "dam_volumes.csv"))
+    df["norm"] = df["entity"].map(normalize)
+    df["player"] = df["norm"].map(player_of)
+    df["group"] = df["player"].map(group_of)
+    df["cy"] = df["month"].str[:4]
+    yr, mo = df["month"].str[:4].astype(int), df["month"].str[5:7].astype(int)
+    fy_start = yr.where(mo >= 4, yr - 1)
+    df["fy"] = "FY" + fy_start.astype(str) + "-" + ((fy_start + 1) % 100).astype(str).str.zfill(2)
 
-first, last = df["month"].min(), df["month"].max()
-CY_LABEL = {y: (f"{y} (Jan-Mar)" if y == last[:4] and last[5:] != "12" else y)
-            for y in sorted(df["cy"].unique())}
-FY_LABEL = {}
-for f in sorted(df["fy"].unique()):
-    months = sorted(df.loc[df["fy"] == f, "month"].unique())
-    FY_LABEL[f] = f if len(months) == 12 else f"{f} ({months[0]} to {months[-1]} only)"
+    first, last = df["month"].min(), df["month"].max()
+    CY_LABEL = {y: (f"{y} (Jan-Mar)" if y == last[:4] and last[5:] != "12" else y)
+                for y in sorted(df["cy"].unique())}
+    FY_LABEL = {}
+    for f in sorted(df["fy"].unique()):
+        months = sorted(df.loc[df["fy"] == f, "month"].unique())
+        FY_LABEL[f] = f if len(months) == 12 else f"{f} ({months[0]} to {months[-1]} only)"
 
-mapping = (df.groupby(["entity", "norm", "player", "group"])
-             .agg(tables=("table", lambda s: "/".join(sorted(set(s)))),
-                  first_month=("month", "min"), last_month=("month", "max"),
-                  months=("month", "count"), total_mu=("volume_mu", "sum"))
-             .reset_index().sort_values("total_mu", ascending=False))
-mapping["renamed"] = (mapping["norm"] != mapping["player"]).map({True: "yes", False: ""})
-
-
-# --- 4. table builders ------------------------------------------------------
-def annual(sub, key, period, labels):
-    piv = sub.pivot_table(index=key, columns=period, values="volume_mu", aggfunc="sum").fillna(0)
-    piv = piv.rename(columns=labels)
-    piv["TOTAL"] = piv.sum(axis=1)
-    piv = piv.sort_values("TOTAL", ascending=False).round(2)
-    piv.index.name = key
-    return piv
+    mapping = (df.groupby(["entity", "norm", "player", "group"])
+                 .agg(tables=("table", lambda s: "/".join(sorted(set(s)))),
+                      first_month=("month", "min"), last_month=("month", "max"),
+                      months=("month", "count"), total_mu=("volume_mu", "sum"))
+                 .reset_index().sort_values("total_mu", ascending=False))
+    mapping["renamed"] = (mapping["norm"] != mapping["player"]).map({True: "yes", False: ""})
 
 
-def top15_fixed(piv, n=15):
-    """Top n by total over the whole period; everything else -> Others."""
-    top = piv.head(n).copy()
-    others = piv.iloc[n:].sum()
-    total = piv.sum()
-    top.loc[f"OTHERS ({len(piv) - n} players)"] = others
-    top.loc["TOTAL"] = total
-    share = (top.div(total, axis=1) * 100).round(2)
-    return top.round(2), share
+    # --- 4. table builders ------------------------------------------------------
+    def annual(sub, key, period, labels):
+        piv = sub.pivot_table(index=key, columns=period, values="volume_mu", aggfunc="sum").fillna(0)
+        piv = piv.rename(columns=labels)
+        piv["TOTAL"] = piv.sum(axis=1)
+        piv = piv.sort_values("TOTAL", ascending=False).round(2)
+        piv.index.name = key
+        return piv
 
 
-def top15_by_year(piv, n=15):
-    """Each period's own top n + Others, stacked vertically."""
-    blocks = []
-    for col in [c for c in piv.columns if c != "TOTAL"]:
-        s = piv[col][piv[col] > 0].sort_values(ascending=False)
-        total = s.sum()
-        rows = [(col, i + 1, name, v, v / total * 100) for i, (name, v) in enumerate(s.head(n).items())]
-        rows.append((col, "", f"OTHERS ({max(len(s) - n, 0)} players)", s.iloc[n:].sum(), s.iloc[n:].sum() / total * 100))
-        rows.append((col, "", "TOTAL", total, 100.0))
-        blocks.append(pd.DataFrame(rows, columns=["period", "rank", "player", "volume_mu", "share_pct"]))
-    return pd.concat(blocks, ignore_index=True).round(2)
+    def top15_fixed(piv, n=15):
+        """Top n by total over the whole period; everything else -> Others."""
+        top = piv.head(n).copy()
+        others = piv.iloc[n:].sum()
+        total = piv.sum()
+        top.loc[f"OTHERS ({len(piv) - n} players)"] = others
+        top.loc["TOTAL"] = total
+        share = (top.div(total, axis=1) * 100).round(2)
+        return top.round(2), share
 
 
-# --- 5. write workbook ------------------------------------------------------
-README = f"""DAM (Day Ahead Market) volumes sold and purchased through power exchanges, by player and year.
-Source: CERC Market Monitoring monthly reports, {first} to {last}, tables 'Volume of Electricity Sold / Purchased in Day Ahead Market through Power Exchanges'.
-Units: MU (million units = GWh). Shares are % of that period's table total.
+    def top15_by_year(piv, n=15):
+        """Each period's own top n + Others, stacked vertically."""
+        blocks = []
+        for col in [c for c in piv.columns if c != "TOTAL"]:
+            s = piv[col][piv[col] > 0].sort_values(ascending=False)
+            total = s.sum()
+            rows = [(col, i + 1, name, v, v / total * 100) for i, (name, v) in enumerate(s.head(n).items())]
+            rows.append((col, "", f"OTHERS ({max(len(s) - n, 0)} players)", s.iloc[n:].sum(), s.iloc[n:].sum() / total * 100))
+            rows.append((col, "", "TOTAL", total, 100.0))
+            blocks.append(pd.DataFrame(rows, columns=["period", "rank", "player", "volume_mu", "share_pct"]))
+        return pd.concat(blocks, ignore_index=True).round(2)
 
-PERIODS
-- CY sheets: calendar years. {CY_LABEL[last[:4]]} is partial.
-- FY sheets: Indian fiscal years (April-March). {list(FY_LABEL.values())[0]} is partial.
 
-PLAYER NAMES
-- CERC prints inconsistent names across report eras (e.g. 'MP' then 'Madhya Pradesh'; 'RPREL' -> 'ARTPP' -> 'Adani Power Limited-Raipur TPP').
-  Renames were merged where the old label stops exactly when the new one starts. See Entity_Mapping (column 'renamed') for every merge; the raw printed name is kept there so any merge can be undone.
-- 'Government of Himachal Pradesh_<plant>' rows (state free-power shares, listed separately from Aug-2024) are folded into HIMACHAL PRADESH; before Aug-2024 they were inside the single state row.
-- Inferred, not certain: AMPS HAZIRA = AM/NS India (Hazira); RENEW_SR_SLR = ReNew Surya Ravi; ADANI_4RE = Adani Renewable Energy Holding Four. Each follows the stop/start timing rule but the acronyms are not expanded in the reports.
-- NOT merged: plant-level rows CERC introduced from Aug-2024 (dozens of Adani Green SPVs, individual NTPC stations, ReNew SPVs). These stay separate players in the Top15 sheets. The *_Group_* sheets roll them up to a parent group so you can see e.g. Adani Green as one seller.
-- KSK Mahanadi is grouped under JSW Energy (acquired 2025) only in the Group sheets.
+    # --- 5. write workbook ------------------------------------------------------
+    README = f"""DAM (Day Ahead Market) volumes sold and purchased through power exchanges, by player and year.
+    Source: CERC Market Monitoring monthly reports, {first} to {last}, tables 'Volume of Electricity Sold / Purchased in Day Ahead Market through Power Exchanges'.
+    Units: MU (million units = GWh). Shares are % of that period's table total.
 
-TOP 15
-- Top15_* sheets rank by total volume over the whole period, then show each year; the same 15 players in every column. Good for trend reading, but a player that only appeared in 2025-26 can rank low.
-- Top15_ByYear_* sheets give each year's own top 15, so new entrants show up.
+    PERIODS
+    - CY sheets: calendar years. {CY_LABEL[last[:4]]} is partial.
+    - FY sheets: Indian fiscal years (April-March). {list(FY_LABEL.values())[0]} is partial.
 
-A player can be both a seller and a buyer (states especially), so Sold and Purchased lists are independent.
-"""
+    PLAYER NAMES
+    - CERC prints inconsistent names across report eras (e.g. 'MP' then 'Madhya Pradesh'; 'RPREL' -> 'ARTPP' -> 'Adani Power Limited-Raipur TPP').
+      Renames were merged where the old label stops exactly when the new one starts. See Entity_Mapping (column 'renamed') for every merge; the raw printed name is kept there so any merge can be undone.
+    - 'Government of Himachal Pradesh_<plant>' rows (state free-power shares, listed separately from Aug-2024) are folded into HIMACHAL PRADESH; before Aug-2024 they were inside the single state row.
+    - Inferred, not certain: AMPS HAZIRA = AM/NS India (Hazira); RENEW_SR_SLR = ReNew Surya Ravi; ADANI_4RE = Adani Renewable Energy Holding Four. Each follows the stop/start timing rule but the acronyms are not expanded in the reports.
+    - NOT merged: plant-level rows CERC introduced from Aug-2024 (dozens of Adani Green SPVs, individual NTPC stations, ReNew SPVs). These stay separate players in the Top15 sheets. The *_Group_* sheets roll them up to a parent group so you can see e.g. Adani Green as one seller.
+    - KSK Mahanadi is grouped under JSW Energy (acquired 2025) only in the Group sheets.
 
-out = os.path.join(HERE, "dam_annual_analysis.xlsx")
-with pd.ExcelWriter(out, engine="openpyxl") as xw:
-    pd.DataFrame({"README": README.strip().split("\n")}).to_excel(xw, sheet_name="README", index=False)
-    mapping.to_excel(xw, sheet_name="Entity_Mapping", index=False)
-    for basis, period, labels in (("CY", "cy", CY_LABEL), ("FY", "fy", FY_LABEL)):
-        for kind in ("sold", "purchased"):
-            sub = df[df["table"] == kind]
-            K = kind.title()
-            piv = annual(sub, "player", period, labels)
-            piv.to_excel(xw, sheet_name=f"{K}_Annual_{basis}")
-            top, share = top15_fixed(piv)
-            sh = f"{K}_Top15_{basis}"
-            top.to_excel(xw, sheet_name=sh, startrow=1)
-            share.to_excel(xw, sheet_name=sh, startrow=len(top) + 5)
-            ws = xw.book[sh]
-            ws.cell(row=1, column=1, value=f"{K.upper()} in DAM - top 15 players by total {basis} volume (MU)").font = Font(bold=True)
-            ws.cell(row=len(top) + 5, column=1, value="Share of total (%)").font = Font(bold=True)
-            top15_by_year(piv).to_excel(xw, sheet_name=f"{K}_Top15_ByYear_{basis}", index=False)
-            gpiv = annual(sub, "group", period, labels)
-            gtop, gshare = top15_fixed(gpiv)
-            sh = f"{K}_Top15_Group_{basis}"
-            gtop.to_excel(xw, sheet_name=sh, startrow=1)
-            gshare.to_excel(xw, sheet_name=sh, startrow=len(gtop) + 5)
-            ws = xw.book[sh]
-            ws.cell(row=1, column=1, value=f"{K.upper()} in DAM - top 15 parent groups by total {basis} volume (MU)").font = Font(bold=True)
-            ws.cell(row=len(gtop) + 5, column=1, value="Share of total (%)").font = Font(bold=True)
+    TOP 15
+    - Top15_* sheets rank by total volume over the whole period, then show each year; the same 15 players in every column. Good for trend reading, but a player that only appeared in 2025-26 can rank low.
+    - Top15_ByYear_* sheets give each year's own top 15, so new entrants show up.
 
-    # formatting
-    bold = Font(bold=True)
-    for ws in xw.book.worksheets:
-        ws.freeze_panes = "B2" if ws.title not in ("README",) else None
-        for col in ws.columns:
-            width = max((len(str(c.value)) for c in col[:300] if c.value is not None), default=8)
-            ws.column_dimensions[get_column_letter(col[0].column)].width = min(max(10, width + 2), 70)
-            for c in col:
-                if isinstance(c.value, float):
-                    c.number_format = "#,##0.00"
-        for row in ws.iter_rows():
-            if row[0].value is not None and str(row[0].value).startswith(("TOTAL", "OTHERS")):
-                for c in row:
-                    c.font = bold
-print("wrote", out)
-print("players:", df.groupby("table")["player"].nunique().to_dict(),
-      " raw names:", df.groupby("table")["entity"].nunique().to_dict())
+    A player can be both a seller and a buyer (states especially), so Sold and Purchased lists are independent.
+    """
+
+    out = os.path.join(HERE, "dam_annual_analysis.xlsx")
+    with pd.ExcelWriter(out, engine="openpyxl") as xw:
+        pd.DataFrame({"README": README.strip().split("\n")}).to_excel(xw, sheet_name="README", index=False)
+        mapping.to_excel(xw, sheet_name="Entity_Mapping", index=False)
+        for basis, period, labels in (("CY", "cy", CY_LABEL), ("FY", "fy", FY_LABEL)):
+            for kind in ("sold", "purchased"):
+                sub = df[df["table"] == kind]
+                K = kind.title()
+                piv = annual(sub, "player", period, labels)
+                piv.to_excel(xw, sheet_name=f"{K}_Annual_{basis}")
+                top, share = top15_fixed(piv)
+                sh = f"{K}_Top15_{basis}"
+                top.to_excel(xw, sheet_name=sh, startrow=1)
+                share.to_excel(xw, sheet_name=sh, startrow=len(top) + 5)
+                ws = xw.book[sh]
+                ws.cell(row=1, column=1, value=f"{K.upper()} in DAM - top 15 players by total {basis} volume (MU)").font = Font(bold=True)
+                ws.cell(row=len(top) + 5, column=1, value="Share of total (%)").font = Font(bold=True)
+                top15_by_year(piv).to_excel(xw, sheet_name=f"{K}_Top15_ByYear_{basis}", index=False)
+                gpiv = annual(sub, "group", period, labels)
+                gtop, gshare = top15_fixed(gpiv)
+                sh = f"{K}_Top15_Group_{basis}"
+                gtop.to_excel(xw, sheet_name=sh, startrow=1)
+                gshare.to_excel(xw, sheet_name=sh, startrow=len(gtop) + 5)
+                ws = xw.book[sh]
+                ws.cell(row=1, column=1, value=f"{K.upper()} in DAM - top 15 parent groups by total {basis} volume (MU)").font = Font(bold=True)
+                ws.cell(row=len(gtop) + 5, column=1, value="Share of total (%)").font = Font(bold=True)
+
+        # formatting
+        bold = Font(bold=True)
+        for ws in xw.book.worksheets:
+            ws.freeze_panes = "B2" if ws.title not in ("README",) else None
+            for col in ws.columns:
+                width = max((len(str(c.value)) for c in col[:300] if c.value is not None), default=8)
+                ws.column_dimensions[get_column_letter(col[0].column)].width = min(max(10, width + 2), 70)
+                for c in col:
+                    if isinstance(c.value, float):
+                        c.number_format = "#,##0.00"
+            for row in ws.iter_rows():
+                if row[0].value is not None and str(row[0].value).startswith(("TOTAL", "OTHERS")):
+                    for c in row:
+                        c.font = bold
+    print("wrote", out)
+    print("players:", df.groupby("table")["player"].nunique().to_dict(),
+          " raw names:", df.groupby("table")["entity"].nunique().to_dict())
+
+
+if __name__ == "__main__":
+    main()
