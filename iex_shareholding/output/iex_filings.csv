@@ -1,0 +1,23 @@
+quarter_end,filing_type,nse_broadcast_date,sebi_taxonomy_version,total_shares,kmp_disclosed,xbrl_url,raw_file
+2021-09-30,quarterly,06-JAN-2022 21:06:51,2020-09-30,299556511,no,https://nsearchives.nseindia.com/corporate/xbrl/SHP_161756_531781_13102021050603_WEB.xml,SHP_30-SEP-2021.xml
+2021-12-08,event-based,07-JAN-2022 03:25:01,2020-09-30,898669533,no,https://nsearchives.nseindia.com/corporate/xbrl/SHP_163321_568552_08122021072417_WEB.xml,SHP_08-DEC-2021.xml
+2021-12-31,quarterly,14-JAN-2022 16:10:15,2020-09-30,898669533,no,https://nsearchives.nseindia.com/corporate/xbrl/SHP_164565_587846_14012022034811_WEB.xml,SHP_31-DEC-2021.xml
+2022-03-31,quarterly,18-APR-2022 17:40:30,2020-09-30,898669533,no,https://nsearchives.nseindia.com/corporate/xbrl/SHP_167415_639025_18042022052217_WEB.xml,SHP_31-MAR-2022.xml
+2022-06-30,quarterly,14-JUL-2022 17:10:13,2020-09-30,898669533,no,https://nsearchives.nseindia.com/corporate/xbrl/SHP_169428_689118_14072022044221_WEB.xml,SHP_30-JUN-2022.xml
+2022-09-30,quarterly,28-FEB-2023 18:40:07,2022-09-30,898669533,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_171700_732226_18102022061108_WEB.xml,SHP_30-SEP-2022.xml
+2022-12-31,quarterly,21-JAN-2023 21:10:03,2022-09-30,898669533,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_175533_777351_21012023085809_WEB.xml,SHP_31-DEC-2022.xml
+2023-03-31,quarterly,23-MAY-2023 15:19:59,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_177925_830126_21042023020623_WEB.xml,SHP_31-MAR-2023.xml
+2023-06-30,quarterly,18-JUL-2023 17:22:22,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_179495_890616_18072023052222_WEB.xml,SHP_30-JUN-2023.xml
+2023-09-30,quarterly,17-OCT-2023 12:41:44,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_181832_955110_17102023124144_WEB.xml,SHP_30-SEP-2023.xml
+2023-12-31,quarterly,15-JAN-2024 16:22:30,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_184207_1021256_15012024042230_WEB.xml,SHP_31-DEC-2023.xml
+2024-03-31,quarterly,18-APR-2024 11:11:03,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_187391_1097334_18042024111102_WEB.xml,SHP_31-MAR-2024.xml
+2024-06-30,quarterly,17-JUL-2024 15:55:43,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_189813_1189421_17072024035542_WEB.xml,SHP_30-JUN-2024.xml
+2024-09-30,quarterly,16-OCT-2024 12:33:11,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_192216_1271778_16102024123310_WEB.xml,SHP_30-SEP-2024.xml
+2024-12-31,quarterly,20-JAN-2025 11:30:17,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_195406_1351617_20012025113016_WEB.xml,SHP_31-DEC-2024.xml
+2025-03-31,quarterly,16-APR-2025 18:31:30,2022-09-30,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_197523_1416276_16042025063129_WEB.xml,SHP_31-MAR-2025.xml
+2025-06-30,quarterly,18-JUL-2025 14:19:22,2025-05-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1486355_18072025021918_WEB.xml,SHP_30-JUN-2025.xml
+2025-09-30,quarterly,15-OCT-2025 16:07:48,2025-05-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1548891_15102025040745_WEB.xml,SHP_30-SEP-2025.xml
+2025-12-31,quarterly,20-JAN-2026 16:40:24,2025-10-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1605694_20012026044022_WEB.xml,SHP_31-DEC-2025.xml
+2026-03-31,quarterly,16-APR-2026 10:55:08,2025-10-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1651836_16042026105505_WEB.xml,SHP_31-MAR-2026.xml
+2026-06-30,quarterly,20-JUL-2026 18:05:45,2025-10-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1697238_20072026060542_WEB.xml,SHP_30-JUN-2026.xml
+2026-09-30,quarterly,19-OCT-2026 13:31:43,2025-10-31,891692735,yes,https://nsearchives.nseindia.com/corporate/xbrl/SHP_1741298_19102026013139_WEB.xml,SHP_30-SEP-2026.xml
