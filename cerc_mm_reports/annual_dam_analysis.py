@@ -49,7 +49,7 @@ ENTITY_ALIASES = [
     (r"^TEESTA (STG ?3|HEP)|TEESTA URJA|TEESTA.?III", "Teesta Urja"),
     (r"^JAYPEE NIGRIE", "Jaypee Nigrie"),
     (r"^JINDAL STAGE-II|^JINDAL POWER$|^JINDAL POWER LIMITED", "Jindal Power"),
-    (r"^ESSAR POWER|^MAHAN ENERGEN", "Mahan Energen (ex-Essar Power MP)"),
+    (r"^ESSAR POWER|^MAHAN ENERGEN", "Adani Power"),   # Mahan plant: Essar Power MP until Mar-2022, Adani since; merged on current ownership
     (r"^JITPL|^JINDAL INDIA (THERMAL )?POWER", "Jindal India Thermal Power"),
     (r"^DCPP$|JINDAL STEEL & POWER", "Jindal Steel & Power"),
     (r"^DB POWER|^D B POWER", "DB Power"),
@@ -111,8 +111,7 @@ ENTITY_ALIASES = [
 
 # --- 2. player -> parent group (only where a group is obvious from the name) --
 GROUP_RULES = [
-    (r"^Adani Power|^Mahan Energen", "Adani Power (incl. Mahan Energen)"),
-    (r"^JSW|^KSK Mahanadi", "JSW Energy (incl. Utkal, Hydro, KSK Mahanadi)"),
+        (r"^JSW|^KSK Mahanadi", "JSW Energy (incl. Utkal, Hydro, KSK Mahanadi)"),
     (r"^GMR", "GMR Energy"),
     (r"^Jindal Power|^Jindal Steel", "Jindal Power + JSPL"),
 ]

@@ -96,6 +96,7 @@ CHECKS BUILT IN
 NAME MAPPING NOTES
 - CERC changed naming conventions several times (notably Aug-2024). Renames merged only where the old label stops exactly when the new one starts (e.g. MP -> Madhya Pradesh; RPREL -> ARTPP -> Adani Power Raipur TPP). 'renamed' column in Mapping flags each.
 - 'Government of Himachal Pradesh_<plant>' rows (state free-power shares shown separately from Aug-2024) are mapped into HIMACHAL PRADESH; before Aug-2024 they sat inside the single state row.
+- Adani Power includes the Mahan plant for the whole period, although it was Essar Power MP until Mar-2022 (merged on current ownership, by request).
 - Inferred from timing only: AMPS HAZIRA = AM/NS India (Hazira); RENEW_SR_SLR = ReNew Surya Ravi; ADANI_4RE = Adani Renewable Energy Holding Four.
 - Plant-level rows introduced from Aug-2024 (Adani Green SPVs, NTPC stations, ReNew SPVs) are NOT merged at Player level; the Group sheets roll them up.
 - Workbook is set to recalculate fully on open. If a sheet shows zeros, press Ctrl+Alt+F9 in Excel.
