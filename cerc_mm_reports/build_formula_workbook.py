@@ -33,7 +33,7 @@ df["norm"] = df["entity"].map(normalize)
 df["player"] = df["norm"].map(player_of)
 df["group"] = df["player"].map(group_of)
 yr, mo = df["month"].str[:4].astype(int), df["month"].str[5:7].astype(int)
-df["cy"] = yr
+df["cy"] = "CY" + yr.astype(str).str[2:]
 fs = yr.where(mo >= 4, yr - 1)
 df["fy"] = "FY" + fs.astype(str) + "-" + ((fs + 1) % 100).astype(str).str.zfill(2)
 first, last = df["month"].min(), df["month"].max()
@@ -41,12 +41,18 @@ first, last = df["month"].min(), df["month"].max()
 CY = sorted(df["cy"].unique())
 FY = sorted(df["fy"].unique())
 PERIODS = {"CY": ("cy", CY), "FY": ("fy", FY)}
-partial = {}
+partial, LABEL = {}, {}
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+KEYLEN = {"CY": 4, "FY": 9}          # SUMIFS criteria = LEFT(header, KEYLEN)
 for basis, (col, vals) in PERIODS.items():
     for v in vals:
         m = sorted(df.loc[df[col] == v, "month"].unique())
+        LABEL[(basis, v)] = v
         if len(m) < 12:
             partial[(basis, v)] = f"{m[0]} to {m[-1]} only"
+            last_mon = MONTHS[int(m[-1][5:]) - 1]
+            first_mon = MONTHS[int(m[0][5:]) - 1]
+            LABEL[(basis, v)] = f"{v} (upto {last_mon})" if m[0][5:] in ("01", "04") else f"{v} ({first_mon} to {last_mon})"
 
 BOLD = Font(bold=True)
 HEAD = PatternFill("solid", fgColor="DDEBF7")
@@ -85,8 +91,8 @@ HOW THE SHEETS CHAIN (no pasted numbers beyond the first two)
 6. AnnualGroup_* / Top15Group_*     - same as 3-4 but by parent Group (Adani Green SPVs, NTPC stations etc. rolled up).
 
 PERIODS
-- CY = calendar year. FY = April-March fiscal year.
-- Partial periods: {"; ".join(f"{b} {v}: {t}" for (b, v), t in partial.items())}.
+- CY = calendar year (CY20 = Jan-Dec 2020). FY = April-March fiscal year.
+- Partial periods are marked in the column header: {"; ".join(f"{LABEL[(b, v)]} = {t}" for (b, v), t in partial.items())}.
 
 CHECKS BUILT IN
 - Every Annual sheet has a 'Check vs Monthly' row: sheet total minus SUMIFS of the monthly sheet for that year. Shows OK when zero.
@@ -140,7 +146,7 @@ for kind in ("sold", "purchased"):
                    "Player", "Group", "volume_mu", "pct_of_table"])
     for i, r in enumerate(sub.itertuples(index=False), 2):
         ws.cell(row=i, column=1, value=r.month)
-        ws.cell(row=i, column=2, value=f"=VALUE(LEFT(A{i},4))")
+        ws.cell(row=i, column=2, value=f'="CY"&RIGHT(LEFT(A{i},4),2)')
         ws.cell(row=i, column=3, value=f'="FY"&IF(VALUE(MID(A{i},6,2))>=4,VALUE(LEFT(A{i},4)),VALUE(LEFT(A{i},4))-1)'
                                        f'&"-"&TEXT(MOD(IF(VALUE(MID(A{i},6,2))>=4,VALUE(LEFT(A{i},4)),VALUE(LEFT(A{i},4))-1)+1,100),"00")')
         ws.cell(row=i, column=4, value=r.entity)
@@ -171,18 +177,16 @@ def annual_sheet(sheet, kind, basis, level):
     cR = cT + 1                      # rank on total
     cY0 = cR + 1                     # first per-year rank col
     ws.cell(row=1, column=1, value=f"{kind.upper()} in DAM by {level} and {basis} (MU). Formulas: SUMIFS over {mname}.").font = BOLD
-    for j, v in enumerate(vals):
-        if (basis, v) in partial:
-            ws.cell(row=1, column=2 + j, value=partial[(basis, v)]).font = Font(italic=True, color="C00000")
-    header(ws, 2, [level.title()] + list(vals) + ["TOTAL", "Rank (TOTAL)"] + [f"Rank {v}" for v in vals])
+    klen = KEYLEN[basis]
+    labels = [LABEL[(basis, v)] for v in vals]
+    header(ws, 2, [level.title()] + labels + ["TOTAL", "Rank (TOTAL)"] + [f"Rank {l}" for l in labels])
     r0, r1 = 3, 2 + len(keys)
     for i, k in enumerate(keys, r0):
         ws.cell(row=i, column=1, value=k)
         for j, v in enumerate(vals):
             c = L(2 + j)
-            crit = v if isinstance(v, (int, float)) else f'"{v}"'
             ws.cell(row=i, column=2 + j,
-                    value=f"=ROUND(SUMIFS({mname}!$H$2:$H${mn},{mname}!${keycol}$2:${keycol}${mn},$A{i},{mname}!${ycol}$2:${ycol}${mn},{c}$2),4)"
+                    value=f"=ROUND(SUMIFS({mname}!$H$2:$H${mn},{mname}!${keycol}$2:${keycol}${mn},$A{i},{mname}!${ycol}$2:${ycol}${mn},LEFT({c}$2,{klen})),4)"
                     ).number_format = NUM
         t = L(cT)
         ws.cell(row=i, column=cT, value=f"=ROUND(SUM({L(2)}{i}:{L(1 + ny)}{i}),4)").number_format = NUM
@@ -202,14 +206,14 @@ def annual_sheet(sheet, kind, basis, level):
     for j, v in enumerate(vals):
         c = L(2 + j)
         ws.cell(row=rc, column=2 + j,
-                value=f'=IF(ABS({c}{rt}-SUMIFS({mname}!$H$2:$H${mn},{mname}!${ycol}$2:${ycol}${mn},{c}$2))<0.01,"OK","MISMATCH")')
+                value=f'=IF(ABS({c}{rt}-SUMIFS({mname}!$H$2:$H${mn},{mname}!${ycol}$2:${ycol}${mn},LEFT({c}$2,{klen})))<0.01,"OK","MISMATCH")')
     t = L(cT)
     ws.cell(row=rc, column=cT, value=f'=IF(ABS({t}{rt}-SUM({mname}!$H$2:$H${mn}))<0.01,"OK","MISMATCH")')
     ws.freeze_panes = "B3"
     widths(ws, {"A": 50})
     for j in range(2, cY0 + ny):
         ws.column_dimensions[L(j)].width = 13
-    return dict(sheet=sheet, r0=r0, r1=r1, rt=rt, cT=cT, cR=cR, cY0=cY0, ny=ny, vals=vals, nkeys=len(keys))
+    return dict(sheet=sheet, r0=r0, r1=r1, rt=rt, cT=cT, cR=cR, cY0=cY0, ny=ny, vals=labels, nkeys=len(keys))
 
 
 def top15_sheet(sheet, kind, a, level, n=15):
@@ -251,9 +255,6 @@ def top15_sheet(sheet, kind, a, level, n=15):
         for j in range(ny + 1):
             c = L(3 + j)
             ws.cell(row=r, column=3 + j, value=f"=IF({c}${rt}=0,0,{c}{src}/{c}${rt}*100)").number_format = PCT
-    for j, v in enumerate(vals):
-        if (a["sheet"].endswith("CY") or a["sheet"].endswith("FY")) and (("CY" if a["sheet"].endswith("CY") else "FY"), v) in partial:
-            ws.cell(row=1, column=3 + j, value=partial[(("CY" if a["sheet"].endswith("CY") else "FY"), v)]).font = Font(italic=True, color="C00000")
     ws.freeze_panes = "C3"
     widths(ws, {"A": 7, "B": 50})
     for j in range(ny + 1):
@@ -269,7 +270,7 @@ def top15_by_year_sheet(sheet, kind, a, n=15):
         c0 = 1 + j * 5                       # block start column
         vcol = L(2 + j)                       # value column in Annual
         rcol = L(a["cY0"] + j)                # per-year rank column in Annual
-        lab = f"{v}" + (f"  ({partial[('CY' if A.endswith('CY') else 'FY', v)]})" if ('CY' if A.endswith('CY') else 'FY', v) in partial else "")
+        lab = v
         ws.cell(row=2, column=c0, value=lab).font = BOLD
         header(ws, 3, [None] * (c0 - 1) + ["Rank", "Player", "MU", "% share"])
         for i in range(n):

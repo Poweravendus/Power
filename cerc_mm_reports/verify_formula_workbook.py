@@ -10,7 +10,7 @@ import annual_dam_analysis as A
 HERE = os.path.dirname(os.path.abspath(__file__))
 df = pd.read_csv(os.path.join(HERE, "dam_volumes.csv"))
 df["norm"] = df.entity.map(A.normalize); df["player"] = df.norm.map(A.player_of); df["group"] = df.player.map(A.group_of)
-yr = df.month.str[:4].astype(int); mo = df.month.str[5:7].astype(int); df["cy"] = yr
+yr = df.month.str[:4].astype(int); mo = df.month.str[5:7].astype(int); df["cy"] = "CY" + yr.astype(str).str[2:]
 fs = yr.where(mo >= 4, yr - 1); df["fy"] = "FY" + fs.astype(str) + "-" + ((fs + 1) % 100).astype(str).str.zfill(2)
 wb = load_workbook(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "dam_annual_analysis.xlsx"), data_only=True)
 errs = checked = 0
@@ -29,7 +29,8 @@ for basis, col in [("CY", "cy"), ("FY", "fy")]:
     for kind in ["sold", "purchased"]:
         for level, pre in [("player", "Annual"), ("group", "AnnualGroup")]:
             ws = wb[f"{pre}_{kind.title()}_{basis}"]; rows = R(ws)
-            hdr = rows[1]; vals = [h for h in hdr[1:] if h not in (None, "TOTAL") and not str(h).startswith("Rank")]
+            hdr = rows[1]; klen = 4 if basis == "CY" else 9
+            vals = [h[:klen] for h in hdr[1:] if h not in (None, "TOTAL") and not str(h).startswith("Rank")]
             exp = df[df.table == kind].pivot_table(index=level, columns=col, values="volume_mu", aggfunc="sum").fillna(0)
             body = [r for r in rows[2:] if r[0] not in (None, "TOTAL") and not str(r[0]).startswith("Check")]
             for r in body:
