@@ -26,95 +26,112 @@ from openpyxl.utils import get_column_letter
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # --- 1. printed name -> player (first matching pattern wins) -----------------
-# Renames were identified from non-overlapping active periods in the data
-# (old label's last month is immediately followed by the new label's first).
+# Player = clean company / state name. Plants, stages and SPVs of the same company
+# are merged. Renames were identified from non-overlapping active periods in the
+# data (old label's last month is immediately followed by the new label's first).
 ENTITY_ALIASES = [
-    (r"^MP$", "MADHYA PRADESH"),
-    (r"^J ?& ?K$|^JAMMU ?(&|AND)? ?KASHMIR$", "JAMMU & KASHMIR"),
-    (r"^CHANDIGARH", "CHANDIGARH"),
-    (r"^GOA( WR)?$", "GOA"),
-    (r"^PONDICHERRY|^PUDUCHERRY", "PUDUCHERRY"),
-    (r"^DD ?& ?DNH$|^DADRA & NAGAR HAVELI$|^DAMAN AND DIU|^DAMAN & DIU", "DNH & DD (UT)"),
-    (r"^DVC$|^DAMODAR VALLEY", "DVC"),
-    (r"^GOVERNMENT OF HIMACHAL PRADESH", "HIMACHAL PRADESH"),   # state free-power shares, listed separately from Aug-2024
-    (r"^NEPAL|^NEA\b|^NEP$", "NEPAL (NEA / NVVN)"),
-    (r"DGPCL|DRUK GREEN|BASOCHHU", "DRUK GREEN POWER (BHUTAN)"),
-    (r"^SEMBCORP|^SEIL ENERGY|^THERMAL POWERTECH", "SEIL ENERGY INDIA (EX-SEMBCORP)"),
-    (r"^TEESTA (STG ?3|HEP)|TEESTA URJA|TEESTA.?III", "TEESTA URJA (TEESTA-III HEP)"),
-    (r"^JAYPEE NIGRIE", "JAYPEE NIGRIE STPP"),
-    (r"^JINDAL STAGE-II|^JINDAL POWER LIMITED ?, ?STAGE-2", "JINDAL POWER LTD - STAGE 2"),
-    (r"^JINDAL POWER$|^JINDAL POWER LIMITED ?, ?STAGE-1", "JINDAL POWER LTD - STAGE 1"),
-    (r"^ESSAR POWER|^MAHAN ENERGEN", "MAHAN ENERGEN (EX-ESSAR POWER MP)"),
-    (r"^JITPL|^JINDAL INDIA (THERMAL )?POWER", "JINDAL INDIA THERMAL POWER (JITPL)"),
-    (r"^DB POWER|^D B POWER", "DB POWER"),
-    (r"^GMR CHATT?ISGARH|^RPREL|^ARTPP|RAIPUR TPP", "ADANI POWER - RAIPUR TPP (EX-GMR CHHATTISGARH)"),
-    (r"^REGL$|^RAIGARH_ADANI|RAIGARH TPP", "ADANI POWER - RAIGARH TPP (EX-REGL)"),
-    (r"^MB POWER", "MB POWER (MP)"),
-    (r"^ACBIL|^ACB \(INDIA\)", "ACB (INDIA)"),
-    (r"^RKM POWER|^R\.?K\.?M POWERGEN", "RKM POWERGEN"),
-    (r"^KARCHAM WANGTOO", "KARCHAM WANGTOO HEP"),
-    (r"^AD HYDRO", "AD HYDRO POWER"),
-    (r"^DCPP$|JINDAL STEEL & POWER.*DCPP", "JSPL - DCPP"),
-    (r"^NTPC STATIONS|^NTPC\b|^SIMHADRI (FSP|FLOATING)|^RAMAGUNDAM FLOATING", "NTPC STATIONS"),
-    (r"^NPGC|^NABINAGAR POWER", "NPGC NABINAGAR"),
-    (r"^NTPP BRBCL|^BRBCL", "BRBCL NABINAGAR"),
-    (r"^NEEPCO|^KAMENG HYDRO|^AGARTALA GAS|^ASSAM GAS BASED", "NEEPCO STATIONS"),
-    (r"^SKS POWER", "SKS POWER"),
-    (r"^MARUTI (COAL|CLEAN)", "MARUTI CLEAN COAL & POWER"),
-    (r"^DIKCHU", "DIKCHU HEP"),
-    (r"^SHREE CEMENT", "SHREE CEMENT"),
-    (r"^SIMHAPURI", "SIMHAPURI ENERGY"),
-    (r"^COASTGEN|^COASTAL ENERGEN", "COASTAL ENERGEN"),
-    (r"^EMCO$|^GMR WARORA", "GMR WARORA (EX-EMCO)"),
-    (r"^GMR KAMALANGA", "GMR KAMALANGA"),
+    # states and UTs
+    (r"^MP$|^MADHYA PRADESH$", "Madhya Pradesh"),
+    (r"^J ?& ?K$|^JAMMU ?(&|AND)? ?KASHMIR$", "Jammu & Kashmir"),
+    (r"^CHANDIGARH", "Chandigarh"),
+    (r"^GOA( WR| SR)?$", "Goa"),
+    (r"^PONDICHERRY|^PUDUCHERRY", "Puducherry"),
+    (r"^DD ?& ?DNH$|^DADRA & NAGAR HAVELI$|^DAMAN AND DIU|^DAMAN & DIU", "DNH & Daman Diu (UT)"),
+    (r"^GOVERNMENT OF HIMACHAL PRADESH|^HIMACHAL PRADESH$", "Himachal Pradesh"),   # state free-power shares listed separately from Aug-2024
+    (r"^UTTAR PRADESH$", "Uttar Pradesh"), (r"^WEST BENGAL$", "West Bengal"), (r"^TAMIL NADU$", "Tamil Nadu"),
+    (r"^ANDHRA PRADESH$", "Andhra Pradesh"), (r"^ARUNACHAL PRADESH$", "Arunachal Pradesh"),
+    (r"^DADRA|^DAMAN", "DNH & Daman Diu (UT)"),
+    # cross-border
+    (r"^NEPAL|^NEA\b|^NEP$", "Nepal (NEA / NVVN)"),
+    (r"DGPCL|DRUK GREEN|BASOCHHU", "Druk Green Power (Bhutan)"),
+    # generators / traders / consumers
+    (r"^SEMBCORP|^SEIL ENERGY|^THERMAL POWERTECH", "SEIL Energy (ex-Sembcorp)"),
+    (r"^TEESTA (STG ?3|HEP)|TEESTA URJA|TEESTA.?III", "Teesta Urja"),
+    (r"^JAYPEE NIGRIE", "Jaypee Nigrie"),
+    (r"^JINDAL STAGE-II|^JINDAL POWER$|^JINDAL POWER LIMITED", "Jindal Power"),
+    (r"^ESSAR POWER|^MAHAN ENERGEN", "Mahan Energen (ex-Essar Power MP)"),
+    (r"^JITPL|^JINDAL INDIA (THERMAL )?POWER", "Jindal India Thermal Power"),
+    (r"^DCPP$|JINDAL STEEL & POWER", "Jindal Steel & Power"),
+    (r"^DB POWER|^D B POWER", "DB Power"),
+    (r"^GMR CHATT?ISGARH|^RPREL|^ARTPP|^REGL$|^RAIGARH_ADANI|^ADANI POWER", "Adani Power"),
+    (r"ADANI (GREEN|RENEWABLE|SOLAR|WIND|HYBRID)|^ADANI_|^ASEJTL", "Adani Green Energy"),
+    (r"^ADANI PORTS", "Adani Ports & SEZ"),
+    (r"^AMBUJA", "Ambuja Cements"),
+    (r"^MB POWER", "MB Power"),
+    (r"^ACBIL|^ACB \(INDIA\)", "ACB India"),
+    (r"^RKM POWER|^R\.?K\.?M POWERGEN", "RKM Powergen"),
+    (r"^KARCHAM WANGTOO|^BASPA", "JSW Hydro (Karcham Wangtoo)"),
+    (r"^AD HYDRO", "AD Hydro Power"),
+    (r"^NTPC|^SIMHADRI (FSP|FLOATING)|^RAMAGUNDAM FLOATING|^NPGC|^NABINAGAR POWER|^NTPP BRBCL|^BRBCL|^KANTI BIJLEE|^IGSTPS|^NTECL|^BONGAIGAON", "NTPC"),
+    (r"^NEEPCO|^KAMENG HYDRO|^AGARTALA GAS|^ASSAM GAS BASED", "NEEPCO"),
+    (r"^NLC$|^NLC INDIA|^NTPL$|^NLC TAMIL ?NADU", "NLC India"),
+    (r"^SKS POWER", "SKS Power"),
+    (r"^MARUTI (COAL|CLEAN)", "Maruti Clean Coal"),
+    (r"^DIKCHU", "Dikchu HEP"),
+    (r"^SHREE CEMENT", "Shree Cement"),
+    (r"^SIMHAPURI", "Simhapuri Energy"),
+    (r"^COASTGEN|^COASTAL ENERGEN", "Coastal Energen"),
+    (r"^EMCO$|^GMR WARORA", "GMR Warora (ex-EMCO)"),
+    (r"^GMR KAMALANGA", "GMR Kamalanga"),
     (r"^BALCO|^BHARAT ALUMINIUM", "BALCO"),
-    (r"^JHABUA POWER", "JHABUA POWER"),
-    (r"^IL&FS", "ITPCL (IL&FS TAMIL NADU)"),
-    (r"^DHARIWAL", "DHARIWAL INFRASTRUCTURE"),
-    (r"^ONGC PALATANA|^PALATANA", "OTPC PALATANA"),
-    (r"^NLC$|^NLC INDIA", "NLC INDIA"),
-    (r"^NTPL$|^NLC TAMIL ?NADU", "NTPL (NLC TAMIL NADU POWER)"),
-    (r"^RENEW_SPRATAP|^RENEW SURYA PRATAP", "RENEW SURYA PRATAP"),
-    (r"^RENEW_SR_SLR|^RENEW SURYA RAVI", "RENEW SURYA RAVI"),
-    (r"^ASEJTL|^ADANI SOLAR ENERGY JAISALMER TWO", "ADANI SOLAR ENERGY JAISALMER TWO"),
-    (r"^ADANI_4RE|^ADANI RENEWABLE ENERGY HOLDING FOUR", "ADANI RENEWABLE ENERGY HOLDING FOUR"),
-    (r"^ADEPT", "ADEPT RENEWABLE TECHNOLOGIES"),
-    (r"^AMPS HAZIRA|^AMNSIL|^ARCELORMITTAL|^ESSAR STEEL", "AM/NS INDIA (HAZIRA)"),
-    (r"^NCR ALLAHABAD|^NORTH CENTRAL RAILWAY|^RAIL$", "INDIAN RAILWAYS (NCR)"),
-    (r"^MEENAKSHI", "MEENAKSHI ENERGY"),
-    (r"^GREENKO AP01", "GREENKO AP01 IREP (PSP)"),
-    (r"^IND BARATH ENERGY UTKAL|^JSW ENERGY \(UTKAL\)", "JSW ENERGY UTKAL (EX-IND BARATH)"),
-    (r"^ADHUNIK", "ADHUNIK POWER"),
-    (r"^KSK MAHANADI", "KSK MAHANADI"),
+    (r"^JHABUA POWER", "Jhabua Power"),
+    (r"^IL&FS", "ITPCL (IL&FS Tamil Nadu)"),
+    (r"^DHARIWAL", "Dhariwal Infrastructure"),
+    (r"^ONGC PALATANA|^PALATANA", "OTPC Palatana"),
+    (r"^RENEW|^RENEW_", "ReNew Power"),
+    (r"^ADEPT", "Adept Renewable"),
+    (r"^AMPS HAZIRA|^AMNSIL|^ARCELORMITTAL|^ESSAR STEEL", "AM/NS India (Hazira)"),
+    (r"^NCR ALLAHABAD|^NORTH CENTRAL RAILWAY|^RAIL$", "Indian Railways"),
+    (r"^MEENAKSHI", "Meenakshi Energy"),
+    (r"^GREENKO|BUDHIL", "Greenko"),
+    (r"^IND BARATH ENERGY UTKAL|^JSW ENERGY \(UTKAL\)", "JSW Energy (Utkal, ex-Ind Barath)"),
+    (r"^KSK MAHANADI", "KSK Mahanadi"),
+    (r"^ADHUNIK", "Adhunik Power"),
+    (r"^DVC$|^DAMODAR VALLEY", "DVC"),
+    (r"^DGEN", "Torrent Power (DGEN)"),
+    (r"^SPECTRUM", "Spectrum Power"),
+    (r"^JUNIPER", "Juniper Green Energy"),
+    (r"^AMP ENERGY", "Amp Energy"),
+    (r"^SERENTICA", "Serentica Renewables"),
+    (r"^SPRNG", "Sprng Energy"),
+    (r"^TP SAURYA|^TATA POWER", "Tata Power"),
+    (r"^SJVN", "SJVN"), (r"^NHPC", "NHPC"), (r"^AVAADA", "Avaada"), (r"^ACME", "ACME"),
+    (r"^AZURE", "Azure Power"), (r"^HERO", "Hero Future Energies"),
+    (r"^SAINJ", "Sainj HEP"), (r"^SINGOLI", "Singoli Bhatwari HEP"), (r"^SORANG", "Sorang HEP"),
+    (r"^JORETHANG", "Jorethang HEP"), (r"^TASHIDENG", "Tashiding HEP"), (r"^CHUZACHEN", "Chuzachen HEP"),
+    (r"^RGPPL", "RGPPL (Dabhol)"),
+    (r"^HVDC", "HVDC Raigarh"),
+    (r"^KAPP", "KAPP 3&4 (NPCIL)"),
+    (r"^TRN ENERGY", "TRN Energy"),
+    (r"^IBEUL", "IBEUL"),
+    (r"VEDANTA", "Vedanta (Chhattisgarh)"),
+    (r"^RELIANCE INDUSTRIES", "Reliance Industries (Jamnagar)"),
+    (r"^TEHRI", "THDC (Tehri PSP)"),
 ]
 
 # --- 2. player -> parent group (only where a group is obvious from the name) --
 GROUP_RULES = [
-    (r"ADANI (GREEN|RENEWABLE|SOLAR|WIND|HYBRID)|^ADANI_", "ADANI GREEN ENERGY (ALL SPVs)"),
-    (r"ADANI POWER|MAHAN ENERGEN", "ADANI POWER (ALL PLANTS)"),
-    (r"ADANI PORTS", "ADANI PORTS & SEZ"),
-    (r"NTPC|NPGC|BRBCL|KANTI BIJLEE|IGSTPS|NTECL", "NTPC GROUP"),
-    (r"^RENEW", "RENEW POWER (ALL SPVs)"),
-    (r"GREENKO|BUDHIL", "GREENKO GROUP"),
-    (r"^JINDAL POWER LTD", "JINDAL POWER LTD (BOTH STAGES)"),
-    (r"^JSPL", "JSPL"),
-    (r"JSW ENERGY|KSK MAHANADI", "JSW ENERGY (INCL. KSK MAHANADI)"),
-    (r"NLC INDIA|^NTPL", "NLC INDIA GROUP"),
-    (r"^GMR", "GMR ENERGY"),
-    (r"^JUNIPER", "JUNIPER GREEN ENERGY"),
-    (r"^AMP ENERGY", "AMP ENERGY"),
-    (r"^AMBUJA", "AMBUJA CEMENTS"),
-    (r"^SERENTICA", "SERENTICA RENEWABLES"),
-    (r"^SPRNG", "SPRNG ENERGY"),
-    (r"^TP SAURYA|^TATA POWER", "TATA POWER"),
-    (r"^SJVN", "SJVN"),
-    (r"^NHPC", "NHPC"),
-    (r"^AVAADA", "AVAADA"),
-    (r"^ACME", "ACME"),
-    (r"^AZURE", "AZURE POWER"),
-    (r"^HERO", "HERO FUTURE ENERGIES"),
-    (r"^SEMBCORP|SEIL ENERGY", "SEIL ENERGY INDIA"),
+    (r"^Adani Power|^Mahan Energen", "Adani Power (incl. Mahan Energen)"),
+    (r"^JSW|^KSK Mahanadi", "JSW Energy (incl. Utkal, Hydro, KSK Mahanadi)"),
+    (r"^GMR", "GMR Energy"),
+    (r"^Jindal Power|^Jindal Steel", "Jindal Power + JSPL"),
 ]
+
+ACRONYMS = {"NTPC", "NLC", "DVC", "JSW", "SJVN", "NHPC", "HEP", "TPP", "STPP", "UT", "GMR", "SKS", "RKM", "DB", "MB",
+            "ACB", "SEIL", "KSK", "OTPC", "BALCO", "NEEPCO", "NPGC", "BRBCL", "ITPCL", "JITPL", "JSPL", "IREP", "PSP",
+            "DCPP", "ONGC", "NEA", "NVVN", "PSS", "BESS", "II", "III", "IV", "AP", "MP", "HP", "UP", "CTU", "STU", "ISTS",
+            "SEZ", "LLP", "TPS", "FSP", "MW", "HPD", "DNH", "DD", "PH2", "U1", "U2", "WR", "ER", "NR", "SR", "NER", "JV"}
+
+
+def clean_default(norm):
+    """Fallback for unmapped names: drop corporate suffixes, title-case, keep acronyms."""
+    s = re.sub(r"\b(PRIVATE|PVT\.?|LIMITED|LTD\.?|COMPANY|CO\.?)\b\.?", " ", norm)
+    s = re.sub(r"\s+", " ", s).strip(" ,._-")
+    words = []
+    for w in s.split(" "):
+        core = re.sub(r"[^A-Z0-9&/]", "", w)
+        words.append(w if core in ACRONYMS else w.title())
+    return " ".join(words)
 
 
 def normalize(name):
@@ -127,7 +144,7 @@ def player_of(norm):
     for pat, canon in ENTITY_ALIASES:
         if re.search(pat, norm):
             return canon
-    return norm
+    return clean_default(norm)
 
 
 def group_of(player):
@@ -137,8 +154,7 @@ def group_of(player):
     return player
 
 
-def main():
-    # --- 3. load and label ------------------------------------------------------
+# --- 3. load and label ------------------------------------------------------
     df = pd.read_csv(os.path.join(HERE, "dam_volumes.csv"))
     df["norm"] = df["entity"].map(normalize)
     df["player"] = df["norm"].map(player_of)
