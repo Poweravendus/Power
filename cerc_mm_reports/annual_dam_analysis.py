@@ -43,7 +43,7 @@ ENTITY_ALIASES = [
     (r"^DADRA|^DAMAN", "DNH & Daman Diu (UT)"),
     # cross-border
     (r"^NEPAL|^NEA\b|^NEP$", "Nepal (NEA / NVVN)"),
-    (r"DGPCL|DRUK GREEN|BASOCHHU", "Druk Green Power (Bhutan)"),
+    (r"DGPCL|DRUK GREEN|BASOCHHU|NIKACHHU", "Druk Green Power (Bhutan)"),   # Nikachhu = Tangsibji Hydro, a DGPC subsidiary
     # generators / traders / consumers
     (r"^SEMBCORP|^SEIL ENERGY|^THERMAL POWERTECH", "SEIL Energy (ex-Sembcorp)"),
     (r"^TEESTA (STG ?3|HEP)|TEESTA URJA|TEESTA.?III", "Teesta Urja"),
@@ -54,15 +54,15 @@ ENTITY_ALIASES = [
     (r"^DCPP$|JINDAL STEEL & POWER", "Jindal Steel & Power"),
     (r"^DB POWER|^D B POWER", "DB Power"),
     (r"^GMR CHATT?ISGARH|^RPREL|^ARTPP|^REGL$|^RAIGARH_ADANI|^ADANI POWER", "Adani Power"),
-    (r"ADANI (GREEN|RENEWABLE|SOLAR|WIND|HYBRID)|^ADANI_|^ASEJTL", "Adani Green Energy"),
+    (r"ADANI (GREEN|RENEWABLE|SOLAR|WIND|HYBRID)|^ADANI_|^ASEJTL|^AHEJ|^ADANIHB|^ADANIRE", "Adani Green Energy"),
     (r"^ADANI PORTS", "Adani Ports & SEZ"),
     (r"^AMBUJA", "Ambuja Cements"),
     (r"^MB POWER", "MB Power"),
     (r"^ACBIL|^ACB \(INDIA\)", "ACB India"),
     (r"^RKM POWER|^R\.?K\.?M POWERGEN", "RKM Powergen"),
-    (r"^KARCHAM WANGTOO|^BASPA", "JSW Hydro (Karcham Wangtoo)"),
+    (r"^KARCHAM WANGTOO|^BASPA|^JSW|^IND BARATH|^KSK MAHANADI", "JSW Energy"),   # JSW Hydro (Karcham Wangtoo), Utkal (ex-Ind Barath), KSK Mahanadi (acquired 2025)
     (r"^AD HYDRO", "AD Hydro Power"),
-    (r"^NTPC|^SIMHADRI (FSP|FLOATING)|^RAMAGUNDAM FLOATING|^NPGC|^NABINAGAR POWER|^NTPP BRBCL|^BRBCL|^KANTI BIJLEE|^IGSTPS|^NTECL|^BONGAIGAON", "NTPC"),
+    (r"^NTPC|^SIMHADRI (FSP|FLOATING)|^RAMAGUNDAM FLOATING|^NPGC|^NABINAGAR POWER|^NTPP BRBCL|^BRBCL|^KANTI BIJLEE|^KBUNL|^IGSTPS|^NTECL|^BONGAIGAON|^PATRATU", "NTPC"),   # incl. JVs: NPGC, BRBCL, KBUNL, Aravali (Jhajjar), NTECL, Patratu
     (r"^NEEPCO|^KAMENG HYDRO|^AGARTALA GAS|^ASSAM GAS BASED", "NEEPCO"),
     (r"^NLC$|^NLC INDIA|^NTPL$|^NLC TAMIL ?NADU", "NLC India"),
     (r"^SKS POWER", "SKS Power"),
@@ -71,31 +71,30 @@ ENTITY_ALIASES = [
     (r"^SHREE CEMENT", "Shree Cement"),
     (r"^SIMHAPURI", "Simhapuri Energy"),
     (r"^COASTGEN|^COASTAL ENERGEN", "Coastal Energen"),
-    (r"^EMCO$|^GMR WARORA", "GMR Warora (ex-EMCO)"),
-    (r"^GMR KAMALANGA", "GMR Kamalanga"),
-    (r"^BALCO|^BHARAT ALUMINIUM", "BALCO"),
+    (r"^EMCO$|^GMR WARORA|^GMR KAMALANGA", "GMR Energy"),   # Warora (ex-EMCO) + Kamalanga
+    (r"^BALCO|^BHARAT ALUMINIUM|VEDANTA", "Vedanta (incl. BALCO)"),
     (r"^JHABUA POWER", "Jhabua Power"),
     (r"^IL&FS", "ITPCL (IL&FS Tamil Nadu)"),
     (r"^DHARIWAL", "Dhariwal Infrastructure"),
     (r"^ONGC PALATANA|^PALATANA", "OTPC Palatana"),
-    (r"^RENEW|^RENEW_", "ReNew Power"),
+    (r"^RENEW|^RENEW_|^OSTRO", "ReNew Power"),   # Ostro acquired by ReNew in 2018
     (r"^ADEPT", "Adept Renewable"),
     (r"^AMPS HAZIRA|^AMNSIL|^ARCELORMITTAL|^ESSAR STEEL", "AM/NS India (Hazira)"),
     (r"^NCR ALLAHABAD|^NORTH CENTRAL RAILWAY|^RAIL$", "Indian Railways"),
     (r"^MEENAKSHI", "Meenakshi Energy"),
     (r"^GREENKO|BUDHIL", "Greenko"),
-    (r"^IND BARATH ENERGY UTKAL|^JSW ENERGY \(UTKAL\)", "JSW Energy (Utkal, ex-Ind Barath)"),
-    (r"^KSK MAHANADI", "KSK Mahanadi"),
     (r"^ADHUNIK", "Adhunik Power"),
     (r"^DVC$|^DAMODAR VALLEY", "DVC"),
     (r"^DGEN", "Torrent Power (DGEN)"),
     (r"^SPECTRUM", "Spectrum Power"),
     (r"^JUNIPER", "Juniper Green Energy"),
-    (r"^AMP ENERGY", "Amp Energy"),
+    (r"^AMP ENERGY|^AMP_GREEN", "Amp Energy"),
+    (r"^KLEIO", "Kleio Solar Power"), (r"^BLUE LEAF", "Blue Leaf Energy"), (r"^WIND FIVE RENERGY|^RENERGY5", "Wind Five Renergy"),
+    (r"^ONEVOLT", "Onevolt Energy"), (r"^AYANA", "Ayana Renewable"), (r"^GRIAN", "Grian Energy"),
     (r"^SERENTICA", "Serentica Renewables"),
     (r"^SPRNG", "Sprng Energy"),
-    (r"^TP SAURYA|^TATA POWER", "Tata Power"),
-    (r"^SJVN", "SJVN"), (r"^NHPC", "NHPC"), (r"^AVAADA", "Avaada"), (r"^ACME", "ACME"),
+    (r"^TP SAURYA|^TATA POWER|^THE TATA POWER|^TPSL|^CGPL", "Tata Power"),   # CGPL = Coastal Gujarat Power (Mundra), TPSL/TP Saurya = Tata Power Solar
+    (r"^SJVN|^NJPC", "SJVN"),   # NJPC = Nathpa Jhakri Power Corp, SJVN's former name (r"^NHPC", "NHPC"), (r"^AVAADA", "Avaada"), (r"^ACME", "ACME"),
     (r"^AZURE", "Azure Power"), (r"^HERO", "Hero Future Energies"),
     (r"^SAINJ", "Sainj HEP"), (r"^SINGOLI", "Singoli Bhatwari HEP"), (r"^SORANG", "Sorang HEP"),
     (r"^JORETHANG", "Jorethang HEP"), (r"^TASHIDENG", "Tashiding HEP"), (r"^CHUZACHEN", "Chuzachen HEP"),
@@ -104,15 +103,13 @@ ENTITY_ALIASES = [
     (r"^KAPP", "KAPP 3&4 (NPCIL)"),
     (r"^TRN ENERGY", "TRN Energy"),
     (r"^IBEUL", "IBEUL"),
-    (r"VEDANTA", "Vedanta (Chhattisgarh)"),
     (r"^RELIANCE INDUSTRIES", "Reliance Industries (Jamnagar)"),
     (r"^TEHRI", "THDC (Tehri PSP)"),
 ]
 
 # --- 2. player -> parent group (only where a group is obvious from the name) --
 GROUP_RULES = [
-        (r"^JSW|^KSK Mahanadi", "JSW Energy (incl. Utkal, Hydro, KSK Mahanadi)"),
-    (r"^GMR", "GMR Energy"),
+    (r"^Adani |^Ambuja", "Adani Group (Power, Green, Ports, Ambuja)"),
     (r"^Jindal Power|^Jindal Steel", "Jindal Power + JSPL"),
 ]
 

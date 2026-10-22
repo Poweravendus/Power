@@ -98,7 +98,9 @@ NAME MAPPING NOTES
 - 'Government of Himachal Pradesh_<plant>' rows (state free-power shares shown separately from Aug-2024) are mapped into HIMACHAL PRADESH; before Aug-2024 they sat inside the single state row.
 - Adani Power includes the Mahan plant for the whole period, although it was Essar Power MP until Mar-2022 (merged on current ownership, by request).
 - Inferred from timing only: AMPS HAZIRA = AM/NS India (Hazira); RENEW_SR_SLR = ReNew Surya Ravi; ADANI_4RE = Adani Renewable Energy Holding Four.
-- Plant-level rows introduced from Aug-2024 (Adani Green SPVs, NTPC stations, ReNew SPVs) are NOT merged at Player level; the Group sheets roll them up.
+- Player = one row per company on current ownership: plants, stages, SPVs and subsidiaries are merged (Adani Green SPVs, NTPC stations and JVs, ReNew incl. Ostro, JSW Energy incl. Karcham Wangtoo hydro, Utkal and KSK Mahanadi, GMR Energy, Tata Power incl. CGPL, Vedanta incl. BALCO).
+- Kept separate on purpose: Adani Ports & SEZ and Ambuja Cements (separate listed companies; see Group sheets for an Adani Group total), Jindal Power vs Jindal Steel & Power (separate companies since 2022), Jindal India Thermal Power (BC Jindal group, unrelated).
+- Group sheets roll up only two families: Adani Group and Jindal Power + JSPL.
 - Workbook is set to recalculate fully on open. If a sheet shows zeros, press Ctrl+Alt+F9 in Excel.
 """
 for i, line in enumerate(readme.strip().split("\n"), 1):
