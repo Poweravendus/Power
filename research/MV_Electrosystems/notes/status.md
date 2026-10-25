@@ -32,6 +32,10 @@
 - TAM sheet added to the model: addressable today ~Rs.3,100 cr a year base (range 2,800-3,650); with EMU/MEMU and Vande Bharat approvals ~Rs.7,300 cr base. Next: step 3, execution (parts, test rigs, people, working capital, timeline record).
 - Page references corrected (printed page = PDF page - 5). Note v1 still carries old references (p.22-25 for orders) - fix when the Note is rewritten.
 
+- 25-Oct-2026: Forecast FY27E-FY30E added as a MANAGEMENT GUIDANCE CASE at the investor's request (to be tweaked; the committed-only base case comes later). Drivers sheet holds every assumption. Output: revenue Rs.389 / 864 / 890 / 832 cr; PAT Rs.15.5 / 104 / 103 / 95 cr; EPS Rs.5.7 / 38.2 / 37.8 / 34.9. Balance sheet and cash flow tie in all years.
+- Correction to the chat: FY27 deliveries on management's monthly ramp (10 in Sep, 25 in Nov, ~70 in 3Q, 40/month from Jan) = ~210 sets, not 190-200; Rs.400 cr guidance is then roughly consistent (model Rs.389 cr).
+- Facts confirmed: IPO expenses Rs.35.54 cr, net proceeds Rs.254.46 cr (Pro p.124); warranty 72 months from delivery or 60 from commissioning (Pro p.61), so AMC income starts ~FY32.
+
 ## Open questions
 - Bloomberg CMP and date.
 - Prospectus figure for IPO expenses (v1 uses Rs.22 cr estimate [E]).
