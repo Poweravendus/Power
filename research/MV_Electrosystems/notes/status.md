@@ -25,6 +25,13 @@
 | 5 | First version | Promoters on both sides of Quadrant Future Tek purchases (Rs.13.7 cr FY25, 37% of RM); audit unmodified, EoM on MSME interest; auditor is a small Faridabad firm. Not killed. |
 | 6 | First version | Falsification: if dispatches are below 25 sets/month in the Jan-Mar 2027 quarter (4QFY27 results, May 2027) the ramp thesis is wrong. |
 
+## Session 2 (25-Oct-2026): business discussion, by the investor's choice instead of rewriting the Note
+- Agreed order of work: unit economics, demand, execution, people, then valuation.
+- Step 1 (one box): price Rs.1.64 cr firm; material ratio 87% FY27 / 82% FY28 implied by the board-approved working-capital plan (Pro p.133) vs ~77% implied by the call's "10% PAT"; first boxes built above cost.
+- Step 2 (demand): pool ~1,650-1,700 boxes a year at the three railway loco works; 480/yr = ~29% share, the top of what the share-out gives. Investor challenged the "plateau" point; agreed it was overstated - FY26 was a record; the bet does not need growth.
+- TAM sheet added to the model: addressable today ~Rs.3,100 cr a year base (range 2,800-3,650); with EMU/MEMU and Vande Bharat approvals ~Rs.7,300 cr base. Next: step 3, execution (parts, test rigs, people, working capital, timeline record).
+- Page references corrected (printed page = PDF page - 5). Note v1 still carries old references (p.22-25 for orders) - fix when the Note is rewritten.
+
 ## Open questions
 - Bloomberg CMP and date.
 - Prospectus figure for IPO expenses (v1 uses Rs.22 cr estimate [E]).
@@ -34,6 +41,9 @@
 - Promoter family structure: Vohra vs Dhawan families; Ramendra Pratap Singh reclassified promoter Nov-2025; nominee director Sanjay Kumar Singh - nominee of whom?
 - Quadrant Future Tek: common promoters/directors; terms of specialty-cable purchases; will MV buy QFTL cables for propulsion harnesses?
 - FY21/FY22 cash flow statements not yet extracted (scans).
+- Rolling Stock Programme 2026-27 locomotive numbers (single most important demand input); BLW FY27 target conflict 642 vs 468.
+- Shares of the seven winners in the FY26 propulsion round; whether any FY27 tender has been issued as an integrated propulsion kit.
+- National count of traction substations; warranty length on propulsion POs.
 
 ## File versions
 - Model: MVELECTRO_Model_v1.xlsx (25-Oct-2026)
