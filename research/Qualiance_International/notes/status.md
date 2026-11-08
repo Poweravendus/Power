@@ -1,6 +1,6 @@
 # Qualiance International (NSE SME: QUALIANCE) - research status
 
-**Updated:** 8-Nov-2026. **Stage:** 1 (Historicals) built; waiting for the ACE dump to cross-check, then the business discussion.
+**Updated:** 8-Nov-2026. **Stage:** 2 (forecast model v2 + note v1) built; ACE cross-check still pending.
 
 ## Where we are
 1. Document pack (35 PDFs) sent: scratchpad packs/qualiance/out/Qualiance-International-Investor-Docs.zip.
@@ -21,10 +21,17 @@
 - IPO costs 13.1% of the Rs.45.1 cr raised. Expansion to 2.4x capacity (10.8 lakh pieces) on Rs.39.1 cr: who fills it, given 99.7% top-10 concentration?
 - Attrition 30-64% a year on a 283-person workforce.
 
+## v2 forecast and note (8-Nov-2026)
+- Model v2: Drivers (scenario selector C3: 1 bear / 2 base / 3 bull), TAM, FY27E-FY30E P&L/BS/CF, valuation (12x FY28E EPS; 7x EV/EBITDA cross-check). Built by scratchpad scripts/add_qualiance_v2.py; scenarios run by qual_scen.py. All check rows ~0 in all three scenarios.
+- Base: FY27E rev Rs.71.7 cr / PAT 9.1 cr; FY28E rev 100.7 / PAT 11.7 / EPS 8.67. Targets: bear Rs.32, base Rs.104 (SELL, -24%), bull Rs.240.
+- Decisions: base fills the new unit at 12/25/40% (mgmt 30/60/90%); realisation held ~Rs.1,950 (FY26 jump = mix + inventory timing + FX); FX gain at 1% of exports; SME/concentration discount 50% to S P Apparels' 23.2x.
+- New facts found: Swiss customs order Rs.13.8 cr FY26 (0.7 cr FY25); family salaries Rs.2.31 cr FY26 vs 0.84 cr; promoter group sold 13.37 lakh shares at Rs.127 pre-IPO; RHP said RCC building + COD Mar-2027, now PEB + Jul-2027; headcount 255 on PPT vs 283.
+- Note: Qualiance_International_Note_v1.docx (6 pages).
+
 ## Open questions
 - Swiss contract structure (tenders? framework agreements? duration?), inspection process and payment terms.
 - Restated vs audited differences each year (Rs.1.2 cr in FY26): what was re-allocated?
 - Revaluation of land/building (reserve Rs.9.9 cr): when and by whom.
 
 ## File versions
-- Model: QUALIANCE_Model_v1.xlsx (8-Nov-2026); evidence: notes/evidence.md
+- Model: QUALIANCE_Model_v1.xlsx (8-Nov-2026, historicals, untouched); QUALIANCE_Model_v2.xlsx (8-Nov-2026, forecasts); note: Qualiance_International_Note_v1.docx; evidence: notes/evidence.md
