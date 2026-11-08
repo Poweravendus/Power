@@ -1,0 +1,36 @@
+# Highness Microelectronics (BSE SME: 544741, HIGHNESS) - research status
+
+**Updated:** 8-Nov-2026. **Stage:** 1 (Historicals) built; waiting for the investor's ACE dump to cross-check, then the step-by-step business discussion.
+
+## Where we are
+1. Document pack built (37 PDFs + price csv): scratchpad packs/highness/out/Highness-Microelectronics-Investor-Docs.zip, page map FINANCIAL_SOURCES.md.
+2. Model v1 (HIGHNESS_Model_v1.xlsx): FY20-FY22 audited (scanned ARs, read from page images), FY23-FY25 restated (Prospectus RFS), FY26 audited (AR FY26); half-years 1HFY25 (derived), 2HFY25, 1HFY26, 2HFY26, 1HFY27, plus 9MFY26 restated and 4QFY26 (derived); half-year BS/CF; segment sheet (vertical, geography, customers, suppliers, imports, states, capacity, order book, order wins, WC days, receivable ageing); valuation snapshot. All check rows = 0 (within source rounding); recalc 0 errors.
+3. Forecast columns FY27E-FY30E present and empty (v2). No management numeric guidance beyond "Rs 30 cr confirmed projection for 18 months" (call 4-Jun-2026).
+
+## Decisions
+- 8-Nov-2026: Standalone = whole entity (no subsidiary/JV/associate; Prospectus p.177). "Consolidated"/"Group" in the audit and review reports is template wording.
+- 8-Nov-2026: Restated (Prospectus, latest) used for FY23-FY25; audited for FY20-FY22 and FY26. Every conflict recorded on the Sources sheet (C1-C12).
+- 8-Nov-2026: FY26 geography taken from audited note 19 (PPT slide 35 swaps Domestic/International).
+- 8-Nov-2026: 1HFY27 YoY measured against 1HFY26 (from the 2HFY26 filing), not the 2HFY25 column printed in the 1HFY27 results.
+- 8-Nov-2026: Valuation uses 51,63,600 shares; the 3,44,000-share preferential (Rs 315, EGM 4-Dec-2026) shown pro forma only.
+
+## First questions the numbers raise (for the discussion)
+- **Receivables are not turning into cash.** Debtor days 5 (FY24) -> 109 (FY25) -> 235 (FY26); 1HFY27 receivables Rs 13.7 cr = 209 days of half-year revenue. At 31-Mar-26 Rs 10.36 cr of Rs 10.37 cr was over six months old (only Rs 0.01 cr under six months although 2HFY26 revenue was Rs 8.77 cr). FY26 receivables were Rs 10.4 cr against Rs 5.3 cr projected in the IPO document. The largest FY25 customer (Aerohaste LLC FZ, Dubai, Rs 4.16 cr = 30% of FY25 sales) was still owed Rs 3.68 cr at 31-Dec-25, beyond the FEMA deadline.
+- **Where did the IPO cash go?** Cash Rs 21.8 cr at 31-Mar-26 -> Rs 1.7 cr at 30-Sep-26. In the same six months CFO was Rs (14.6) cr, other current assets rose Rs 9.8 cr and short-term loans & advances Rs 1.7 cr (at Mar-26 these were loans to related parties), capex Rs 3.7 cr. Net debt is back to Rs 5.4 cr, partly NBFC term loans at 15-17.6%. No notes to the Sep-26 balance sheet explain the Rs 10.5 cr of "other current assets".
+- **Tax charged but not paid.** Tax paid FY26 Rs 0.11 cr (the same figure as 9MFY26) against a Rs 1.24 cr charge; nil in 1HFY27; FY20-FY22 nil. Provision for income tax Rs 2.07 cr at Mar-26; short-term provisions Rs 3.19 cr at Sep-26.
+- **Margins look more like software than display assembly.** Gross margin 80% in FY26 (material Rs 6.0 cr less Rs 2.8 cr inventory build); inventory Rs 8.4 cr = 191 days of revenue / ~950 days of COGS, "as certified by management", mostly finished goods. EBITDA margin swings 18% (2HFY25) -> 24% (1HFY26) -> 55% (2HFY26) -> 32% (1HFY27). Forex gain Rs 0.72 cr (mostly unrealised) = 13% of FY26 PBT.
+- **Three versions of profit and a moving accounting basis.** FY24 PAT Rs 1.77 cr audited vs Rs 2.37 / 2.39 cr restated; restatement moved design/R&D spend into amortisation, so FY24 EBITDA is Rs 2.55 cr audited vs Rs 5.97 cr restated. Capitalised R&D intangibles reached Rs 3.79 cr by Sep-26; amortisation follows revenue, so half-year D&A jumps (Rs 0.13 cr in 1HFY26, Rs 0.91 cr in 2HFY26). FY20-FY22 carried Rs 1.4-1.9 cr of "deferred revenue expenditure".
+- **Extreme concentration and lumpy mix.** Top customer 44.8% of 9MFY26 revenue, top 10 82%; top supplier 73-90% of purchases, ~90% imported. Defence Rs 6.38 cr in FY26 all came in 9M (zero in 4QFY26); Industrial Automation 49% of FY25 -> 7% of FY26; Railways 3% -> 27%. All FY25 profit was in 1HFY25 (2HFY25 a loss). The Dec-25 order book (Rs 10.0 cr) is 79% one DMRC programme; orders announced since listing total Rs 9.7 cr (mostly incl. GST), none defence or export.
+- **What the price already pays for.** At Rs 324.85 (2.7x the Rs 120 IPO price) market cap Rs 168 cr: 29.7x TTM PAT, 41x FY26 PAT, 19.9x EV/TTM EBITDA, 5.8x book, on cumulative FY20-FY26 FCF of Rs 0.13 cr. The board is issuing 3.44 lakh shares at Rs 315.
+
+## Open questions
+- Breakdown of 30-Sep-26 other current assets (Rs 10.5 cr) and loans & advances (Rs 2.3 cr); related-party counterparties.
+- Status of the Aerohaste receivable after Sep-2026 (management promised full collection by end-Sep-2026); RBI/AD bank extension.
+- What exactly is capitalised as R&D (Rs 1.47 cr added in FY26, Rs 1.71 cr in FY25) and the revenue-linked amortisation rule.
+- Why receivable ageing shows almost nothing under six months at Mar-26; credit terms by vertical.
+- Use of IPO proceeds vs the Prospectus objects (working capital, Goa EMC plant); order book at Sep-26.
+- 1HFY27 call transcript (call 6-Nov-2026; audio only so far).
+
+## File versions
+- Model: HIGHNESS_Model_v1.xlsx (8-Nov-2026); build script scratchpad scripts/build_highness.py (adapted from build_shankesh.py)
+- Evidence: notes/evidence.md
