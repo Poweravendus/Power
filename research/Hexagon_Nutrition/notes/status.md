@@ -32,6 +32,14 @@
 - Nashik rebuild: timeline, lost output, and the cost of moving production to Chennai and Thoothukudi.
 - The promoter dispute: what lay behind the founders' full exit and the chairman's lapsed term?
 
+## v2 (8-Nov-2026): forecasts, valuation, note
+- Model v2 = v1 plus Drivers (scenario selector D3: 1 bear / 2 base / 3 bull), TAM, FY27E-FY30E in every P&L/BS/CF/WC/ratio row, valuation block on Valuations (rows 25-73). Revenue by vertical: premix tonnes x Rs.6.2 lakh/t, B2C line use x Rs.15.4 lakh/t, ESG tonnes x Rs.3.2 lakh/t by plant.
+- Base: revenue Rs.453 / 501 / 554 / 612 cr, EBITDA Rs.53.9 / 67.0 / 75.7 / 85.1 cr, PAT Rs.35.2 / 43.3 / 49.4 / 58.6 cr, EPS Rs.2.87 / 3.52 / 4.02 / 4.77 (FY27E-FY30E). ESG held at ~2,000 t (FY26).
+- Valuation: 16x FY28E EPS. Targets bear Rs.21 / base Rs.56 / bull Rs.97 vs CMP Rs.61.58; base -8.5% = SELL (HOLD at 17.5x). EV/EBITDA cross-check Rs.24 / 56 / 93.
+- All check rows ~0 under all three scenarios; selector left at 2. Scripts: scratchpad scripts/add_forecast_hexagon.py, run_scen_hexagon.py, add_sens_hexagon.py, build_note_hexagon.js.
+- New facts used: FY26 director pay (AR FY26 AGM notice), AGM/EGM sequence, auditor emphasis of matter (going concern at SA and Uzbek subsidiaries), Prospectus p.160 shows Arun Kelkar nil post-offer although he sold only 15.4 lakh of 2.43 cr shares (2.28 cr shares unexplained), UNICEF 86,500 t RUTF in 2024 at ~US$46.8/carton, CHAI-Vista US$32.50/carton (Aug-2026) [S, outside the pack].
+
 ## File versions
 - Model: HEXAGON_Model_v1.xlsx (8-Nov-2026); build script scratchpad scripts/build_hexagon.py
+- Model: HEXAGON_Model_v2.xlsx (8-Nov-2026); note Hexagon_Nutrition_Note_v1.docx (6 pages)
 - Evidence: notes/evidence.md
