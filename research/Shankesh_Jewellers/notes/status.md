@@ -20,6 +20,12 @@
 - Hedging: management says no hedge; FY26 BS has Rs.15.5 cr margin with a bullion-hedging broker.
 - Non-corporate customers fell 6% in FY26; new customers 166 to 84; karigar attrition 3% to 17%; returns 5.2% to 7.2% of revenue.
 
+## v2 decisions (8-Nov-2026)
+- Gold price series: CareEdge Chart 26 (CMIE) quarterly readings taken from the vector chart (CareEdge PDF p.35); Sep-26 level = placeholder Rs.1,52,600 (replace from Bloomberg/IBJA).
+- Margin split: inventory gain = gold move x opening inventory; residual making margin 2.6-3.1% FY23-FY26; base karat margins 22K 2.5% / 18K 5.0% / job work 30% reproduce each year within Rs.3 cr.
+- 1HFY27 gross profit is Rs.77 cr above the making margin with gold roughly flat: kept in FY27E as booked, flagged as unexplained.
+- Valuation: 12x FY28E EPS (peers Shanti Gold 10.0x, Sky Gold 34.9x per RHP p.125), EV/EBITDA 8x cross-check.
+
 ## Open questions
 - Gold price series (FY23-1HFY27) to split price vs volume vs inventory gain; KPI definition of "gold processed".
 - Credit terms with corporate chains; why receivable days rose to ~49 in 1HFY27.
@@ -27,5 +33,6 @@
 - Use of IPO proceeds vs plan (Rs.274 cr fresh issue).
 
 ## File versions
-- Model: SHANKESH_Model_v1.xlsx (8-Nov-2026)
+- Model: SHANKESH_Model_v1.xlsx (8-Nov-2026); SHANKESH_Model_v2.xlsx (8-Nov-2026: Drivers with bear/base/bull selector, TAM, FY27E-FY30E, valuation)
+- Note: Shankesh_Jewellers_Note_v1.docx (8-Nov-2026): SELL, target Rs.30 (12x FY28E EPS Rs.2.48); bear Rs.9, bull Rs.90 vs CMP Rs.91.95
 - Evidence: notes/evidence.md
