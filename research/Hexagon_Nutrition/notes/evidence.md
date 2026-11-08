@@ -1,0 +1,46 @@
+# Hexagon Nutrition - Evidence File (v1, 8-Nov-2026)
+Tags: [A] audited / restated / auditor-certified, [M] management, [S] secondary, [E] estimate. Pages are printed pages unless "PDF" is given. Conventions: Prospectus/RHP printed = PDF - 5; 2021 DRHP printed = PDF - 2; AR FY19-FY21 printed = PDF - 1; AR FY23-FY24 printed = PDF; AR FY25-FY26 two-page spreads (PDF p = pp.2p-4, 2p-3). Rs mn in the documents; Rs cr here unless stated.
+
+## Identity and structure
+- E1 [A] NSE HEXAGON, BSE 544785, ISIN INE0JUI01012. IPO 5-9 Jun 2026 at Rs.45: 100% offer for sale of 3,08,59,704 shares (Rs.138.87 cr), so the company received nothing. Listed 12-Jun-2026 (Prospectus cover; Results 1QFY27 consolidated note 6). An earlier IPO was attempted with a DRHP dated 23-Dec-2021 but never launched. Its costs (Rs.3.59 cr) were expensed in FY23 (Prospectus p.407).
+- E2 [A] Post-IPO shares 12,29,18,109 of Re.1 (Prospectus p.110). 1,22,08,212 CCPS (FV Rs.10) were converted into 1,22,90,705 equity shares on 20-Apr-2026 (p.136). Paid-up capital Rs.12.29 cr at 30-Jun-2026 (Results 1QFY27).
+- E3 [A] Promoter and promoter group: 89.41% pre-offer, 45.74% post. Arun, Subhash and Aditya Kelkar and Nutan Kelkar hold nil post-offer. Vikram Kelkar holds 21.11%, Nikhil Kelkar 17.26% and Anuradha Kelkar 7.37% (Prospectus p.160).
+- E4 [A] Subsidiaries, all 100%: HNIPL (Thoothukudi SEZ, RUF); HN Healthcare (dormant); HN China (Hong Kong); HN Pty (South Africa); HN LLC (Uzbekistan, Jan-Dec year). HNEPL (Chennai MEPZ SEZ premix) was amalgamated into the parent w.e.f. 1-Apr-2025 by an NCLT order of 14-Jan-2026, under pooling of interests (AR FY26 pp.70-71; Results 1QFY27 note 4). Nutralytica Research was amalgamated earlier (NCLT 2021).
+- E5 [A] Single Ind AS 108 segment, "nutritional products" (Results 1QFY27 note 8; AR FY26 note 47).
+
+## Financials
+- E6 [A] Restated consolidated FY19-FY21 and 1HFY22: 2021 DRHP BS p.228, P&L p.229, CF p.232, note 28 p.277 (auditor Bhuwania & Agrawal).
+- E7 [A] FY22 audited consolidated: AR FY2022-23 BS p.122, P&L p.123, CF p.125 (comparative column). No restated FY22 exists.
+- E8 [A] Restated consolidated FY23-FY25 and 9MFY26: Prospectus BS p.406, P&L p.407, CF pp.409-410 (S K Patodia & Associates, report of 17-Feb-2026).
+- E9 [A] FY26 audited consolidated: AR FY26 pp.188-191. Revenue Rs.382.6 cr, PAT Rs.37.9 cr, CFO Rs.6.2 cr, equity Rs.233.3 cr. Other equity of Rs.222.23 cr includes CCPS of Rs.12.21 cr. Matches Results 4QFY26 Consolidated PDF 5-7, read from the image.
+- E10 [A] Standalone: AR FY19 p.44, FY20 p.39, FY21 p.30 (IGAAP, Rs lakh); AR FY23 p.63; AR FY24 p.54; AR FY25 pp.46-47; AR FY26 pp.118-119. FY26 standalone revenue Rs.319.1 cr, PAT Rs.38.1 cr (above consolidated Rs.37.9 cr).
+- E11 [A] Quarterly: Results 4QFY26 Consolidated/Standalone PDF 5 and Results 1QFY27 Consolidated/Standalone PDF 3 (images). 1QFY27 consolidated revenue Rs.104.3 cr (+43% YoY), EBITDA Rs.11.7 cr (11.3%), PAT Rs.8.1 cr (+25%). 4QFY26 is FY26 audited less unreviewed 9MFY26. The 1QFY26 comparative was not reviewed.
+- E12 [A] Other income 9MFY26 Rs.7.98 cr, of which FX gain Rs.5.14 cr (Prospectus note 29 p.449). FY26 other income Rs.11.94 cr = 23% of PBT.
+- E13 [A] Receivables: SICR Rs.2.26 cr and credit-impaired Rs.1.01 cr gross at 31-Dec-2025 (Prospectus note 11 p.439). Credit periods 0-180 days (p.53). Receivables turnover 6.00x FY25 vs 3.76x for 9MFY26, not annualised (note 52 p.477).
+- E14 [A] Parent loans to wholly owned subsidiaries Rs.48.99 cr at 31-Mar-2026 (Rs.28.84 cr FY25) (AR FY26 note 15 pp.146-147). The South Africa and Uzbekistan subsidiaries had a net liability of Rs.12.19 cr at 31-Mar-2026, and the parent has given unconditional support (Results 1QFY27 note 7; AOC-1 AR FY26 pp.70-71).
+- E15 [A] Final dividend Re.0.30/share recommended 12-Aug-2026 (Results 1QFY27 note 3). FY25 dividend paid Rs.5.0 cr (Prospectus p.409). [S] ICRA (10-Dec-2024) calls this a payout to the exiting PE investor.
+
+## Segment / operating data
+- E16 [A] Revenue by vertical, auditor-certified KPI. B2C / premix / ESG in Rs cr: FY23 62.7 / 152.8 / 62.8; FY24 71.1 / 133.3 / 93.1; FY25 92.1 / 154.7 / 77.8; 9MFY26 81.2 / 137.7 / 48.0 (Prospectus p.271, p.274-275). FY26 114.0 / 202.7 / 65.0 (AR FY26 pp.244-245). FY19-FY21 and 1HFY22 from the 2021 DRHP p.151.
+- E17 [A] Domestic vs exports: exports 63.8% (FY23), 63.1% (FY24), 61.3% (FY25), 56.0% (9MFY26) (Prospectus p.273, note 28 p.449). FY26 57.0% (AR FY26 pp.244-245). FY19-FY21 from the 2021 DRHP note 28 p.277.
+- E18 [A] Top 10 customers: 45.7% / 48.8% / 45.9% / 41.8% of revenue (FY23-9MFY26). Top 1: 10.6% / 14.3% / 12.8% / 10.3%. Top-10 by type: UN agencies, foreign government agencies, foreign distributors, MNCs, corporates, NGOs (Prospectus pp.32-33). FY19-FY21 top 10: 46.5% / 36.7% / 41.6% (2021 DRHP p.29).
+- E19 [A] Customers with revenue of 10% or more: none (FY23); 2 = Rs.76.9 cr (FY24); 2 = Rs.81.1 cr (FY25); 1 = Rs.38.3 cr (FY26) (AR FY24 p.168, AR FY25 pp.158-159, AR FY26 pp.244-245).
+- E20 [A] Capacity and utilisation by plant FY23-9MFY26, per a chartered-engineer certificate of 25-May-2026 (Prospectus pp.297-300). Blended utilisation 31.1% / 29.5% / 30.0% / 28.8% (KPI p.274). FY19-1HFY22 capacity by product line: 2021 DRHP pp.164-165.
+- E21 [M] FY26 utilisation by plant: Nashik dry 95.6% and clinical 56.0%; Chennai dry 30.1%, liquid 4.8% and MNP 16.6%; Thoothukudi RUF 18.9%; Tashkent dry 3.3% and MNP 22.9% (PPT 1QFY27 slide 16). On the 1QFY27 call management put current blended utilisation at about 47% (Transcript 1QFY27 PDF 7-8, 13).
+- E22 [M] Segment gross margins: branded 60-68%, premix 35-40%, ESG 25-30% (Transcript 4QFY26 PDF 14). 1QFY27 mix: B2C ~28%, premix ~62%, ESG ~10%. YoY growth: B2C 22%, premix 55%, ESG 42% (Transcript 1QFY27 PDF 8, 18). Guidance: 20-25% growth in FY27, order book about Rs.100 cr, B2C at 35% of revenue in a couple of years (PDF 8-9, 13, 17). The FY26 PPT targets EBITDA margin of 15%+ over the medium term (PPT 4QFY26 slide 26).
+- E23 [A] Subsidiary turnover from AOC-1: HNIPL Rs.65.0 / 65.2 / 52.6 cr (FY24-FY26); HNEPL Rs.107.9 / 113.3 cr (FY24-FY25); Hong Kong Rs.24.9 / 28.6 / 21.3 cr; South Africa Rs.1.3 / 5.6 / 4.2 cr; Uzbekistan Rs.0.4 / 3.2 / 11.8 cr (AR FY24 pp.37-38, AR FY25 pp.32-33, AR FY26 pp.70-71). Earlier years: AR FY20 p.16, AR FY21 p.24, AR FY22 PDF 52, AR FY23 p.43.
+- E24 [A] Nashik premix facility: notices on unauthorised construction on agricultural land since Dec-2020; part of the facility must be reconstructed (Prospectus pp.34, 52). Phased decommissioning and restructuring began after 30-Jun-2026 (Results 1QFY27 note 10). [M] Capex Rs.25-30 cr, 70% to be debt-funded (Transcript 1QFY27 PDF 12).
+- E25 [S] CARE (31-Jul-2026): collection period 67 days and inventory 89 days at 31-Mar-2026. Gross current asset days 215 in FY26 vs 192 in FY25, "majorly due to longer collection periods for the ESG products supplied to international institutional customers". ICRA (3-Sep-2025): customer credit 60-120 days, inventory 90-100 days.
+- E26 [M] Inventory days about 142 at 1QFY27 vs 130+ a year earlier (Transcript 1QFY27 PDF 12). Trade receivables rose from about Rs.60 cr to about Rs.82 cr in FY26 (Transcript 4QFY26 PDF 18).
+
+## Governance and events
+- E27 [A] Subhash Kelkar (ED) and Aditya Kelkar (NED) resigned on 7-Jul-2026. Arun Kelkar's term as Chairman and ED ended on 28-Sep-2026. On 24-Sep-2026 Nikhil and Vikram Kelkar (38.41%) requisitioned an EGM to re-appoint him, and Nikhil and Anuradha Kelkar (24.67%) requisitioned one to approve the MD's pay from 1-Apr-2026. The EGM re-appointed Arun Kelkar on 28-Oct-2026 (Management-Changes filings of those dates).
+- E28 [A] NSE queried the FY26 results filing (non-searchable scan, same UDIN on both audit reports, XBRL reserves mismatch). The results were re-filed on 17/20-Jul-2026 (Results 4QFY26 machine-readable re-filing).
+- E29 [A] Customs demand (Chennai III) on the erstwhile HNEPL: duty Rs.0.82 cr, total with fine and penalty Rs.1.05 cr (Material Event 1-Sep-2026).
+
+## Market
+- E30 [S] NSE closes, EQ and BE series merged: listing day 12-Jun-2026 Rs.50.66 (BE); high close Rs.76.16 on 13-Jul-2026; 8-Nov-2026 (Muhurat) Rs.61.58. Average traded value Rs.3.7 cr/day over the last 20 sessions. Trading was in the trade-for-trade BE series 12-26 Jun and 16-Jul to 16-Oct-2026 (pack raw/nse/price_history.json).
+- E31 [E] At Rs.61.58: market cap Rs.757 cr, net cash Rs.25.0 cr (31-Mar-2026), 19.1x TTM P/E (1QFY27 TTM PAT Rs.39.6 cr), 13.5x EV/TTM EBITDA, 20.0x FY26 P/E, 3.2x P/B (Valuations sheet).
+
+## Conflicts (details on the Sources sheet)
+- C1 restated vs audited FY23-FY25 (restated used). C2 FY19-FY21 restated Ind AS vs IGAAP (restated used). C3 FY22 audited only; opening-cash gap of Rs.0.11 cr. C4 geography: restated domestic vs audited India (restated used). C5 FY26 premix and exports, MD&A vs note (note used). C6 FY26 mix on the call vs the AR (AR used). C7 Prospectus p.318 top-10 misprint. C8 FY21 B2C 433.86 vs 433.81. C9 FY26 re-filing; other equity 2,222.30. C10 standalone basis: IGAAP FY19-FY21, HNEPL merger in FY26. C11 Chennai MNP capacity and plant-count wording. C12 company KPI EBITDA includes exceptional items. C13 AOC-1 local currency FY20-FY23. C14 Uzbekistan profit vs utilisation. C15 cash-flow presentation of FX and leases.
