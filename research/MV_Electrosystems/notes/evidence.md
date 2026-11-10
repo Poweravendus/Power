@@ -1,4 +1,4 @@
-# MV Electrosystems - Evidence File (v1, 25-Oct-2026)
+# MV Electrosystems - Evidence File (v1 25-Oct-2026; additions 10-Nov-2026 in section 8)
 
 Tags: [A] audited / statutory filing, [M] management statement, [S] secondary source, [E] analyst estimate. Organised by the Note's sections. Page references are to the Prospectus dated 3-Aug-2026 ("Pro"), the Annual Report 2025-26 ("AR26"), the Q1FY27 investor presentation filed 26-Aug-2026 ("PPT"), the earnings-call transcript of 27-Aug-2026 filed 1-Sep-2026 ("Call"), and the results filing of 25-Aug-2026 ("Res").
 
@@ -82,3 +82,24 @@ Page numbers: the prospectus PDF's printed page = physical page - 5; all referen
 - T11 [S] 238 AC EMU rakes for Mumbai from ICF/RCF/MCF, 2027-2030 (The Statesman). ~100 Vande Bharat-platform trains built by end-2025 (Rolling Stock World); 3,200 Vande Bharat coaches planned for 2025-27 (Swarajya). [A] Rolling Stock Programme 2026-27 sanctions 300 new-generation + 1,000 Vande Bharat rakes (Pro p.193).
 - T12 [S] Siemens 1,200 x 9,000 HP locos assembled at Dahod with Siemens propulsion and 35-year maintenance; first set in commercial service (Siemens press release); ~65 built by Oct-2026 per Wikipedia, unverified.
 - T13 [E] Retrofit row is a placeholder: no retrofit tender or count of GTO-era locos found; excluded from all totals.
+
+## 8. Added 10-Nov-2026 (model v2 / Note v2). Printed page numbers (= PDF page - 5).
+- N1 [A] Delivery and payment record (Pro p.216): prototype invoiced 29-Feb-2024 (Rs.17.66 mn incl GST, paid 25-Dec-2025 and 21-Jan-2026 after the trial); 3 sets 30-Mar-2026 (Rs.55.44 mn, paid 16-Apr-2026); 2 sets 3-Apr-2026 (Rs.36.96 mn, paid 16-Apr-2026); 3 sets 31-May-2026 (Rs.55.44 mn, paid 17-Jun-2026). All against the CLW PO of 25-Mar-2021. 9 supplied to 30-Jun-2026.
+- N2 [M] "No, no, delivery no, in past 2 months. September, it will be 10 numbers" (call 27-Aug-2026, reply to Ankur): no dispatches in Jul-Aug 2026.
+- N3 [E] 1QFY27 split derived: propulsion 5 sets = Rs.92.40 mn incl GST / 1.18 = Rs.7.83 cr; legacy = Rs.12.77 - 7.83 = Rs.4.94 cr (1QFY26 legacy Rs.13.45 cr).
+- N4 [A] Order book detail (Pro p.216): 9 POs; older POs at Rs.15.10-16.60 mn per set (DMW Feb-2020 11 sets at 15.40; BLW Mar-2021 20 at 15.28; CLW Mar-2021 9 at 15.10; PLW Aug-2024 59 at 16.60; CLW Jan-2025 15 at 15.90); book average Rs.16.34 mn.
+- N5 [A] IPO working-capital plan (Pro p.133-135): inventories Rs.1,211.44 mn FY27 / Rs.2,419.39 mn FY28 at 105 days of COGS; receivables Rs.818.21 / 1,713.45 mn at 60 days; payables Rs.519.19 / 1,036.88 mn at 45 days; WC Rs.1,384.83 / 2,858.83 mn. Implied revenue ~Rs.498 cr FY27, ~Rs.1,042 cr FY28; implied COGS 84.6% / 80.7%. Days computed on average balances per the table footnote, applied to closing balances in the plan.
+- N6 [A] Propulsion inventory Rs.513.27 mn of Rs.674.85 mn total at 31-Mar-2026, built during development, "non moving and increasing" (Pro p.136).
+- N7 [A] IREPS 5-year propulsion procurement estimate: CLW 6,000, BLW 2,500, PLW 1,500 = 10,000 sets, Rs.197,970 mn (Pro p.133).
+- N8 [A] IPO deployment (Pro p.124-125): WC Rs.1,800 mn (Rs.550 mn FY27, Rs.1,250 mn FY28); R&D Rs.210 mn (52.5 FY27, 70 FY28, 70 FY29, 17.5 FY30, to Jun-2029); GCP Rs.534.59 mn FY27.
+- N9 [A] Integrated propulsion kit: Ministry of Railways approved procurement of 50 kits each by BLW and CLW, subject to design approval and prototype clearance (Pro p.140); directive Mar-2025 (Pro p.54).
+- N10 [A] Medha Servo Drives (unlisted) FY25 revenue Rs.43,000.5 mn, EBITDA margin 24.0%, PAT margin 19.8%; Hind Rectifiers FY26 revenue Rs.9,991 mn, EBITDA 8.6% (Pro p.151).
+- N11 [A] LD clause: 0.5% per week of the price of undelivered stores incl. taxes, max 10% of contract value; extensions "may be considered ... with liquidated damages" (Pro p.31).
+- N12 [M] Pricing: "very, very thin" gap between the 6-7 bidders; L2 in two tenders, L1 in one; bulk purchase now in 200-300-set lots (call). An investor said there is no price-hike clause; management did not dispute it.
+- N13 [M] Partners: Hansung Motors (Korea) for traction motors; PNC Technologies for fault locators (call).
+- N14 [M] Test infrastructure (PPT slide 15): 1 test setup installed, 2nd partly received; 2 additional ordered, target installation Dec-2026. Parts for ~30 sets on hand (PPT slide 16).
+- N15 [A] Board meeting 12-Nov-2026 to approve 2QFY27 / 1HFY27 results (intimation 5-Nov-2026; trading window closed from 1-Oct-2026).
+- N16 [A] Kotak Mahindra MF: 12,74,317 sh (4.67%) + 1,00,000 bought 9-Oct-2026 = 13,74,317 sh (5.04%) of 2,72,82,728 (SAST filing to BSE 13-Oct-2026).
+- N17 [S] Shareholding Sep-2026 per Screener: promoters 57.68%, FII 0.46%, DII 8.16%, government 0.65%, public 33.04%; 28,808 shareholders.
+- N18 [S] NSE closes: 21-Oct 866.35; 23-Oct 788.00; 30-Oct 728.50; 4-Nov 775.70; 6-Nov 733.35; 8-Nov (Diwali session) 770.60; 9-Nov 762.90 (NSE historical data).
+- Data conflict C7: status.md session 2 said the WC plan implies material 87% FY27 / 82% FY28; recomputation gives COGS 84.6% / 80.7% (N5). Model v2 uses the recomputed figures.
