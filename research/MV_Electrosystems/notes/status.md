@@ -1,6 +1,6 @@
 # MV Electrosystems (NSE: MVELECTRO, BSE: 544851) - research status
 
-**Updated:** 10-Nov-2026 (v2 model and Note v2). Previous: 25-Oct-2026, end of session 1.
+**Updated:** 11-Nov-2026 (base reset to "most likely"; model v2 updated in place; Note v3). Previous: 10-Nov-2026 (v2 model and Note v2).
 **Stage:** 1 (Historicals) complete. Waiting for the investor's go-ahead before Stage 2 (Research checklist, Evidence File, Note v1 complete).
 
 ## Where we are (three lines)
@@ -97,7 +97,55 @@
 - Listed rail-equipment peer multiples (Bloomberg) for the 25x P/E and 15x EV/EBITDA.
 
 ## File versions
-- Model: MVELECTRO_Model_v1.xlsx (25-Oct-2026); MVELECTRO_Model_v2.xlsx (10-Nov-2026, bear/base/bull, valuation)
-- Note: MV_Electrosystems_Note_v1.docx (25-Oct-2026) - skeleton; MV_Electrosystems_Note_v2.docx (10-Nov-2026) - plain-language note, SELL, target Rs.233
+- Model: MVELECTRO_Model_v1.xlsx (25-Oct-2026); MVELECTRO_Model_v2.xlsx (10-Nov-2026, bear/base/bull, valuation; base reset in place 11-Nov-2026, old base in git and as the Floor memo)
+- Note: MV_Electrosystems_Note_v1.docx (25-Oct-2026) - skeleton; MV_Electrosystems_Note_v2.docx (10-Nov-2026) - plain-language note, SELL, target Rs.233; MV_Electrosystems_Note_v3.docx (11-Nov-2026) - base reset to most likely, SELL, target Rs.375 (built by scratchpad scripts/build_note_mv_v3.js)
 - Evidence: notes/evidence.md (started; sections 1-3 populated)
 - Document repository: MV-Electrosystems-Investor-Docs.zip (delivered earlier this session)
+
+## Session 4 (11-Nov-2026): base case reset from "committed only" to "most likely"
+Per the house brief (all seven names came out SELL partly because the base counted only committed orders). Model v2 updated in place by scratchpad scripts/update_mv_base_reset.py; scenarios re-run with scripts/run_scen_mv_v2.py; sensitivities scripts/sens_mv_v3.py; Note v3 by scripts/build_note_mv_v3.js (Note v2 untouched).
+
+### Definitions now
+- Floor = the old committed-only base (memo on Valuations rows 89-97, pasted values). Base = most likely: industry growth + share actually shown, haircut for the delivery record, below guidance every year. Bull = management guidance (unchanged; it IS guidance). Bear unchanged. 25x P/E on the lower of FY28E and FY28-30 average EPS in all three (bear is a loss case at 1.0x book). Peer multiples still pending from Bloomberg.
+
+### Old base (floor) vs new base
+| | FY27E | FY28E | FY29E | FY30E |
+|---|---|---|---|---|
+| Sets delivered: floor / base / bull | 80 / 121 / 210 | 240 / 350 / 480 | 270 / 365 / 480 | 270 / 365 / 480 |
+| Revenue Rs cr: floor / base / bull | 155.8 / 222.8 / 382.9 | 437.9 / 617.6 / 864.1 | 514.5 / 670.2 / 889.6 | 502.0 / 658.5 / 831.9 |
+| Base position floor -> guidance (revenue) | 30% | 42% | 42% | 47% |
+| PAT Rs cr: floor / base / bull | (11.6) / (8.3) / 13.8 | 25.4 / 40.9 / 104.1 | 34.9 / 48.9 / 103.0 | 31.8 / 46.5 / 95.0 |
+| PAT margin base / bull | (3.7%) / 3.6% | 6.6% / 12.0% | 7.3% / 11.6% | 7.1% / 11.4% |
+- FY28E EPS 9.31 -> 15.00; target Rs.233 (-69%) -> Rs.375 (-51% vs CMP Rs.762.90); rating SELL on both. Nearest line: HOLD at -5%, 46 pts away (CMP would have to fall to ~Rs.395, or base target rise to ~Rs.725). Bull Rs.923 (+21%), bear Rs.102 unchanged.
+- Chance of management's plan already in the price = (762.90 - 375) / (923 - 375) = 71%.
+- Base EBITDA FY28E Rs.53.3 cr (8.6%); cumulative FCFF FY27E-FY30E Rs.(18) cr; net cash stays positive (low Rs.110 cr FY28E); order book 613 / 671 / 737 / 827 sets.
+
+### Base drivers changed (Drivers, base rows only; each tagged "Base reset 11-Nov-2026" in column G)
+- Share of sets tendered 15% -> 22% (FY26 actual 27.1%, Pro p.126; mgmt 25-26%; cut for 7 winners, L1 in one tender, integrated-kit pilots Pro p.54/140).
+- Sets tendered FY28E-FY30E: FY26 1,659 grown at 5.7% a year (new rows 114-115 on Drivers, rewired into base new orders row 12). New orders 165 FY27E (CLW 748 tender only), 408 / 431 / 455.
+- Planned deliveries 240 / 270 / 270 -> 350 / 365 / 365; FY27 ramp 5 / 8 / 36 / 72 = 121 (floor 80). FY28E-FY30E about 45% of the way from floor to 480 on sets.
+- Shifts 1 / 1 / 1 / 1 -> 1 / 1.5 / 2 / 2 (second shift from 2HFY28).
+- Legacy run-rate FY29E-FY30E 7.5 / 8.0 -> 7.63 / 8.32 Rs cr a quarter (9% market growth from FY28E).
+- Employee cost 20 / 24 / 27 / 29 -> 21 / 27 / 31 / 34 (second shift).
+- Unchanged on purpose: material 87/81/80/80% (board-approved WC plan, not mgmt 77%: margin promises not met, GM <9% for 3 quarters), price Rs.1.634 cr, LD 2/2/1/1%, MEMU 0/1/3/2, WC days, capex.
+
+### Industry numbers used (Drivers rows 118-130, "Industry growth used for the base")
+- Locomotive propulsion market India (CareEdge/MAIA): USD 481.1 mn CY20, 794.5 mn CY25, 1,046.6 mn CY30P = 10.6% CY20-25, 5.7% CY25-30P (Pro printed p.200-201). Whole propulsion market 10.8% / 6.0% (p.200).
+- Locos built FY26: 1,674 (AR FY26 p.51); loco fleet 12,147 FY19 -> 16,092 FY25 = +4.8% a year (Pro p.182); IREPS 5-yr estimate 10,000 sets (p.133).
+- Railway cable assemblies India: 11.2% CY20-25, 9.0% CY26-30P (USD 79.1 -> 111.5 mn; Pro p.206). MV legacy FY23-FY26 -13% a year (share lost), so no share gain in base.
+- Metro / Vande Bharat / Amrit Bharat propulsion: USD 113.9 mn CY25 -> 158.2 mn CY30P = 6.8% (Pro p.201). Base keeps only the MEMU order.
+- Web search 11-Nov-2026 for the CLW 748-loco award: nothing found (no award filed or reported).
+
+### Reasons
+- Delivery record is weak (8 commercial sets Mar-Aug 2026, none Jun-Aug, vs 10 Sep / 25 Nov / 40 a month from Jan promised; first developmental POs Feb-2020/Mar-2021, first serial supply Mar-2026), so the haircut sits near 40-50% of the way to guidance and lower in FY27E (7.5 months gone). Demand is real (Rs.922 cr book, 27% of FY26 tenders, market growing 5.7%), so tender share sits nearer history than 15% and a second shift starts (late).
+- Base below guidance every year on revenue (FY27 Rs.223 vs 400 cr guided; FY28 Rs.618 vs ~840 cr) and margin (PAT 6.6-7.3% vs >10%); above the floor every year.
+
+### Checks (recalculated, LibreOffice)
+- 0 formula errors (1,233 formulas) in bear, base and bull. BS (P&L row 88), cash (138), abridged CF (156), Drivers revenue / negative-book / negative-cash checks, Segments row 9: all 0 in FY27E-FY30E in all three; largest residual 0.001 (FY25 historical rounding). Snapshot check Valuations C78 = 0. Selector Drivers!C3 = 2.
+
+### Sensitivities on the new base (target Rs.375)
+- Material: each point ~Rs.41 (77% -> Rs.537; 85% -> Rs.207). FY28E deliveries: one shift 285 -> Rs.273; floor 240 -> Rs.202; full 1.5-shift capacity ~428 -> Rs.455. LD nil -> Rs.455. Legacy at FY26 level -> Rs.418. Each 5x P/E = Rs.75. Tender share 15% -> no change (capacity binds; FY30E book 362).
+
+### Next
+- 12-Nov-2026: 2QFY27 results. Re-check the base against the September and October dispatches (base assumes 8 sets in 2Q and 36 in 3Q); if 2Q is well below 8 and October slow, move FY27-FY28 deliveries back towards the floor. Add 2QFY27 to the Quarterly sheet and the first post-IPO balance sheet.
+- Bloomberg CMP and peer multiples still pending.

@@ -103,3 +103,11 @@ Page numbers: the prospectus PDF's printed page = physical page - 5; all referen
 - N17 [S] Shareholding Sep-2026 per Screener: promoters 57.68%, FII 0.46%, DII 8.16%, government 0.65%, public 33.04%; 28,808 shareholders.
 - N18 [S] NSE closes: 21-Oct 866.35; 23-Oct 788.00; 30-Oct 728.50; 4-Nov 775.70; 6-Nov 733.35; 8-Nov (Diwali session) 770.60; 9-Nov 762.90 (NSE historical data).
 - Data conflict C7: status.md session 2 said the WC plan implies material 87% FY27 / 82% FY28; recomputation gives COGS 84.6% / 80.7% (N5). Model v2 uses the recomputed figures.
+
+## 9. Added 11-Nov-2026 (base reset). Printed page numbers (= PDF page - 5).
+- I1 [S] CareEdge/MAIA (Pro p.200-201): Indian locomotive propulsion market USD 481.1 mn CY20, 794.5 mn CY25, 1,046.6 mn CY30P = 10.6% CAGR CY20-25, 5.7% CY25-30P. Metro / Vande Bharat / Amrit Bharat segment USD 65.5 / 113.9 / 158.2 mn = 6.8% CY25-30P. Global propulsion 7.4% CY20-25, 4.7% CY26-30P (Pro p.199).
+- I2 [S] Indian railway cable assemblies USD 42.4 mn CY20, 71.9 mn CY25 (11.2%), 79.1 mn CY26P to 111.5 mn CY30P (9.0%) (Pro p.206).
+- I3 [A] Indian Railways loco fleet 12,147 (FY19) to 16,092 (FY25), +4.8% a year (Pro p.182, Indian Rail Yearbook). Electric share 53.4% FY20 to 73.1% FY26 (Pro p.196).
+- I4 [M] AR FY26 MD&A p.51: "Indian Railways produced 1,674 locomotives during FY 2025-26". Call: "a few years ago ... 1,100 locomotives ... last year 1,667".
+- I5 [A] Developmental POs Feb-2020 (DMW 11), Mar-2021 (BLW 20, CLW 9) still in the Jun-2026 book; first serial supply Mar-2026 (Pro p.216) - delivery-record evidence used for the haircut.
+- I6 [S] Web search 11-Nov-2026: no report or filing of a CLW 748-loco propulsion award to MV.
