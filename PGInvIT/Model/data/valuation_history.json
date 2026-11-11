@@ -1,0 +1,730 @@
+{
+ "valuations": [
+  {
+   "date": "2021-09-30",
+   "report_date": "2021-10-28",
+   "valuer": "RBSA Valuation Advisors LLP (IBBI/RV-E/05/2019/110)",
+   "ev_by_spv_mn": {
+    "VTL": 22331.4,
+    "KATL": 4405.1,
+    "PPTL": 25071.1,
+    "WTL": 28325.7,
+    "JPTL": 20614.0
+   },
+   "total_ev_mn": 100747.3,
+   "equity_value_by_spv_mn": {
+    "VTL": 14943.4,
+    "KATL": 2617.5,
+    "PPTL": 12944.8,
+    "WTL": 13537.1,
+    "JPTL": 9480.0
+   },
+   "wacc_by_spv": {
+    "VTL": 0.078,
+    "KATL": 0.075,
+    "PPTL": 0.076,
+    "WTL": 0.076,
+    "JPTL": 0.076
+   },
+   "wacc_unrounded": {
+    "VTL": 0.0779,
+    "KATL": 0.0751,
+    "PPTL": 0.0759,
+    "WTL": 0.0763,
+    "JPTL": 0.076
+   },
+   "wacc_components": {
+    "risk_free": 0.0663,
+    "risk_free_basis": "10-yr zero coupon GoI yield curve, 30-Sep-2021",
+    "equity_risk_premium": 0.07,
+    "unlevered_beta": 0.21,
+    "relevered_beta": 0.51,
+    "beta_basis": "5-yr monthly beta of POWERGRID (only listed comparable)",
+    "debt_to_equity": 1.42,
+    "debt_to_equity_basis": "POWERGRID 5-yr average D/E at market weights",
+    "additional_risk_premium": 0.005,
+    "additional_risk_premium_basis": "COVID-19 volatility",
+    "cost_of_equity": 0.107,
+    "cost_of_debt_pretax": 0.07,
+    "cost_of_debt_basis": "Management expectation of ~7% borrowing rate",
+    "effective_tax_rate": {
+     "VTL": 0.181,
+     "KATL": 0.2488,
+     "PPTL": 0.2287,
+     "WTL": 0.2189,
+     "JPTL": 0.2256
+    },
+    "cost_of_debt_posttax": {
+     "VTL": 0.0573,
+     "KATL": 0.0526,
+     "PPTL": 0.054,
+     "WTL": 0.0547,
+     "JPTL": 0.0542
+    },
+    "debt_weight": null,
+    "equity_weight": null
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach. PV of TV (Rs mn): VTL 1,475.2; KATL 161.3; PPTL 1,117.0; WTL 1,266.6; JPTL 1,047.0.",
+   "nav_per_unit": null,
+   "nav_note": "Sep-2021 NAV not found in local sources",
+   "change_reasons": "No 'summary of changes in WACC' annexure. Report reads in continuation of RBSA's IPO valuation as of 31-Dec-2020; 'material valuation uncertainty' flagged due to COVID-19. Acquisition date of 74% stake: 13-May-2021.",
+   "pginvit_holding": {
+    "VTL": "74%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_H1_FY22.pdf (summary p.5; Appendix 1 WACC pp.64-65; DCF appendices)"
+  },
+  {
+   "date": "2022-03-31",
+   "report_date": "2022-05-17",
+   "valuer": "RBSA Valuation Advisors LLP (IBBI/RV-E/05/2019/110)",
+   "ev_by_spv_mn": {
+    "VTL": 21832.2,
+    "KATL": 4515.9,
+    "PPTL": 25508.5,
+    "WTL": 28701.2,
+    "JPTL": 21737.5
+   },
+   "total_ev_mn": 102295.3,
+   "equity_value_by_spv_mn": {
+    "VTL": 14453.2,
+    "KATL": 2682.7,
+    "PPTL": 12715.1,
+    "WTL": 13173.2,
+    "JPTL": 9385.5
+   },
+   "wacc_by_spv": {
+    "VTL": 0.08,
+    "KATL": 0.077,
+    "PPTL": 0.078,
+    "WTL": 0.078,
+    "JPTL": 0.078
+   },
+   "wacc_unrounded": {
+    "VTL": 0.08,
+    "KATL": 0.0768,
+    "PPTL": 0.0778,
+    "WTL": 0.0783,
+    "JPTL": 0.078
+   },
+   "wacc_components": {
+    "risk_free": 0.071,
+    "risk_free_basis": "10-yr zero coupon GoI yield, 31-Mar-2022",
+    "equity_risk_premium": 0.07,
+    "unlevered_beta": 0.21,
+    "relevered_beta": 0.5,
+    "debt_to_equity": 1.4,
+    "debt_to_equity_basis": "POWERGRID 5-yr avg D/E (market weights)",
+    "additional_risk_premium": 0.005,
+    "additional_risk_premium_basis": "COVID-19 and certain global events",
+    "cost_of_equity": 0.1109,
+    "cost_of_debt_pretax": 0.07,
+    "effective_tax_rate": {
+     "VTL": 0.1741,
+     "KATL": 0.2517,
+     "PPTL": 0.2273,
+     "WTL": 0.2156,
+     "JPTL": 0.2218
+    },
+    "cost_of_debt_posttax": {
+     "VTL": 0.0578,
+     "KATL": 0.0524,
+     "PPTL": 0.0541,
+     "WTL": 0.0549,
+     "JPTL": 0.0545
+    },
+    "debt_weight": null,
+    "equity_weight": null
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 101.07,
+   "nav_basis": "Standalone & consolidated NAV at fair value, 31-Mar-2022 (AR FY22); consolidated book NAV 98.83",
+   "change_reasons": "No change annexure. Versus Sep-21: Rf up 6.63%->7.10%, relevered beta 0.51->0.50, D/E 1.42->1.40; WACC up ~20bp (7.5-7.8% -> 7.7-8.0%); additional 0.5% premium retained (COVID + global events).",
+   "pginvit_holding": {
+    "VTL": "100% (26% acquired 31-Mar-2022)",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_FY22.pdf (summary p.4; Appendix 1 WACC pp.76-77); Annual_Report_FY_2021_22.pdf NAV statement"
+  },
+  {
+   "date": "2022-09-30",
+   "report_date": "2022-10-28",
+   "valuer": "INMACS Valuers Private Limited (IBBI/RV-E/02/2021/141); signatory Vaibhav Jain",
+   "ev_by_spv_mn": {
+    "VTL": 18953.41,
+    "KATL": 3866.73,
+    "PPTL": 22255.79,
+    "WTL": 24567.81,
+    "JPTL": 17722.46
+   },
+   "total_ev_mn": 87366.2,
+   "equity_value_by_spv_mn": {
+    "VTL": 11519.02,
+    "KATL": 2054.6,
+    "PPTL": 9372.53,
+    "WTL": 8893.22,
+    "JPTL": 5586.69
+   },
+   "wacc_by_spv": {
+    "VTL": 0.0901,
+    "KATL": 0.0901,
+    "PPTL": 0.0901,
+    "WTL": 0.0901,
+    "JPTL": 0.0901
+   },
+   "wacc_components": {
+    "risk_free": 0.073,
+    "risk_free_basis": "CCIL published rates 30-Sep-2022",
+    "beta": 0.28,
+    "beta_basis": "Industry median beta of comparables, 3-yr daily",
+    "relevered_beta": 0.53,
+    "equity_risk_premium": 0.0908,
+    "erp_basis": "Forward-looking implied ERP, country-risk adjusted (Moody's Baa3; CRP 3.07%; US mature ERP 6.01%)",
+    "debt_to_equity": 1.19,
+    "debt_to_equity_basis": "3-yr average industry D/E of comparables",
+    "cost_of_equity": 0.1212,
+    "cost_of_debt_pretax": 0.0857,
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0641,
+    "equity_weight": 0.46,
+    "debt_weight": 0.54,
+    "note": "Actual SPV debt from InvIT costs 14.50% (prepayable); valuer used market Kd instead"
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": null,
+   "nav_note": "Sep-2022 NAV not found in local sources",
+   "change_reasons": "No change annexure. Valuer changed from RBSA to INMACS (appointed 1-Aug-2022) with new WACC build: comparables' median beta (0.28 unlevered/0.53 relevered), country-risk-adjusted implied ERP 9.08% (vs flat 7% + 0.5% add-on), Kd 8.57% (vs 7%), D/E 1.19; Rf 7.30%. WACC rose to 9.01% from 7.7-8.0%, cutting total EV ~16%. IM CFO (Nov-2023 call) attributed the Sep-2022 impairment to 'huge rise in the global interest rate market' raising WACC.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_H1FY23.pdf (summary p.9; WACC pp.26-27; conclusion p.71)"
+  },
+  {
+   "date": "2023-03-31",
+   "report_date": "2023-05-17",
+   "valuer": "INMACS Valuers Private Limited; signatory Vaibhav Jain",
+   "ev_by_spv_mn": {
+    "VTL": 18695.45,
+    "KATL": 3798.98,
+    "PPTL": 21745.77,
+    "WTL": 23913.93,
+    "JPTL": 17303.79
+   },
+   "total_ev_mn": 85457.92,
+   "equity_value_by_spv_mn": {
+    "VTL": 11091.91,
+    "KATL": 2045.02,
+    "PPTL": 9238.46,
+    "WTL": 8511.47,
+    "JPTL": 5456.86
+   },
+   "wacc_by_spv": {
+    "VTL": 0.0901,
+    "KATL": 0.0901,
+    "PPTL": 0.0901,
+    "WTL": 0.0901,
+    "JPTL": 0.0901
+   },
+   "wacc_components": {
+    "risk_free": 0.0717,
+    "risk_free_basis": "CCIL 31-Mar-2023",
+    "beta": 0.26,
+    "relevered_beta": 0.42,
+    "equity_risk_premium": 0.0973,
+    "erp_basis": "Implied ERP, CRP (rating) 3.79%, Baa3",
+    "debt_to_equity": 0.83,
+    "cost_of_equity": 0.1124,
+    "cost_of_debt_pretax": 0.0842,
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.063,
+    "equity_weight": 0.55,
+    "debt_weight": 0.45
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 86.04,
+   "nav_basis": "NAV at fair value 31-Mar-2023 (AR FY23); consolidated book NAV 84.69",
+   "change_reasons": "No change annexure. WACC unchanged at 9.01%: lower Rf (7.17%), beta and leverage (D/E 0.83) offset by higher ERP (9.73%); Ke 11.24%. EV decline vs Sep-22 reflects passage of time (annuity run-off).",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_FY23.pdf (summary p.9; WACC pp.27-28)"
+  },
+  {
+   "date": "2023-09-30",
+   "report_date": "2023-10-28",
+   "valuer": "INMACS Valuers Private Limited; signatory Vaibhav Jain",
+   "ev_by_spv_mn": {
+    "VTL": 18773.86,
+    "KATL": 3890.26,
+    "PPTL": 21839.0,
+    "WTL": 24032.18,
+    "JPTL": 17365.72
+   },
+   "total_ev_mn": 85901.02,
+   "equity_value_by_spv_mn": {
+    "VTL": 11133.7,
+    "KATL": 2089.69,
+    "PPTL": 9589.06,
+    "WTL": 9099.16,
+    "JPTL": 5709.58
+   },
+   "wacc_by_spv": {
+    "VTL": 0.0885,
+    "KATL": 0.0885,
+    "PPTL": 0.0885,
+    "WTL": 0.0885,
+    "JPTL": 0.0885
+   },
+   "wacc_components": {
+    "risk_free": 0.0716,
+    "risk_free_basis": "CCIL 29-Sep-2023",
+    "beta": 0.27,
+    "relevered_beta": 0.39,
+    "equity_risk_premium": 0.0833,
+    "erp_basis": "Implied ERP, CRP 3.33%, Baa3",
+    "debt_to_equity": 0.62,
+    "cost_of_equity": 0.1042,
+    "cost_of_debt_pretax": 0.0841,
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0629,
+    "equity_weight": 0.62,
+    "debt_weight": 0.38
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 85.99,
+   "nav_basis": "Stated by IM CFO on Q3 FY24 call (Feb-2024) as NAV per unit at 30-Sep-2023 per published results",
+   "change_reasons": "No change annexure. WACC 9.01%->8.85%: ERP fell 9.73%->8.33% (lower country risk premium) cutting Ke to 10.42%; partial impairment reversal. IM CFO (Nov-2023 call): 'cooling off in the interest rate' and reduced Indian equity risk premium lowered cost of equity/WACC; cash flows broadly unchanged.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_H1FY24.pdf (summary p.10; WACC p.29); Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf; ..._Q3_FY_2024.pdf"
+  },
+  {
+   "date": "2024-03-31",
+   "report_date": "2024-05-14",
+   "valuer": "INMACS Valuers Private Limited; signatory Vaibhav Jain",
+   "ev_by_spv_mn": {
+    "VTL": 18730.6,
+    "KATL": 3938.61,
+    "PPTL": 21427.17,
+    "WTL": 23539.62,
+    "JPTL": 17067.44
+   },
+   "total_ev_mn": 84703.44,
+   "equity_value_by_spv_mn": {
+    "VTL": 11069.05,
+    "KATL": 2094.4,
+    "PPTL": 9917.63,
+    "WTL": 9237.13,
+    "JPTL": 5805.95
+   },
+   "wacc_by_spv": {
+    "VTL": 0.0879,
+    "KATL": 0.0879,
+    "PPTL": 0.0879,
+    "WTL": 0.0879,
+    "JPTL": 0.0879
+   },
+   "wacc_components": {
+    "risk_free": 0.0697,
+    "risk_free_basis": "CCIL 31-Mar-2024",
+    "beta": 0.29,
+    "relevered_beta": 0.41,
+    "equity_risk_premium": 0.0781,
+    "erp_basis": "Implied ERP, CRP 3.21%, Baa3",
+    "debt_to_equity": 0.51,
+    "debt_to_equity_note": "Detail table D/E 0.51 (industry 3-yr avg); summary table shows 0.34 (= debt weight)",
+    "cost_of_equity": 0.1014,
+    "cost_of_debt_pretax": 0.0822,
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0615,
+    "equity_weight": 0.66,
+    "debt_weight": 0.34
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 85.28,
+   "nav_basis": "NAV at fair value 31-Mar-2024 (AR FY24); consolidated book NAV 82.87",
+   "change_reasons": "No change annexure (6A first appears FY25). WACC 8.85%->8.79%: Rf 7.16%->6.97%, ERP 8.33%->7.81%, Kd 8.41%->8.22%. Q4 FY24 call: impairment reversal of Rs 25.41 cr in Q4 at 8.79% WACC.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_FY24.pdf (summary p.11; WACC pp.27-28)"
+  },
+  {
+   "date": "2024-09-30",
+   "report_date": "2024-10-29",
+   "valuer": "INMACS Valuers Private Limited; signatory Aneesh Mallick",
+   "ev_by_spv_mn": {
+    "VTL": 18374.31,
+    "KATL": 3786.87,
+    "PPTL": 20771.63,
+    "WTL": 22821.16,
+    "JPTL": 16530.39
+   },
+   "total_ev_mn": 82284.36,
+   "equity_value_by_spv_mn": {
+    "VTL": 11051.11,
+    "KATL": 2015.41,
+    "PPTL": 9768.45,
+    "WTL": 9135.99,
+    "JPTL": 5763.4
+   },
+   "wacc_by_spv": {
+    "VTL": 0.0895,
+    "KATL": 0.0895,
+    "PPTL": 0.0895,
+    "WTL": 0.0895,
+    "JPTL": 0.0895
+   },
+   "wacc_components": {
+    "risk_free": 0.0669,
+    "risk_free_basis": "RBI website 30-Sep-2024",
+    "beta": 0.42,
+    "relevered_beta": 0.71,
+    "equity_risk_premium": 0.068,
+    "erp_basis": "Implied ERP: CRP 2.68% + US mature 4.12%, Baa3",
+    "debt_to_equity": 0.93,
+    "cost_of_equity": 0.1149,
+    "cost_of_debt_pretax": 0.0832,
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0623,
+    "equity_weight": 0.52,
+    "debt_weight": 0.48
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 83.07,
+   "nav_basis": "Cited on Q2 FY25 call (Nov-2024): analyst quoted drop from 85.28 to 83.07; management: 'Must be around 83.07'",
+   "change_reasons": "No change annexure (scanned report, OCR). WACC 8.79%->8.95%: higher beta (0.29->0.42; relevered 0.71) and D/E 0.93 lifted Ke to 11.49% despite lower Rf (6.69%) and ERP (6.80%). Management (Q2 FY25 call): rise in WACC plus 6 months of cash flows elapsed reduced EV; Rs 166.89 cr impairment booked in Q2 FY25.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "74%",
+    "PPTL": "74%",
+    "WTL": "74%",
+    "JPTL": "74%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_H1FY25.pdf (image PDF, OCR; WACC pp.29-30; conclusion p.76); Conference_Call_Text_Transcript_on_Q2_H1_FY25.pdf"
+  },
+  {
+   "date": "2025-03-31",
+   "report_date": "2025-05-20",
+   "valuer": "INMACS Valuers Private Limited; signatory Aneesh Mallick",
+   "ev_by_spv_mn": {
+    "VTL": 20861.54,
+    "KATL": 3941.04,
+    "PPTL": 21762.33,
+    "WTL": 24753.15,
+    "JPTL": 18723.77
+   },
+   "total_ev_mn": 90041.83,
+   "equity_value_by_spv_mn": {
+    "VTL": 13557.55,
+    "KATL": 2149.41,
+    "PPTL": 11225.02,
+    "WTL": 11651.48,
+    "JPTL": 8334.77
+   },
+   "wacc_by_spv": {
+    "VTL": 0.08,
+    "KATL": 0.08,
+    "PPTL": 0.08,
+    "WTL": 0.08,
+    "JPTL": 0.08
+   },
+   "wacc_unrounded": {
+    "VTL": 0.0798,
+    "KATL": 0.0798,
+    "PPTL": 0.0798,
+    "WTL": 0.0798,
+    "JPTL": 0.0798
+   },
+   "wacc_components": {
+    "risk_free": 0.0655,
+    "risk_free_basis": "CCIL zero-coupon 10-yr, 31-Mar-2025",
+    "unlevered_beta": 0.35,
+    "relevered_beta": 0.96,
+    "beta_basis": "POWERGRID 5-yr daily beta (vs 3-yr comparables median earlier)",
+    "equity_risk_premium": 0.0726,
+    "erp_basis": "Damodaran: US 4.33% + India CRP 2.93% (Baa3)",
+    "csrp_equity": 0.0,
+    "debt_to_equity": 2.33,
+    "debt_to_equity_basis": "Target 70:30 debt:equity (actual SPV debt/capital 78%)",
+    "cost_of_equity": 0.1349,
+    "cost_of_debt_pretax": 0.075,
+    "cost_of_debt_build": "Rf 6.74% + NIFTY AAA corporate spread 0.56% + company-specific 0.20% (PGInvIT AAA/Stable)",
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0561,
+    "equity_weight": 0.3,
+    "debt_weight": 0.7
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 94.12,
+   "nav_basis": "NAV at fair value 31-Mar-2025 (AR FY25); standalone book 94.02; consolidated book 84.85",
+   "change_reasons": "Annexure 6A (Mar-24 vs Mar-25): Rf 6.97%->6.55%, MRP 7.81%->7.26%, D/(D+E) ~34%->70%, Ke 10.14%->13.49%, post-tax Kd 6.15%->5.61%, WACC 8.79%->8.00%. Methodology changes stated in report: beta from POWERGRID 5-yr daily data instead of 3-yr comparables; target 70:30 leverage (InvIT regs allow >49% with AAA rating) instead of POWERGRID 3-yr avg D/E; Kd built from PGInvIT AAA rating + spread. Lower WACC drove EV up ~8% and large impairment reversal. (Note: IM CFO on Q4 FY26 call misremembered Mar-25 WACC as 8.95%; reports show 8.95% at Sep-24 and 8.00% at Mar-25.)",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "100%",
+    "PPTL": "100%",
+    "WTL": "100%",
+    "JPTL": "100%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_FY25.pdf (image PDF, OCR; summary p.12; WACC pp.34-36; Annexure 6 pp.100-101; Annexure 6A p.102)"
+  },
+  {
+   "date": "2025-09-30",
+   "report_date": "2025-10-31",
+   "valuer": "INMACS Valuers Private Limited; signatory Aneesh Mallick",
+   "ev_by_spv_mn": {
+    "VTL": 20839.36,
+    "KATL": 3852.9,
+    "PPTL": 21193.05,
+    "WTL": 24238.89,
+    "JPTL": 18444.0
+   },
+   "total_ev_mn": 88568.2,
+   "equity_value_by_spv_mn": {
+    "VTL": 13750.92,
+    "KATL": 2082.75,
+    "PPTL": 11125.07,
+    "WTL": 11623.77,
+    "JPTL": 8367.69
+   },
+   "wacc_by_spv": {
+    "VTL": 0.08,
+    "KATL": 0.08,
+    "PPTL": 0.08,
+    "WTL": 0.08,
+    "JPTL": 0.08
+   },
+   "wacc_components": {
+    "risk_free": 0.0672,
+    "risk_free_basis": "CCIL zero-coupon 10-yr, 30-Sep-2025",
+    "unlevered_beta": 0.39,
+    "relevered_beta": 1.06,
+    "equity_risk_premium": 0.0746,
+    "erp_basis": "Damodaran: US 4.21% + India CRP 3.25%",
+    "csrp_equity": 0.0,
+    "debt_to_equity": 2.33,
+    "cost_of_equity": 0.1463,
+    "cost_of_debt_pretax": 0.0705,
+    "cost_of_debt_build": "Rf 6.72% + NIFTY AAA spread 0.33% + company risk 0.00% (PGInvIT CARE AAA/Stable)",
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0528,
+    "equity_weight": 0.3,
+    "debt_weight": 0.7
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": null,
+   "nav_note": "Sep-2025 NAV not found in local sources",
+   "change_reasons": "Annexure 6A (Mar-25 vs Sep-25; table is an image, read visually): Rf 6.55%->6.72%, MRP 7.26%->7.46%, D/(D+E) 70%, Ke 13.49%->14.63%, post-tax Kd 5.61%->5.28%, WACC flat at 8.00%. Company-specific risk in Kd cut 0.20%->0.00% (35-yr TSAs, CTUIL pooled billing, strong sponsor); AAA spread 0.56%->0.33%.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "100%",
+    "PPTL": "100%",
+    "WTL": "100%",
+    "JPTL": "100%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_H1FY26.pdf (WACC pp.34-36; Annexure 6 pp.100-101; Annexure 6A p.103; conclusion)"
+  },
+  {
+   "date": "2026-03-31",
+   "report_date": "2026-05-13",
+   "valuer": "INMACS Valuers Private Limited; signatory Aneesh Mallick",
+   "ev_by_spv_mn": {
+    "VTL": 20252.11,
+    "KATL": 3873.56,
+    "PPTL": 20821.57,
+    "WTL": 23711.54,
+    "JPTL": 18059.11
+   },
+   "total_ev_mn": 86717.89,
+   "equity_value_by_spv_mn": {
+    "VTL": 13217.48,
+    "KATL": 2174.46,
+    "PPTL": 11063.19,
+    "WTL": 11426.87,
+    "JPTL": 8226.74
+   },
+   "wacc_by_spv": {
+    "VTL": 0.08,
+    "KATL": 0.08,
+    "PPTL": 0.08,
+    "WTL": 0.08,
+    "JPTL": 0.08
+   },
+   "wacc_components": {
+    "risk_free": 0.0716,
+    "risk_free_basis": "CCIL zero rate 31-Mar-2026",
+    "unlevered_beta": 0.4,
+    "relevered_beta": 1.11,
+    "beta_basis": "POWERGRID 5-yr daily",
+    "equity_risk_premium": 0.0708,
+    "erp_basis": "Damodaran Jan-26: US 4.23% + India CRP 2.85% (Baa3)",
+    "csrp_equity": 0.0,
+    "debt_to_equity": 2.33,
+    "cost_of_equity": 0.1503,
+    "cost_of_debt_pretax": 0.0665,
+    "cost_of_debt_build": "Weighted actual PGInvIT borrowing cost: T-bill-linked loan 6.56% (Rs 5,611.96 mn) and repo-linked loan 6.75% (Rs 5,028.38 mn)",
+    "tax_rate": 0.2517,
+    "cost_of_debt_posttax": 0.0498,
+    "equity_weight": 0.3,
+    "debt_weight": 0.7
+   },
+   "terminal": "Terminal value at end of TSA-based explicit forecast period from projected annualised revenue and EBITDA margin of last forecast year, long-term growth rate 0%, maintainable capex = annual depreciation (assets remain with SPV after TSA, BOOM). FCFF DCF, Income approach.",
+   "nav_per_unit": 90.79,
+   "nav_basis": "NAV at fair value 31-Mar-2026 (AR FY26); consolidated book NAV 82.87",
+   "change_reasons": "Annexure 6A (Sep-25 vs Mar-26): Rf 6.72%->7.16%, MRP 7.46%->7.08%, D/(D+E) 70%, Ke 14.63%->15.03%, post-tax Kd 5.28%->4.98%, WACC flat 8.00%. Kd now based on PGInvIT's actual floating-rate borrowings rather than G-sec + AAA spread. With WACC unchanged, EV decline (-3.5% vs Mar-25) reflects annuity run-off; IM CFO (Q4 FY26 call): value fluctuates mainly with WACC and declines as cash flows are paid out.",
+   "pginvit_holding": {
+    "VTL": "100%",
+    "KATL": "100%",
+    "PPTL": "100%",
+    "WTL": "100%",
+    "JPTL": "100%"
+   },
+   "source": "/home/user/Power/PGInvIT/Valuation_Reports/Valuation_Report_FY26.pdf (summary p.12; WACC pp.37-39; Annexure 6 pp.107-109; Annexure 6A p.110); Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf"
+  }
+ ],
+ "impairment_notes": {
+  "standalone_impairment_of_investment_in_subsidiaries_mn": {
+   "FY22": 1831.93,
+   "FY23": 12762.76,
+   "FY24": -1311.59,
+   "FY25": -10665.89,
+   "FY26": 713.28,
+   "sign": "positive = impairment charge, negative = reversal"
+  },
+  "consolidated_impairment_goodwill_ppe_intangibles_mn": {
+   "FY22": 3679.41,
+   "FY23": 15098.1,
+   "FY24": -2541.43,
+   "FY25": -5080.28,
+   "FY26": -1216.4,
+   "sign": "positive = impairment charge, negative = reversal"
+  },
+  "h1_items": {
+   "Q2_FY25_impairment_rs_cr": 166.89,
+   "Q4_FY24_reversal_rs_cr": 25.41
+  },
+  "cause": "Impairment is tested against recoverable amounts (value in use) from the independent valuer's DCF, so it tracks the valuation: (1) FY23: WACC rose from 7.7-8.0% (RBSA, Mar-22) to 9.01% (INMACS, Sep-22/Mar-23) after the valuer change and new WACC build (comparables beta, country-risk-adjusted ERP 9.08-9.73%, Kd 8.4-8.6%). The IM CFO blamed the 'huge rise in the global interest rate market' in 2022. Total EV fell from Rs 102,295 mn to Rs 85,458 mn, and NAV fell from 101.07 to 86.04. (2) FY24: small reversal as WACC eased to 8.85%/8.79% on lower ERP and Rf. (3) FY25: an H1 impairment (WACC up to 8.95%), then a large reversal at Mar-25 when WACC was cut to 8.00% through methodology changes (5-yr POWERGRID beta, 70:30 target leverage, AAA-based Kd), taking NAV to 94.12. (4) FY26: WACC held at 8.00%; standalone impairment of Rs 713.28 mn but consolidated PPE reversal of Rs 1,216.40 mn; NAV 90.79 (run-off). Management repeatedly calls it a non-cash entry with no impact on distributions.",
+  "sources": [
+   "/home/user/Power/PGInvIT/Annual_Reports/Annual_Report_FY_2021_22.pdf .. Annual_Report_FY_2025_26.pdf (standalone and consolidated P&L; NAV statements; sensitivity notes)",
+   "/home/user/Power/PGInvIT/Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf",
+   "/home/user/Power/PGInvIT/Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY25.pdf",
+   "/home/user/Power/PGInvIT/Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf"
+  ],
+  "ar_sensitivity": {
+   "Mar-22": "WACC 7.70-8.00% +/-0.50% -> FV -3,687.89 / +4,114.31 mn",
+   "Mar-23": "WACC 9.01%: at 9.50% -2,768.30 mn; at 8.50% +3,134.54 mn",
+   "Mar-25": "WACC 8.00% -> 8.50%: -4,002.51 mn",
+   "Mar-26": "WACC 8.00% -> 8.50%: -3,942.61 mn"
+  }
+ },
+ "sponsor": {
+  "name": "Power Grid Corporation of India Limited (POWERGRID)",
+  "status": "Schedule 'A' Maharatna CPSE under Ministry of Power; incorporated 23-Oct-1989",
+  "govt_shareholding_pct": 51.34,
+  "govt_shareholding_asof": "Company overview page; promoter 51.34% stable through Jun-2026 quarter (third-party shareholding sites)",
+  "fy26_consolidated": {
+   "revenue_from_operations_rs_cr": 46732.87,
+   "total_income_rs_cr": 47684,
+   "pat_rs_cr": 15927.95,
+   "ebitda_rs_cr": 39677,
+   "transmission_charges_rs_cr": 43962,
+   "total_debt_rs_cr": 148009,
+   "dividend_per_share_rs": 9.0,
+   "fy25_pat_rs_cr": 15521
+  },
+  "fy26_standalone": {
+   "revenue_from_operations_rs_cr": 40904.2,
+   "pat_rs_cr": 15921.0
+  },
+  "network": {
+   "asof": "2026-10-31",
+   "ckm": 187893,
+   "substations": 294,
+   "transformation_mva": 661116,
+   "system_availability_pct": 99.61,
+   "note": "Includes TBCB elements, excludes PGInvIT (company overview page)",
+   "earlier_snapshot_2026-04-30": {
+    "ckm": 185102,
+    "substations": 291,
+    "mva": 628516
+   }
+  },
+  "market_share": {
+   "inter_regional_network_pct": "~84% (company page; 101,180 MW inter-regional capacity = ~84% of national per FY26 results)",
+   "cumulative_ISTS_TBCB_share_by_tariff_pct": 44,
+   "note": "No official single 'share of total inter-state transmission' figure found; ISTS line additions Q1 FY27: PGCIL 82% of 1,993 ckm"
+  },
+  "market_cap": {
+   "rs_cr": 241723,
+   "share_price_rs": 260,
+   "asof": "early Nov-2026 (Screener); Value Research Rs 2,41,072 cr at 29-Oct-2026"
+  },
+  "credit_ratings": {
+   "domestic": "CRISIL AAA/Stable; ICRA AAA/Stable; CARE AAA/Stable",
+   "international": "S&P BBB (Stable); Fitch BBB- (Stable; standalone credit profile revised to bbb from bbb+ effective 12-Feb-2026); Moody's Baa3 (Stable) - at sovereign ceiling"
+  },
+  "capex": {
+   "fy26_capex_rs_cr": 39967,
+   "fy26_guidance_rs_cr": 35000,
+   "fy26_capitalisation_rs_cr": 28206,
+   "fy27_capex_guidance_rs_cr": 37000,
+   "fy27_capitalisation_guidance_rs_cr": 30000,
+   "works_in_hand_rs_cr": "~170,000 (incl CWIP 47,980): TBCB 137,370 (81%), RTM 28,931 (17%), other 4,217 (2%)",
+   "bidding_pipeline": ">Rs 1.1 lakh crore",
+   "fy26_tbcb_wins": "9 of 28 bid"
+  },
+  "relationship_with_pginvit": {
+   "roles": "Sponsor and Project Manager (O&M, PIMA services under agreements; escalated 3.51% p.a. in valuation)",
+   "unitholding": "136,500,100 units = 15.00% (held beyond lock-in, as of 31-Mar-2026)",
+   "investment_manager": "POWERGRID Unchahar Transmission Limited (PUTL), wholly-owned subsidiary of POWERGRID",
+   "trustee": "IDBI Trusteeship Services Limited",
+   "spv_history": "PGInvIT bought 74% of 5 SPVs at IPO (13-May-2021), 100% of VTL by 31-Mar-2022, and the remaining 26% of KATL/PPTL/WTL/JPTL from POWERGRID during FY25 (100% at Mar-25)",
+   "pginvit_ratings": "CRISIL AAA/Stable (Dec-2025), ICRA AAA (Stable) (Apr-2026), CARE AAA/Stable (Mar-2025)",
+   "source": "/home/user/Power/PGInvIT/Annual_Reports/Annual_Report_FY_2025_26.pdf"
+  },
+  "sources": [
+   "https://www.powergrid.in/en/company-overview",
+   "https://psuwatch.com/newsupdates/power-grid-fy26-profit-rises-3-percent-as-capex-surges-past-guidance-2",
+   "https://www.investywise.com/?p=87298",
+   "https://www.whalesbook.com/corporate-news/English/energy/PowerGrid-FY26-Profit-Hits-indian-rupee15928-Cr-Company-Sets-indian-rupee37k-Cr-CAPEX-Target/6a0aa9d4591776c13289ceb3",
+   "https://indianmasterminds.com/news/powergrid-analysts-meet-mumbai-transmission-network-system-availability-205018/",
+   "https://www.screener.in/company/POWERGRID/consolidated",
+   "https://www.valueresearchonline.com/stocks/43827/power-grid-corporation-of-india-ltd/",
+   "https://scanx.trade/stock-market-news/stocks/fitch-ratings-revises-powergrid-s-stand-alone-credit-profile-to-bbb-from-bbb/32463000",
+   "https://www.indiainfoline.com/company/power-grid-corporation-of-india-ltd/reports/directors-report",
+   "https://www.tndindia.com/transmission-line-addition-on-ists-network-surges-in-4mfy27/",
+   "https://upstox.com/stocks/power-grid-corp-ltd-shareholding/",
+   "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/POWERGRIDInfrastructureInvestmentTrust_December 19_ 2025_RR_384831.html"
+  ],
+  "caveats": "Web figures come from secondary news/aggregator sites, not from verified primary filings. Consolidated revenue from operations (46,732.87 cr) comes from investywise (citing a BSE filing). Market cap is the latest aggregator figure, not an NSE close."
+ },
+ "notes": {
+  "units": "EV/equity in Rs million; rates as decimals",
+  "spv_names": "VTL=(POWERGRID) Vizag Transmission; KATL/PKATL=Kala Amb; PPTL=Parli; WTL/PWTL=Warora; JPTL/PJTL=Jabalpur",
+  "ocr": "FY25 and H1FY25 valuation reports are scanned images; values were read by tesseract OCR and cross-checked between the summary and per-SPV DCF pages and later reports",
+  "nav_gaps": "NAV per unit not found for 30-Sep-2021, 30-Sep-2022, 30-Sep-2025 (H1 results not in local folders; NSE fetch failed)"
+ }
+}

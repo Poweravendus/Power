@@ -1,0 +1,1587 @@
+{
+ "1_unitholding_pattern": {
+  "note": "% of 90,99,99,200 units outstanding (unchanged since IPO). Sponsor = Power Grid Corporation of India Ltd. 'bodies_corporate_institutional' = 'Any other - Bodies Corporates' under Institutions; 'bodies_corporate_non_institutional' under Non-Institutions. Page numbers are PDF page indices. Paths relative to /home/user/Power/PGInvIT/.",
+  "at_ipo_allotment_2021-05-11": {
+   "sponsor": 15.0,
+   "institutions": 63.75,
+   "non_institutions": 21.25,
+   "source": "Investor_Presentations/Investors_Presentation_on_H1_FY_2022_Financial_Results_of_PGInvIT.pdf p4-5"
+  },
+  "2022-03-31": {
+   "sponsor": 15.0,
+   "mutual_funds": 6.38,
+   "insurance_companies": 10.45,
+   "provident_pension_funds": 7.22,
+   "foreign_portfolio_investors": 23.1,
+   "financial_institutions_banks": 0.34,
+   "alternative_investment_funds": 0.69,
+   "bodies_corporate_institutional": 1.38,
+   "individuals": 22.9,
+   "nris": 0.81,
+   "bodies_corporate_non_institutional": 11.56,
+   "nbfcs": 0.06,
+   "trusts": 0.08,
+   "clearing_members": 0.03,
+   "foreign_nationals": null,
+   "total_public": 85.0,
+   "source": "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p60",
+   "units_held": {
+    "mutual_funds": 58059322,
+    "insurance": 95087145,
+    "pf": 65672174,
+    "fpi": 210174996,
+    "individuals": 208369793,
+    "bodies_corp_non_inst": 105211948
+   },
+   "check_sum_pct": 100.0
+  },
+  "2023-03-31": {
+   "sponsor": 15.0,
+   "mutual_funds": 5.84,
+   "insurance_companies": 9.89,
+   "provident_pension_funds": 7.39,
+   "foreign_portfolio_investors": 22.14,
+   "financial_institutions_banks": 0.11,
+   "alternative_investment_funds": 0.53,
+   "bodies_corporate_institutional": 1.79,
+   "individuals": 24.09,
+   "nris": 1.03,
+   "bodies_corporate_non_institutional": 12.03,
+   "nbfcs": 0.05,
+   "trusts": 0.1,
+   "clearing_members": 0.01,
+   "foreign_nationals": null,
+   "total_public": 85.0,
+   "source": "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p63",
+   "check_sum_pct": 100.0
+  },
+  "2024-03-31": {
+   "sponsor": 15.0,
+   "mutual_funds": 4.58,
+   "insurance_companies": 7.0,
+   "provident_pension_funds": 7.4,
+   "foreign_portfolio_investors": 20.79,
+   "financial_institutions_banks": 0.15,
+   "alternative_investment_funds": 0.6,
+   "bodies_corporate_institutional": 0.84,
+   "individuals": 30.93,
+   "nris": 1.12,
+   "bodies_corporate_non_institutional": 11.28,
+   "nbfcs": 0.05,
+   "trusts": 0.26,
+   "clearing_members": 0.0,
+   "foreign_nationals": null,
+   "total_public": 85.0,
+   "source": "Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p67-68",
+   "check_sum_pct": 100.0
+  },
+  "2025-03-31": {
+   "sponsor": 15.0,
+   "mutual_funds": 7.37,
+   "insurance_companies": 4.68,
+   "provident_pension_funds": 7.26,
+   "foreign_portfolio_investors": 17.33,
+   "financial_institutions_banks": 0.0,
+   "alternative_investment_funds": 0.06,
+   "bodies_corporate_institutional": 0.0,
+   "individuals": 34.49,
+   "nris": 1.34,
+   "bodies_corporate_non_institutional": 11.04,
+   "nbfcs": 0.89,
+   "trusts": 0.54,
+   "clearing_members": 0.0,
+   "foreign_nationals": null,
+   "total_public": 85.0,
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p73-74",
+   "check_sum_pct": 100.0
+  },
+  "2026-03-31": {
+   "sponsor": 15.0,
+   "mutual_funds": 10.22,
+   "insurance_companies": 5.45,
+   "provident_pension_funds": 7.26,
+   "foreign_portfolio_investors": 4.96,
+   "financial_institutions_banks": 0.0,
+   "alternative_investment_funds": 0.14,
+   "bodies_corporate_institutional": 0.0,
+   "individuals": 43.82,
+   "nris": 1.56,
+   "bodies_corporate_non_institutional": 9.96,
+   "nbfcs": 0.84,
+   "trusts": 0.78,
+   "clearing_members": 0.0,
+   "foreign_nationals": 0.0,
+   "total_public": 85.0,
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p39 (A3 spread, printed p74-75)",
+   "check_sum_pct": 99.99
+  },
+  "2026-06-30": {
+   "sponsor": 15.0,
+   "mutual_funds": 6.72,
+   "insurance_companies": 4.18,
+   "provident_pension_funds": 7.21,
+   "foreign_portfolio_investors": 5.13,
+   "financial_institutions_banks": 0.05,
+   "alternative_investment_funds": 0.18,
+   "bodies_corporate_institutional": 0.0,
+   "individuals": 48.22,
+   "nris": 1.67,
+   "bodies_corporate_non_institutional": 9.98,
+   "nbfcs": 0.84,
+   "trusts": 0.82,
+   "clearing_members": 0.0,
+   "foreign_nationals": 0.0,
+   "total_public": 85.0,
+   "source": "NSE filing 09-Jul-2026 https://nsearchives.nseindia.com/corporate/PGINVIT_09072026142851_INTIMATION.pdf",
+   "check_sum_pct": 100.0
+  },
+  "2026-09-30": {
+   "sponsor": 15.0,
+   "mutual_funds": 6.2,
+   "insurance_companies": 2.73,
+   "provident_pension_funds": 7.18,
+   "foreign_portfolio_investors": 5.33,
+   "financial_institutions_banks": 0.0,
+   "alternative_investment_funds": 0.16,
+   "bodies_corporate_institutional": 0.0,
+   "individuals": 50.21,
+   "nris": 1.64,
+   "bodies_corporate_non_institutional": 9.87,
+   "nbfcs": 0.84,
+   "trusts": 0.85,
+   "clearing_members": 0.0,
+   "foreign_nationals": 0.0,
+   "total_public": 85.0,
+   "source": "NSE filing 12-Oct-2026 https://nsearchives.nseindia.com/corporate/PGINVIT_12102026152503_INTIMATIONQC.pdf (pages 5-6: KFin unitholding report as on 30.09.2026)",
+   "check_sum_pct": 100.01
+  },
+  "others_category_note": "No separate 'others' line; listed categories sum to 100%. Central/State Govt, VCF and FVCI are 0.00 in all years.",
+  "unitholder_count": {
+   "2022-03-31": {
+    "value": 36081,
+    "source": "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59"
+   },
+   "2024-03-31": {
+    "value": 159729,
+    "source": "Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p67"
+   },
+   "2025-03-31": {
+    "value": 189246,
+    "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72"
+   },
+   "2026-03-31": {
+    "value": 276293,
+    "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p39"
+   },
+   "at_IPO_approx": {
+    "value": "~15,000",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p2"
+   }
+  },
+  "top10_holders": {
+   "2022-03-31": {
+    "source": "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59",
+    "holders": [
+     [
+      "Power Grid Corporation of India Ltd (Sponsor)",
+      15.0
+     ],
+     [
+      "CPP Investment Board Private Holdings 4 Inc",
+      10.09
+     ],
+     [
+      "NPS Trust A/c SBI Pension Fund Scheme - State Govt",
+      6.99
+     ],
+     [
+      "Capital Income Builder",
+      6.5
+     ],
+     [
+      "HDFC Trustee Co A/c HDFC Balanced Advantage Fund",
+      5.12
+     ],
+     [
+      "Schroder Asian Asset Income Fund",
+      1.87
+     ],
+     [
+      "Tata AIG General Insurance",
+      1.81
+     ],
+     [
+      "Schroder Asian Income",
+      1.69
+     ],
+     [
+      "ICICI Lombard General Insurance",
+      1.36
+     ],
+     [
+      "Tata AIA Life Insurance",
+      1.32
+     ]
+    ]
+   },
+   "2023-03-31": {
+    "source": "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p62",
+    "holders": [
+     [
+      "POWERGRID (Sponsor)",
+      15.0
+     ],
+     [
+      "CPP Investment Board Private Holdings 4 Inc",
+      10.09
+     ],
+     [
+      "NPS Trust",
+      7.16
+     ],
+     [
+      "Capital Income Builder",
+      6.5
+     ],
+     [
+      "HDFC Trustee Co",
+      5.07
+     ],
+     [
+      "Tata AIG General Insurance",
+      1.81
+     ],
+     [
+      "Schroder Asian Asset Income Fund",
+      1.65
+     ],
+     [
+      "Schroder Asian Income",
+      1.64
+     ],
+     [
+      "ICICI Lombard General Insurance",
+      1.36
+     ],
+     [
+      "Tata AIA Life Insurance",
+      1.32
+     ]
+    ]
+   },
+   "2024-03-31": {
+    "source": "Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p66",
+    "holders": [
+     [
+      "POWERGRID (Sponsor)",
+      15.0
+     ],
+     [
+      "CPP Investment Board Private Holdings 4 Inc",
+      10.09
+     ],
+     [
+      "NPS Trust",
+      7.1
+     ],
+     [
+      "Capital Income Builder",
+      5.1
+     ],
+     [
+      "HDFC Mutual Fund",
+      4.35
+     ],
+     [
+      "Tata AIG General Insurance",
+      1.77
+     ],
+     [
+      "ICICI Lombard General Insurance",
+      1.36
+     ],
+     [
+      "Utilico Emerging Markets Trust PLC",
+      1.02
+     ],
+     [
+      "Vanguard Total International Stock Index Fund",
+      0.94
+     ],
+     [
+      "Vanguard Emerging Markets Stock Index Fund",
+      0.85
+     ]
+    ]
+   },
+   "2025-03-31": {
+    "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72",
+    "holders": [
+     [
+      "POWERGRID (Sponsor)",
+      15.0
+     ],
+     [
+      "CPP Investment Board Private Holdings 4 Inc",
+      10.09
+     ],
+     [
+      "NPS Trust",
+      6.93
+     ],
+     [
+      "HDFC Mutual Fund",
+      3.94
+     ],
+     [
+      "WhiteOak Mutual Fund",
+      1.76
+     ],
+     [
+      "Capital Income Builder",
+      1.64
+     ],
+     [
+      "ICICI Lombard General Insurance",
+      1.36
+     ],
+     [
+      "ICICI Prudential Multi-Asset Fund",
+      1.28
+     ],
+     [
+      "KAF Capital Pvt Ltd",
+      1.26
+     ],
+     [
+      "Vanguard Total International Stock Index Fund",
+      1.2
+     ]
+    ]
+   },
+   "2026-03-31": {
+    "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p39",
+    "holders": [
+     [
+      "POWERGRID (Sponsor)",
+      15.0
+     ],
+     [
+      "NPS Trust",
+      6.91
+     ],
+     [
+      "HDFC Mutual Fund",
+      5.55
+     ],
+     [
+      "ICICI Prudential Mutual Fund",
+      4.01
+     ],
+     [
+      "ICICI Lombard General Insurance",
+      1.36
+     ],
+     [
+      "Vanguard Total International Stock Index Fund",
+      1.22
+     ],
+     [
+      "Vanguard Emerging Markets Stock Index Fund",
+      1.2
+     ],
+     [
+      "Acko General Insurance",
+      0.76
+     ],
+     [
+      "Ageas Federal Life Insurance - MRTA",
+      0.72
+     ],
+     [
+      "Renaissance Asset Management Co Pvt Ltd",
+      0.67
+     ]
+    ]
+   },
+   "notable": "CPP Investments held 91.84 mn units (10.09%) from IPO to 31-Mar-2025 and nil at 31-Mar-2026 (exited during FY26) - Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 (note on >5% holders). Directors/KMP of IM held no units (each AR, same pages).",
+   "2026-09-30": null
+  }
+ },
+ "2_ownership": {
+  "investment_manager": {
+   "name": "POWERGRID Unchahar Transmission Limited (PUTL), CIN U65100DL2012GOI246341",
+   "owner": "Wholly-owned (100%) subsidiary of Power Grid Corporation of India Ltd; a Government company (powers to appoint IDs vest with President of India)",
+   "other": "PUTL itself owns/operates 106.74 ckm of TBCB lines (active since FY2013-14); IMA dated 18-Dec-2020, amended & restated 26-Mar-2024",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p10 right half (printed p17)",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 (printed p63)",
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_12102026152503_INTIMATIONQC.pdf (note to point 1)"
+   ]
+  },
+  "sponsor_and_project_manager": {
+   "name": "Power Grid Corporation of India Ltd (POWERGRID), Maharatna CPSE under Ministry of Power, listed NSE/BSE",
+   "owner": "Government of India 51.34% (per POWERGRID Q4 FY2025-26 investor presentation as cited by PGInvIT)",
+   "sponsor_unitholding": "13,65,00,100 units = 15.00% of PGInvIT",
+   "agreement": "Project Implementation and Management Agreement (PIMA) dated 23-Jan-2021",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p9 left half (printed p14)",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p39",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 right half (Note 41)"
+   ]
+  },
+  "trustee": {
+   "name": "IDBI Trusteeship Services Limited (ITSL), SEBI-registered debenture trustee",
+   "promoters": "IDBI Bank, LIC and GIC",
+   "change": "No change in Trustee since inception (none in FY26)",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p10 right half (printed p17)"
+  },
+  "valuer": {
+   "FY2021-22": "RBSA Valuation Advisors LLP",
+   "FY2022-23 to FY2025-26": "INMACS Valuers Pvt Ltd (IBBI/RV-E/02/2021/141)",
+   "FY2026-27 to FY2027-28": "IndiaAppraisers.com Pvt Ltd (IBBI/RV-E/07/2020/129), approved by unitholders 24-Aug-2026",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p61",
+    "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p49",
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p1",
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_25082026152252_INTIMATIONVR.pdf"
+   ]
+  },
+  "auditor": {
+   "name": "S.K. Mittal & Co. (FRN 001135N)",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p74"
+  },
+  "rta": {
+   "name": "KFin Technologies Ltd",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p74"
+  }
+ },
+ "3_credit_ratings": {
+  "trust_PGInvIT": [
+   {
+    "agency": "CRISIL",
+    "rating": "Crisil AAA/Stable (corporate credit rating)",
+    "date": "2025-12-19 (reaffirmed)",
+    "source": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/POWERGRIDInfrastructureInvestmentTrust_December 19_ 2025_RR_384831.html"
+   },
+   {
+    "agency": "ICRA",
+    "rating": "[ICRA]AAA (Stable) issuer rating; [ICRA]AAA (Stable) on Rs 1,073 cr term loan + Rs 27 cr unallocated (total Rs 1,100 cr)",
+    "date": "2026-04-30 (reaffirmed)",
+    "source": "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 (p1, Annexure II)"
+   },
+   {
+    "agency": "CARE",
+    "rating": "CARE AAA; Stable (issuer rating). Bank facility rating reaffirmed at CARE AAA; Stable and withdrawn at PGInvIT's request",
+    "date": "2025-09-08",
+    "source": "https://www.careratings.com/upload/CompanyFiles/PR/202509140952_POWERGRID_Infrastructure_Investment_Trust.pdf p1"
+   },
+   {
+    "agency": "India Ratings",
+    "rating": null,
+    "note": "not found"
+   }
+  ],
+  "trust_rating_per_company_filings": {
+   "text": "CRISIL AAA/Stable, [ICRA] AAA (Stable), CARE AAA; Stable (as of Q1 FY27 results, 28-Jul-2026); HDFC long-term loan facility rated [ICRA]AAA (Stable)",
+   "source": [
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p14 (note 10)",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31 left half (printed p58)"
+   ]
+  },
+  "hdfc_loan_facility_history": {
+   "FY2022-23": "CARE AAA; Stable (Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p49)",
+   "FY2024-25 onward": "[ICRA]AAA (Stable) (Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p57; Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31)"
+  },
+  "sponsor_POWERGRID": [
+   {
+    "agency": "CRISIL",
+    "rating": "Crisil AAA/Stable/Crisil A1+",
+    "date": "2025-11-21 (reaffirmed)",
+    "source": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/PowerGridCorporationofIndiaLimited_November%2021_%202025_RR_383656.html (via web search; not opened)"
+   },
+   {
+    "agency": "ICRA",
+    "rating": "[ICRA]AAA (Stable)/[ICRA]A1+",
+    "date": "as cited in ICRA PGInvIT rationale dated 2026-04-30",
+    "source": "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 p1"
+   },
+   {
+    "agency": "CARE",
+    "rating": "CARE AAA; Stable/CARE A1+",
+    "date": "as cited in CARE PGInvIT release 2025-09-08; web search indicates reaffirmation in April 2026 press release (careratings.com/upload/CompanyFiles/PR/202604130452_Power_Grid_Corporation_of_India_Limited.pdf, not opened)",
+    "source": "https://www.careratings.com/upload/CompanyFiles/PR/202509140952_POWERGRID_Infrastructure_Investment_Trust.pdf p1"
+   },
+   {
+    "agency": "India Ratings",
+    "rating": null,
+    "note": "not found"
+   }
+  ],
+  "investment_manager_PUTL": {
+   "rating": null,
+   "note": "No rating found for PUTL from CRISIL/ICRA/CARE/India Ratings (web search 2026-11-11)"
+  }
+ },
+ "4_board_and_management": {
+  "as_of": "Board per FY2025-26 AR (31-Mar-2026) updated with NSE filings to 30-Sep-2026",
+  "board_of_IM": [
+   {
+    "name": "Shri Naveen Srivastava",
+    "capacity": "Chairman; Non-Executive Non-Independent (POWERGRID nominee); director since 01-Jul-2024",
+    "background": "B.Tech (Hons) EE NIT Durgapur; Director (Operations), POWERGRID; ~36 yrs in transmission O&M/construction; ex-ED NR-III and NER/NERPSIP"
+   },
+   {
+    "name": "Dr. Anupam Arora",
+    "capacity": "Independent Director (appointed by GoI) w.e.f. 19-May-2025; chairs Audit Committee",
+    "background": "Physicist (PhD Nuclear Physics); Principal, S.D. Post Graduate College, Panipat since 2012; 36 yrs teaching/research"
+   },
+   {
+    "name": "Shri Sanjay Sharma",
+    "capacity": "Non-Executive Non-Independent (POWERGRID nominee) w.e.f. 01-Nov-2024",
+    "background": "B.Tech EE (GB Pant Univ); ED (Corporate Planning), POWERGRID; former CEO of PGInvIT/PUTL and of POWERGRID Teleservices; 33+ yrs"
+   },
+   {
+    "name": "Shri Amit Garg",
+    "capacity": "Non-Executive Non-Independent (POWERGRID nominee) w.e.f. 13-Nov-2024",
+    "background": "B.Com DU, PGDBM; Chief General Manager, POWERGRID; PGInvIT CFO from inception till 07-Oct-2024; 29 yrs corporate finance"
+   },
+   {
+    "name": "Smt. Anita Soren",
+    "capacity": "Independent Director (Non-official, appointed by MoP order 06-Jul-2026; on board from 08-Jul-2026; chairs NRC and SRC)",
+    "background": null,
+    "source": [
+     "https://nsearchives.nseindia.com/corporate/PGINVIT_06072026184042_INTIMATIONID.pdf",
+     "https://nsearchives.nseindia.com/corporate/PGINVIT_12102026152503_INTIMATIONQC.pdf"
+    ]
+   }
+  ],
+  "board_source": [
+   "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p12 left half (printed p20)",
+   "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 right half (printed p63)",
+   "https://nsearchives.nseindia.com/corporate/PGINVIT_12102026152503_INTIMATIONQC.pdf (Q2 FY27 governance report)"
+  ],
+  "governance_notes": [
+   "IM board below SEBI independent-director requirement; SEBI relaxation on Reg 4(2)(e)(v) and 26H(1) extended to 31-Dec-2026; relaxation on unitholder nominee director circular till 30-Sep-2026 (NSE https://nsearchives.nseindia.com/corporate/PGINVIT_31072026111228_Intimation_SEBI_Exemptions_-_Updated_Signed.pdf)",
+   "Q2 FY27 governance report affirms board composition NOT in terms of InvIT Regulations (3 non-independent, 2 independent) (NSE PGINVIT_12102026152503_INTIMATIONQC.pdf)",
+   "11 board meetings in FY26; non-independent POWERGRID nominees draw no sitting fees; Dr Arora sitting fees Rs 7.25 lakh FY26 (Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p34 left half, printed p64)",
+   "Prior directors: Abhay Choudhary (Chairman, ceased 30-Jun-2024), Purshottam Agarwal (ceased 31-Oct-2024), Ram Naresh Tiwari (ID, ceased 14-Nov-2024), Onkarappa KN (ID from 10-Feb-2022, died 12-Dec-2023) (Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p57; Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p3)"
+  ],
+  "key_management": [
+   {
+    "name": "Shri K. Nagraj Bhat",
+    "role": "CEO w.e.f. 23-Jun-2026",
+    "background": "BE (EE) SGSITS Indore, MBA Nagpur Univ; joined POWERGRID 1993 (first batch EET); CGM POWERGRID; commercial, O&M, corporate planning, multilateral financing (ADB/WB/KfW)",
+    "source": [
+     "https://nsearchives.nseindia.com/corporate/PGINVIT_23062026135056_INTIMATIONCEO.pdf",
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p12 right half (printed p21)"
+    ]
+   },
+   {
+    "name": "Smt. Neela Das",
+    "role": "CEO 27-Aug-2024 to 15-Jun-2026 (ceased)",
+    "background": "BE (EE) IIEST Shibpur; 35+ yrs POWERGRID (since 1991) in substation O&M, JV formation, business development",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p12 right half",
+     "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p21"
+    ]
+   },
+   {
+    "name": "CA Gaurav Malik",
+    "role": "CFO w.e.f. 07-Oct-2024; nodal officer for unclaimed distributions",
+    "background": "Chartered Accountant, B.Com (Hons) DU, MBA; ~25 yrs; ex-DGM Finance, POWERGRID",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p12 right half",
+     "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p21, p72"
+    ]
+   },
+   {
+    "name": "Shri Shwetank Kumar",
+    "role": "Company Secretary & Compliance Officer w.e.f. 16-Aug-2024",
+    "background": "ACS; B.Com (Hons) Patna, LLB DU, MBA FMS Delhi; 21+ yrs; ex-DGM Company Secretariat, POWERGRID",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p12 right half",
+     "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p21"
+    ]
+   }
+  ],
+  "past_kmp": {
+   "CEOs": "Purshottam Agarwal (ceased 02-Mar-2023), Sanjay Sharma (CEO in FY24 calls), A. Sensarma (01-Feb-2024 to 27-Aug-2024)",
+   "CFO": "Amit Garg (to 07-Oct-2024)",
+   "CS": "Anjana Luthra (to 16-Aug-2024)",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p21",
+    "Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p100",
+    "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p21"
+   ]
+  }
+ },
+ "5_borrowings": {
+  "total_at_2026-03-31_rs_mn": {
+   "value": 10640.33,
+   "note": "Gross; standalone = consolidated; SPVs have no external debt",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p30 right half (printed p57)",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half (Note 12, printed p107)"
+   ]
+  },
+  "facilities": [
+   {
+    "lender": "HDFC Bank Ltd",
+    "type": "Secured rupee term loan (tranche 1)",
+    "drawn": "March 2022",
+    "initial_amount_rs_mn": 5755.85,
+    "outstanding_2026-03-31_rs_mn": 5611.96,
+    "rate_basis": "Floating: 3-month T-Bill + spread; spread 194 bp at drawdown, cut 34 bp Jan-2023 and 33 bp Jul-2023 to 127 bp w.e.f. 09-Jul-2023; quarterly reset",
+    "rate_2026-03-31": "6.56% (T-bill 5.29% + 1.27%)",
+    "tenor": "16 years door-to-door",
+    "maturity": "March 2038 (per ICRA)",
+    "repayment": "64 quarterly instalments of varying amounts from 30-Jun-2022; ~50% back-ended",
+    "purpose": "Part-fund 26% of VTL + change-in-law revenue rights (Mar-2022); sanctioned bank loan agreement Rs 7,000 mn",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half (Note 12)",
+     "Annual_Reports/Annexures_Annual_Report_FY_2025_26.pdf pdf p109",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p10",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2022_Financial_Results_of_PGInvIT.pdf p10",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p4, p8",
+     "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 Annexure II"
+    ]
+   },
+   {
+    "lender": "HDFC Bank Ltd",
+    "type": "Secured rupee term loan (tranche 2)",
+    "drawn": "December 2024",
+    "initial_amount_rs_mn": 5060.0,
+    "outstanding_2026-03-31_rs_mn": 5028.38,
+    "rate_basis": "Floating: RBI repo + 150 bp; monthly reset",
+    "rate_2026-03-31": "6.75% (repo 5.25% + 1.50%)",
+    "tenor": "16 years",
+    "maturity": "December 2040 (per ICRA)",
+    "repayment": "64 quarterly instalments of varying amounts from 31-Mar-2025",
+    "purpose": "Fund acquisition of balance 26% in KATL/PPTL/WTL/JPTL (Dec-2024)",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half (Note 12)",
+     "Annual_Reports/Annexures_Annual_Report_FY_2025_26.pdf pdf p109",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p10",
+     "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 Annexure II"
+    ]
+   }
+  ],
+  "security": "First pari passu charge on entire current assets incl. loans/advances and receivables from loans to SPVs (current and future); first pari passu charge on Trust escrow account; first and exclusive charge on DSRA (one quarter of debt service). No covenant breach or default.",
+  "security_source": [
+   "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half (Note 12)",
+   "CARE PR 08-Sep-2025 p1"
+  ],
+  "facility_rating": "[ICRA]AAA (Stable) on Rs 1,073 cr term loan (ICRA 30-Apr-2026); earlier CARE AAA; Stable (withdrawn 08-Sep-2025)",
+  "facility_rating_source": [
+   "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31 left half",
+   "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 p1",
+   "https://www.careratings.com/upload/CompanyFiles/PR/202509140952_POWERGRID_Infrastructure_Investment_Trust.pdf p1"
+  ],
+  "maturity_profile_2026-03-31_incl_interest_rs_mn": {
+   "within_1yr": 788.49,
+   "1_5yrs": 3344.42,
+   "beyond_5yrs": 14517.62,
+   "total": 18650.53,
+   "note": "~73% of principal repayable after 10 years",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31 right half (printed p59)",
+    "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p10"
+   ]
+  },
+  "principal_repaid": {
+   "FY25_rs_mn": 35.1,
+   "FY26_rs_mn": 82.86,
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p57",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p30 right half"
+   ]
+  },
+  "gearing_2026-03-31": {
+   "net_debt_standalone_rs_mn": 8397.22,
+   "net_debt_consolidated_rs_mn": 4337.35,
+   "gearing_standalone": "9.23%",
+   "gearing_consolidated": "5.44%",
+   "net_borrowings_ratio_to_EV": "5.00%",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31 right half",
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p21"
+   ]
+  },
+  "cost_of_debt": {
+   "FY22": {
+    "value": "<6% at drawdown (Mar-2022)",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2022_Financial_Results_of_PGInvIT.pdf p10"
+   },
+   "FY23": {
+    "value": "7.2% average",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p11"
+   },
+   "FY24": {
+    "value": "8.18% average for H1 FY24 (full-year average not disclosed); rate 8.13% at 31-Dec-2023, 8.21% at 31-Mar-2024",
+    "source": [
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p4",
+     "Investor_Presentations/Investors_Presentation_on_Q3_FY2024_Financial_Results_of_PGInvIT.pdf p10",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2024_Financial_Results_of_PGInvIT.pdf p11"
+    ]
+   },
+   "FY25": {
+    "value": "7.92% average; rates at 31-Mar-2025: 7.84% (T-bill loan), 7.75% (repo loan); 8.12% avg in H1 FY25",
+    "source": [
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p5",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2025_Financial_Results_of_PGInvIT.pdf p10",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY25.pdf p4"
+    ]
+   },
+   "FY26": {
+    "value": "6.97% average; rates at 31-Mar-2026: 6.56% / 6.75%; weighted 6.65% used by valuer",
+    "source": [
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p4",
+     "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p10",
+     "Annual_Reports/Annexures_Annual_Report_FY_2025_26.pdf pdf p109"
+    ]
+   },
+   "valuer_pre_tax_Kd_assumption": {
+    "FY22": "7.00%",
+    "FY23": "8.42%",
+    "FY24": "8.22%",
+    "FY25": null,
+    "FY26": "6.65%",
+    "source": [
+     "Annual_Reports/Annexures_Annual_Report_FY_2021_22.pdf pdf p81",
+     "Annual_Reports/Annexures_Annual_Report_FY_2022_23.pdf pdf p29",
+     "Annual_Reports/Annexures_Annual_Report_FY_2023_24.pdf pdf p35",
+     "Annual_Reports/Annexures_Annual_Report_FY_2025_26.pdf pdf p108-109"
+    ],
+    "note": "FY25 valuation report is scanned; not extracted"
+   }
+  },
+  "q1_fy27_gross_borrowings_rs_mn": {
+   "value": 10619.62,
+   "date": "2026-06-30",
+   "net_borrowings_ratio": "5.13%",
+   "cash_and_bank_ex_DSRA_rs_mn": 6173.12,
+   "source": "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p21"
+  },
+  "intra_group_loans": "Trust loans to SPVs Rs 44,669.02 mn at 31-Mar-2026 at 14.5% p.a. (repayable at TSA expiry, resettable); PPTL RTM loan at 10.5% over 12 years from DOCO (Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p32 left half; pdf p54 left half)",
+  "regulatory_headroom": "InvIT debt limit 70% of asset value (CARE negative trigger: external debt >70% of asset valuation)"
+ },
+ "6_milestones": [
+  {
+   "date": "2020-09-14",
+   "event": "PGInvIT settled as a trust by POWERGRID under Indian Trusts Act 1882",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 right half (printed p63)"
+  },
+  {
+   "date": "2020-12-18",
+   "event": "Investment Management Agreement with PUTL (amended & restated 26-Mar-2024)",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 right half"
+  },
+  {
+   "date": "2021-01-07",
+   "event": "Registered with SEBI as InvIT (IN/InvIT/20-21/0016)",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 right half"
+  },
+  {
+   "date": "2021-01-23",
+   "event": "Project Implementation and Management Agreement with POWERGRID",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 right half (Note 41)"
+  },
+  {
+   "date": "2021-04-22",
+   "event": "Share purchase agreements with POWERGRID for the five SPVs",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p58"
+  },
+  {
+   "date": "2021-04-29 to 2021-05-03",
+   "event": "IPO: offer Rs 77,349.91 mn (Rs 7,735 cr) at Rs 100/unit (band Rs 99-100); fresh issue Rs 49,934.83 mn + OFS by POWERGRID Rs 27,415.08 mn; anchor Rs 34,807.41 mn (Rs 3,481 cr); other institutional Rs 23,204.94 mn; non-institutional Rs 19,337.56 mn; 4.83x subscribed; 'largest InvIT IPO in India'. Named anchor/strategic investors not given in text (presentation shows logos only); CPP Investments held 10.09% at 31-Mar-2022",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p10",
+    "Investor_Presentations/Investors_Presentation_on_H1_FY_2022_Financial_Results_of_PGInvIT.pdf p4"
+   ]
+  },
+  {
+   "date": "2021-05-11",
+   "event": "Allotment: sponsor 15%, institutions 63.75%, non-institutions 21.25% of 909,999,200 units",
+   "source": "Investor_Presentations/Investors_Presentation_on_H1_FY_2022_Financial_Results_of_PGInvIT.pdf p5"
+  },
+  {
+   "date": "2021-05-13",
+   "event": "Acquired 74% in VTL, PKATL, PPTL, PWTL, PJTL from POWERGRID, funded entirely by unit capital",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p31 left half",
+    "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 p2"
+   ]
+  },
+  {
+   "date": "2021-05-14",
+   "event": "Listed on NSE/BSE at Rs 104/unit (Mcap Rs 9,464 cr)",
+   "source": "Investor_Presentations/Investors_Presentation_on_H1_FY_2022_Financial_Results_of_PGInvIT.pdf p4"
+  },
+  {
+   "date": "2021-11-09",
+   "event": "Maiden distribution Rs 4.50/unit",
+   "source": "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59"
+  },
+  {
+   "date": "2022-02-10",
+   "event": "Shri Onkarappa KN appointed independent director of PUTL (MoP order); died 12-Dec-2023",
+   "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p3"
+  },
+  {
+   "date": "by 2022-03",
+   "event": "CERC transmission licence to PKATL for 125 MVAr bus reactor at Kala Amb under RTM",
+   "source": "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p11"
+  },
+  {
+   "date": "2022-03-31",
+   "event": "Acquired balance 26% of PVTL for Rs 3,307.85 mn; PPTL/PWTL/PJTL acquired rights to change-in-law additional revenue (PPTL +2.787%, PWTL +3.445%, PJTL +5.226%) for Rs 3,041.50 mn; funded by internal resources + Rs 5,755.85 mn HDFC loan (first debt raise). PVTL renamed Vizag Transmission Ltd (VTL) after 100% acquisition",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p12",
+    "Investor_Presentations/Investors_Presentation_on_Q4_FY2022_Financial_Results_of_PGInvIT.pdf p10",
+    "Annual_Reports/Annexures_Annual_Report_FY_2022_23.pdf pdf p31"
+   ]
+  },
+  {
+   "date": "FY2022-23",
+   "event": "Valuer changed: INMACS Valuers Pvt Ltd appointed in place of RBSA Valuation Advisors LLP",
+   "source": "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p49"
+  },
+  {
+   "date": "2023-01 and 2023-07",
+   "event": "HDFC loan spread cut by 34 bp and 33 bp (to T-bill + 127 bp from 09-Jul-2023)",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p4",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half"
+   ]
+  },
+  {
+   "date": "2023-04",
+   "event": "Units included in Nifty REITs & InvITs Index",
+   "source": "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p61"
+  },
+  {
+   "date": "FY2023-24",
+   "event": "POWERGRID declined to sell balance 26% in FY24 ('transfer is not envisaged in the current Fiscal')",
+   "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p5"
+  },
+  {
+   "date": "2024-01-02",
+   "event": "CTUIL OM approves PPTL 400 kV line bay at 765/400 kV Parli (New) S/s under RTM; SCOD 31-Dec-2025; cost estimate Rs 25.72 cr (Rs 18 cr per CTU OM)",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p58",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p4"
+   ]
+  },
+  {
+   "date": "2024-02-05",
+   "event": "PKATL 420 kV 125 MVAr bus reactor at Kala Amb (RTM) commissioned; cost ~Rs 30 cr",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p4",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY25.pdf p4"
+   ]
+  },
+  {
+   "date": "2024-12-06",
+   "event": "CEA workshop with PGInvIT for state utilities on monetisation of state transmission assets (~20 states)",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p6",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q1_FY_2026.pdf p10"
+   ]
+  },
+  {
+   "date": "2024-12-10",
+   "event": "Unitholders approve acquisition of balance 26% in PKATL/PPTL/PWTL/PJTL by postal ballot",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p71"
+  },
+  {
+   "date": "2024-12",
+   "event": "Second HDFC term loan Rs 5,060 mn drawn (repo + 150 bp)",
+   "source": [
+    "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p57",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p55 right half"
+   ]
+  },
+  {
+   "date": "2024-12-30",
+   "event": "Acquired balance 26% of KATL (Rs 427.96 mn), PPTL (Rs 1,870.12 mn), WTL (Rs 1,763.79 mn), JPTL (Rs 1,004.43 mn) = Rs 5,066.29 mn vs valuation Rs 6,937.65 mn; 100% of all five SPVs",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p56, p59"
+  },
+  {
+   "date": "2025-02-14 / 2025-02-21 / 2025-02-28",
+   "event": "Renamed: POWERGRID Kala Amb -> Kala Amb Transmission Ltd and POWERGRID Parli -> Parli Power Transmission Ltd (14-Feb-2025); POWERGRID Jabalpur -> Jabalpur Power Transmission Ltd (21-Feb-2025); POWERGRID Warora -> Warora Transmission Ltd (28-Feb-2025)",
+   "source": "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p25-28"
+  },
+  {
+   "date": "2025-05-19",
+   "event": "Dr Anupam Arora appointed independent director of PUTL",
+   "source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p33 right half"
+  },
+  {
+   "date": "2025-08 (Q1 FY26 call)",
+   "event": "Boards of PUTL and POWERGRID give in-principle approval to consortium (POWERGRID lead 26%, PGInvIT 74%) to bid for up to 2 TBCB projects, aggregate cost ~Rs 500 cr; pending GoI/ministry approval as of May-2026",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q1_FY_2026.pdf p7-8",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p7",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p5"
+   ]
+  },
+  {
+   "date": "2025-09-08",
+   "event": "CARE withdrew bank-facility rating at PGInvIT request (issuer rating CARE AAA; Stable retained)",
+   "source": "https://www.careratings.com/upload/CompanyFiles/PR/202509140952_POWERGRID_Infrastructure_Investment_Trust.pdf p1"
+  },
+  {
+   "date": "2025-12-31",
+   "event": "PPTL 400 kV line bay charged on no-load (on schedule); tariff/DOCO petition pending with CERC; est. annual tariff ~Rs 4.5 cr",
+   "source": [
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p14 note 4",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p2",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p8"
+   ]
+  },
+  {
+   "date": "2026-03 (end)",
+   "event": "O&M contract with POWERGRID valid till March 2026, to be renewed (status of renewal not found)",
+   "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p16-17"
+  },
+  {
+   "date": "2026-06-15 / 2026-06-23",
+   "event": "CEO Neela Das ceased; K. Nagraj Bhat appointed CEO",
+   "source": [
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_15062026191907_INTIMATION.pdf",
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_23062026135056_INTIMATIONCEO.pdf"
+   ]
+  },
+  {
+   "date": "2026-07-08",
+   "event": "Smt. Anita Soren joins PUTL board as independent director (MoP order 06-Jul-2026)",
+   "source": [
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_06072026184042_INTIMATIONID.pdf",
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_12102026152503_INTIMATIONQC.pdf"
+   ]
+  },
+  {
+   "date": "2026-07-28",
+   "event": "5th annual meeting; board approves IndiaAppraisers.com Pvt Ltd as valuer for FY27-FY28 (INMACS reached 4-year limit under Reg 21(9))",
+   "source": [
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p1",
+    "https://nsearchives.nseindia.com/corporate/PGINVIT_03082026173252_INTIMATIONPB.pdf (explanatory statement)"
+   ]
+  },
+  {
+   "date": "2026-07-30",
+   "event": "SEBI extends relaxation on independent-director norms to 31-Dec-2026; nominee-director circular relaxation till 30-Sep-2026",
+   "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_31072026111228_Intimation_SEBI_Exemptions_-_Updated_Signed.pdf"
+  },
+  {
+   "date": "2026-08-24",
+   "event": "Unitholders approve IndiaAppraisers as valuer by postal ballot (99.97% of votes polled in favour; 33.9% of units voted)",
+   "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_25082026152252_INTIMATIONVR.pdf"
+  },
+  {
+   "date": "2026-11-12 (scheduled)",
+   "event": "Board meeting for Q2/H1 FY27 results and distribution; record date 17-Nov-2026",
+   "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_04112026165349_INTIMATIONBM.pdf"
+  },
+  {
+   "date": "ongoing",
+   "event": "Sponsor ROFO: none found in sources. POWERGRID prefers securitisation over InvIT monetisation; 'From POWERGRID side, it is not there at present' (May-2025)",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p9",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p13"
+   ]
+  },
+  {
+   "date": "ongoing",
+   "event": "Management says it is in talks with '2 or 3 private owners' for assets (May-2026); state monetisation discussions preliminary",
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p11",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p6"
+   ]
+  }
+ ],
+ "7_distributions": {
+  "quarterly": [
+   {
+    "period": "H1 FY22 (13-May to 30-Sep-2021)",
+    "dpu_rs": 4.5,
+    "interest": 3.02,
+    "dividend_taxable": 0.96,
+    "dividend_exempt": 0.52,
+    "repayment_of_capital_spv_debt": 0.0,
+    "treasury_income_other": 0.0,
+    "components_sum": 4.5,
+    "board_declaration_date": "2021-11-09",
+    "record_date": "2021-11-15",
+    "payment_date": "2021-11-22",
+    "source": "Investor_Presentations/Investors_Presentation_on_H1_FY_2022_Financial_Results_of_PGInvIT.pdf p10; dates Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59"
+   },
+   {
+    "period": "Q3 FY22",
+    "dpu_rs": 3.0,
+    "interest": 1.99,
+    "dividend_taxable": 0.72,
+    "dividend_exempt": 0.28,
+    "repayment_of_capital_spv_debt": 0.0,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2022-01-28",
+    "record_date": "2022-02-03",
+    "payment_date": "2022-02-10",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q3_FY_2022_Financial_Results_of_PGInvIT.pdf p8; dates Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59"
+   },
+   {
+    "period": "Q4 FY22",
+    "dpu_rs": 3.0,
+    "interest": 1.9,
+    "dividend_taxable": 0.82,
+    "dividend_exempt": 0.28,
+    "repayment_of_capital_spv_debt": 0.0,
+    "treasury_income_other": 0.0,
+    "components_sum": 3.0,
+    "board_declaration_date": "2022-05-26",
+    "record_date": "2022-06-01",
+    "payment_date": "2022-06-08",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2022_Financial_Results_of_PGInvIT.pdf p14; dates Annual_Reports/Annual_Report_FY_2021_22.pdf pdf p59"
+   },
+   {
+    "period": "Q1 FY23",
+    "dpu_rs": 3.0,
+    "interest": 1.97,
+    "dividend_taxable": 0.5,
+    "dividend_exempt": 0.28,
+    "repayment_of_capital_spv_debt": 0.24,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2022-07-27",
+    "record_date": "2022-08-02",
+    "payment_date": "2022-08-08",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q1_FY2023_Financial_Results_of_PGInvIT.pdf p9; dates Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p61"
+   },
+   {
+    "period": "Q2 FY23",
+    "dpu_rs": 3.0,
+    "interest": 1.98,
+    "dividend_taxable": 0.62,
+    "dividend_exempt": 0.2,
+    "repayment_of_capital_spv_debt": 0.19,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2022-11-09",
+    "record_date": "2022-11-15",
+    "payment_date": "2022-11-21",
+    "source": "Investor_Presentations/Investors_Presentation_on_H1_FY2023_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p61"
+   },
+   {
+    "period": "Q3 FY23",
+    "dpu_rs": 3.0,
+    "interest": 2.01,
+    "dividend_taxable": 0.43,
+    "dividend_exempt": 0.25,
+    "repayment_of_capital_spv_debt": 0.3,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2023-01-24",
+    "record_date": "2023-01-30",
+    "payment_date": "2023-02-06",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q3_FY2023_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p61"
+   },
+   {
+    "period": "Q4 FY23",
+    "dpu_rs": 3.0,
+    "interest": 1.9,
+    "dividend_taxable": 0.26,
+    "dividend_exempt": 0.34,
+    "repayment_of_capital_spv_debt": 0.49,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2023-05-25",
+    "record_date": "2023-05-31",
+    "payment_date": "2023-06-08",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2023_Financial_Results_of_PGInvIT.pdf p13; dates Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p61"
+   },
+   {
+    "period": "Q1 FY24",
+    "dpu_rs": 3.0,
+    "interest": 2.03,
+    "dividend_taxable": 0.2,
+    "dividend_exempt": 0.24,
+    "repayment_of_capital_spv_debt": 0.52,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2023-07-27",
+    "record_date": "2023-08-02",
+    "payment_date": "2023-08-09",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q1_FY2024_Financial_Results_of_PGInvIT.pdf p10; dates Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p66"
+   },
+   {
+    "period": "Q2 FY24",
+    "dpu_rs": 3.0,
+    "interest": 1.97,
+    "dividend_taxable": 0.34,
+    "dividend_exempt": 0.21,
+    "repayment_of_capital_spv_debt": 0.47,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2023-11-08",
+    "record_date": "2023-11-14",
+    "payment_date": "2023-11-21",
+    "source": "Investor_Presentations/Investors_Presentation_on_H1_FY2024_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p66"
+   },
+   {
+    "period": "Q3 FY24",
+    "dpu_rs": 3.0,
+    "interest": 1.97,
+    "dividend_taxable": 0.39,
+    "dividend_exempt": 0.16,
+    "repayment_of_capital_spv_debt": 0.47,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2024-01-24",
+    "record_date": "2024-01-30",
+    "payment_date": "2024-02-06",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q3_FY2024_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p66"
+   },
+   {
+    "period": "Q4 FY24",
+    "dpu_rs": 3.0,
+    "interest": 1.78,
+    "dividend_taxable": 0.3,
+    "dividend_exempt": 0.15,
+    "repayment_of_capital_spv_debt": 0.75,
+    "treasury_income_other": 0.02,
+    "components_sum": 3.0,
+    "board_declaration_date": "2024-05-22",
+    "record_date": "2024-05-28",
+    "payment_date": "on or before 2024-06-06",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2024_Financial_Results_of_PGInvIT.pdf p12; dates Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p66 and Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p3"
+   },
+   {
+    "period": "Q1 FY25",
+    "dpu_rs": 3.0,
+    "interest": 1.99,
+    "dividend_taxable": 0.31,
+    "dividend_exempt": 0.13,
+    "repayment_of_capital_spv_debt": 0.55,
+    "treasury_income_other": 0.02,
+    "components_sum": 3.0,
+    "board_declaration_date": "2024-07-26",
+    "record_date": "2024-08-01",
+    "payment_date": "2024-08-08",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q1_FY2025_Financial_Results_of_PGInvIT.pdf p10 (slide prints exempt dividend as '₹ 13'; 0.13 implied by Rs 3.00 total); dates Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72"
+   },
+   {
+    "period": "Q2 FY25",
+    "dpu_rs": 3.0,
+    "interest": 1.91,
+    "dividend_taxable": 0.6,
+    "dividend_exempt": 0.26,
+    "repayment_of_capital_spv_debt": 0.22,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2024-11-07",
+    "record_date": "2024-11-12",
+    "payment_date": "2024-11-19",
+    "source": "Investor_Presentations/Investors_Presentation_on_H1_FY2025_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72"
+   },
+   {
+    "period": "Q3 FY25",
+    "dpu_rs": 3.0,
+    "interest": 1.88,
+    "dividend_taxable": 0.39,
+    "dividend_exempt": 0.07,
+    "repayment_of_capital_spv_debt": 0.65,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2025-01-22",
+    "record_date": "2025-01-27",
+    "payment_date": "2025-02-01",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q3_FY2025_Financial_Results_of_PGInvIT.pdf p10; dates Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72"
+   },
+   {
+    "period": "Q4 FY25",
+    "dpu_rs": 3.0,
+    "interest": 1.67,
+    "dividend_taxable": 0.48,
+    "dividend_exempt": 0.09,
+    "repayment_of_capital_spv_debt": 0.75,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2025-05-26",
+    "record_date": "2025-05-29",
+    "payment_date": "2025-06-04",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2025_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p72"
+   },
+   {
+    "period": "Q1 FY26",
+    "dpu_rs": 3.0,
+    "interest": 1.76,
+    "dividend_taxable": 0.37,
+    "dividend_exempt": 0.07,
+    "repayment_of_capital_spv_debt": 0.78,
+    "treasury_income_other": 0.02,
+    "components_sum": 3.0,
+    "board_declaration_date": "2025-08-05",
+    "record_date": "2025-08-08",
+    "payment_date": "2025-08-16",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q1_FY2026_Financial_Results_of_PGInvIT.pdf p10; dates Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p38 right half"
+   },
+   {
+    "period": "Q2 FY26",
+    "dpu_rs": 3.0,
+    "interest": 1.77,
+    "dividend_taxable": 0.53,
+    "dividend_exempt": 0.13,
+    "repayment_of_capital_spv_debt": 0.56,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2025-11-04",
+    "record_date": "2025-11-10",
+    "payment_date": "2025-11-15",
+    "source": "Investor_Presentations/Investors_Presentation_on_H1_FY2026_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p38 right half"
+   },
+   {
+    "period": "Q3 FY26",
+    "dpu_rs": 3.0,
+    "interest": 1.84,
+    "dividend_taxable": 0.5,
+    "dividend_exempt": 0.14,
+    "repayment_of_capital_spv_debt": 0.51,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2026-02-09",
+    "record_date": "2026-02-12",
+    "payment_date": "2026-02-18",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q3_FY2026_Financial_Results_of_PGInvIT.pdf p10; dates Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p38 right half"
+   },
+   {
+    "period": "Q4 FY26",
+    "dpu_rs": 3.0,
+    "interest": 1.71,
+    "dividend_taxable": 0.41,
+    "dividend_exempt": 0.09,
+    "repayment_of_capital_spv_debt": 0.77,
+    "treasury_income_other": 0.02,
+    "components_sum": 3.0,
+    "board_declaration_date": "2026-05-15",
+    "record_date": "2026-05-20",
+    "payment_date": "2026-05-26",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p11; dates Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p38 right half"
+   },
+   {
+    "period": "Q1 FY27",
+    "dpu_rs": 3.0,
+    "interest": 1.72,
+    "dividend_taxable": 0.48,
+    "dividend_exempt": 0.14,
+    "repayment_of_capital_spv_debt": 0.65,
+    "treasury_income_other": 0.01,
+    "components_sum": 3.0,
+    "board_declaration_date": "2026-07-28",
+    "record_date": "2026-07-31",
+    "payment_date": "on or before 2026-08-07",
+    "source": "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p1"
+   }
+  ],
+  "annual_totals": {
+   "FY22": {
+    "dpu": 10.5,
+    "interest": 6.91,
+    "taxable_div": 2.5,
+    "exempt_div": 1.08,
+    "treasury": 0.01,
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2022_Financial_Results_of_PGInvIT.pdf p14"
+   },
+   "FY23": {
+    "dpu": 12.0,
+    "interest": 7.86,
+    "taxable_div": 1.81,
+    "exempt_div": 1.07,
+    "spv_debt": 1.22,
+    "treasury": 0.04,
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2023_Financial_Results_of_PGInvIT.pdf p13"
+   },
+   "FY24": 12.0,
+   "FY25": 12.0,
+   "FY26": 12.0,
+   "FY24-26_source": "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p32 left half (printed p60)"
+  },
+  "cumulative_since_IPO": {
+   "value_rs_per_unit": 58.5,
+   "value_rs_bn": "53.23+",
+   "as_of": "Q4 FY26 declaration",
+   "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p3"
+  },
+  "Q2_FY27": {
+   "declared": null,
+   "note": "Board meeting scheduled 12-Nov-2026, record date 17-Nov-2026",
+   "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_04112026165349_INTIMATIONBM.pdf"
+  },
+  "guidance": "Rs 12/unit for FY27 (Q4 FY26 call)",
+  "nav_per_unit": {
+   "2024-03-31": 85.28,
+   "2025-03-31": 94.12,
+   "2026-03-31": 90.79,
+   "source": [
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p5",
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p14 note 11"
+   ]
+  }
+ },
+ "8_operations": {
+  "o_and_m_arrangement": {
+   "text": "POWERGRID (Project Manager) performs O&M of SPV assets under O&M (consultancy) agreements with SPVs; O&M expenses escalate at 3.51% p.a. per O&M Agreement (valuer's basis); PIMA (23-Jan-2021) fee = 15% of aggregate annual fees payable under the O&M agreements; 'incentive on O&M consultancy fees and PIMA fees' payable to POWERGRID Rs 20.84 mn at 31-Mar-2026 (Rs 11.53 mn FY25). O&M charges paid to POWERGRID incl. taxes: Rs 332.80 mn FY26, Rs 321.51 mn FY25. Running O&M contract valid till March 2026, to be renewed on terms linked to CERC O&M norms ('This will be the second extension ... Last time, it was on the very same terms and conditions').",
+   "source": [
+    "Valuation_Reports/Valuation_Report_FY26.pdf p42",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 right half (Note 41) and pdf p86 left half (related party)",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p16-17"
+   ]
+  },
+  "investment_manager_fee": {
+   "text": "Rs 72.5 mn p.a. for initial SPVs + 0.10% of gross block of SPVs acquired later; escalates 6.75% p.a.; paid Rs 113.23 mn FY26 (Rs 105.87 mn FY25) incl. taxes",
+   "source": [
+    "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p14 note 5",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 right half (Note 40)",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 left half"
+   ]
+  },
+  "collection": {
+   "billing_mechanism": "Billing and collection by CTUIL under CERC Sharing Regulations 2020 (pooled ISTS counterparties)",
+   "collection_efficiency": {
+    "FY2024": "101%",
+    "FY2025": "104.5%",
+    "source": "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 p2"
+   },
+   "receivable_days": {
+    "FY22": 43,
+    "FY23": 47,
+    "FY24": 40,
+    "FY25": 25,
+    "FY26": 19,
+    "2023-09-30": 56,
+    "2023-12-31": 59,
+    "2024-09-30": 38,
+    "2025-06-30": 27,
+    "2025-09-30": 26,
+    "2025-12-31": 27,
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2022_23.pdf pdf p33",
+     "Annual_Reports/Annual_Report_FY_2023_24.pdf pdf p29",
+     "Annual_Reports/Annual_Report_FY_2024_25.pdf pdf p32",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p4",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p4",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p5",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY25.pdf p4",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q1_FY_2026.pdf p6",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p4",
+     "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p4"
+    ]
+   },
+   "billed_receivables_2026-03-31_rs_mn": {
+    "value": 647.28,
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p4"
+   }
+  },
+  "availability": {
+   "Q1_FY27_by_SPV": null,
+   "Q1_FY27_note": "Not disclosed in Q1 FY27 results; no Q1 FY27 investor presentation/transcript on pginvit.in or NSE as of 11-Nov-2026",
+   "FY26_by_SPV": {
+    "VTL": "100.00%",
+    "KATL": "99.97% (provisional)",
+    "PPTL": "99.97%",
+    "WTL": "99.96%",
+    "JPTL": "99.87%",
+    "target": "98%",
+    "source": "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p7"
+   },
+   "Q1_FY26": ">98% all SPVs (provisional) (Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q1_FY_2026.pdf p4)",
+   "Q2_FY26": ">99.75% all SPVs (provisional) (Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p3)",
+   "Q3_FY26": ">99.75% all SPVs (provisional) (Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p4)"
+  },
+  "incentive": {
+   "formula": "Incentive = 0.02 x Annual Transmission Charges x (Actual annual availability - Target availability), target 98%; >99.75% gives maximum incentive",
+   "incentive_income_amount": null,
+   "note": "Incentive not separately quantified in sources; revenue shows transmission charges Rs 12,561.54 mn + other operating income Rs 18.74 mn FY26",
+   "source": [
+    "Annual_Reports/Annexures_Annual_Report_FY_2021_22.pdf pdf p36",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p3",
+    "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p82 right half (Note 25)"
+   ]
+  },
+  "outages": {
+   "text": "VTL FY26 availability includes 96-hour shutdown for third-party diversion works; no accidents FY25/FY26",
+   "source": [
+    "Investor_Presentations/Investors_Presentation_on_Q4_FY2026_Financial_Results_of_PGInvIT.pdf p7",
+    "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p4"
+   ]
+  },
+  "litigation_and_disputes": [
+   {
+    "spv": "WTL",
+    "matter": "Service tax demand Rs 50.25 mn + penalty/interest on CAMPA deposits of Rs 335.01 mn (Commissioner CGST Nagpur-II); appeal at CESTAT Mumbai filed 23-Mar-2023; pre-deposit Rs 3.77 mn",
+    "source": [
+     "Valuation_Reports/Valuation_Report_FY26.pdf p127-128",
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p80"
+    ]
+   },
+   {
+    "spv": "VTL",
+    "matter": "Telangana entry tax Rs 96.28 mn (2014-15/2015-16) contested; 35% (Rs 33.70 mn) deposited; High Court stay since 20-Aug-2020; plus land-compensation writ (AP HC) not quantified",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p86 right half (Note 44)",
+     "Valuation_Reports/Valuation_Report_FY26.pdf p117-118"
+    ]
+   },
+   {
+    "spv": "KATL",
+    "matter": "Income-tax intimations Rs 3.11 mn (AY2019-20) and Rs 7.99 mn (AY2023-24) under appeal; HPSEBL appeal at APTEL (DFR 23/2024) seeking interest on PoC refund, unquantified",
+    "source": "Valuation_Reports/Valuation_Report_FY26.pdf p119-120"
+   },
+   {
+    "spv": "PPTL",
+    "matter": "Land/compensation and revenue cases incl. Rs 19.09 mn occupancy-price demand (Bombay HC Aurangabad, stay granted), Rs 7.31 mn crop compensation, Rs 2.33 mn royalty/fine, NA tax Rs 0.54 mn",
+    "source": "Valuation_Reports/Valuation_Report_FY26.pdf p121-126"
+   },
+   {
+    "spv": "WTL",
+    "matter": "Land-use penalty Rs 2.80 mn (SDM Warora) and several crop/land compensation suits (Rs 0.6-2.1 mn each)",
+    "source": "Valuation_Reports/Valuation_Report_FY26.pdf p128-130"
+   },
+   {
+    "overall": "Management: no material litigation pending against Trust/IM/Sponsor beyond disclosed; materiality thresholds Rs 648.32 mn (Trust), Rs 14.32 mn (IM), Rs 23,842.22 mn (Sponsor); no contingent liabilities at Trust level (Q1 FY27)",
+    "source": [
+     "Annual_Reports/Annual_Report_FY_2025_26.pdf pdf p32 right half (printed p61)",
+     "Quarterly_Results/Results_Q1_FY27_Jun2026.pdf p8"
+    ]
+   }
+  ]
+ },
+ "9_management_commentary": {
+  "distribution_guidance": [
+   {
+    "quote": "our distribution guidance of INR 12 per unit for financial year 2023-24 still stands",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p5"
+   },
+   {
+    "quote": "without acquisition or further acquisitions, not more than 2 to 3 years",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p7"
+   },
+   {
+    "quote": "as a policy, we are not giving the guidance beyond one year",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p8"
+   },
+   {
+    "quote": "aim to deliver ₹ 12 per unit distribution for FY 25-26 as well",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p3"
+   },
+   {
+    "quote": "saying that we are dipping into those reserves in a big manner is a fallacy",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p8"
+   },
+   {
+    "quote": "a jump from INR12 to INR15 is too much of an ask",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p9"
+   },
+   {
+    "quote": "target a distribution of ₹12 per unit for FY '26-'27 as well",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p3"
+   }
+  ],
+  "tariff_step_down_FY28": [
+   {
+    "quote": "there would be a dip around 2026, 2027,2028. There would be a dip because that is how the original tariffs were bid",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY_2024.pdf p13"
+   },
+   {
+    "quote": "FY27, FY28 being the major the year in which there will be a sharp decline. So the NDCF are bound to go down and so will be the DPU",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p11"
+   },
+   {
+    "quote": "during the year '27-'28, my top line will be roughly around ₹ 900-odd crores",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p15"
+   },
+   {
+    "quote": "during the fiscal '27-'28, the revenues are declining. So that is the quoted amount and that is the amount adopted by the regulator",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p9"
+   },
+   {
+    "quote": "from fiscal '27-'28, there will be a dip in the revenue top line. Approximately how much? 23%, 24%-odd. So maintaining ₹12 will not be possible without addition of the new assets",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p10"
+   },
+   {
+    "quote": "operating income is expected to moderate FY2028 onwards ... gradual moderation of the net distributable cash flow (NDCF) beyond FY2028",
+    "source": "https://www.icra.in/Rating/GetRationalReportFilePdf?id=142797 p1 (rating agency, not management)"
+   }
+  ],
+  "acquisition_plans": [
+   {
+    "quote": "POWERGRID being a PSU has to go by the policy of the Government of India",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p7"
+   },
+   {
+    "quote": "financially, there will not be any gains. It is only from the control perspective",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p13"
+   },
+   {
+    "quote": "From POWERGRID side, it is not there at present.",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p9"
+   },
+   {
+    "quote": "as an infrastructure trust, we cannot go and quote under the TBCB mechanism",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p14"
+   },
+   {
+    "quote": "participation in up to 2 tariff-based competitive bidding projects with an aggregate total estimated project cost of ₹500 crores",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q1_FY_2026.pdf p7"
+   },
+   {
+    "quote": "we will be holding the major chunk that is the 74% and POWERGRID will be holding the 26%",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p7"
+   },
+   {
+    "quote": "we are in touch with some states, but I think it's very preliminary levels of discussions",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q3_FY26.pdf p6"
+   },
+   {
+    "quote": "we are in touch with 2 or 3 private owners, and they have shown interest",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p11"
+   },
+   {
+    "quote": "POWERGRID has clearly expressed their preference toward the securitization over InvIT-based monetization",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p13"
+   }
+  ],
+  "leverage_plans": [
+   {
+    "quote": "Funding will be through debt. That is definitely, we have a large headroom there",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY24.pdf p6"
+   },
+   {
+    "quote": "we will be taking a mix of floating and fixed. I mean, we might be hitting the market with some NCD issuances",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2024.pdf p9"
+   },
+   {
+    "quote": "These projects will be predominantly financed through debt with a minimal equity outlay",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q2_H1_FY26.pdf p7"
+   },
+   {
+    "quote": "we can go up to the 70% limit for the asset under management ... primarily, it will be debt funded",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p11"
+   },
+   {
+    "quote": "my loan portfolio presently is quite limited only, ₹ 1,000-odd crores. So it is not so substantial as to make a meaningful difference in the DPU",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf p10"
+   }
+  ],
+  "valuer_change": {
+   "earnings_call_commentary": null,
+   "note": "No transcript after Q4 FY26 (May-2026); the Jul-2026 valuer change is not discussed in available calls. Company rationale: 'INMACS has already provided valuation services for four consecutive years, INMACS can not be appointed' (Reg 21(9)); IAPL selected 'pursuant to a bidding process' at Rs 47,000 per SPV per full valuation",
+   "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_03082026173252_INTIMATIONPB.pdf (explanatory statement)",
+   "related_call_comment": {
+    "quote": "the valuation is primarily fluctuating due to the change in the WACC ... at March '25, I suppose it was 8.95% and then it fell down to 8%",
+    "source": "Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf p8"
+   }
+  }
+ }
+}
