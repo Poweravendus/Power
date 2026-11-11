@@ -1,6 +1,6 @@
 # Poojaa Precision Engg. Ltd (BSE SME: 544844, PPEL) - research status
 
-**Updated:** 10-Nov-2026. **Stage:** v1 (historicals) and v2 (forecasts, scenarios, valuation, note) built. Next: cross-check against the investor's ACE dump, then the step-by-step business discussion. Next results: 2HFY27 / FY27 (board around May 2027). The investor wrote "Pooja precision engineering": this is the company (formerly Pooja Castings Pvt Ltd, inc. 12-Aug-1992).
+**Updated:** 11-Nov-2026 (base reset). **Stage:** v1 (historicals) and v2 (forecasts, scenarios, valuation, note) built. Next: cross-check against the investor's ACE dump, then the step-by-step business discussion. Next results: 2HFY27 / FY27 (board around May 2027). The investor wrote "Pooja precision engineering": this is the company (formerly Pooja Castings Pvt Ltd, inc. 12-Aug-1992).
 
 ## Where we are
 1. Document pack: scratchpad packs/poojaa/build/Poojaa-Precision-Investor-Docs (50 PDFs + price csv + 26 TXT; zip in packs/poojaa/out). Page map in FINANCIAL_SOURCES.md.
@@ -55,7 +55,23 @@
 - All check rows ~0 under bear, base and bull (P&L PAT, BS, CF cash, Drivers revenue tie, Segments, Half-yearly); selector left at 2.
 - Scripts: scratchpad scripts/build_poojaa.py, add_forecast_poojaa.py, run_scen_poojaa.py, build_note_poojaa.js; pack scripts in packs/poojaa/scripts.
 
+## Base reset (11-Nov-2026): base = most likely, old base kept as a floor
+- **Why:** the old base counted only committed capacity (Unit 3 to 60% by FY30, Rs/kg held). The investor asked for a base built from industry growth plus shown share gain, below management guidance. Brief: scratchpad brief/BASE_RESET_BRIEF.md.
+- **Old base (floor, memo on Valuations rows 78-86):** revenue Rs.426.7 / 530.6 / 679.2 / 745.4 cr; PAT Rs.50.6 / 66.6 / 87.9 / 98.1 cr; FY28E EPS Rs.33.37; target Rs.868 at 26x (-6.2%, SELL). Old bear Rs.191 at 18x, old bull Rs.1,541 at 32x.
+- **New base:** revenue Rs.432.9 / 577.1 / 738.9 / 856.5 cr (44-46% of the way from floor to guidance each year); EBITDA margin 18.7 / 18.3 / 18.5 / 18.3%; PAT Rs.51.8 / 69.3 / 90.6 / 108.3 cr; EPS Rs.25.95 / 34.75 / 45.43 / 54.30. Target Rs.903 at 26x FY28E, -2.3% vs CMP Rs.924.90 => HOLD, 2.7 pts above the SELL line (SELL below 25.3x, BUY above 30.6x).
+- **One multiple:** bear and bull now 26x too (EV/EBITDA cross-check 15x for all). Bear Rs.276 (-70%), bull Rs.1,252 (+35%). P/E sensitivity table 18-32x on Valuations rows 101-107. Peer multiples still pending from Bloomberg.
+- **Chance of management's plan already in the price** = (CMP - base) / (bull - base) = 6%.
+- **Industry growth used (TAM rows 24-44):** CV 8% (ICRA: CV volumes +12.6% FY26, +4-6% FY27, https://www.icra.in/Research/ViewResearchReport/6946; + ~3% content/price [E]); cars/2W/dies 10% (ACMA +12.7% FY26, AR p.88; IBEF 14% CAGR FY20-25, Prospectus p.128); EV 20% [E] (EV sales >20 lakh FY25, p.127; 30% target 2030, p.129); energy 11% (switchgear 7.12% to 2029, electrical equipment 14.3% FY24-28, p.126; transformers ~7.5%, p.127); farm/other 5% (agri equipment 5.24%, p.126). Weighted 9.7%. Company FY24-FY26 30.1% (+20 pts share gain); FY23-FY26 21.6% (+9 pts). Base FY27-FY30 25.5% = market + ~16 pts; guidance 31.4%.
+- **Driver changes (base rows only, notes tagged "Base reset 11-Nov-2026"):** Units 1+2 utilisation 82% (was 80%; call PDF 10, 13); Unit 3 utilisation 45 / 60 / 66 / 86% (was 50 / 40 / 50 / 60%); staff cost growth 30 / 17 / 13 / 11% (was 30 / 15 / 12 / 10%); new per-kg mix factor (Drivers rows 107-111, rewires rows 49 and 56) 1.00 in FY27 then 0.95 (bear and bull 1.00).
+- **Revenue per kg choice:** FY27 keeps the 1HFY27 Rs.811 (half the year is actual; Sep-2026 ~Rs.875 = Rs.42 cr on ~480 t, call PDF 8, 13). From FY28 base takes 5% off (~Rs.40/kg, a fifth of the mix gain): Unit 3 fills with newly approved parts (the company's own Unit 3 first-line estimate = Rs.75 cr from 1,500 t = Rs.500/kg), dies lumpy, FY24-FY26 ran Rs.576-662. Most of the gain kept: energy Rs.48 cr in 1HFY27 vs Rs.31 cr in all FY26. Factor scales materials and value added together, so gross margin holds and EBITDA margin falls ~0.6-1.2 pts vs the floor.
+- **FY27 note:** Sep-2026 run-rate would give ~Rs.460 cr, above the ~Rs.440 cr guided; base stays just below guidance (Rs.433 cr) because one month is not a trend.
+- **Bull vs guidance:** bull Rs.455 / 652 / 866 / 970 cr vs guidance ~441 / 635 / 810 / 1,000: close to guidance (above in FY27-FY29, 3% below in FY30). Left unchanged, as is the bear.
+- **Checks:** recalc 0 errors (1,219 formulas). Under bear, base and bull every check row is ~0 (P&L max 0.0003, Drivers revenue tie 0, Segments 0.0001, Half-yearly 0.0003); Valuations C63 = 0; TAM row 42 base-between-floor-and-guidance = 1 each year. Selector back at 2.
+- **Not sourced:** no die-casting or aluminium-casting market size or CAGR in the documents (IBEF-based chapter, no commissioned report); no CV forecast CAGR in the documents (ICRA used for FY26-FY27 only); EV market growth and the CV content/price add-on are our estimates; management's 29-30% energy-sector growth has no source.
+- **Scripts (scratchpad scripts/):** update_poojaa_base_reset.py, valuation_reset_poojaa.py, run_scen_poojaa.py (updated: mix row), tam_industry_block_poojaa.py, dump_reset_poojaa.py, build_note_poojaa_v2.js. Pre-reset model copy and results in scratchpad pjreset/.
+
 ## File versions
 - Model: POOJAA_Model_v1.xlsx (10-Nov-2026); POOJAA_Model_v2.xlsx (10-Nov-2026)
-- Note: Poojaa_Precision_Note_v1.docx (6 pages, rendered and checked)
+- Model: POOJAA_Model_v2.xlsx updated in place 11-Nov-2026 (base reset; git holds the pre-reset version)
+- Note: Poojaa_Precision_Note_v1.docx (6 pages, rendered and checked); Poojaa_Precision_Note_v2.docx (11-Nov-2026, base reset, 7 pages, rendered and checked)
 - Evidence: notes/evidence.md

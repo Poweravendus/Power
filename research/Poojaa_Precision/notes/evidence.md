@@ -68,3 +68,10 @@ Tags: [A] audited / restated / auditor- or CA-certified; [M] management (PPT, ca
 - E52 [A] Prospectus p.126: Indian switchgear market "US$ 9.75 million" (2022).
 - E53 [A] Board outcome 22-Oct-2026 refers to "Standalone and Consolidated Financial Results"; no subsidiary.
 - E54 [M] BSE price-movement query 31-Aug-2026: company says no promoter or related party traded (reply 1-Sep-2026).
+
+## Base reset sources (11-Nov-2026)
+- E55 [A] Prospectus industry chapter (IBEF data, printed pp.117-130): switchgear 7.12% CAGR 2022-2029 (size printed as "US$9.75 million"), agricultural equipment 5.24% CAGR to 2029, electrical equipment 14.3% CAGR FY24-FY28, auto components 1HFY25 +11.3% (p.126); construction equipment Rs.69,046 cr (2025) to Rs.1,02,827 cr (2030), power transformers Rs.16,063 cr FY22 to Rs.28,744 cr FY30, EV sales >20 lakh FY25 (p.127); auto components Rs.6.73 lakh cr FY25, 14% CAGR FY20-25, OEM supplies +10%, CV domestic sales 9,56,671 FY25 (p.128); 30% e-mobility target by 2030 (p.129). No die-casting market size; no commissioned industry report.
+- E56 [A] AR FY26 MD&A (PDF 47 = p.88): ACMA auto-component turnover ~Rs.7.59 lakh cr in FY26, +12.7%; OEM supplies ~Rs.6.52 lakh cr.
+- E57 [S] ICRA: domestic CV wholesale volumes +12.6% in FY26, +4-6% forecast for FY27 (https://www.icra.in/Research/ViewResearchReport/6946; https://www.autocarpro.in/news/commercial-vehicle-sales-rise-307-percent-in-august-icra-sees-4-6-percent-fy27-growth-134784).
+- E58 [M] Sep-2026 sales Rs.42 cr (call PDF 8) on ~480 t (call PDF 13) = ~Rs.875/kg; 1H usually 43-47% of the year (call PDF 11); energy end-market "20-22%" past 3 years, "29-30%" next 5 (call PDF 8, unsourced).
+- E59 [A] IPO working-capital certificate FY27E: receivables Rs.79.79 cr at 65 days and inventories Rs.71.69 cr at 58 days imply FY27 revenue of ~Rs.448-451 cr (Prospectus p.102).
