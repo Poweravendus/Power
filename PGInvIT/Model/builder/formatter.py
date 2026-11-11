@@ -476,3 +476,18 @@ def nf_keysheet(ws, cols, r1, r2):
             c = ws.cell(r, k)
             if c.number_format not in ('0.00%', '"FY"0000"E"', '0'):
                 _nf(c, N0K)
+
+
+def unfill_spacers(ws, c1, c2, starts, r1, r2):
+    """Clear the fill on empty spacer rows that lead into a new section, so sections separate visually."""
+    def empty(r):
+        return all(ws.cell(r, k).value is None for k in range(c1, c2 + 1))
+    for r in range(r1, r2 + 1):
+        if not empty(r):
+            continue
+        nxt = r + 1
+        while nxt <= r2 and empty(nxt):
+            nxt += 1
+        if nxt in starts:
+            for k in range(c1, c2 + 1):
+                fill(ws.cell(r, k), None)

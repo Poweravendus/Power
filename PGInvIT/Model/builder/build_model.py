@@ -120,6 +120,13 @@ wq = W['Qtrly']
 for k in range(3, 3 + 21):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
+# ---------------- no-fill spacer rows between sections ----------------
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 210, 212, 249}, 4, 252)
+if os.path.exists(qpath):
+    wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
+    starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
+              ('Standalone (Trust)', 'Consolidated', 'Quarterly NDCF Build-up', 'Distribution per unit and components', 'Notes')}
+    F.unfill_spacers(wq, 2, lastq, starts, 2, wq.max_row)
 # ---------------- IndiGrid number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
