@@ -80,9 +80,19 @@ Page: https://www.pginvit.in/earning_calls.aspx
 | [Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf](Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2025.pdf) | 18 | https://www.pginvit.in/uploads/7f4131bf-f429-421f-9b90-848aa463b535/2._ICICISec-PowerGrid-26_May-2025_vj__DS.pdf |
 | [Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf](Earnings_Call_Transcripts/Conference_Call_Text_Transcript_on_Q4_FY_2026.pdf) | 14 | https://www.pginvit.in/uploads/649a21f5-939e-4ad8-ad47-c8660b741b6f/ICICISec-PowergridInfra-May19-2026.pdf |
 
+## Quarterly Results (exchange filings)
+
+Source: NSE corporate announcements (the PGInvIT website had not posted these as of 2026-11-11).
+
+| File | Pages | Source URL |
+|---|---|---|
+| [Results_Q1_FY27_Jun2026.pdf](Quarterly_Results/Results_Q1_FY27_Jun2026.pdf) | 26 | https://nsearchives.nseindia.com/corporate/PGINVIT_28072026144237_OUTCOMEBM.pdf |
+
+Note: this filing is a scanned document. Its text layer is partly garbled, so read numbers off the page image, not copied text.
+
 ## Coverage notes
 
 - Annual reports: FY2021-22 to FY2025-26 (all five years since listing in May 2021), each with its Annexures volume (standalone/consolidated financials, SPV financials, valuation summary).
-- Valuation reports: every half-year from H1 FY22 (Sep 2021) to FY26 (Mar 2026). The H1 FY27 (Sep 2026) report was not yet published on the site as of the download date.
-- Investor presentations: every quarter from H1 FY22 to Q4 FY26. There is no separate Q1 FY22 deck (the trust listed in May 2021; the first deck covers H1 FY22). No Q1 FY27 or Q2 FY27 deck was on the site as of the download date.
+- Valuation reports: every half-year from H1 FY22 (Sep 2021) to FY26 (Mar 2026). The H1 FY27 (Sep 2026) report is expected on 2026-11-12, when the board approves Q2 FY27 results. It will be the first report by the new valuer, IndiaAppraisers.com Pvt. Ltd, which replaced INMACS Valuers from FY27.
+- Investor presentations: every quarter from H1 FY22 to Q4 FY26. There is no separate Q1 FY22 deck (the trust listed in May 2021; the first deck covers H1 FY22). PGInvIT did not file a Q1 FY27 investor presentation or hold a Q1 FY27 earnings call, according to NSE filings for Jul-Aug 2026.
 - Earnings call transcripts: text transcripts exist on the site only from Q2 FY24 (Nov 2023) onward. Calls from H1 FY22 to Q1 FY24 are audio-only on the site. No call appears to have been held for Q1 FY25 or Q3 FY25 (neither audio nor text is listed, and exchange filings show none).
