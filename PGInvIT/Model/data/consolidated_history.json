@@ -1,0 +1,2737 @@
+{
+ "units": "Rs crore",
+ "years": [
+  "FY22",
+  "FY23",
+  "FY24",
+  "FY25",
+  "FY26"
+ ],
+ "pnl": {
+  "revenue_from_operations": {
+   "FY22": 1217.339,
+   "FY23": 1285.785,
+   "FY24": 1265.338,
+   "FY25": 1266.493,
+   "FY26": 1258.028
+  },
+  "rev_transmission_charges": {
+   "FY22": 1217.339,
+   "FY23": 1285.785,
+   "FY24": 1265.338,
+   "FY25": 1266.493,
+   "FY26": 1256.154
+  },
+  "rev_other_operating_income": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 1.874
+  },
+  "rev_incentive_performance_bonus_memo": {
+   "FY22": 39.419,
+   "FY23": 41.726,
+   "FY24": 44.286,
+   "FY25": 42.538,
+   "FY26": 41.665
+  },
+  "rev_contracted_price_memo": {
+   "FY22": 1182.556,
+   "FY23": 1250.076,
+   "FY24": 1227.396,
+   "FY25": 1230.355,
+   "FY26": 1224.696
+  },
+  "rev_discounts_rebates_memo": {
+   "FY22": -4.636,
+   "FY23": -5.968,
+   "FY24": -6.344,
+   "FY25": -6.4,
+   "FY26": -10.207
+  },
+  "rev_other_adjustments_memo": {
+   "FY22": 0.0,
+   "FY23": -0.049,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 1.874
+  },
+  "rev_VTL": {
+   "FY22": 260.451,
+   "FY23": 241.607,
+   "FY24": 219.346,
+   "FY25": 219.198,
+   "FY26": 219.63
+  },
+  "rev_KATL": {
+   "FY22": 62.698,
+   "FY23": 68.951,
+   "FY24": 69.589,
+   "FY25": 72.657,
+   "FY26": 65.665
+  },
+  "rev_PPTL": {
+   "FY22": 297.501,
+   "FY23": 336.111,
+   "FY24": 335.932,
+   "FY25": 335.933,
+   "FY26": 335.434
+  },
+  "rev_WTL": {
+   "FY22": 332.477,
+   "FY23": 375.244,
+   "FY24": 375.04,
+   "FY25": 375.028,
+   "FY26": 373.826
+  },
+  "rev_JPTL": {
+   "FY22": 264.212,
+   "FY23": 263.872,
+   "FY24": 265.431,
+   "FY25": 263.677,
+   "FY26": 263.472
+  },
+  "other_income": {
+   "FY22": 26.074,
+   "FY23": 29.506,
+   "FY24": 37.384,
+   "FY25": 38.562,
+   "FY26": 38.618
+  },
+  "oi_interest_income": {
+   "FY22": 14.267,
+   "FY23": 16.713,
+   "FY24": 35.449,
+   "FY25": 35.138,
+   "FY26": 35.161
+  },
+  "oi_interest_indian_banks": {
+   "FY22": 13.198,
+   "FY23": 16.474,
+   "FY24": 26.191,
+   "FY25": 31.237,
+   "FY26": 33.597
+  },
+  "oi_interest_unwinding_discount_fin_assets": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 3.685,
+   "FY25": 2.099,
+   "FY26": 0.611
+  },
+  "oi_interest_others": {
+   "FY22": 1.069,
+   "FY23": 0.239,
+   "FY24": 5.573,
+   "FY25": 1.802,
+   "FY26": 0.953
+  },
+  "oi_mf_income": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "oi_other": {
+   "FY22": 11.807,
+   "FY23": 12.793,
+   "FY24": 1.935,
+   "FY25": 3.424,
+   "FY26": 3.457
+  },
+  "oi_surcharge": {
+   "FY22": 10.574,
+   "FY23": 7.654,
+   "FY24": 0.153,
+   "FY25": 2.315,
+   "FY26": 1.222
+  },
+  "oi_liquidated_damages_recovery": {
+   "FY22": 0.001,
+   "FY23": 0.0,
+   "FY24": 0.047,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "oi_profit_on_disposal_of_fixed_assets": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.962
+  },
+  "oi_excess_provision_written_back": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.372,
+   "FY26": 0.668
+  },
+  "oi_miscellaneous_income": {
+   "FY22": 1.232,
+   "FY23": 5.139,
+   "FY24": 1.735,
+   "FY25": 0.737,
+   "FY26": 0.605
+  },
+  "total_income": {
+   "FY22": 1243.413,
+   "FY23": 1315.291,
+   "FY24": 1302.722,
+   "FY25": 1305.055,
+   "FY26": 1296.646
+  },
+  "investment_manager_fees": {
+   "FY22": 11.157,
+   "FY23": 9.308,
+   "FY24": 9.957,
+   "FY25": 10.587,
+   "FY26": 11.323
+  },
+  "project_manager_fees": {
+   "FY22": 3.852,
+   "FY23": 4.494,
+   "FY24": 4.66,
+   "FY25": 4.822,
+   "FY26": 4.993
+  },
+  "om_infrastructure_maintenance_charges": {
+   "FY22": 27.255,
+   "FY23": 30.005,
+   "FY24": 31.216,
+   "FY25": 32.601,
+   "FY26": 33.732
+  },
+  "employee_benefits": {
+   "FY22": 0.315,
+   "FY23": 1.14,
+   "FY24": 0.985,
+   "FY25": 1.209,
+   "FY26": 1.193
+  },
+  "insurance": {
+   "FY22": 18.511,
+   "FY23": 24.142,
+   "FY24": 26.712,
+   "FY25": 23.082,
+   "FY26": 18.97
+  },
+  "repairs": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "other_expenses": {
+   "FY22": 16.838,
+   "FY23": 19.695,
+   "FY24": 25.62,
+   "FY25": 16.145,
+   "FY26": 16.658
+  },
+  "extra_valuation_expenses": {
+   "FY22": 0.012,
+   "FY23": 0.019,
+   "FY24": 0.046,
+   "FY25": 0.046,
+   "FY26": 0.046
+  },
+  "extra_auditor_statutory_audit_fees": {
+   "FY22": 0.043,
+   "FY23": 0.05,
+   "FY24": 0.048,
+   "FY25": 0.05,
+   "FY26": 0.051
+  },
+  "extra_auditor_other_services": {
+   "FY22": 0.042,
+   "FY23": 0.035,
+   "FY24": 0.045,
+   "FY25": 0.037,
+   "FY26": 0.037
+  },
+  "extra_trustee_fee": {
+   "FY22": 0.035,
+   "FY23": 0.035,
+   "FY24": 0.035,
+   "FY25": 0.035,
+   "FY26": 0.035
+  },
+  "ox_csr_expenditure": {
+   "FY22": 10.795,
+   "FY23": 11.499,
+   "FY24": 10.13,
+   "FY25": 6.75,
+   "FY26": 5.873
+  },
+  "ox_fv_loss_on_financial_asset": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 6.428,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "ox_provision_for_bad_doubtful_debts": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.015,
+   "FY25": 0.654,
+   "FY26": 1.915
+  },
+  "ox_security_expenses": {
+   "FY22": 1.466,
+   "FY23": 1.717,
+   "FY24": 1.787,
+   "FY25": 1.886,
+   "FY26": 1.895
+  },
+  "ox_power_charges": {
+   "FY22": 1.154,
+   "FY23": 1.344,
+   "FY24": 1.448,
+   "FY25": 1.488,
+   "FY26": 1.685
+  },
+  "ox_system_market_operation_charges": {
+   "FY22": 1.905,
+   "FY23": 1.712,
+   "FY24": 2.498,
+   "FY25": 1.633,
+   "FY26": 1.585
+  },
+  "ox_cerc_licence_fee_other_charges": {
+   "FY22": 0.95,
+   "FY23": 1.422,
+   "FY24": 1.35,
+   "FY25": 1.462,
+   "FY26": 1.459
+  },
+  "impairment_net": {
+   "FY22": 367.941,
+   "FY23": 1509.81,
+   "FY24": -254.143,
+   "FY25": -508.028,
+   "FY26": -121.64
+  },
+  "impairment_goodwill": {
+   "FY22": 367.941,
+   "FY23": 589.65,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "impairment_ppe": {
+   "FY22": 0.0,
+   "FY23": 867.527,
+   "FY24": -246.275,
+   "FY25": -476.379,
+   "FY26": -110.613
+  },
+  "impairment_intangibles": {
+   "FY22": 0.0,
+   "FY23": 52.633,
+   "FY24": -7.868,
+   "FY25": -31.649,
+   "FY26": -11.027
+  },
+  "depreciation_amortisation": {
+   "FY22": 269.75,
+   "FY23": 314.815,
+   "FY24": 315.412,
+   "FY25": 316.696,
+   "FY26": 316.962
+  },
+  "da_depreciation_ppe": {
+   "FY22": 265.239,
+   "FY23": 300.026,
+   "FY24": 300.615,
+   "FY25": 301.906,
+   "FY26": 302.172
+  },
+  "da_amortisation_intangibles": {
+   "FY22": 4.511,
+   "FY23": 14.789,
+   "FY24": 14.797,
+   "FY25": 14.79,
+   "FY26": 14.79
+  },
+  "finance_costs": {
+   "FY22": 0.092,
+   "FY23": 41.433,
+   "FY24": 46.871,
+   "FY25": 55.548,
+   "FY26": 74.177
+  },
+  "fc_interest_on_term_loan": {
+   "FY22": 0.091,
+   "FY23": 41.383,
+   "FY24": 46.822,
+   "FY25": 55.499,
+   "FY26": 74.127
+  },
+  "fc_amortisation_upfront_fee": {
+   "FY22": 0.001,
+   "FY23": 0.05,
+   "FY24": 0.049,
+   "FY25": 0.049,
+   "FY26": 0.05
+  },
+  "total_expenses": {
+   "FY22": 715.843,
+   "FY23": 1954.981,
+   "FY24": 207.464,
+   "FY25": -47.17,
+   "FY26": 356.537
+  },
+  "profit_before_tax": {
+   "FY22": 527.57,
+   "FY23": -639.69,
+   "FY24": 1095.258,
+   "FY25": 1352.225,
+   "FY26": 940.109
+  },
+  "current_tax": {
+   "FY22": 24.596,
+   "FY23": 21.015,
+   "FY24": 17.809,
+   "FY25": 19.066,
+   "FY26": 18.855
+  },
+  "deferred_tax": {
+   "FY22": 39.66,
+   "FY23": -214.295,
+   "FY24": 95.717,
+   "FY25": 161.266,
+   "FY26": 9.386
+  },
+  "earlier_years_tax": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "total_tax": {
+   "FY22": 64.256,
+   "FY23": -193.28,
+   "FY24": 113.526,
+   "FY25": 180.332,
+   "FY26": 28.241
+  },
+  "profit_after_tax": {
+   "FY22": 463.314,
+   "FY23": -446.41,
+   "FY24": 981.732,
+   "FY25": 1171.893,
+   "FY26": 911.868
+  },
+  "minority_interest_share": {
+   "FY22": -43.528,
+   "FY23": -251.272,
+   "FY24": 54.983,
+   "FY25": -3.791,
+   "FY26": 0.0
+  },
+  "profit_attributable_to_unitholders": {
+   "FY22": 506.842,
+   "FY23": -195.138,
+   "FY24": 926.749,
+   "FY25": 1175.684,
+   "FY26": 911.868
+  },
+  "other_comprehensive_income": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "total_comprehensive_income": {
+   "FY22": 463.314,
+   "FY23": -446.41,
+   "FY24": 981.732,
+   "FY25": 1171.893,
+   "FY26": 911.868
+  }
+ },
+ "bs": {
+  "unit_capital": {
+   "FY22": 9099.992,
+   "FY23": 9099.992,
+   "FY24": 9099.992,
+   "FY25": 9099.992,
+   "FY26": 9099.992
+  },
+  "distribution_repayment_of_capital": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": -243.88,
+   "FY25": -441.35,
+   "FY26": -677.95
+  },
+  "other_equity": {
+   "FY22": -106.366,
+   "FY23": -1393.503,
+   "FY24": -1314.873,
+   "FY25": -937.451,
+   "FY26": -880.982
+  },
+  "oe_capital_reserve": {
+   "FY22": 33.015,
+   "FY23": 33.015,
+   "FY24": 33.015,
+   "FY25": 129.282,
+   "FY26": 129.282
+  },
+  "oe_retained_earnings": {
+   "FY22": -139.381,
+   "FY23": -1426.518,
+   "FY24": -1347.888,
+   "FY25": -1066.733,
+   "FY26": -1010.264
+  },
+  "unitholders_equity": {
+   "FY22": 8993.626,
+   "FY23": 7706.489,
+   "FY24": 7541.239,
+   "FY25": 7721.191,
+   "FY26": 7541.06
+  },
+  "non_controlling_interest": {
+   "FY22": 931.495,
+   "FY23": 621.403,
+   "FY24": 636.156,
+   "FY25": 0.0,
+   "FY26": null
+  },
+  "total_equity": {
+   "FY22": 9925.121,
+   "FY23": 8327.892,
+   "FY24": 8177.395,
+   "FY25": 7721.191,
+   "FY26": 7541.06
+  },
+  "long_term_borrowings": {
+   "FY22": 572.028,
+   "FY23": 569.2,
+   "FY24": 566.371,
+   "FY25": 1063.502,
+   "FY26": 1055.266
+  },
+  "short_term_borrowings": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "current_maturities": {
+   "FY22": 2.878,
+   "FY23": 2.878,
+   "FY24": 2.878,
+   "FY25": 8.286,
+   "FY26": 8.286
+  },
+  "deferred_tax_liability_net": {
+   "FY22": 1329.793,
+   "FY23": 1115.498,
+   "FY24": 1211.215,
+   "FY25": 1372.481,
+   "FY26": 1381.867
+  },
+  "dtl_gross_depreciation_difference": {
+   "FY22": 1685.575,
+   "FY23": 1521.294,
+   "FY24": 1637.323,
+   "FY25": 1793.825,
+   "FY26": 1777.971
+  },
+  "dta_total": {
+   "FY22": 355.782,
+   "FY23": 405.796,
+   "FY24": 426.108,
+   "FY25": 421.344,
+   "FY26": 396.104
+  },
+  "dta_mat_credit_entitlement": {
+   "FY22": 135.471,
+   "FY23": 150.462,
+   "FY24": 160.951,
+   "FY25": 171.691,
+   "FY26": 183.237
+  },
+  "dta_unused_tax_losses": {
+   "FY22": 220.296,
+   "FY23": 255.319,
+   "FY24": 264.426,
+   "FY25": 248.875,
+   "FY26": 211.98
+  },
+  "other_non_current_liabilities": {
+   "FY22": 0.005,
+   "FY23": 0.0,
+   "FY24": 0.002,
+   "FY25": 0.0,
+   "FY26": 0.008
+  },
+  "long_term_provisions": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "total_non_current_liabilities": {
+   "FY22": 1901.826,
+   "FY23": 1684.698,
+   "FY24": 1777.588,
+   "FY25": 2435.983,
+   "FY26": 2437.141
+  },
+  "trade_payables": {
+   "FY22": 0.276,
+   "FY23": 1.737,
+   "FY24": 1.588,
+   "FY25": 1.886,
+   "FY26": 3.901
+  },
+  "other_current_financial_liabilities": {
+   "FY22": 21.464,
+   "FY23": 24.325,
+   "FY24": 21.417,
+   "FY25": 19.518,
+   "FY26": 16.761
+  },
+  "ocfl_dues_for_capital_expenditure": {
+   "FY22": 19.126,
+   "FY23": 22.455,
+   "FY24": 16.588,
+   "FY25": 14.899,
+   "FY26": 11.054
+  },
+  "other_current_liabilities": {
+   "FY22": 1.596,
+   "FY23": 1.731,
+   "FY24": 1.771,
+   "FY25": 0.371,
+   "FY26": 0.371
+  },
+  "short_term_provisions": {
+   "FY22": 0.995,
+   "FY23": 0.005,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": null
+  },
+  "current_tax_liabilities_net": {
+   "FY22": 0.011,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "total_current_liabilities": {
+   "FY22": 27.22,
+   "FY23": 30.676,
+   "FY24": 27.654,
+   "FY25": 30.061,
+   "FY26": 29.319
+  },
+  "total_equity_and_liabilities": {
+   "FY22": 11854.167,
+   "FY23": 10043.266,
+   "FY24": 9982.637,
+   "FY25": 10187.235,
+   "FY26": 10007.52
+  },
+  "gross_block": {
+   "FY22": 11082.636,
+   "FY23": 11088.786,
+   "FY24": 11118.123,
+   "FY25": 11120.16,
+   "FY26": 11127.61
+  },
+  "accumulated_depreciation": {
+   "FY22": 1246.682,
+   "FY23": 1546.708,
+   "FY24": 1847.304,
+   "FY25": 2148.906,
+   "FY26": 2451.078
+  },
+  "impairment": {
+   "FY22": 0.0,
+   "FY23": 867.527,
+   "FY24": 621.252,
+   "FY25": 144.873,
+   "FY26": 34.26
+  },
+  "net_block_ppe": {
+   "FY22": 9835.954,
+   "FY23": 8674.551,
+   "FY24": 8649.567,
+   "FY25": 8826.381,
+   "FY26": 8642.272
+  },
+  "cwip": {
+   "FY22": 3.975,
+   "FY23": 15.122,
+   "FY24": 7.484,
+   "FY25": 9.618,
+   "FY26": 16.274
+  },
+  "intangibles": {
+   "FY22": 466.466,
+   "FY23": 399.044,
+   "FY24": 392.115,
+   "FY25": 408.974,
+   "FY26": 405.211
+  },
+  "intangibles_gross": {
+   "FY22": 484.416,
+   "FY23": 484.416,
+   "FY24": 484.416,
+   "FY25": 484.416,
+   "FY26": 484.416
+  },
+  "intangibles_accumulated_amortisation": {
+   "FY22": 17.95,
+   "FY23": 32.739,
+   "FY24": 47.536,
+   "FY25": 62.326,
+   "FY26": 77.116
+  },
+  "intangibles_impairment_provision": {
+   "FY22": 0.0,
+   "FY23": 52.633,
+   "FY24": 44.765,
+   "FY25": 13.116,
+   "FY26": 2.089
+  },
+  "goodwill": {
+   "FY22": 589.65,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "non_current_investments": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "nc_trade_receivables": {
+   "FY22": null,
+   "FY23": 0.0,
+   "FY24": 6.637,
+   "FY25": 1.391,
+   "FY26": 0.0
+  },
+  "nc_other_financial_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 17.461,
+   "FY26": 16.066
+  },
+  "nc_other_non_current_assets": {
+   "FY22": 46.709,
+   "FY23": 62.452,
+   "FY24": 42.465,
+   "FY25": 28.307,
+   "FY26": 35.439
+  },
+  "nca_advance_tax_net_of_provisions": {
+   "FY22": 46.379,
+   "FY23": 62.125,
+   "FY24": 42.134,
+   "FY25": 27.973,
+   "FY26": 35.101
+  },
+  "other_non_current_assets_incl_financial": {
+   "FY22": 46.709,
+   "FY23": 62.452,
+   "FY24": 49.102,
+   "FY25": 47.159,
+   "FY26": 51.505
+  },
+  "total_non_current_assets": {
+   "FY22": 10942.754,
+   "FY23": 9151.169,
+   "FY24": 9098.268,
+   "FY25": 9292.132,
+   "FY26": 9115.262
+  },
+  "inventories": {
+   "FY22": 30.828,
+   "FY23": 30.815,
+   "FY24": 30.929,
+   "FY25": 30.73,
+   "FY26": 30.918
+  },
+  "trade_receivables": {
+   "FY22": 333.477,
+   "FY23": 326.305,
+   "FY24": 269.322,
+   "FY25": 205.371,
+   "FY26": 187.554
+  },
+  "current_investments": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "cash_and_cash_equivalents": {
+   "FY22": 526.859,
+   "FY23": 358.582,
+   "FY24": 416.861,
+   "FY25": 426.187,
+   "FY26": 440.756
+  },
+  "other_bank_balances": {
+   "FY22": 0.174,
+   "FY23": 153.219,
+   "FY24": 144.888,
+   "FY25": 206.093,
+   "FY26": 213.009
+  },
+  "other_current_financial_assets": {
+   "FY22": 3.981,
+   "FY23": 3.201,
+   "FY24": 3.812,
+   "FY25": 11.202,
+   "FY26": 6.011
+  },
+  "other_current_assets_reported": {
+   "FY22": 16.094,
+   "FY23": 19.975,
+   "FY24": 18.557,
+   "FY25": 15.52,
+   "FY26": 14.01
+  },
+  "other_current_assets": {
+   "FY22": 20.075,
+   "FY23": 23.176,
+   "FY24": 22.369,
+   "FY25": 26.722,
+   "FY26": 20.021
+  },
+  "total_current_assets": {
+   "FY22": 911.413,
+   "FY23": 892.097,
+   "FY24": 884.369,
+   "FY25": 895.103,
+   "FY26": 892.258
+  },
+  "total_assets": {
+   "FY22": 11854.167,
+   "FY23": 10043.266,
+   "FY24": 9982.637,
+   "FY25": 10187.235,
+   "FY26": 10007.52
+  },
+  "total_borrowings_carrying": {
+   "FY22": 574.906,
+   "FY23": 572.078,
+   "FY24": 569.249,
+   "FY25": 1071.788,
+   "FY26": 1063.552
+  },
+  "total_borrowings_principal_term_loan": {
+   "FY22": 575.585,
+   "FY23": 572.707,
+   "FY24": 569.829,
+   "FY25": 1072.319,
+   "FY26": 1064.033
+  }
+ },
+ "cf": {
+  "cfo_profit_before_tax": {
+   "FY22": 527.57,
+   "FY23": -639.69,
+   "FY24": 1095.258,
+   "FY25": 1352.225,
+   "FY26": 940.109
+  },
+  "cfo_adj_impairment_reversal": {
+   "FY22": 367.941,
+   "FY23": 1509.81,
+   "FY24": -254.143,
+   "FY25": -508.028,
+   "FY26": -121.64
+  },
+  "cfo_adj_interest_income": {
+   "FY22": -13.198,
+   "FY23": -16.474,
+   "FY24": -26.191,
+   "FY25": -31.237,
+   "FY26": -33.597
+  },
+  "cfo_adj_interest_income_on_loans_to_spvs": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "cfo_adj_depreciation_amortisation": {
+   "FY22": 269.75,
+   "FY23": 314.815,
+   "FY24": 315.412,
+   "FY25": 316.696,
+   "FY26": 316.962
+  },
+  "cfo_adj_finance_cost": {
+   "FY22": 0.092,
+   "FY23": 41.433,
+   "FY24": 46.871,
+   "FY25": 55.548,
+   "FY26": 74.177
+  },
+  "cfo_adj_excess_provision_written_back": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -0.372,
+   "FY26": -0.668
+  },
+  "cfo_adj_provision_for_bad_doubtful_debts": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.654,
+   "FY26": 1.915
+  },
+  "cfo_adj_profit_loss_on_disposal_of_fixed_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": -0.962
+  },
+  "cfo_operating_profit_before_wc_changes": {
+   "FY22": 1152.155,
+   "FY23": 1209.894,
+   "FY24": 1177.207,
+   "FY25": 1185.486,
+   "FY26": 1176.296
+  },
+  "wc_trade_payables": {
+   "FY22": -1.076,
+   "FY23": 0.392,
+   "FY24": -0.197,
+   "FY25": 0.298,
+   "FY26": 2.015
+  },
+  "wc_other_current_financial_liabilities": {
+   "FY22": -19.178,
+   "FY23": 3.03,
+   "FY24": -0.56,
+   "FY25": -1.899,
+   "FY26": -2.757
+  },
+  "wc_other_non_financial_liabilities": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.008
+  },
+  "wc_other_current_liabilities": {
+   "FY22": -0.314,
+   "FY23": 0.135,
+   "FY24": 0.04,
+   "FY25": -1.4,
+   "FY26": 0.0
+  },
+  "wc_provisions": {
+   "FY22": 0.911,
+   "FY23": -0.09,
+   "FY24": -0.005,
+   "FY25": null,
+   "FY26": null
+  },
+  "wc_other_non_current_liabilities": {
+   "FY22": 0.005,
+   "FY23": -0.005,
+   "FY24": 0.002,
+   "FY25": -0.002,
+   "FY26": 0.0
+  },
+  "wc_trade_receivables": {
+   "FY22": 72.609,
+   "FY23": 7.172,
+   "FY24": 52.292,
+   "FY25": 50.748,
+   "FY26": 17.961
+  },
+  "wc_non_current_financial_assets": {
+   "FY22": null,
+   "FY23": 0.0,
+   "FY24": -1.946,
+   "FY25": 0.0,
+   "FY26": 1.395
+  },
+  "wc_other_current_financial_assets": {
+   "FY22": -32.209,
+   "FY23": 0.567,
+   "FY24": -0.088,
+   "FY25": -5.701,
+   "FY26": 5.581
+  },
+  "wc_inventories": {
+   "FY22": 0.165,
+   "FY23": 0.013,
+   "FY24": -0.114,
+   "FY25": 0.199,
+   "FY26": -0.188
+  },
+  "wc_earmarked_bank_balances": {
+   "FY22": 0.0,
+   "FY23": 0.128,
+   "FY24": -0.237,
+   "FY25": -10.641,
+   "FY26": -0.275
+  },
+  "wc_other_current_assets": {
+   "FY22": 2.507,
+   "FY23": -3.881,
+   "FY24": 1.418,
+   "FY25": 3.038,
+   "FY26": 1.51
+  },
+  "wc_other_non_current_assets": {
+   "FY22": 0.0,
+   "FY23": 0.003,
+   "FY24": -0.004,
+   "FY25": -0.003,
+   "FY26": -0.004
+  },
+  "cfo_cash_generated_from_operations": {
+   "FY22": 1175.575,
+   "FY23": 1217.358,
+   "FY24": 1227.808,
+   "FY25": 1220.123,
+   "FY26": 1201.542
+  },
+  "cfo_direct_taxes_paid_net": {
+   "FY22": -27.686,
+   "FY23": -37.039,
+   "FY24": 2.058,
+   "FY25": -4.905,
+   "FY26": -25.983
+  },
+  "cfo_income_tax_refund_received": {
+   "FY22": 15.915,
+   "FY23": 0.267,
+   "FY24": 0.123,
+   "FY25": null,
+   "FY26": null
+  },
+  "cfo_net_cash_from_operating": {
+   "FY22": 1163.804,
+   "FY23": 1180.586,
+   "FY24": 1229.989,
+   "FY25": 1215.218,
+   "FY26": 1175.559
+  },
+  "cfi_ppe_and_cwip": {
+   "FY22": -4.304,
+   "FY23": -17.297,
+   "FY24": -24.017,
+   "FY25": -4.472,
+   "FY26": -13.144
+  },
+  "cfi_acquisition_of_non_controlling_interest": {
+   "FY22": -330.785,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -506.629,
+   "FY26": 0.0
+  },
+  "cfi_purchase_of_intangible_assets": {
+   "FY22": -304.15,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "cfi_investment_in_fixed_deposits_net": {
+   "FY22": null,
+   "FY23": -153.173,
+   "FY24": 8.568,
+   "FY25": -50.872,
+   "FY26": -6.641
+  },
+  "cfi_interest_income_received": {
+   "FY22": 9.988,
+   "FY23": 16.687,
+   "FY24": 25.668,
+   "FY25": 30.561,
+   "FY26": 33.207
+  },
+  "cfi_net_cash_from_investing": {
+   "FY22": -629.251,
+   "FY23": -153.783,
+   "FY24": 10.219,
+   "FY25": -531.412,
+   "FY26": 13.422
+  },
+  "cff_proceeds_from_issue_of_unit_capital": {
+   "FY22": 4993.483,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "cff_proceeds_from_borrowings": {
+   "FY22": 575.585,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 506.0,
+   "FY26": 0.0
+  },
+  "cff_repayment_of_borrowings": {
+   "FY22": -4993.483,
+   "FY23": -2.878,
+   "FY24": -2.878,
+   "FY25": -3.51,
+   "FY26": -8.286
+  },
+  "cff_finance_cost_paid": {
+   "FY22": -0.092,
+   "FY23": -41.383,
+   "FY24": -46.822,
+   "FY25": -55.501,
+   "FY26": -74.127
+  },
+  "cff_distribution_to_unitholders": {
+   "FY22": -682.499,
+   "FY23": -1091.999,
+   "FY24": -1091.999,
+   "FY25": -1091.999,
+   "FY26": -1091.999
+  },
+  "cff_dividend_paid_to_nci": {
+   "FY22": -116.752,
+   "FY23": -58.82,
+   "FY24": -40.23,
+   "FY25": -29.47,
+   "FY26": 0.0
+  },
+  "cff_net_cash_from_financing": {
+   "FY22": -223.758,
+   "FY23": -1195.08,
+   "FY24": -1181.929,
+   "FY25": -674.48,
+   "FY26": -1174.412
+  },
+  "net_change_in_cash": {
+   "FY22": 310.795,
+   "FY23": -168.277,
+   "FY24": 58.279,
+   "FY25": 9.326,
+   "FY26": 14.569
+  },
+  "opening_cash": {
+   "FY22": 0.0,
+   "FY23": 526.859,
+   "FY24": 358.582,
+   "FY25": 416.861,
+   "FY26": 426.187
+  },
+  "cash_acquired_on_acquisition_date": {
+   "FY22": 216.064,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "closing_cash": {
+   "FY22": 526.859,
+   "FY23": 358.582,
+   "FY24": 416.861,
+   "FY25": 426.187,
+   "FY26": 440.756
+  }
+ },
+ "ndcf": {
+  "trust_old_interest_from_portfolio_assets": {
+   "FY22": 640.837,
+   "FY23": 754.527,
+   "FY24": 734.428,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_dividend_from_portfolio_assets": {
+   "FY22": 332.293,
+   "FY23": 294.509,
+   "FY24": 210.974,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_repayment_of_debt_by_portfolio_assets": {
+   "FY22": 0.0,
+   "FY23": 118.5,
+   "FY24": 224.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_capital_reduction_proceeds": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_sale_proceeds_not_distributed": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_costs_retentions_on_sale": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_other_income_at_trust": {
+   "FY22": 2.63,
+   "FY23": 5.7,
+   "FY24": 7.946,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_total_cash_inflow_A": {
+   "FY22": 975.76,
+   "FY23": 1173.236,
+   "FY24": 1177.348,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_fees_interest_expenses_at_trust": {
+   "FY22": -11.437,
+   "FY23": -52.765,
+   "FY24": -57.884,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_ipo_expense_reimbursement": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_repayment_of_external_debt": {
+   "FY22": 0.0,
+   "FY23": -2.878,
+   "FY24": -2.878,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_dsra_set_aside": {
+   "FY22": 0.0,
+   "FY23": -12.268,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_income_tax_statutory_dues": {
+   "FY22": -1.113,
+   "FY23": -2.711,
+   "FY24": -3.979,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_proceeds_reinvested": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_invested_in_portfolio_assets_for_debt_service": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": -14.692,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_net_proceeds_fresh_unit_issue": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_other_adjustment_im_board": {
+   "FY22": -0.265,
+   "FY23": 0.062,
+   "FY24": -0.152,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_old_total_outflows_retention_B": {
+   "FY22": -12.815,
+   "FY23": -70.56,
+   "FY24": -79.585,
+   "FY25": null,
+   "FY26": null
+  },
+  "trust_new_cfo_of_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -24.715,
+   "FY26": -15.327
+  },
+  "trust_new_cash_flows_from_spvs_ndcf_distributions": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 1160.992,
+   "FY26": 1190.046
+  },
+  "trust_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 6.07,
+   "FY26": 6.645
+  },
+  "trust_new_sale_proceeds_adjusted": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "trust_new_sale_proceeds_not_reinvested": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "trust_new_finance_cost_on_borrowings": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -55.499,
+   "FY26": -74.127
+  },
+  "trust_new_debt_repayment": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -3.51,
+   "FY26": -8.286
+  },
+  "trust_new_reserves_required": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "trust_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -2.323,
+   "FY26": -8.316
+  },
+  "ndcf_trust_level": {
+   "FY22": 962.945,
+   "FY23": 1102.676,
+   "FY24": 1097.763,
+   "FY25": 1081.015,
+   "FY26": 1090.635
+  },
+  "trust_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -10.984,
+   "FY26": -1.364
+  },
+  "trust_ndcf_distributed_to_unitholders": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 1091.999,
+   "FY26": 1091.999
+  },
+  "spv_VTL_old_pat_standalone_A": {
+   "FY22": 92.127,
+   "FY23": 76.449,
+   "FY24": 53.654,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_depreciation_impairment_amortisation": {
+   "FY22": 22.794,
+   "FY23": 31.703,
+   "FY24": 31.707,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_interest_on_loans_from_trust": {
+   "FY22": 100.599,
+   "FY23": 113.678,
+   "FY24": 113.98,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_less_working_capital_change": {
+   "FY22": 2.733,
+   "FY23": 2.136,
+   "FY24": 10.451,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_less_capex": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": -0.013,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_less_deferred_tax_lease_rents_etc": {
+   "FY22": -8.939,
+   "FY23": -5.641,
+   "FY24": -4.109,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_less_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_less_amounts_retained_per_transaction_documents": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_add_less_other_adjustment_im_board": {
+   "FY22": -10.06,
+   "FY23": 0.109,
+   "FY24": -1.015,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_total_adjustments_B": {
+   "FY22": 107.127,
+   "FY23": 141.985,
+   "FY24": 151.001,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_old_ndcf_spv": {
+   "FY22": 199.254,
+   "FY23": 218.434,
+   "FY24": 204.655,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_VTL_new_cfo_of_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 208.436,
+   "FY26": 201.488
+  },
+  "spv_VTL_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 2.298,
+   "FY26": 2.396
+  },
+  "spv_VTL_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.0,
+   "FY26": 0.0
+  },
+  "spv_VTL_new_ndcf_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 210.734,
+   "FY26": 203.884
+  },
+  "spv_VTL_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 10.107,
+   "FY26": -0.347
+  },
+  "spv_VTL_new_distributed_to_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 200.627,
+   "FY26": 204.231
+  },
+  "ndcf_spv_level_VTL": {
+   "FY22": 199.254,
+   "FY23": 218.434,
+   "FY24": 204.655,
+   "FY25": 210.734,
+   "FY26": 203.884
+  },
+  "spv_KATL_old_pat_standalone_A": {
+   "FY22": 13.55,
+   "FY23": 14.272,
+   "FY24": 13.9,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_depreciation_impairment_amortisation": {
+   "FY22": 5.48,
+   "FY23": 6.356,
+   "FY24": 6.684,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_interest_on_loans_from_trust": {
+   "FY22": 23.867,
+   "FY23": 26.97,
+   "FY24": 27.639,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_less_working_capital_change": {
+   "FY22": -6.517,
+   "FY23": 10.891,
+   "FY24": 1.11,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_less_capex": {
+   "FY22": -1.456,
+   "FY23": -9.542,
+   "FY24": -14.878,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_less_deferred_tax_lease_rents_etc": {
+   "FY22": 3.474,
+   "FY23": 2.325,
+   "FY24": 2.082,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_less_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": -2.96,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_less_amounts_retained_per_transaction_documents": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 10.873,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_add_less_other_adjustment_im_board": {
+   "FY22": 4.168,
+   "FY23": 0.539,
+   "FY24": -0.591,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_total_adjustments_B": {
+   "FY22": 29.016,
+   "FY23": 34.579,
+   "FY24": 32.919,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_old_ndcf_spv": {
+   "FY22": 42.566,
+   "FY23": 48.851,
+   "FY24": 46.819,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_KATL_new_cfo_of_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 47.985,
+   "FY26": 57.715
+  },
+  "spv_KATL_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.605,
+   "FY26": 0.43
+  },
+  "spv_KATL_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -0.795,
+   "FY26": -2.141
+  },
+  "spv_KATL_new_ndcf_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 47.795,
+   "FY26": 56.004
+  },
+  "spv_KATL_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -3.868,
+   "FY26": 1.946
+  },
+  "spv_KATL_new_distributed_to_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 51.663,
+   "FY26": 54.058
+  },
+  "ndcf_spv_level_KATL": {
+   "FY22": 42.566,
+   "FY23": 48.851,
+   "FY24": 46.819,
+   "FY25": 47.795,
+   "FY26": 56.004
+  },
+  "spv_PPTL_old_pat_standalone_A": {
+   "FY22": 40.149,
+   "FY23": 40.364,
+   "FY24": 45.56,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_depreciation_impairment_amortisation": {
+   "FY22": 31.088,
+   "FY23": 37.062,
+   "FY24": 37.164,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_interest_on_loans_from_trust": {
+   "FY22": 166.896,
+   "FY23": 196.294,
+   "FY24": 189.505,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_less_working_capital_change": {
+   "FY22": 22.572,
+   "FY23": -8.459,
+   "FY24": 9.736,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_less_capex": {
+   "FY22": -60.013,
+   "FY23": -0.544,
+   "FY24": 0.038,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_less_deferred_tax_lease_rents_etc": {
+   "FY22": 16.454,
+   "FY23": 14.264,
+   "FY24": 15.929,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_less_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_less_amounts_retained_per_transaction_documents": {
+   "FY22": 41.658,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_add_less_other_adjustment_im_board": {
+   "FY22": -0.247,
+   "FY23": -4.629,
+   "FY24": 8.311,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_total_adjustments_B": {
+   "FY22": 218.408,
+   "FY23": 233.988,
+   "FY24": 260.683,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_old_ndcf_spv": {
+   "FY22": 258.557,
+   "FY23": 274.352,
+   "FY24": 306.243,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_PPTL_new_cfo_of_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 327.745,
+   "FY26": 330.329
+  },
+  "spv_PPTL_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 7.997,
+   "FY26": 9.553
+  },
+  "spv_PPTL_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -0.048,
+   "FY26": -8.573
+  },
+  "spv_PPTL_new_ndcf_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 335.694,
+   "FY26": 331.309
+  },
+  "spv_PPTL_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 17.104,
+   "FY26": 6.845
+  },
+  "spv_PPTL_new_distributed_to_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 318.59,
+   "FY26": 324.464
+  },
+  "ndcf_spv_level_PPTL": {
+   "FY22": 258.557,
+   "FY23": 274.352,
+   "FY24": 306.243,
+   "FY25": 335.694,
+   "FY26": 331.309
+  },
+  "spv_WTL_old_pat_standalone_A": {
+   "FY22": 36.484,
+   "FY23": 36.518,
+   "FY24": 38.062,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_depreciation_impairment_amortisation": {
+   "FY22": 37.599,
+   "FY23": 45.209,
+   "FY24": 45.213,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_interest_on_loans_from_trust": {
+   "FY22": 197.636,
+   "FY23": 234.317,
+   "FY24": 227.541,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_less_working_capital_change": {
+   "FY22": 28.185,
+   "FY23": -18.233,
+   "FY24": 10.287,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_less_capex": {
+   "FY22": -84.439,
+   "FY23": -2.715,
+   "FY24": -1.228,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_less_deferred_tax_lease_rents_etc": {
+   "FY22": 15.448,
+   "FY23": 12.97,
+   "FY24": 13.42,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_less_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_less_amounts_retained_per_transaction_documents": {
+   "FY22": 57.133,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_add_less_other_adjustment_im_board": {
+   "FY22": -0.211,
+   "FY23": -3.193,
+   "FY24": 12.607,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_total_adjustments_B": {
+   "FY22": 251.351,
+   "FY23": 268.355,
+   "FY24": 307.84,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_old_ndcf_spv": {
+   "FY22": 287.835,
+   "FY23": 304.873,
+   "FY24": 345.902,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_WTL_new_cfo_of_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 377.881,
+   "FY26": 353.331
+  },
+  "spv_WTL_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 8.183,
+   "FY26": 8.693
+  },
+  "spv_WTL_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": -1.978,
+   "FY26": -0.687
+  },
+  "spv_WTL_new_ndcf_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 384.086,
+   "FY26": 361.337
+  },
+  "spv_WTL_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 30.024,
+   "FY26": 6.506
+  },
+  "spv_WTL_new_distributed_to_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 354.062,
+   "FY26": 354.831
+  },
+  "ndcf_spv_level_WTL": {
+   "FY22": 287.835,
+   "FY23": 304.873,
+   "FY24": 345.902,
+   "FY25": 384.086,
+   "FY26": 361.337
+  },
+  "spv_JPTL_old_pat_standalone_A": {
+   "FY22": 38.641,
+   "FY23": 15.796,
+   "FY24": 20.904,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_depreciation_impairment_amortisation": {
+   "FY22": 26.337,
+   "FY23": 32.341,
+   "FY24": 32.348,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_interest_on_loans_from_trust": {
+   "FY22": 151.84,
+   "FY23": 183.268,
+   "FY24": 175.764,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_less_working_capital_change": {
+   "FY22": -32.958,
+   "FY23": 20.366,
+   "FY24": 6.643,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_less_capex": {
+   "FY22": -82.344,
+   "FY23": 0.0,
+   "FY24": 0.005,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_less_deferred_tax_lease_rents_etc": {
+   "FY22": 15.617,
+   "FY23": 5.77,
+   "FY24": 7.424,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_less_provision_reserve_by_im": {
+   "FY22": 0.0,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_less_amounts_retained_per_transaction_documents": {
+   "FY22": 82.361,
+   "FY23": 0.0,
+   "FY24": 0.0,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_add_less_other_adjustment_im_board": {
+   "FY22": 8.722,
+   "FY23": -4.251,
+   "FY24": -4.357,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_total_adjustments_B": {
+   "FY22": 169.575,
+   "FY23": 237.494,
+   "FY24": 217.827,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_old_ndcf_spv": {
+   "FY22": 208.216,
+   "FY23": 253.29,
+   "FY24": 238.731,
+   "FY25": null,
+   "FY26": null
+  },
+  "spv_JPTL_new_cfo_of_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 277.877,
+   "FY26": 248.023
+  },
+  "spv_JPTL_new_treasury_income": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 5.408,
+   "FY26": 5.49
+  },
+  "spv_JPTL_new_capex_on_existing_assets": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 0.041,
+   "FY26": 6.573
+  },
+  "spv_JPTL_new_ndcf_spv": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 283.326,
+   "FY26": 260.086
+  },
+  "spv_JPTL_new_retained_or_utilised": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 17.815,
+   "FY26": 7.624
+  },
+  "spv_JPTL_new_distributed_to_trust": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 265.511,
+   "FY26": 252.462
+  },
+  "ndcf_spv_level_JPTL": {
+   "FY22": 208.216,
+   "FY23": 253.29,
+   "FY24": 238.731,
+   "FY25": 283.326,
+   "FY26": 260.086
+  },
+  "ndcf_spv_level_sum_of_5_spvs": {
+   "FY22": 996.428,
+   "FY23": 1099.8,
+   "FY24": 1142.35,
+   "FY25": 1261.635,
+   "FY26": 1212.62
+  }
+ },
+ "other": {
+  "units_outstanding_year_end_number": {
+   "FY22": 909999200,
+   "FY23": 909999200,
+   "FY24": 909999200,
+   "FY25": 909999200,
+   "FY26": 909999200
+  },
+  "weighted_avg_units_mn": {
+   "FY22": 815.9,
+   "FY23": 910.0,
+   "FY24": 910.0,
+   "FY25": 910.0,
+   "FY26": 910.0
+  },
+  "eps_basic_rs": {
+   "FY22": 6.21,
+   "FY23": -2.14,
+   "FY24": 10.18,
+   "FY25": 12.92,
+   "FY26": 10.02
+  },
+  "distributions_paid_in_year_rs_crore": {
+   "FY22": 682.499,
+   "FY23": 1091.999,
+   "FY24": 1091.999,
+   "FY25": 1091.999,
+   "FY26": 1091.999
+  },
+  "dpu_paid_in_year_rs": {
+   "FY22": 7.5,
+   "FY23": 12.0,
+   "FY24": 12.0,
+   "FY25": 12.0,
+   "FY26": 12.0
+  },
+  "dpu_paid_interest_rs": {
+   "FY22": 5.01,
+   "FY23": 7.86,
+   "FY24": 7.87,
+   "FY25": 7.56,
+   "FY26": 7.04
+  },
+  "dpu_paid_dividend_taxable_rs": {
+   "FY22": 1.68,
+   "FY23": 2.37,
+   "FY24": 1.19,
+   "FY25": 1.6,
+   "FY26": 1.88
+  },
+  "dpu_paid_dividend_exempt_rs": {
+   "FY22": 0.8,
+   "FY23": 1.01,
+   "FY24": 0.95,
+   "FY25": 0.61,
+   "FY26": 0.43
+  },
+  "dpu_paid_repayment_of_capital_spv_debt_rs": {
+   "FY22": 0,
+   "FY23": 0.73,
+   "FY24": 1.95,
+   "FY25": 2.17,
+   "FY26": 2.6
+  },
+  "dpu_paid_treasury_income_rs": {
+   "FY22": 0.01,
+   "FY23": 0.03,
+   "FY24": 0.04,
+   "FY25": 0.06,
+   "FY26": 0.05
+  },
+  "repayment_of_capital_distributed_in_year_rs_crore": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 197.47,
+   "FY26": 236.6
+  },
+  "dpu_declared_for_year_rs": {
+   "FY22": 10.5,
+   "FY23": 12.0,
+   "FY24": 12.0,
+   "FY25": 12.0,
+   "FY26": 12.0
+  },
+  "dpu_declared_interest_rs": {
+   "FY22": 6.91,
+   "FY23": 7.86,
+   "FY24": 7.75,
+   "FY25": 7.45,
+   "FY26": null
+  },
+  "dpu_declared_dividend_taxable_rs": {
+   "FY22": 2.5,
+   "FY23": 1.81,
+   "FY24": 1.23,
+   "FY25": 1.78,
+   "FY26": null
+  },
+  "dpu_declared_dividend_exempt_rs": {
+   "FY22": 1.08,
+   "FY23": 1.07,
+   "FY24": 0.76,
+   "FY25": 0.55,
+   "FY26": null
+  },
+  "dpu_declared_repayment_of_capital_rs": {
+   "FY22": 0,
+   "FY23": 1.22,
+   "FY24": 2.21,
+   "FY25": 2.17,
+   "FY26": null
+  },
+  "dpu_declared_treasury_income_rs": {
+   "FY22": 0.01,
+   "FY23": 0.04,
+   "FY24": 0.05,
+   "FY25": 0.05,
+   "FY26": null
+  },
+  "dpu_declared_interest_pct": {
+   "FY22": null,
+   "FY23": 65.5,
+   "FY24": 64.58,
+   "FY25": 62.08,
+   "FY26": 59.0
+  },
+  "dpu_declared_dividend_taxable_pct": {
+   "FY22": null,
+   "FY23": 15.08,
+   "FY24": 10.25,
+   "FY25": 14.84,
+   "FY26": 15.08
+  },
+  "dpu_declared_dividend_exempt_pct": {
+   "FY22": null,
+   "FY23": 8.92,
+   "FY24": 6.33,
+   "FY25": 4.58,
+   "FY26": 3.58
+  },
+  "dpu_declared_repayment_of_capital_pct": {
+   "FY22": null,
+   "FY23": 10.17,
+   "FY24": 18.42,
+   "FY25": 18.08,
+   "FY26": 21.84
+  },
+  "dpu_declared_treasury_income_pct": {
+   "FY22": null,
+   "FY23": 0.33,
+   "FY24": 0.42,
+   "FY25": 0.42,
+   "FY26": 0.5
+  },
+  "dpu_declared_q1_rs": {
+   "FY22": null,
+   "FY23": 3.0,
+   "FY24": 3.0,
+   "FY25": 3.0,
+   "FY26": 3.0
+  },
+  "dpu_declared_q2_rs": {
+   "FY22": 4.5,
+   "FY23": 3.0,
+   "FY24": 3.0,
+   "FY25": 3.0,
+   "FY26": 3.0
+  },
+  "dpu_declared_q3_rs": {
+   "FY22": 3.0,
+   "FY23": 3.0,
+   "FY24": 3.0,
+   "FY25": 3.0,
+   "FY26": 3.0
+  },
+  "dpu_declared_q4_rs": {
+   "FY22": 3.0,
+   "FY23": 3.0,
+   "FY24": 3.0,
+   "FY25": 3.0,
+   "FY26": 3.0
+  },
+  "dpu_quarterly_component_split": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": null,
+   "FY26": null
+  },
+  "nav_per_unit_book_rs": {
+   "FY22": 98.83,
+   "FY23": 84.69,
+   "FY24": 82.87,
+   "FY25": 84.85,
+   "FY26": 82.87
+  },
+  "nav_per_unit_fair_value_rs": {
+   "FY22": 101.07,
+   "FY23": 86.04,
+   "FY24": 85.28,
+   "FY25": 94.12,
+   "FY26": 90.79
+  },
+  "net_assets_attributable_book_rs_crore": {
+   "FY22": 8993.626,
+   "FY23": 7706.489,
+   "FY24": 7541.239,
+   "FY25": 7721.191,
+   "FY26": 7541.06
+  },
+  "net_assets_attributable_fair_value_rs_crore": {
+   "FY22": 9197.326,
+   "FY23": 7829.229,
+   "FY24": 7760.218,
+   "FY25": 8565.313,
+   "FY26": 8262.224
+  },
+  "total_assets_fair_value_rs_crore": {
+   "FY22": 12113.241,
+   "FY23": 10201.15,
+   "FY24": 10268.893,
+   "FY25": 11031.357,
+   "FY26": 10728.684
+  },
+  "total_consolidated_borrowings_rs_crore": {
+   "FY22": 574.906,
+   "FY23": 572.078,
+   "FY24": 569.249,
+   "FY25": 1071.788,
+   "FY26": 1063.552
+  },
+  "total_consolidated_borrowings_principal_rs_crore": {
+   "FY22": 575.585,
+   "FY23": 572.707,
+   "FY24": 569.829,
+   "FY25": 1072.319,
+   "FY26": 1064.033
+  },
+  "gearing_net_debt_rs_crore": {
+   "FY22": null,
+   "FY23": null,
+   "FY24": null,
+   "FY25": 646.132,
+   "FY26": 623.277
+  }
+ },
+ "sources": {
+  "pnl.revenue_from_operations": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.rev_transmission_charges": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_other_operating_income": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_incentive_performance_bonus_memo": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_contracted_price_memo": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_discounts_rebates_memo": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_other_adjustments_memo": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_VTL": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_KATL": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_PPTL": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_WTL": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.rev_JPTL": "Revenue note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right (printed p161). Ind AS 115 reconciliation: FY22 Annual_Report_FY_2022_23.pdf p154; FY23 Annual_Report_FY_2023_24.pdf p158; FY24 Annual_Report_FY_2024_25.pdf p166; FY25-26 Annual_Report_FY_2025_26.pdf p89 right (printed p175)",
+  "pnl.other_income": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.oi_interest_income": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_interest_indian_banks": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_interest_unwinding_discount_fin_assets": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_interest_others": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_mf_income": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_other": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_surcharge": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_liquidated_damages_recovery": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_profit_on_disposal_of_fixed_assets": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_excess_provision_written_back": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.oi_miscellaneous_income": "Other income note: FY22 Annual_Report_FY_2022_23.pdf p139; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.total_income": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.investment_manager_fees": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.project_manager_fees": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.om_infrastructure_maintenance_charges": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.employee_benefits": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.insurance": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.repairs": "No separate repairs line; the only R&M line ('Repairs and maintenance of Transmission assets') is mapped to om_infrastructure_maintenance_charges",
+  "pnl.other_expenses": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.extra_valuation_expenses": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.extra_auditor_statutory_audit_fees": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.extra_auditor_other_services": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.extra_trustee_fee": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.ox_csr_expenditure": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_fv_loss_on_financial_asset": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_provision_for_bad_doubtful_debts": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_security_expenses": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_power_charges": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_system_market_operation_charges": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.ox_cerc_licence_fee_other_charges": "Other expenses note: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p145; FY24 Annual_Report_FY_2024_25.pdf p153; FY25-26 Annual_Report_FY_2025_26.pdf p83 left (printed p162)",
+  "pnl.impairment_net": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.impairment_goodwill": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150); Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152); goodwill: Annual_Report_FY_2023_24.pdf p135 / Annual_Report_FY_2022_23.pdf p130",
+  "pnl.impairment_ppe": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150); Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152); goodwill: Annual_Report_FY_2023_24.pdf p135 / Annual_Report_FY_2022_23.pdf p130",
+  "pnl.impairment_intangibles": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150); Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152); goodwill: Annual_Report_FY_2023_24.pdf p135 / Annual_Report_FY_2022_23.pdf p130",
+  "pnl.depreciation_amortisation": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.da_depreciation_ppe": "Finance cost / D&A notes: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p146; FY24 Annual_Report_FY_2024_25.pdf p154; FY25-26 Annual_Report_FY_2025_26.pdf p83 right (printed p163)",
+  "pnl.da_amortisation_intangibles": "Finance cost / D&A notes: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p146; FY24 Annual_Report_FY_2024_25.pdf p154; FY25-26 Annual_Report_FY_2025_26.pdf p83 right (printed p163)",
+  "pnl.finance_costs": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.fc_interest_on_term_loan": "Finance cost / D&A notes: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p146; FY24 Annual_Report_FY_2024_25.pdf p154; FY25-26 Annual_Report_FY_2025_26.pdf p83 right (printed p163)",
+  "pnl.fc_amortisation_upfront_fee": "Finance cost / D&A notes: FY22 Annual_Report_FY_2022_23.pdf p140; FY23 Annual_Report_FY_2023_24.pdf p146; FY24 Annual_Report_FY_2024_25.pdf p154; FY25-26 Annual_Report_FY_2025_26.pdf p83 right (printed p163)",
+  "pnl.total_expenses": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.profit_before_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.current_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.deferred_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.earlier_years_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.total_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125); tax note FY25-26 Annual_Report_FY_2025_26.pdf p89 left (printed p174)",
+  "pnl.profit_after_tax": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.minority_interest_share": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.profit_attributable_to_unitholders": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.other_comprehensive_income": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "pnl.total_comprehensive_income": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "bs.unit_capital": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.distribution_repayment_of_capital": "FY24: Annual_Report_FY_2025_26.pdf p65 left (printed p126) Statement of Changes in Unitholders' Equity (opening balances 1-Apr-2024 / 1-Apr-2025); FY25-26: FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_equity": "FY24: Annual_Report_FY_2025_26.pdf p65 left (printed p126) Statement of Changes in Unitholders' Equity (opening balances 1-Apr-2024 / 1-Apr-2025) (restated split); other years: FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.oe_capital_reserve": "FY24: Annual_Report_FY_2025_26.pdf p65 left (printed p126) Statement of Changes in Unitholders' Equity (opening balances 1-Apr-2024 / 1-Apr-2025); other years other-equity notes / SOCE",
+  "bs.oe_retained_earnings": "FY24: Annual_Report_FY_2025_26.pdf p65 left (printed p126) Statement of Changes in Unitholders' Equity (opening balances 1-Apr-2024 / 1-Apr-2025); other years other-equity notes / SOCE",
+  "bs.unitholders_equity": "Statement of Net Assets at Fair Value (book value, E): FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right",
+  "bs.non_controlling_interest": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_equity": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.long_term_borrowings": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.short_term_borrowings": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.current_maturities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.deferred_tax_liability_net": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.dtl_gross_depreciation_difference": "DTL note: FY22 Annual_Report_FY_2022_23.pdf p136; FY23 Annual_Report_FY_2023_24.pdf p142; FY24 Annual_Report_FY_2024_25.pdf p150; FY25-26 Annual_Report_FY_2025_26.pdf p81 right (printed p159)",
+  "bs.dta_total": "DTL note: FY22 Annual_Report_FY_2022_23.pdf p136; FY23 Annual_Report_FY_2023_24.pdf p142; FY24 Annual_Report_FY_2024_25.pdf p150; FY25-26 Annual_Report_FY_2025_26.pdf p81 right (printed p159)",
+  "bs.dta_mat_credit_entitlement": "DTL note: FY22 Annual_Report_FY_2022_23.pdf p136; FY23 Annual_Report_FY_2023_24.pdf p142; FY24 Annual_Report_FY_2024_25.pdf p150; FY25-26 Annual_Report_FY_2025_26.pdf p81 right (printed p159)",
+  "bs.dta_unused_tax_losses": "DTL note: FY22 Annual_Report_FY_2022_23.pdf p136; FY23 Annual_Report_FY_2023_24.pdf p142; FY24 Annual_Report_FY_2024_25.pdf p150; FY25-26 Annual_Report_FY_2025_26.pdf p81 right (printed p159)",
+  "bs.other_non_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.long_term_provisions": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_non_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.trade_payables": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_current_financial_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.ocfl_dues_for_capital_expenditure": "Other current financial liabilities note: FY22 Annual_Report_FY_2022_23.pdf p138; FY23 Annual_Report_FY_2023_24.pdf p144; FY24 Annual_Report_FY_2024_25.pdf p152; FY25-26 Annual_Report_FY_2025_26.pdf p82 right",
+  "bs.other_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.short_term_provisions": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.current_tax_liabilities_net": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_equity_and_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.gross_block": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150)",
+  "bs.accumulated_depreciation": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150)",
+  "bs.impairment": "PPE schedule: FY22 Annual_Report_FY_2022_23.pdf p128 (opening 1-Apr-22 col of FY23 table); FY23 Annual_Report_FY_2024_25.pdf p142 (opening 1-Apr-23, impairment shown as separate provision); FY24 Annual_Report_FY_2025_26.pdf p77 left (printed p150, opening 1-Apr-24); FY25-26 Annual_Report_FY_2025_26.pdf p76 right / p77 left (printed p149-150)",
+  "bs.net_block_ppe": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.cwip": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.intangibles": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.intangibles_gross": "Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152)",
+  "bs.intangibles_accumulated_amortisation": "Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152)",
+  "bs.intangibles_impairment_provision": "Intangibles schedule: FY22 Annual_Report_FY_2022_23.pdf p131 (opening 1-Apr-22); FY23 Annual_Report_FY_2024_25.pdf p144 (opening 1-Apr-23); FY24-26 Annual_Report_FY_2025_26.pdf p78 left (printed p152)",
+  "bs.goodwill": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124); goodwill note Annual_Report_FY_2022_23.pdf p130 (gross 9,575.91 mn less impairment 3,679.41 mn at FY22)",
+  "bs.non_current_investments": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.nc_trade_receivables": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.nc_other_financial_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.nc_other_non_current_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.nca_advance_tax_net_of_provisions": "Other non-current assets note: FY22 Annual_Report_FY_2022_23.pdf p132; FY23 Annual_Report_FY_2023_24.pdf p137; FY24 Annual_Report_FY_2024_25.pdf p145; FY25-26 Annual_Report_FY_2025_26.pdf p79 left",
+  "bs.other_non_current_assets_incl_financial": "DERIVED: nc_trade_receivables + nc_other_financial_assets + nc_other_non_current_assets (reported lines)",
+  "bs.total_non_current_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.inventories": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.trade_receivables": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.current_investments": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.cash_and_cash_equivalents": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_bank_balances": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_current_financial_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_current_assets_reported": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.other_current_assets": "DERIVED: other_current_financial_assets + other_current_assets_reported (reported lines)",
+  "bs.total_current_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_assets": "FY22: Annual_Report_FY_2022_23.pdf p106 (comparative; same as Annual_Report_FY_2021_22.pdf p100-101); FY23: Annual_Report_FY_2023_24.pdf p110 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p116 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 left half (printed p124)",
+  "bs.total_borrowings_carrying": "Borrowing notes: FY22 Annual_Report_FY_2022_23.pdf p136-137; FY23 Annual_Report_FY_2023_24.pdf p141,143; FY24 Annual_Report_FY_2024_25.pdf p149,151; FY25-26 Annual_Report_FY_2025_26.pdf p81 left / p82 left (printed p158,160); carrying-value reconciliation in cash flow statement: Annual_Report_FY_2022_23.pdf p110, Annual_Report_FY_2023_24.pdf p114, Annual_Report_FY_2024_25.pdf p120, Annual_Report_FY_2025_26.pdf p66 left",
+  "bs.total_borrowings_principal_term_loan": "Borrowing notes: FY22 Annual_Report_FY_2022_23.pdf p136-137; FY23 Annual_Report_FY_2023_24.pdf p141,143; FY24 Annual_Report_FY_2024_25.pdf p149,151; FY25-26 Annual_Report_FY_2025_26.pdf p81 left / p82 left (printed p158,160); carrying-value reconciliation in cash flow statement: Annual_Report_FY_2022_23.pdf p110, Annual_Report_FY_2023_24.pdf p114, Annual_Report_FY_2024_25.pdf p120, Annual_Report_FY_2025_26.pdf p66 left",
+  "cf.cfo_profit_before_tax": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_impairment_reversal": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_interest_income": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_interest_income_on_loans_to_spvs": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_depreciation_amortisation": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_finance_cost": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_excess_provision_written_back": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_provision_for_bad_doubtful_debts": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_adj_profit_loss_on_disposal_of_fixed_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_operating_profit_before_wc_changes": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_trade_payables": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_current_financial_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_non_financial_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_provisions": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_non_current_liabilities": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_trade_receivables": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_non_current_financial_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_current_financial_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_inventories": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_earmarked_bank_balances": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_current_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.wc_other_non_current_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_cash_generated_from_operations": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_direct_taxes_paid_net": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_income_tax_refund_received": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfo_net_cash_from_operating": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_ppe_and_cwip": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_acquisition_of_non_controlling_interest": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_purchase_of_intangible_assets": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_investment_in_fixed_deposits_net": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_interest_income_received": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cfi_net_cash_from_investing": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_proceeds_from_issue_of_unit_capital": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_proceeds_from_borrowings": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_repayment_of_borrowings": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_finance_cost_paid": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_distribution_to_unitholders": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_dividend_paid_to_nci": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cff_net_cash_from_financing": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.net_change_in_cash": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.opening_cash": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.cash_acquired_on_acquisition_date": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "cf.closing_cash": "FY22: Annual_Report_FY_2022_23.pdf p109 (comparative; same as Annual_Report_FY_2021_22.pdf p105); FY23: Annual_Report_FY_2023_24.pdf p113 (restated comparative); FY24: Annual_Report_FY_2024_25.pdf p119 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p65 right half (printed p127)",
+  "ndcf.trust_old_interest_from_portfolio_assets": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_dividend_from_portfolio_assets": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_repayment_of_debt_by_portfolio_assets": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_capital_reduction_proceeds": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_sale_proceeds_not_distributed": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_costs_retentions_on_sale": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_other_income_at_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_total_cash_inflow_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_fees_interest_expenses_at_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_ipo_expense_reimbursement": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_repayment_of_external_debt": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_dsra_set_aside": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_income_tax_statutory_dues": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_proceeds_reinvested": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_invested_in_portfolio_assets_for_debt_service": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_net_proceeds_fresh_unit_issue": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_old_total_outflows_retention_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.trust_new_cfo_of_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_cash_flows_from_spvs_ndcf_distributions": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_sale_proceeds_adjusted": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_sale_proceeds_not_reinvested": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_finance_cost_on_borrowings": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_debt_repayment": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_reserves_required": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_trust_level": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.trust_ndcf_distributed_to_unitholders": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_old_pat_standalone_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_depreciation_impairment_amortisation": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_interest_on_loans_from_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_less_working_capital_change": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_less_capex": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_less_deferred_tax_lease_rents_etc": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_less_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_less_amounts_retained_per_transaction_documents": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_add_less_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_total_adjustments_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_old_ndcf_spv": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_VTL_new_cfo_of_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_new_ndcf_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_VTL_new_distributed_to_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_VTL": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_old_pat_standalone_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_depreciation_impairment_amortisation": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_interest_on_loans_from_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_less_working_capital_change": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_less_capex": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_less_deferred_tax_lease_rents_etc": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_less_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_less_amounts_retained_per_transaction_documents": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_add_less_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_total_adjustments_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_old_ndcf_spv": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_KATL_new_cfo_of_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_new_ndcf_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_KATL_new_distributed_to_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_KATL": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_old_pat_standalone_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_depreciation_impairment_amortisation": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_interest_on_loans_from_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_less_working_capital_change": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_less_capex": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_less_deferred_tax_lease_rents_etc": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_less_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_less_amounts_retained_per_transaction_documents": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_add_less_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_total_adjustments_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_old_ndcf_spv": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_PPTL_new_cfo_of_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_new_ndcf_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_PPTL_new_distributed_to_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_PPTL": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_old_pat_standalone_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_depreciation_impairment_amortisation": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_interest_on_loans_from_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_less_working_capital_change": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_less_capex": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_less_deferred_tax_lease_rents_etc": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_less_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_less_amounts_retained_per_transaction_documents": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_add_less_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_total_adjustments_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_old_ndcf_spv": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_WTL_new_cfo_of_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_new_ndcf_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_WTL_new_distributed_to_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_WTL": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_old_pat_standalone_A": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_depreciation_impairment_amortisation": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_interest_on_loans_from_trust": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_less_working_capital_change": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_less_capex": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_less_deferred_tax_lease_rents_etc": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_less_provision_reserve_by_im": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_less_amounts_retained_per_transaction_documents": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_add_less_other_adjustment_im_board": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_total_adjustments_B": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_old_ndcf_spv": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121",
+  "ndcf.spv_JPTL_new_cfo_of_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_new_treasury_income": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_new_capex_on_existing_assets": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_new_ndcf_spv": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_new_retained_or_utilised": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.spv_JPTL_new_distributed_to_trust": "Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_JPTL": "Old SEBI framework statements: FY22 Annual_Report_FY_2022_23.pdf p112-117 (comparatives; same as Annual_Report_FY_2021_22.pdf p108-113); FY23+FY24 Annual_Report_FY_2023_24.pdf p116-121; Revised framework (SEBI circular 15-May-2024): FY25+FY26 Annual_Report_FY_2025_26.pdf p67 left - p70 right (printed p130-137); FY25 also Annual_Report_FY_2024_25.pdf p122-128",
+  "ndcf.ndcf_spv_level_sum_of_5_spvs": "DERIVED: sum of the five reported SPV-level NDCFs (old framework FY22-24, revised framework FY25-26)",
+  "other.distributions_paid_in_year_rs_crore": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_in_year_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_interest_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_dividend_taxable_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_dividend_exempt_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_repayment_of_capital_spv_debt_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_paid_treasury_income_rs": "Capital management note (distributions made during the year): FY22+FY23 Annual_Report_FY_2022_23.pdf p152; FY24 Annual_Report_FY_2023_24.pdf p156; FY25 Annual_Report_FY_2024_25.pdf p164 / Annual_Report_FY_2025_26.pdf p88 right; FY26 Annual_Report_FY_2025_26.pdf p88 right (printed p173)",
+  "other.dpu_declared_for_year_rs": "Quarterly DPU: Annual_Report_FY_2025_26.pdf p19 right (chart H1 FY22..Q4 FY26), p38 right (FY26 table); Annual_Report_FY_2024_25.pdf p72; Annual_Report_FY_2022_23.pdf p61; Annual_Report_FY_2023_24.pdf p7; Annual_Report_FY_2021_22.pdf p12",
+  "other.dpu_declared_interest_rs": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_dividend_taxable_rs": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_dividend_exempt_rs": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_repayment_of_capital_rs": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_treasury_income_rs": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_interest_pct": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_dividend_taxable_pct": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_dividend_exempt_pct": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_repayment_of_capital_pct": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_treasury_income_pct": "Highlights pages: FY22 Annual_Report_FY_2021_22.pdf p12; FY23 Annual_Report_FY_2022_23.pdf p6; FY24 Annual_Report_FY_2023_24.pdf p6; FY25 Annual_Report_FY_2024_25.pdf p7; FY26 Annual_Report_FY_2025_26.pdf p4 left (percentages only)",
+  "other.dpu_declared_q1_rs": "Quarterly DPU: Annual_Report_FY_2025_26.pdf p19 right (chart H1 FY22..Q4 FY26), p38 right (FY26 table); Annual_Report_FY_2024_25.pdf p72; Annual_Report_FY_2022_23.pdf p61; Annual_Report_FY_2023_24.pdf p7; Annual_Report_FY_2021_22.pdf p12",
+  "other.dpu_declared_q2_rs": "Quarterly DPU: Annual_Report_FY_2025_26.pdf p19 right (chart H1 FY22..Q4 FY26), p38 right (FY26 table); Annual_Report_FY_2024_25.pdf p72; Annual_Report_FY_2022_23.pdf p61; Annual_Report_FY_2023_24.pdf p7; Annual_Report_FY_2021_22.pdf p12",
+  "other.dpu_declared_q3_rs": "Quarterly DPU: Annual_Report_FY_2025_26.pdf p19 right (chart H1 FY22..Q4 FY26), p38 right (FY26 table); Annual_Report_FY_2024_25.pdf p72; Annual_Report_FY_2022_23.pdf p61; Annual_Report_FY_2023_24.pdf p7; Annual_Report_FY_2021_22.pdf p12",
+  "other.dpu_declared_q4_rs": "Quarterly DPU: Annual_Report_FY_2025_26.pdf p19 right (chart H1 FY22..Q4 FY26), p38 right (FY26 table); Annual_Report_FY_2024_25.pdf p72; Annual_Report_FY_2022_23.pdf p61; Annual_Report_FY_2023_24.pdf p7; Annual_Report_FY_2021_22.pdf p12",
+  "other.dpu_quarterly_component_split": "Not disclosed in the annual reports (only full-year component splits are given)",
+  "other.units_outstanding_year_end_number": "Unit capital note: Annual_Report_FY_2022_23.pdf p134; Annual_Report_FY_2023_24.pdf p140; Annual_Report_FY_2024_25.pdf p148; Annual_Report_FY_2025_26.pdf p80 right (printed p157)",
+  "other.weighted_avg_units_mn": "EPU note: Annual_Report_FY_2022_23.pdf p141; Annual_Report_FY_2025_26.pdf p83 right",
+  "other.eps_basic_rs": "FY22: Annual_Report_FY_2022_23.pdf p107 (comparative; same as Annual_Report_FY_2021_22.pdf p102); FY23: Annual_Report_FY_2023_24.pdf p111 (comparative); FY24: Annual_Report_FY_2024_25.pdf p117 (comparative); FY25+FY26: Annual_Report_FY_2025_26.pdf p64 right half (printed p125)",
+  "other.repayment_of_capital_distributed_in_year_rs_crore": "Annual_Report_FY_2025_26.pdf p65 left (printed p126) Statement of Changes in Unitholders' Equity (opening balances 1-Apr-2024 / 1-Apr-2025)",
+  "other.nav_per_unit_book_rs": "Statement of Net Assets at Fair Value: FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right (printed p129)",
+  "other.nav_per_unit_fair_value_rs": "Statement of Net Assets at Fair Value: FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right (printed p129)",
+  "other.net_assets_attributable_book_rs_crore": "Statement of Net Assets at Fair Value: FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right (printed p129)",
+  "other.net_assets_attributable_fair_value_rs_crore": "Statement of Net Assets at Fair Value: FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right (printed p129)",
+  "other.total_assets_fair_value_rs_crore": "Statement of Net Assets at Fair Value: FY22 Annual_Report_FY_2022_23.pdf p111; FY23 Annual_Report_FY_2023_24.pdf p115; FY24 Annual_Report_FY_2024_25.pdf p121; FY25-26 Annual_Report_FY_2025_26.pdf p66 right (printed p129)",
+  "other.total_consolidated_borrowings_rs_crore": "Borrowing notes: FY22 Annual_Report_FY_2022_23.pdf p136-137; FY23 Annual_Report_FY_2023_24.pdf p141,143; FY24 Annual_Report_FY_2024_25.pdf p149,151; FY25-26 Annual_Report_FY_2025_26.pdf p81 left / p82 left (printed p158,160); carrying-value reconciliation in cash flow statement: Annual_Report_FY_2022_23.pdf p110, Annual_Report_FY_2023_24.pdf p114, Annual_Report_FY_2024_25.pdf p120, Annual_Report_FY_2025_26.pdf p66 left (carrying value = non-current + current borrowings)",
+  "other.total_consolidated_borrowings_principal_rs_crore": "Borrowing notes: FY22 Annual_Report_FY_2022_23.pdf p136-137; FY23 Annual_Report_FY_2023_24.pdf p141,143; FY24 Annual_Report_FY_2024_25.pdf p149,151; FY25-26 Annual_Report_FY_2025_26.pdf p81 left / p82 left (printed p158,160); carrying-value reconciliation in cash flow statement: Annual_Report_FY_2022_23.pdf p110, Annual_Report_FY_2023_24.pdf p114, Annual_Report_FY_2024_25.pdf p120, Annual_Report_FY_2025_26.pdf p66 left (gross term loan from HDFC Bank before unamortised cost)",
+  "other.gearing_net_debt_rs_crore": "Annual_Report_FY_2025_26.pdf p88 right (capital management, gearing table); earlier years' tables not captured"
+ },
+ "checks": [
+  {
+   "year": "FY22",
+   "pnl_pbt_minus_tax_eq_pat": true,
+   "pnl_tax_components": true,
+   "pnl_income_total": true,
+   "pnl_expense_total_and_pbt": true,
+   "pnl_revenue_split": true,
+   "pnl_revenue_indas115_recon": true,
+   "pnl_other_income_split": true,
+   "pnl_impairment_split": true,
+   "pnl_da_split": true,
+   "pnl_nci_plus_owners_eq_pat": true,
+   "bs_assets_eq_equity_liab": true,
+   "bs_subtotals": true,
+   "bs_ppe_gross_less_dep_less_imp": true,
+   "bs_intangibles_rollup": true,
+   "bs_dtl_rollup": true,
+   "bs_borrowings_rollup": true,
+   "bs_unitholder_equity_plus_nci": true,
+   "cf_line_sums": true,
+   "cf_net_change": true,
+   "cf_opening_plus_change_eq_closing": true,
+   "cf_closing_cash_ties_to_bs": true
+  },
+  {
+   "year": "FY23",
+   "pnl_pbt_minus_tax_eq_pat": true,
+   "pnl_tax_components": true,
+   "pnl_income_total": true,
+   "pnl_expense_total_and_pbt": true,
+   "pnl_revenue_split": true,
+   "pnl_revenue_indas115_recon": true,
+   "pnl_other_income_split": true,
+   "pnl_impairment_split": true,
+   "pnl_da_split": true,
+   "pnl_nci_plus_owners_eq_pat": true,
+   "bs_assets_eq_equity_liab": true,
+   "bs_subtotals": true,
+   "bs_ppe_gross_less_dep_less_imp": true,
+   "bs_intangibles_rollup": true,
+   "bs_dtl_rollup": true,
+   "bs_borrowings_rollup": true,
+   "bs_unitholder_equity_plus_nci": true,
+   "cf_line_sums": true,
+   "cf_net_change": true,
+   "cf_opening_plus_change_eq_closing": true,
+   "cf_closing_cash_ties_to_bs": true
+  },
+  {
+   "year": "FY24",
+   "pnl_pbt_minus_tax_eq_pat": true,
+   "pnl_tax_components": true,
+   "pnl_income_total": true,
+   "pnl_expense_total_and_pbt": true,
+   "pnl_revenue_split": true,
+   "pnl_revenue_indas115_recon": true,
+   "pnl_other_income_split": true,
+   "pnl_impairment_split": true,
+   "pnl_da_split": true,
+   "pnl_nci_plus_owners_eq_pat": true,
+   "bs_assets_eq_equity_liab": true,
+   "bs_subtotals": true,
+   "bs_ppe_gross_less_dep_less_imp": true,
+   "bs_intangibles_rollup": true,
+   "bs_dtl_rollup": true,
+   "bs_borrowings_rollup": true,
+   "bs_unitholder_equity_plus_nci": true,
+   "cf_line_sums": true,
+   "cf_net_change": true,
+   "cf_opening_plus_change_eq_closing": true,
+   "cf_closing_cash_ties_to_bs": true
+  },
+  {
+   "year": "FY25",
+   "pnl_pbt_minus_tax_eq_pat": true,
+   "pnl_tax_components": true,
+   "pnl_income_total": true,
+   "pnl_expense_total_and_pbt": true,
+   "pnl_revenue_split": true,
+   "pnl_revenue_indas115_recon": true,
+   "pnl_other_income_split": true,
+   "pnl_impairment_split": true,
+   "pnl_da_split": true,
+   "pnl_nci_plus_owners_eq_pat": true,
+   "bs_assets_eq_equity_liab": true,
+   "bs_subtotals": true,
+   "bs_ppe_gross_less_dep_less_imp": true,
+   "bs_intangibles_rollup": true,
+   "bs_dtl_rollup": true,
+   "bs_borrowings_rollup": true,
+   "bs_unitholder_equity_plus_nci": true,
+   "cf_line_sums": true,
+   "cf_net_change": true,
+   "cf_opening_plus_change_eq_closing": true,
+   "cf_closing_cash_ties_to_bs": true
+  },
+  {
+   "year": "FY26",
+   "pnl_pbt_minus_tax_eq_pat": true,
+   "pnl_tax_components": true,
+   "pnl_income_total": true,
+   "pnl_expense_total_and_pbt": true,
+   "pnl_revenue_split": true,
+   "pnl_revenue_indas115_recon": true,
+   "pnl_other_income_split": true,
+   "pnl_impairment_split": true,
+   "pnl_da_split": true,
+   "pnl_nci_plus_owners_eq_pat": true,
+   "bs_assets_eq_equity_liab": true,
+   "bs_subtotals": true,
+   "bs_ppe_gross_less_dep_less_imp": true,
+   "bs_intangibles_rollup": true,
+   "bs_dtl_rollup": true,
+   "bs_borrowings_rollup": true,
+   "bs_unitholder_equity_plus_nci": true,
+   "cf_line_sums": true,
+   "cf_net_change": true,
+   "cf_opening_plus_change_eq_closing": true,
+   "cf_closing_cash_ties_to_bs": true
+  }
+ ],
+ "notes": [
+  "Units: all amounts Rs crore unless the key says otherwise (_rs = rupees per unit, _pct = percent, _number = count, _mn = million units). Every source statement is presented in Rs million (INR mn, 2 decimals); converted by dividing by 10. No lakh-denominated figures were used.",
+  "Verification (5 years): ALL CHECKS PASSED. Checks run on the million figures: PBT - total tax = PAT; current+deferred+earlier-years tax = total tax; revenue + other income = total income; sum of expense lines = total expenses and total income - total expenses = PBT; revenue split and Ind AS 115 reconciliation; other income split; impairment split; D&A split; NCI + owners = PAT; total assets = total equity and liabilities and every BS subtotal re-adds; PPE gross - acc. dep - impairment = net block; intangibles roll-up; DTL - DTA = net DTL; NC + current borrowings = total borrowings; every CF subtotal re-adds; CFO+CFI+CFF = net change; opening (+ cash acquired) + net change = closing; CF closing cash = BS cash and cash equivalents. NDCF statements (trust and five SPVs, both frameworks) re-add to their reported totals.",
+  "FY22 is NOT a full 12-month year: PGInvIT acquired its SPVs on 13 May 2021, so FY22 consolidated figures cover 13-May-2021 to 31-Mar-2022 (no prior-year comparatives exist). FY22 cash flow therefore starts from 'cash and cash equivalents as on the acquisition date' (cash_acquired_on_acquisition_date) with opening cash 0.",
+  "Latest-published figures used: FY22 from the FY2022-23 report comparatives (identical to the FY2021-22 original); FY23 from the FY2023-24 report; FY24 from the FY2024-25 report; FY25 from the FY2025-26 report; FY26 from the FY2025-26 report.",
+  "RESTATED FY23 (in FY2023-24 report): term deposits of 3-12 months were reclassified out of cash. Cash & equivalents 4,994.87 mn -> 3,585.82 mn; other bank balances 123.14 -> 1,532.19 mn; trade payables 6.68 -> 17.37 mn; other current financial liabilities 244.94 -> 243.25 mn; provisions 9.05 -> 0.05 mn (totals unchanged). FY23 cash flow restated: CFO 11,683.18 -> 11,805.86 mn, CFI (6.10) -> (1,537.83) mn (new 'Investment in fixed deposits' line), net change (273.72) -> (1,682.77) mn, closing cash 4,994.87 -> 3,585.82 mn. FY22 balance-sheet cash (5,268.59 mn) was never restated.",
+  "RESTATED FY24 (in FY2024-25 report): trade payables 15.40 -> 15.88 mn and other current financial liabilities 214.65 -> 214.17 mn. FY24 other expenses note relabelled two lines (0.15 mn 'Cost audit fees' -> 'Provision for bad & doubtful debts'; 0.18 mn 'CDSL fee' -> 'Crop and tree compensation'); totals unchanged.",
+  "RESTATED FY25 (in FY2025-26 report): 174.61 mn of current trade receivables reclassified to a new 'Other non-current financial assets' line (receivable from CTUIL for TDS); current trade receivables 2,228.32 -> 2,053.71 mn. Unitholders' equity re-presented: 'Distribution - Repayment of Capital' shown as a separate line (FY25 (4,413.50) mn) and other equity (13,788.01) -> (9,374.51) mn; capital reserve 1,292.81 -> 1,292.82 mn. Other income 'others' regrouped (LD recovery 0.01 and misc 11.08 -> excess provision written back 3.72 and misc 7.37). FY25 cash flow adjustment 'Provision for bad & doubtful debts 2.82' re-presented as excess provision written back (3.72) and provision 6.54. Depreciation 3,019.07 -> 3,019.06 and amortisation 147.89 -> 147.90; Ind AS 115 discounts (63.98) -> (64.00) (the latter re-adds to revenue).",
+  "FY24 equity split: the FY2025-26 SOCE opening balance at 1-Apr-2024 splits FY24 other equity (15,587.53) mn into repayment of capital (2,438.80) and other equity (13,148.73) (capital reserve 330.15, retained earnings (13,478.88)); these restated figures are used for FY24. FY22 and FY23 are shown as originally presented (other equity includes all distributions; distribution_repayment_of_capital = null). From the per-unit splits, cumulative RoC would be 0 at FY22 and about 664.30 mn at FY23 (0.73 x 909,999,200 units), but these are not disclosed as such and are left null.",
+  "Mapping: 'om_infrastructure_maintenance_charges' = 'Repairs and maintenance of Transmission assets' (PGInvIT's O&M line, paid to POWERGRID); 'repairs' = null because there is no other repairs line (FY26 Note 27 has a 0.17 mn 'Repair & Maintenance - Others' item inside other expenses). 'other_expenses' = Note 'Other expenses' only; four small face-of-P&L lines are kept separately as extra_* items (valuation expenses, statutory audit fees, auditor other services, trustee fee). Note 27 includes CSR spend (ox_csr_expenditure) and the FY24 one-off fair-value loss of 64.28 mn on LPSC-rescheduled receivables.",
+  "Revenue: no separate incentive line on the face or in the revenue note; rev_incentive_performance_bonus_memo is the 'Performance bonus' line of the Ind AS 115 reconciliation and is already INCLUDED in transmission charges (memo only, do not add). Other operating income appears only in FY26 (18.74 mn). Project-wise revenue (rev_VTL ... rev_JPTL) is from the Ind AS 115 note; FY26 project lines sum to 12,580.27 mn vs 12,580.28 total (rounding in source).",
+  "Other income: oi_interest_income + oi_mf_income + oi_other = other income. PGInvIT reports no mutual fund income; the note fully breaks down the total, so oi_mf_income = 0. Interest on Indian bank deposits alone is oi_interest_indian_banks (the figure deducted in the cash flow).",
+  "Impairment: FY22 impairment is goodwill only (3,679.41 mn). FY23 15,098.10 mn = goodwill 5,896.50 + PPE 8,675.27 + intangibles 526.33. FY24/FY25/FY26 are reversals of PPE and intangible impairment. Balance-sheet 'impairment' = accumulated PPE impairment provision (FY25/FY26 schedule presentation; the FY2023-24 report folded impairment into accumulated depreciation, so FY23 accumulated depreciation is taken from the FY2024-25 report's opening column); intangible impairment provision is a separate key. Ace Equity puts the impairment in misc expenses (FY23) and the reversals in other income (FY24-FY26), and adds the FY22 goodwill impairment to depreciation; it otherwise matches these figures.",
+  "Gross block FY22 = 110,826.36 mn (FY23 opening column; FY22 closing column prints 110,826.37). Intangibles FY22 gross 4,844.16 / acc. amortisation 179.50 taken from the FY23 opening column (the FY22 closing column shows 4,844.23 / 179.57, including a fully amortised 0.07 mn software asset).",
+  "Borrowings: one secured HDFC Bank term loan at the Trust (5,755.85 mn drawn Mar-2022; second tranche 5,060.00 mn Dec-2024). short_term_borrowings = null (none); current_maturities = current borrowings (current maturities of the term loan). total_borrowings_carrying = non-current + current (net of unamortised transaction cost) = the cash-flow-statement debt reconciliation closing balance; total_borrowings_principal_term_loan = gross loan before unamortised cost (the 'Long term debt' figure used in the gearing ratio).",
+  "BS null vs 0: 0 = line presented with a dash; null = line not presented that year (e.g. goodwill after FY24, NCI line dropped in FY26 after 100% ownership from 30-Dec-2024, nc_other_financial_assets before FY25). Long-term provisions, non-current investments, current investments and short-term borrowings are never presented. Current tax liabilities are shown net of advance tax (gross tax provision is netted in other non-current assets).",
+  "other_non_current_assets_incl_financial and other_current_assets are DERIVED sums of reported lines (stated in sources); the reported components are kept alongside.",
+  "NCI: PGInvIT held 74% of KATL, PPTL, WTL, JPTL until it bought the remaining 26% from POWERGRID on 30-Dec-2024 (5,066.29 mn) and bought 26% of VTL on 31-Mar-2022 (3,307.85 mn); minority_interest_share is the P&L NCI share (negative = loss attributable to NCI). From FY26 there is no NCI.",
+  "Cash flow: lines are as reported; null = line absent from that year's statement, 0 = shown as a dash. 'wc_earmarked_bank_balances' for FY23 is the restated line; the original FY23 statement had '(Increase)/Decrease in bank balances other than cash (121.40)'. FY25-FY26 CFO no longer shows 'Income tax refund received' separately.",
+  "Distributions: distributions_paid_in_year and dpu_paid_* are amounts PAID during the fiscal year (Q4 of prior year + Q1-Q3), with the component split from the consolidated capital management note. dpu_declared_* relate to distributions DECLARED for the fiscal year (Q1-Q4, incl. the Q4 amount declared after year end) from the highlights pages; FY26 declared split is disclosed only in percent (per-rupee amounts left null). FY22 declared = 10.50 (4.50 for 13-May to 30-Sep-2021 shown in dpu_declared_q2_rs, then 3.00 for Q3 and Q4). Per-quarter component (interest/dividend/RoC) splits are NOT disclosed in the annual reports (null).",
+  "NDCF: FY22-FY24 under the old SEBI framework (trust_old_* and spv_<SPV>_old_* lines, every line of the statements incl. zeros); FY25-FY26 under the revised framework of SEBI circular dated 15-May-2024 (trust_new_*, spv_<SPV>_new_*). The two frameworks are not like-for-like. ndcf_trust_level and ndcf_spv_level_<SPV> give the reported headline NDCF for all years; ndcf_spv_level_sum_of_5_spvs is a derived sum. SPV names: VTL (Vizag), KATL (Kala Amb, formerly PKATL), PPTL (Parli), WTL (Warora, formerly PWTL), JPTL (Jabalpur, formerly PJTL). Revised-framework NDCF lines that are always nil at SPV level (cash from other SPVs, sale proceeds, finance cost, debt repayment, reserves) are omitted from the SPV breakdown; they are nil in both FY25 and FY26. In FY26 the JPTL capex line is printed as a positive 65.73 (sum re-adds as printed). FY25 SPV distributions (11,904.53 mn) differ from the trust's 'cash flows received from SPVs' (11,609.92 mn) as reported (timing of dividends).",
+  "NAV: nav_per_unit_book_rs and _fair_value_rs from the Statement of Net Assets at Fair Value (units 910.00 mn). Units outstanding were 909,999,200 throughout (all issued in FY22 at Rs 100).",
+  "Source quirk: FY2025-26 DTL note shows 'Net amount taken to P&L' 343.24 mn but the P&L deferred tax and the change in net DTL are both 93.86 mn; the P&L figure is used.",
+  "FY2025-26 annual report is printed as two-page spreads; page refs 'pNN left/right' are PDF page NN and the printed page number is given in brackets. The Annexures volumes contain the SPV standalone financials and were not needed for consolidated figures."
+ ]
+}

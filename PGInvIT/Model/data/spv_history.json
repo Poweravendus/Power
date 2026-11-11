@@ -1,0 +1,1572 @@
+{
+ "units": "Rs crore unless stated (source documents are in Rs million; converted /10). Availability as fraction.",
+ "as_of": "2026-11-11",
+ "spvs": {
+  "VTL": {
+   "static": {
+    "full_legal_name": "Vizag Transmission Limited",
+    "former_name": "POWERGRID Vizag Transmission Limited (PVTL)",
+    "cin": "U40300DL2011GO1228136",
+    "incorporation_date": "2011-11-30",
+    "states": [
+     "Andhra Pradesh",
+     "Telangana"
+    ],
+    "scheme": "System strengthening in Southern Region for import of power from Eastern Region",
+    "elements": [
+     {
+      "name": "Khammam (Existing) - Nagarjuna Sagar",
+      "type": "line",
+      "kv": 400,
+      "circuit": "D/C",
+      "ckm": 288.84,
+      "states": [
+       "Andhra Pradesh",
+       "Telangana"
+      ],
+      "cod": "2016-01-03",
+      "share_of_transmission_charges": 0.1525
+     },
+     {
+      "name": "Srikakulam PP - Vemagiri-II Pooling Station",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 668.0,
+      "states": [
+       "Andhra Pradesh"
+      ],
+      "cod": "2017-02-01",
+      "share_of_transmission_charges": 0.8475
+     }
+    ],
+    "total_ckm": 956.84,
+    "total_mva": 0,
+    "project_cod": "2017-02-01",
+    "scod": "2017-02-01",
+    "scod_note": "SCOD revised to 1-Feb-2017 by TANGEDCO letter 27-Sep-2017 (force majeure); FY26 valuation 'About' table shows original SCOD 4-Sep-2016",
+    "tsa_date": "2013-05-14",
+    "tsa_ctu_date": "2015-11-21",
+    "transmission_licence_date": "2014-01-08",
+    "tsa_term_years": 35,
+    "tsa_term_basis": "35 years from SCOD (1-Feb-2017)",
+    "tsa_expiry": "2052-01-31",
+    "tariff_type": "Section 63 TBCB (tariff adopted by CERC), BOOM; availability-based; non-escalable + escalable charges",
+    "escalable_component": "Yes - only SPV with escalable charges; initial escalable charges Rs 37 mn in 2017 (FOD); FOD projected escalable Rs 45.66/47.65/49.73 mn for FY22/23/24",
+    "tax_regime": "Old regime 29.12% (MAT/80-IA) till FY2031, new regime 25.17% from FY2032; Sec 80-IA holiday: Khammam-N'Sagar element FY2020-21 to FY2029-30, Srikakulam-Vemagiri element FY2021-22 to FY2030-31",
+    "pginvit_stake": 1.0,
+    "acquired_74pct_date": "2021-05-13",
+    "acquired_26pct_date": "2022-03-31",
+    "purchase_price_74pct_rs_cr": 1156.136,
+    "purchase_price_26pct_rs_cr": 330.78,
+    "enterprise_value_at_ipo_31dec2020_rs_cr": 2313.61,
+    "enterprise_value_at_ipo_note": "Valuer EV as of 31-Dec-2020 included in Final Offer Document (per H1FY22 half-yearly report)",
+    "sponsor_debt_31mar2021_rs_cr": 783.988,
+    "gross_block_31mar2026_rs_cr": 1309.779,
+    "gross_block_31dec2020_rs_cr": 1309.788,
+    "debt_31mar2026_rs_cr": 738.688,
+    "debt_31mar2026_note": "Entire SPV borrowing is loan from PGInvIT at 14.5% p.a. (eliminated on consolidation). FY26 movement: opening 768.49, given 0.00, repaid 29.80 (Rs cr)",
+    "cash_31mar2026_rs_cr": 35.225,
+    "fy26_valuation_ev_rs_cr": 2025.211,
+    "fy26_valuation_equity_rs_cr": 1321.748,
+    "equity_shares_mn": 209.73,
+    "value_per_share_rs": 63.02,
+    "tsa_non_escalable_charges_rs_cr_by_contract_year": {
+     "2021": 290.136,
+     "2022": 281.085,
+     "2023": 229.653,
+     "2024": 207.752,
+     "2025": 207.422,
+     "2026": 207.073,
+     "2027": 206.703,
+     "2028": 206.311,
+     "2029": 205.896,
+     "2030": 205.456,
+     "2031": 204.99,
+     "2032": 204.496,
+     "2033": 203.973,
+     "2034": 203.419,
+     "2035": 202.833,
+     "2036": 202.211,
+     "2037": 201.553,
+     "2038": 200.855,
+     "2039": 200.116,
+     "2040": 199.334,
+     "2041": 198.505,
+     "2042": 197.627,
+     "2043": 196.696,
+     "2044": 195.711,
+     "2045": 194.667,
+     "2046": 193.561,
+     "2047": 192.39,
+     "2048": 191.149,
+     "2049": 189.835,
+     "2050": 188.442,
+     "2051": 186.967,
+     "2052": 185.53
+    },
+    "tsa_non_escalable_note": "Final Offer Document p.148: remaining non-escalable transmission charges as of 31-Dec-2020, keyed by calendar year of the SCOD anniversary that starts the contract year (VTL 1-Feb, KATL 12-Jul, PPTL 4-Jun, WTL 10-Jul, JPTL 25-Jun). Excludes incentive and change-in-law increments."
+   },
+   "availability_annual": {
+    "FY17": 1.0,
+    "FY18": 0.9997,
+    "FY19": 0.9999,
+    "FY20": 0.9999,
+    "FY21": 1.0,
+    "FY22": 0.9999,
+    "FY23": 0.9996,
+    "FY24": 0.9998,
+    "FY25": 0.9977,
+    "FY26": 0.9948
+   },
+   "availability_annual_partial_year_flags": {
+    "FY17": "Feb-Mar 2017 only (765 kV line COD 1-Feb-2017; 400 kV line COD 3-Jan-2016)"
+   },
+   "availability_quarterly": {
+    "1QFY22": null,
+    "2QFY22": null,
+    "3QFY22": null,
+    "4QFY22": null,
+    "1QFY23": 0.9991,
+    "2QFY23": 0.9993,
+    "3QFY23": 0.9947,
+    "4QFY23": null,
+    "1QFY24": 0.9991,
+    "2QFY24": 1.0,
+    "3QFY24": 1.0,
+    "4QFY24": 1.0,
+    "1QFY25": 1.0,
+    "2QFY25": 1.0,
+    "3QFY25": 1.0,
+    "4QFY25": 0.9909,
+    "1QFY26": 1.0,
+    "2QFY26": 1.0,
+    "3QFY26": 1.0,
+    "4QFY26": null,
+    "1QFY27": null
+   },
+   "availability_cumulative_periods": {
+    "H1FY22": 1.0,
+    "9MFY22": 0.9999,
+    "FY22_pres": 0.9999,
+    "H1FY23": 0.9992,
+    "9MFY23": 0.9977,
+    "FY23_pres": 0.9996,
+    "H1FY24": 0.9995,
+    "9MFY24": 0.9997,
+    "FY24_pres": 0.9998,
+    "H1FY25": 1.0,
+    "9MFY25": 1.0,
+    "FY25_pres": 0.9977,
+    "H1FY26": 1.0,
+    "FY26_pres": 1.0,
+    "9MFY21_FOD": 1.0
+   },
+   "revenue": {
+    "FY18": 242.295,
+    "FY19": 295.442,
+    "FY20": 312.934,
+    "FY21": null,
+    "FY22": 294.298,
+    "FY23": 241.607,
+    "FY24": 219.346,
+    "FY25": 219.198,
+    "FY26": 219.63
+   },
+   "revenue_other_periods": {
+    "FY22_13May21_to_31Mar22_consolidated_basis": 260.451,
+    "9MFY21_FOD": 228.866,
+    "H1FY22_from_13May21": 113.743,
+    "H1FY23": 121.032,
+    "H1FY24": 109.688,
+    "H1FY25": 109.955,
+    "H1FY26": 109.512
+   },
+   "incentive_revenue": {
+    "FY18": 7.952,
+    "FY19": 10.09,
+    "FY20": 10.617,
+    "9MFY21": 7.979
+   },
+   "ebitda": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "ebitda_margin": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "pat": {
+    "FY22": 92.127,
+    "FY23": 76.449,
+    "FY24": 53.654,
+    "FY25": null,
+    "FY26": null
+   },
+   "other_disclosed_pl_items": {
+    "depreciation_amortisation": {
+     "FY22": 22.794,
+     "FY23": 31.703,
+     "FY24": 31.707
+    },
+    "interest_on_loans_from_trust": {
+     "FY22": 100.599,
+     "FY23": 113.678,
+     "FY24": 113.98
+    },
+    "ndcf_FY26_presentation_rs_cr": 203.9,
+    "source": "SPV NDCF statements in AR FY2022-23 / FY2023-24 (old SEBI framework); FY26 NDCF from Q4FY26 presentation"
+   },
+   "valuation_assumptions": {
+    "source": "Valuation Report FY26 (INMACS Valuers, valuation date 31-Mar-2026, report dated 13-May-2026)",
+    "wacc": 0.08,
+    "cost_of_equity": 0.1503,
+    "post_tax_cost_of_debt": 0.0498,
+    "target_debt_to_capital": 0.7,
+    "risk_free_rate": 0.0716,
+    "equity_risk_premium": 0.0708,
+    "terminal_growth": 0.0,
+    "forecast_end": "2052-01-31",
+    "escalable_revenue_escalation_rate": 0.0453,
+    "escalation_rate_basis": "Average of CERC-notified rates 1-Apr-2021 to 31-Mar-2026 (applies only to VTL escalable component)",
+    "change_in_law_uplift_on_non_escalable": null,
+    "availability_assumed": ">=99.75% (max incentive); incentive = 0.02 x annual transmission charges x (availability - 98%), capped at 99.75%; no penalty (<95%) assumed",
+    "projected_revenue_FY27_rs_cr": 219.828,
+    "projected_revenue_FY27_rtm_rs_cr": null,
+    "opex_FY27_rs_cr": {
+     "om_incl_gst": 4.325,
+     "pima_project_mgmt_incl_gst": 0.649,
+     "power_charges": null,
+     "security": null,
+     "insurance": 3.398,
+     "key_managerial_personnel": 0.362,
+     "system_market_operation_charges": 0.419,
+     "audit": 0.034,
+     "other_admin": 0.11,
+     "breakdown_contingency": 0.05
+    },
+    "opex_escalation": {
+     "om_incl_gst": 0.0351,
+     "pima_project_mgmt_incl_gst": 0.0351,
+     "power_charges": 0.0525,
+     "security": 0.05,
+     "insurance": 0.0525,
+     "key_managerial_personnel": 0.0833,
+     "system_market_operation_charges": 0.0525,
+     "audit": 0.05,
+     "other_admin": 0.0525,
+     "breakdown_contingency": 0.0
+    },
+    "licence_fee": "0.11% of annual transmission charges",
+    "csr": "2% of average profits of previous 3 years",
+    "depreciation": "SLM over project life, 5% salvage; IT depreciation on WDV",
+    "receivable_days": 45,
+    "unbilled_revenue_days": 31,
+    "debt_rs_cr": 738.688,
+    "debt_lender": "PGInvIT (shareholder loan)",
+    "interest_rate": 0.145,
+    "cash_at_valuation_rs_cr": 35.225,
+    "enterprise_value_rs_cr": 2025.211,
+    "equity_value_rs_cr": 1321.748,
+    "tax": "Old regime 29.12% (MAT/80-IA) till FY2031, new regime 25.17% from FY2032; Sec 80-IA holiday: Khammam-N'Sagar element FY2020-21 to FY2029-30, Srikakulam-Vemagiri element FY2021-22 to FY2030-31"
+   }
+  },
+  "KATL": {
+   "static": {
+    "full_legal_name": "Kala Amb Transmission Limited",
+    "former_name": "POWERGRID Kala Amb Transmission Limited (PKATL); originally NRSS XXXI (A) Transmission Limited",
+    "cin": "U40106DL2013GOI256048",
+    "incorporation_date": "2013-07-29",
+    "states": [
+     "Himachal Pradesh"
+    ],
+    "scheme": "Northern Region System Strengthening Scheme NRSS-XXXI (Part A)",
+    "elements": [
+     {
+      "name": "LILO of both circuits of Karcham Wangtoo - Abdullapur line at Kala Amb S/S (on M/C towers)",
+      "type": "line",
+      "kv": 400,
+      "circuit": "D/C",
+      "ckm": 2.47,
+      "states": [
+       "Himachal Pradesh"
+      ],
+      "cod": "2017-07-12",
+      "share_of_transmission_charges": 0.845,
+      "share_note": "84.50% is for LILO + Kala Amb GIS S/S together"
+     },
+     {
+      "name": "400/220 kV GIS substation at Kala Amb",
+      "type": "substation",
+      "kv": "400/220",
+      "mva": 630,
+      "states": [
+       "Himachal Pradesh"
+      ],
+      "cod": "2017-07-12",
+      "share_of_transmission_charges": null
+     },
+     {
+      "name": "40% series compensation on 400 kV Karcham Wangtoo - Kala Amb (Quad) D/C line at Kala Amb end",
+      "type": "series_compensation",
+      "kv": 400,
+      "states": [
+       "Himachal Pradesh"
+      ],
+      "cod": "2017-07-12",
+      "share_of_transmission_charges": 0.155
+     },
+     {
+      "name": "125 MVAr, 420 kV bus reactor at Kala Amb (RTM, separate CERC licence 22-Mar-2022, 25-yr life to 31-Mar-2049)",
+      "type": "bus_reactor_RTM",
+      "kv": 420,
+      "mvar": 125,
+      "states": [
+       "Himachal Pradesh"
+      ],
+      "cod": "2024-02-05",
+      "share_of_transmission_charges": null,
+      "tariff": "Regulated Tariff Mechanism (Sec 62, CERC cost-plus)"
+     }
+    ],
+    "total_ckm": 2.47,
+    "total_mva": 630,
+    "project_cod": "2017-07-12",
+    "scod": "2017-07-12",
+    "tsa_date": "2014-01-02",
+    "tsa_ctu_date": "2016-10-18",
+    "transmission_licence_date": "2014-09-04",
+    "tsa_term_years": 35,
+    "tsa_term_basis": "35 years from SCOD (12-Jul-2017)",
+    "tsa_expiry": "2052-07-11",
+    "tariff_type": "Section 63 TBCB, BOOM; non-escalable charges only (plus RTM bus reactor under regulated tariff)",
+    "escalable_component": "None",
+    "tax_regime": "New regime 25.17% (Sec 115BAA) throughout forecast",
+    "pginvit_stake": 1.0,
+    "acquired_74pct_date": "2021-05-13",
+    "acquired_26pct_date": "2024-12-30",
+    "purchase_price_74pct_rs_cr": 202.292,
+    "purchase_price_26pct_rs_cr": 42.796,
+    "enterprise_value_at_ipo_31dec2020_rs_cr": 453.52,
+    "enterprise_value_at_ipo_note": "Valuer EV as of 31-Dec-2020 included in Final Offer Document (per H1FY22 half-yearly report)",
+    "sponsor_debt_31mar2021_rs_cr": 186.0,
+    "gross_block_31mar2026_rs_cr": 371.228,
+    "gross_block_31dec2020_rs_cr": 321.402,
+    "debt_31mar2026_rs_cr": 183.677,
+    "debt_31mar2026_note": "Entire SPV borrowing is loan from PGInvIT at 14.5% p.a. (eliminated on consolidation). FY26 movement: opening 190.07, given 2.49, repaid 8.88 (Rs cr)",
+    "cash_31mar2026_rs_cr": 13.767,
+    "fy26_valuation_ev_rs_cr": 387.356,
+    "fy26_valuation_equity_rs_cr": 217.446,
+    "equity_shares_mn": 61.0,
+    "value_per_share_rs": 35.65,
+    "tsa_non_escalable_charges_rs_cr_by_contract_year": {
+     "2021": 72.515,
+     "2022": 70.578,
+     "2023": 68.656,
+     "2024": 66.822,
+     "2025": 64.856,
+     "2026": 56.939,
+     "2027": 51.327,
+     "2028": 51.327,
+     "2029": 51.327,
+     "2030": 51.327,
+     "2031": 51.327,
+     "2032": 51.327,
+     "2033": 51.327,
+     "2034": 51.327,
+     "2035": 51.327,
+     "2036": 51.327,
+     "2037": 51.327,
+     "2038": 51.327,
+     "2039": 51.327,
+     "2040": 51.327,
+     "2041": 51.327,
+     "2042": 51.327,
+     "2043": 51.327,
+     "2044": 51.327,
+     "2045": 51.327,
+     "2046": 51.327,
+     "2047": 51.327,
+     "2048": 51.327,
+     "2049": 51.327,
+     "2050": 51.327,
+     "2051": 51.327,
+     "2052": 51.327,
+     "2053": 51.327
+    },
+    "tsa_non_escalable_note": "Final Offer Document p.148: remaining non-escalable transmission charges as of 31-Dec-2020, keyed by calendar year of the SCOD anniversary that starts the contract year (VTL 1-Feb, KATL 12-Jul, PPTL 4-Jun, WTL 10-Jul, JPTL 25-Jun). Excludes incentive and change-in-law increments."
+   },
+   "availability_annual": {
+    "FY17": null,
+    "FY18": 0.9995,
+    "FY19": 0.981,
+    "FY20": 0.999,
+    "FY21": 1.0,
+    "FY22": 0.9912,
+    "FY23": 0.9999,
+    "FY24": 1.0,
+    "FY25": 0.9999,
+    "FY26": 0.9997
+   },
+   "availability_annual_partial_year_flags": {
+    "FY18": "Jul-2017 to Mar-2018 per Valuation Report FY22 (Final Offer Document says Dec-2017 to Mar-2018); 99.95%"
+   },
+   "availability_quarterly": {
+    "1QFY22": null,
+    "2QFY22": null,
+    "3QFY22": null,
+    "4QFY22": null,
+    "1QFY23": 1.0,
+    "2QFY23": 1.0,
+    "3QFY23": 0.9998,
+    "4QFY23": null,
+    "1QFY24": 0.9999,
+    "2QFY24": 1.0,
+    "3QFY24": 1.0,
+    "4QFY24": 1.0,
+    "1QFY25": 0.9998,
+    "2QFY25": 0.9998,
+    "3QFY25": 1.0,
+    "4QFY25": 1.0,
+    "1QFY26": 0.9998,
+    "2QFY26": 0.9987,
+    "3QFY26": 1.0,
+    "4QFY26": null,
+    "1QFY27": null
+   },
+   "availability_cumulative_periods": {
+    "H1FY22": 0.9999,
+    "9MFY22": 0.9932,
+    "FY22_pres": 0.9912,
+    "H1FY23": 1.0,
+    "9MFY23": 0.9999,
+    "FY23_pres": 1.0,
+    "H1FY24": 1.0,
+    "9MFY24": 1.0,
+    "FY24_pres": 1.0,
+    "H1FY25": 0.9999,
+    "9MFY25": 0.9999,
+    "FY25_pres": 0.9999,
+    "H1FY26": 0.9993,
+    "FY26_pres": 0.9997,
+    "9MFY21_FOD": 1.0
+   },
+   "revenue": {
+    "FY18": 37.577,
+    "FY19": 57.26,
+    "FY20": 73.229,
+    "FY21": null,
+    "FY22": 70.734,
+    "FY23": 68.951,
+    "FY24": 69.589,
+    "FY25": 72.657,
+    "FY26": 65.666
+   },
+   "revenue_other_periods": {
+    "FY22_13May21_to_31Mar22_consolidated_basis": 62.698,
+    "9MFY21_FOD": 54.898,
+    "H1FY22_from_13May21": 27.326,
+    "H1FY23": 34.577,
+    "H1FY24": 34.601,
+    "H1FY25": 36.433,
+    "H1FY26": 32.6
+   },
+   "incentive_revenue": {
+    "FY18": 0.0,
+    "FY19": 0.0,
+    "FY20": 0.244,
+    "9MFY21": 0.614
+   },
+   "ebitda": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "ebitda_margin": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "pat": {
+    "FY22": 13.55,
+    "FY23": 14.272,
+    "FY24": 13.9,
+    "FY25": null,
+    "FY26": null
+   },
+   "other_disclosed_pl_items": {
+    "depreciation_amortisation": {
+     "FY22": 5.48,
+     "FY23": 6.356,
+     "FY24": 6.684
+    },
+    "interest_on_loans_from_trust": {
+     "FY22": null,
+     "FY23": 26.97,
+     "FY24": 27.639
+    },
+    "ndcf_FY26_presentation_rs_cr": 56.0,
+    "source": "SPV NDCF statements in AR FY2022-23 / FY2023-24 (old SEBI framework); FY26 NDCF from Q4FY26 presentation"
+   },
+   "valuation_assumptions": {
+    "source": "Valuation Report FY26 (INMACS Valuers, valuation date 31-Mar-2026, report dated 13-May-2026)",
+    "wacc": 0.08,
+    "cost_of_equity": 0.1503,
+    "post_tax_cost_of_debt": 0.0498,
+    "target_debt_to_capital": 0.7,
+    "risk_free_rate": 0.0716,
+    "equity_risk_premium": 0.0708,
+    "terminal_growth": 0.0,
+    "forecast_end": "2052-07-11 (TBCB); RTM bus reactor to 2049-03-31",
+    "escalable_revenue_escalation_rate": null,
+    "escalation_rate_basis": "No escalable component",
+    "change_in_law_uplift_on_non_escalable": null,
+    "availability_assumed": ">=99.75% (max incentive); incentive = 0.02 x annual transmission charges x (availability - 98%), capped at 99.75%; no penalty (<95%) assumed",
+    "projected_revenue_FY27_rs_cr": 53.123,
+    "projected_revenue_FY27_rtm_rs_cr": 1.377,
+    "opex_FY27_rs_cr": {
+     "om_incl_gst": 5.457,
+     "pima_project_mgmt_incl_gst": 0.819,
+     "power_charges": 0.18,
+     "security": 0.666,
+     "insurance": 0.665,
+     "key_managerial_personnel": 0.375,
+     "system_market_operation_charges": 0.06,
+     "audit": 0.052,
+     "other_admin": 0.12,
+     "breakdown_contingency": 0.05
+    },
+    "opex_escalation": {
+     "om_incl_gst": 0.0351,
+     "pima_project_mgmt_incl_gst": 0.0351,
+     "power_charges": 0.0525,
+     "security": 0.05,
+     "insurance": 0.0525,
+     "key_managerial_personnel": 0.0833,
+     "system_market_operation_charges": 0.0525,
+     "audit": 0.05,
+     "other_admin": 0.0525,
+     "breakdown_contingency": 0.0
+    },
+    "licence_fee": "0.11% of annual transmission charges",
+    "csr": "2% of average profits of previous 3 years",
+    "depreciation": "SLM over project life, 5% salvage; IT depreciation on WDV",
+    "receivable_days": 45,
+    "unbilled_revenue_days": 31,
+    "debt_rs_cr": 183.677,
+    "debt_lender": "PGInvIT (shareholder loan)",
+    "interest_rate": 0.145,
+    "cash_at_valuation_rs_cr": 13.767,
+    "enterprise_value_rs_cr": 387.356,
+    "equity_value_rs_cr": 217.446,
+    "tax": "New regime 25.17% (Sec 115BAA) throughout forecast"
+   }
+  },
+  "PPTL": {
+   "static": {
+    "full_legal_name": "Parli Power Transmission Limited",
+    "former_name": "POWERGRID Parli Transmission Limited (PPTL); originally Gadarwara (B) Transmission Limited",
+    "cin": "U40109DL2014GOI269652",
+    "incorporation_date": "2014-07-30",
+    "states": [
+     "Maharashtra"
+    ],
+    "scheme": "Transmission system associated with Gadarwara STPS (2x800 MW) of NTPC (Part-B)",
+    "elements": [
+     {
+      "name": "Parli (New) - Solapur",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 235.92,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-04-27",
+      "share_of_transmission_charges": 0.43,
+      "share_note": "43% for Parli-Solapur, Parli(New)-Parli(PG) and Parli (New) S/S together"
+     },
+     {
+      "name": "Parli (New) - Parli (PG)",
+      "type": "line",
+      "kv": 400,
+      "circuit": "D/C",
+      "ckm": 36.5,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-04-27",
+      "share_of_transmission_charges": null
+     },
+     {
+      "name": "2x1500 MVA 765/400 kV Parli (New) substation",
+      "type": "substation",
+      "kv": "765/400",
+      "mva": 3000,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-04-27",
+      "share_of_transmission_charges": null
+     },
+     {
+      "name": "Warora (Pooling Station) - Parli (New)",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 693.7,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-06-04",
+      "share_of_transmission_charges": 0.57
+     },
+     {
+      "name": "400 kV line bay at 765/400 kV Parli (New) S/S for RE interconnection (RTM)",
+      "type": "bay_RTM",
+      "kv": 400,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": null,
+      "note": "SCOD 31-Dec-2025; completed, DOCO petition filed with CERC (AR FY26/Valuation FY26)"
+     }
+    ],
+    "total_ckm": 966.12,
+    "total_mva": 3000,
+    "project_cod": "2018-06-04",
+    "scod": "2018-06-04",
+    "scod_note": "Original SCOD 31-Jan-2018 (FY26 valuation 'About' table); revised to 4-Jun-2018 by supplementary TSA dated 18-Jun-2019",
+    "tsa_date": "2015-02-09",
+    "tsa_ctu_date": "2016-07-05",
+    "transmission_licence_date": "2015-07-10",
+    "tsa_term_years": 35,
+    "tsa_term_basis": "35 years from SCOD (4-Jun-2018)",
+    "tsa_expiry": "2053-06-03",
+    "tariff_type": "Section 63 TBCB, BOOM; non-escalable charges + change-in-law increment (CERC order 29-Jan-2021: +2.79% of non-escalable charges)",
+    "escalable_component": "None (FOD: escalable tariff Nil)",
+    "change_in_law": {
+     "cerc_order": "2021-01-29",
+     "claim_allowed_rs_mn": 658.0,
+     "increase_in_non_escalable_charges": 0.0279,
+     "right_of_additional_revenue_bought_from_POWERGRID_mar2022_rs_cr": 81.01
+    },
+    "tax_regime": "New regime 25.17% (Sec 115BAA) throughout forecast",
+    "pginvit_stake": 1.0,
+    "acquired_74pct_date": "2021-05-13",
+    "acquired_26pct_date": "2024-12-30",
+    "purchase_price_74pct_rs_cr": 991.916,
+    "purchase_price_26pct_rs_cr": 187.012,
+    "enterprise_value_at_ipo_31dec2020_rs_cr": 2597.64,
+    "enterprise_value_at_ipo_note": "Valuer EV as of 31-Dec-2020 included in Final Offer Document (per H1FY22 half-yearly report)",
+    "sponsor_debt_31mar2021_rs_cr": 1300.5,
+    "gross_block_31mar2026_rs_cr": 1929.09,
+    "gross_block_31dec2020_rs_cr": 1846.27,
+    "debt_31mar2026_rs_cr": 1113.035,
+    "debt_31mar2026_note": "Entire SPV borrowing is loan from PGInvIT at 14.5% p.a. (eliminated on consolidation). FY26 movement: opening 1184.40, given 5.83, repaid 77.20 (Rs cr)",
+    "cash_31mar2026_rs_cr": 137.197,
+    "fy26_valuation_ev_rs_cr": 2082.157,
+    "fy26_valuation_equity_rs_cr": 1106.319,
+    "equity_shares_mn": 322.1,
+    "value_per_share_rs": 34.35,
+    "tsa_non_escalable_charges_rs_cr_by_contract_year": {
+     "2021": 317.379,
+     "2022": 317.379,
+     "2023": 317.379,
+     "2024": 317.379,
+     "2025": 317.379,
+     "2026": 317.379,
+     "2027": 222.959,
+     "2028": 222.959,
+     "2029": 222.959,
+     "2030": 222.959,
+     "2031": 222.959,
+     "2032": 222.959,
+     "2033": 222.959,
+     "2034": 222.959,
+     "2035": 222.959,
+     "2036": 222.959,
+     "2037": 222.959,
+     "2038": 222.959,
+     "2039": 222.959,
+     "2040": 222.959,
+     "2041": 222.959,
+     "2042": 222.959,
+     "2043": 222.959,
+     "2044": 222.959,
+     "2045": 222.959,
+     "2046": 222.959,
+     "2047": 222.959,
+     "2048": 222.959,
+     "2049": 222.959,
+     "2050": 222.959,
+     "2051": 222.959,
+     "2052": 222.959,
+     "2053": 222.959
+    },
+    "tsa_non_escalable_note": "Final Offer Document p.148: remaining non-escalable transmission charges as of 31-Dec-2020, keyed by calendar year of the SCOD anniversary that starts the contract year (VTL 1-Feb, KATL 12-Jul, PPTL 4-Jun, WTL 10-Jul, JPTL 25-Jun). Excludes incentive and change-in-law increments."
+   },
+   "availability_annual": {
+    "FY17": null,
+    "FY18": null,
+    "FY19": 0.9977,
+    "FY20": 0.9992,
+    "FY21": 0.9993,
+    "FY22": 0.9996,
+    "FY23": 0.9984,
+    "FY24": 0.9983,
+    "FY25": 0.9993,
+    "FY26": 0.9997
+   },
+   "availability_annual_partial_year_flags": {
+    "FY19": "Jun-2018 to Mar-2019"
+   },
+   "availability_quarterly": {
+    "1QFY22": null,
+    "2QFY22": null,
+    "3QFY22": null,
+    "4QFY22": null,
+    "1QFY23": 0.9991,
+    "2QFY23": 0.9986,
+    "3QFY23": 0.9982,
+    "4QFY23": null,
+    "1QFY24": 0.997,
+    "2QFY24": 0.9997,
+    "3QFY24": 0.9991,
+    "4QFY24": 0.998,
+    "1QFY25": 0.9999,
+    "2QFY25": 0.9997,
+    "3QFY25": 1.0,
+    "4QFY25": 0.9975,
+    "1QFY26": 1.0,
+    "2QFY26": 1.0,
+    "3QFY26": 1.0,
+    "4QFY26": null,
+    "1QFY27": null
+   },
+   "availability_cumulative_periods": {
+    "H1FY22": 0.9994,
+    "9MFY22": 0.9996,
+    "FY22_pres": 0.9996,
+    "H1FY23": 0.9982,
+    "9MFY23": 0.9982,
+    "FY23_pres": 0.9983,
+    "H1FY24": 0.9983,
+    "9MFY24": 0.9986,
+    "FY24_pres": 0.9983,
+    "H1FY25": 0.9998,
+    "9MFY25": 0.9999,
+    "FY25_pres": 0.9993,
+    "H1FY26": 0.9998,
+    "FY26_pres": 0.9997,
+    "9MFY21_FOD": 0.9992
+   },
+   "revenue": {
+    "FY18": null,
+    "FY19": 282.966,
+    "FY20": 327.294,
+    "FY21": null,
+    "FY22": 336.169,
+    "FY23": 336.111,
+    "FY24": 335.932,
+    "FY25": 335.933,
+    "FY26": 335.434
+   },
+   "revenue_other_periods": {
+    "FY22_13May21_to_31Mar22_consolidated_basis": 297.501,
+    "9MFY21_FOD": 247.371,
+    "H1FY22_from_13May21": 129.907,
+    "H1FY23": 168.468,
+    "H1FY24": 167.991,
+    "H1FY25": 168.541,
+    "H1FY26": 168.008
+   },
+   "incentive_revenue": {
+    "FY18": null,
+    "FY19": 9.121,
+    "FY20": 11.072,
+    "9MFY21": 8.878
+   },
+   "ebitda": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "ebitda_margin": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "pat": {
+    "FY22": 40.149,
+    "FY23": 40.364,
+    "FY24": 45.56,
+    "FY25": null,
+    "FY26": null
+   },
+   "other_disclosed_pl_items": {
+    "depreciation_amortisation": {
+     "FY22": 31.088,
+     "FY23": 37.062,
+     "FY24": 37.164
+    },
+    "interest_on_loans_from_trust": {
+     "FY22": null,
+     "FY23": 196.294,
+     "FY24": 189.505
+    },
+    "ndcf_FY26_presentation_rs_cr": 331.3,
+    "source": "SPV NDCF statements in AR FY2022-23 / FY2023-24 (old SEBI framework); FY26 NDCF from Q4FY26 presentation"
+   },
+   "valuation_assumptions": {
+    "source": "Valuation Report FY26 (INMACS Valuers, valuation date 31-Mar-2026, report dated 13-May-2026)",
+    "wacc": 0.08,
+    "cost_of_equity": 0.1503,
+    "post_tax_cost_of_debt": 0.0498,
+    "target_debt_to_capital": 0.7,
+    "risk_free_rate": 0.0716,
+    "equity_risk_premium": 0.0708,
+    "terminal_growth": 0.0,
+    "forecast_end": "2053-06-03",
+    "escalable_revenue_escalation_rate": null,
+    "escalation_rate_basis": "No escalable component",
+    "change_in_law_uplift_on_non_escalable": 0.0279,
+    "availability_assumed": ">=99.75% (max incentive); incentive = 0.02 x annual transmission charges x (availability - 98%), capped at 99.75%; no penalty (<95%) assumed",
+    "projected_revenue_FY27_rs_cr": 337.642,
+    "projected_revenue_FY27_rtm_rs_cr": 0.967,
+    "opex_FY27_rs_cr": {
+     "om_incl_gst": 10.566,
+     "pima_project_mgmt_incl_gst": 1.585,
+     "power_charges": 0.425,
+     "security": 0.7,
+     "insurance": 4.602,
+     "key_managerial_personnel": 0.377,
+     "system_market_operation_charges": 0.54,
+     "audit": 0.046,
+     "other_admin": 0.16,
+     "breakdown_contingency": 0.05
+    },
+    "opex_escalation": {
+     "om_incl_gst": 0.0351,
+     "pima_project_mgmt_incl_gst": 0.0351,
+     "power_charges": 0.0525,
+     "security": 0.05,
+     "insurance": 0.0525,
+     "key_managerial_personnel": 0.0833,
+     "system_market_operation_charges": 0.0525,
+     "audit": 0.05,
+     "other_admin": 0.0525,
+     "breakdown_contingency": 0.0
+    },
+    "licence_fee": "0.11% of annual transmission charges",
+    "csr": "2% of average profits of previous 3 years",
+    "depreciation": "SLM over project life, 5% salvage; IT depreciation on WDV",
+    "receivable_days": 45,
+    "unbilled_revenue_days": 31,
+    "debt_rs_cr": 1113.035,
+    "debt_lender": "PGInvIT (shareholder loan)",
+    "interest_rate": 0.145,
+    "cash_at_valuation_rs_cr": 137.197,
+    "enterprise_value_rs_cr": 2082.157,
+    "equity_value_rs_cr": 1106.319,
+    "tax": "New regime 25.17% (Sec 115BAA) throughout forecast"
+   }
+  },
+  "WTL": {
+   "static": {
+    "full_legal_name": "Warora Transmission Limited",
+    "former_name": "POWERGRID Warora Transmission Limited (PWTL); originally Gadarwara (A) Transco Limited",
+    "cin": "U40300DL2014GOI269918",
+    "incorporation_date": "2014-08-05",
+    "states": [
+     "Madhya Pradesh",
+     "Maharashtra"
+    ],
+    "scheme": "Transmission system associated with Gadarwara STPS (2x800 MW) of NTPC (Part-A)",
+    "elements": [
+     {
+      "name": "Interim LILO of Seoni-Bina 765 kV S/C at Gadarwara STPS (later part of Gadarwara-Jabalpur Pool D/C)",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 30.55,
+      "states": [
+       "Madhya Pradesh"
+      ],
+      "cod": "2016-11-30",
+      "share_of_transmission_charges": 0.21,
+      "share_note": "21% for interim LILO + Gadarwara-Jabalpur Pool together"
+     },
+     {
+      "name": "Gadarwara STPS - Jabalpur Pool",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 173.92,
+      "states": [
+       "Madhya Pradesh"
+      ],
+      "cod": "2017-05-31",
+      "share_of_transmission_charges": null
+     },
+     {
+      "name": "LILO of both circuits of Wardha - Parli (PG) 400 kV D/C at Warora Pooling Station (Quad)",
+      "type": "line",
+      "kv": 400,
+      "circuit": "D/C",
+      "ckm": 196.29,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-05-16",
+      "share_of_transmission_charges": 0.79,
+      "share_note": "79% for Wardha-Parli LILO, Gadarwara-Warora line and Warora S/S together"
+     },
+     {
+      "name": "Gadarwara STPS - New Pooling Station (Warora)",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 627.35,
+      "states": [
+       "Madhya Pradesh",
+       "Maharashtra"
+      ],
+      "cod": "2018-07-10",
+      "share_of_transmission_charges": null
+     },
+     {
+      "name": "2x1500 MVA 765/400 kV Warora Pooling Station",
+      "type": "substation",
+      "kv": "765/400",
+      "mva": 3000,
+      "states": [
+       "Maharashtra"
+      ],
+      "cod": "2018-07-10",
+      "share_of_transmission_charges": null
+     }
+    ],
+    "total_ckm": 1028.11,
+    "total_mva": 3000,
+    "project_cod": "2018-07-10",
+    "scod": "2018-07-10",
+    "scod_note": "Original SCOD Nov-2017 (FY26 valuation 'About' table); revised to 10-Jul-2018 by supplementary TSA dated 11-Sep-2019",
+    "tsa_date": "2015-02-09",
+    "tsa_ctu_date": "2016-10-27",
+    "transmission_licence_date": "2015-08-05",
+    "tsa_term_years": 35,
+    "tsa_term_basis": "35 years from SCOD (10-Jul-2018)",
+    "tsa_expiry": "2053-07-09",
+    "tariff_type": "Section 63 TBCB, BOOM; non-escalable charges + change-in-law increment (CERC order 25-Jan-2021: +3.45% of non-escalable charges)",
+    "escalable_component": "None (FOD: escalable tariff Nil)",
+    "change_in_law": {
+     "cerc_order": "2021-01-25",
+     "increase_in_non_escalable_charges": 0.0345,
+     "right_of_additional_revenue_bought_from_POWERGRID_mar2022_rs_cr": 111.84
+    },
+    "tax_regime": "New regime 25.17% (Sec 115BAA) throughout forecast",
+    "pginvit_stake": 1.0,
+    "acquired_74pct_date": "2021-05-13",
+    "acquired_26pct_date": "2024-12-30",
+    "purchase_price_74pct_rs_cr": 1032.752,
+    "purchase_price_26pct_rs_cr": 176.379,
+    "enterprise_value_at_ipo_31dec2020_rs_cr": 2903.68,
+    "enterprise_value_at_ipo_note": "Valuer EV as of 31-Dec-2020 included in Final Offer Document (per H1FY22 half-yearly report)",
+    "sponsor_debt_31mar2021_rs_cr": 1540.0,
+    "gross_block_31mar2026_rs_cr": 2356.755,
+    "gross_block_31dec2020_rs_cr": 2232.066,
+    "debt_31mar2026_rs_cr": 1366.007,
+    "debt_31mar2026_note": "Entire SPV borrowing is loan from PGInvIT at 14.5% p.a. (eliminated on consolidation). FY26 movement: opening 1446.71, given 0.00, repaid 80.70 (Rs cr)",
+    "cash_31mar2026_rs_cr": 137.54,
+    "fy26_valuation_ev_rs_cr": 2371.154,
+    "fy26_valuation_equity_rs_cr": 1142.687,
+    "equity_shares_mn": 393.3,
+    "value_per_share_rs": 29.05,
+    "tsa_non_escalable_charges_rs_cr_by_contract_year": {
+     "2021": 352.07,
+     "2022": 352.07,
+     "2023": 352.07,
+     "2024": 352.07,
+     "2025": 352.07,
+     "2026": 352.07,
+     "2027": 247.329,
+     "2028": 247.329,
+     "2029": 247.329,
+     "2030": 247.329,
+     "2031": 247.329,
+     "2032": 247.329,
+     "2033": 247.329,
+     "2034": 247.329,
+     "2035": 247.329,
+     "2036": 247.329,
+     "2037": 247.329,
+     "2038": 247.329,
+     "2039": 247.329,
+     "2040": 247.329,
+     "2041": 247.329,
+     "2042": 247.329,
+     "2043": 247.329,
+     "2044": 247.329,
+     "2045": 247.329,
+     "2046": 247.329,
+     "2047": 247.329,
+     "2048": 247.329,
+     "2049": 247.329,
+     "2050": 247.329,
+     "2051": 247.329,
+     "2052": 247.329,
+     "2053": 247.329
+    },
+    "tsa_non_escalable_note": "Final Offer Document p.148: remaining non-escalable transmission charges as of 31-Dec-2020, keyed by calendar year of the SCOD anniversary that starts the contract year (VTL 1-Feb, KATL 12-Jul, PPTL 4-Jun, WTL 10-Jul, JPTL 25-Jun). Excludes incentive and change-in-law increments."
+   },
+   "availability_annual": {
+    "FY17": null,
+    "FY18": null,
+    "FY19": 0.9984,
+    "FY20": 0.9981,
+    "FY21": 0.9987,
+    "FY22": 0.9987,
+    "FY23": 0.9985,
+    "FY24": 0.9989,
+    "FY25": 0.9993,
+    "FY26": 0.9996
+   },
+   "availability_annual_partial_year_flags": {
+    "FY19": "Jul-2018 to Mar-2019"
+   },
+   "availability_quarterly": {
+    "1QFY22": null,
+    "2QFY22": null,
+    "3QFY22": null,
+    "4QFY22": null,
+    "1QFY23": 0.9977,
+    "2QFY23": 0.9999,
+    "3QFY23": 0.9991,
+    "4QFY23": null,
+    "1QFY24": 0.9992,
+    "2QFY24": 0.9995,
+    "3QFY24": 0.999,
+    "4QFY24": 0.998,
+    "1QFY25": 0.9999,
+    "2QFY25": 1.0,
+    "3QFY25": 0.9991,
+    "4QFY25": 0.9966,
+    "1QFY26": 0.9997,
+    "2QFY26": 0.9995,
+    "3QFY26": 0.9996,
+    "4QFY26": null,
+    "1QFY27": null
+   },
+   "availability_cumulative_periods": {
+    "H1FY22": 0.9991,
+    "9MFY22": 0.9985,
+    "FY22_pres": 0.9987,
+    "H1FY23": 0.9988,
+    "9MFY23": 0.9988,
+    "FY23_pres": 0.9986,
+    "H1FY24": 0.9993,
+    "9MFY24": 0.9991,
+    "FY24_pres": 0.9989,
+    "H1FY25": 1.0,
+    "9MFY25": 0.9997,
+    "FY25_pres": 0.9993,
+    "H1FY26": 0.9996,
+    "FY26_pres": 0.9996,
+    "9MFY21_FOD": 0.9986
+   },
+   "revenue": {
+    "FY18": 63.697,
+    "FY19": 280.44,
+    "FY20": 360.259,
+    "FY21": null,
+    "FY22": 375.647,
+    "FY23": 375.244,
+    "FY24": 375.04,
+    "FY25": 375.028,
+    "FY26": 373.826
+   },
+   "revenue_other_periods": {
+    "FY22_13May21_to_31Mar22_consolidated_basis": 332.477,
+    "9MFY21_FOD": 272.925,
+    "H1FY22_from_13May21": 145.292,
+    "H1FY23": 188.088,
+    "H1FY24": 187.542,
+    "H1FY25": 188.144,
+    "H1FY26": 187.568
+   },
+   "incentive_revenue": {
+    "FY18": 1.446,
+    "FY19": 9.369,
+    "FY20": 12.037,
+    "9MFY21": 9.884
+   },
+   "ebitda": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "ebitda_margin": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "pat": {
+    "FY22": 36.484,
+    "FY23": 36.518,
+    "FY24": 38.062,
+    "FY25": null,
+    "FY26": null
+   },
+   "other_disclosed_pl_items": {
+    "depreciation_amortisation": {
+     "FY22": 37.599,
+     "FY23": 45.209,
+     "FY24": 45.213
+    },
+    "interest_on_loans_from_trust": {
+     "FY22": null,
+     "FY23": 234.317,
+     "FY24": 227.541
+    },
+    "ndcf_FY26_presentation_rs_cr": 361.3,
+    "source": "SPV NDCF statements in AR FY2022-23 / FY2023-24 (old SEBI framework); FY26 NDCF from Q4FY26 presentation"
+   },
+   "valuation_assumptions": {
+    "source": "Valuation Report FY26 (INMACS Valuers, valuation date 31-Mar-2026, report dated 13-May-2026)",
+    "wacc": 0.08,
+    "cost_of_equity": 0.1503,
+    "post_tax_cost_of_debt": 0.0498,
+    "target_debt_to_capital": 0.7,
+    "risk_free_rate": 0.0716,
+    "equity_risk_premium": 0.0708,
+    "terminal_growth": 0.0,
+    "forecast_end": "2053-07-09",
+    "escalable_revenue_escalation_rate": null,
+    "escalation_rate_basis": "No escalable component",
+    "change_in_law_uplift_on_non_escalable": 0.0345,
+    "availability_assumed": ">=99.75% (max incentive); incentive = 0.02 x annual transmission charges x (availability - 98%), capped at 99.75%; no penalty (<95%) assumed",
+    "projected_revenue_FY27_rs_cr": 376.946,
+    "projected_revenue_FY27_rtm_rs_cr": null,
+    "opex_FY27_rs_cr": {
+     "om_incl_gst": 10.566,
+     "pima_project_mgmt_incl_gst": 1.585,
+     "power_charges": 0.8,
+     "security": 0.72,
+     "insurance": 5.336,
+     "key_managerial_personnel": 0.341,
+     "system_market_operation_charges": 0.55,
+     "audit": 0.041,
+     "other_admin": 0.11,
+     "breakdown_contingency": 0.05
+    },
+    "opex_escalation": {
+     "om_incl_gst": 0.0351,
+     "pima_project_mgmt_incl_gst": 0.0351,
+     "power_charges": 0.0525,
+     "security": 0.05,
+     "insurance": 0.0525,
+     "key_managerial_personnel": 0.0833,
+     "system_market_operation_charges": 0.0525,
+     "audit": 0.05,
+     "other_admin": 0.0525,
+     "breakdown_contingency": 0.0
+    },
+    "licence_fee": "0.11% of annual transmission charges",
+    "csr": "2% of average profits of previous 3 years",
+    "depreciation": "SLM over project life, 5% salvage; IT depreciation on WDV",
+    "receivable_days": 45,
+    "unbilled_revenue_days": 31,
+    "debt_rs_cr": 1366.007,
+    "debt_lender": "PGInvIT (shareholder loan)",
+    "interest_rate": 0.145,
+    "cash_at_valuation_rs_cr": 137.54,
+    "enterprise_value_rs_cr": 2371.154,
+    "equity_value_rs_cr": 1142.687,
+    "tax": "New regime 25.17% (Sec 115BAA) throughout forecast"
+   }
+  },
+  "JPTL": {
+   "static": {
+    "full_legal_name": "Jabalpur Power Transmission Limited",
+    "former_name": "POWERGRID Jabalpur Transmission Limited (PJTL); originally Vindhyachal Jabalpur Transmission Limited",
+    "cin": "U40300DL2014GOI270433",
+    "incorporation_date": "2014-08-14",
+    "states": [
+     "Madhya Pradesh"
+    ],
+    "scheme": "Transmission system strengthening associated with Vindhyachal-V",
+    "elements": [
+     {
+      "name": "Vindhyachal Pooling Station - Jabalpur Pooling Station",
+      "type": "line",
+      "kv": 765,
+      "circuit": "D/C",
+      "ckm": 745.05,
+      "states": [
+       "Madhya Pradesh"
+      ],
+      "cod": "2019-01-01",
+      "share_of_transmission_charges": 1.0,
+      "ckm_note": "745.05 ckm per FOD/presentations; 745.01 ckm per valuation reports"
+     }
+    ],
+    "total_ckm": 745.05,
+    "total_mva": 0,
+    "project_cod": "2019-01-01",
+    "scod": "2018-06-25",
+    "scod_note": "SCOD 25-Jun-2018 per FOD (26-Jun-2018 in FY26 valuation table); LTTCs agreed in-principle to a 180-day extension, supplementary TSA to align SCOD to actual COD 1-Jan-2019 was in process",
+    "tsa_date": "2014-11-19",
+    "tsa_ctu_date": "2016-08-22",
+    "transmission_licence_date": "2015-06-15",
+    "tsa_term_years": 35,
+    "tsa_term_basis": "35 years from SCOD",
+    "tsa_expiry": "2053-12-31",
+    "tsa_expiry_note": "Valuation projections run to 31-Dec-2053; FOD non-escalable schedule runs to contract year 2054",
+    "tariff_type": "Section 63 TBCB, BOOM; non-escalable charges + change-in-law increment (CERC order 28-Oct-2021: +5.23% of non-escalable charges)",
+    "escalable_component": "None (FOD: escalable tariff Nil)",
+    "change_in_law": {
+     "cerc_order": "2021-10-28",
+     "claim_allowed_rs_mn": 627.8,
+     "increase_in_non_escalable_charges": 0.0523,
+     "right_of_additional_revenue_bought_from_POWERGRID_mar2022_rs_cr": 111.3
+    },
+    "tax_regime": "New regime 25.17% (Sec 115BAA) throughout forecast",
+    "pginvit_stake": 1.0,
+    "acquired_74pct_date": "2021-05-13",
+    "acquired_26pct_date": "2024-12-30",
+    "purchase_price_74pct_rs_cr": 723.413,
+    "purchase_price_26pct_rs_cr": 100.443,
+    "enterprise_value_at_ipo_31dec2020_rs_cr": 2116.3,
+    "enterprise_value_at_ipo_note": "Valuer EV as of 31-Dec-2020 included in Final Offer Document (per H1FY22 half-yearly report)",
+    "sponsor_debt_31mar2021_rs_cr": 1182.996,
+    "gross_block_31mar2026_rs_cr": 1634.136,
+    "gross_block_31dec2020_rs_cr": 1529.495,
+    "debt_31mar2026_rs_cr": 1065.495,
+    "debt_31mar2026_note": "Entire SPV borrowing is loan from PGInvIT at 14.5% p.a. (eliminated on consolidation). FY26 movement: opening 1120.80, given 0.00, repaid 55.30 (Rs cr)",
+    "cash_31mar2026_rs_cr": 82.258,
+    "fy26_valuation_ev_rs_cr": 1805.911,
+    "fy26_valuation_equity_rs_cr": 822.674,
+    "equity_shares_mn": 226.91,
+    "value_per_share_rs": 36.26,
+    "tsa_non_escalable_charges_rs_cr_by_contract_year": {
+     "2021": 243.681,
+     "2022": 243.681,
+     "2023": 243.681,
+     "2024": 243.681,
+     "2025": 243.681,
+     "2026": 243.681,
+     "2027": 243.681,
+     "2028": 171.186,
+     "2029": 171.186,
+     "2030": 171.186,
+     "2031": 171.186,
+     "2032": 171.186,
+     "2033": 171.186,
+     "2034": 171.186,
+     "2035": 171.186,
+     "2036": 171.186,
+     "2037": 171.186,
+     "2038": 171.186,
+     "2039": 171.186,
+     "2040": 171.186,
+     "2041": 171.186,
+     "2042": 171.186,
+     "2043": 171.186,
+     "2044": 171.186,
+     "2045": 171.186,
+     "2046": 171.186,
+     "2047": 171.186,
+     "2048": 171.186,
+     "2049": 171.186,
+     "2050": 171.186,
+     "2051": 171.186,
+     "2052": 171.186,
+     "2053": 171.186,
+     "2054": 171.186
+    },
+    "tsa_non_escalable_note": "Final Offer Document p.148: remaining non-escalable transmission charges as of 31-Dec-2020, keyed by calendar year of the SCOD anniversary that starts the contract year (VTL 1-Feb, KATL 12-Jul, PPTL 4-Jun, WTL 10-Jul, JPTL 25-Jun). Excludes incentive and change-in-law increments."
+   },
+   "availability_annual": {
+    "FY17": null,
+    "FY18": null,
+    "FY19": 0.9917,
+    "FY20": 0.9977,
+    "FY21": 0.9959,
+    "FY22": 0.9997,
+    "FY23": 0.9992,
+    "FY24": 0.9994,
+    "FY25": 0.9966,
+    "FY26": 0.9987
+   },
+   "availability_annual_partial_year_flags": {
+    "FY19": "Jan-2019 to Mar-2019"
+   },
+   "availability_quarterly": {
+    "1QFY22": null,
+    "2QFY22": null,
+    "3QFY22": null,
+    "4QFY22": null,
+    "1QFY23": 1.0,
+    "2QFY23": 1.0,
+    "3QFY23": 1.0,
+    "4QFY23": null,
+    "1QFY24": 0.9996,
+    "2QFY24": 1.0,
+    "3QFY24": 1.0,
+    "4QFY24": 1.0,
+    "1QFY25": 0.9963,
+    "2QFY25": 1.0,
+    "3QFY25": 1.0,
+    "4QFY25": 0.9925,
+    "1QFY26": 0.9973,
+    "2QFY26": 1.0,
+    "3QFY26": 1.0,
+    "4QFY26": null,
+    "1QFY27": null
+   },
+   "availability_cumulative_periods": {
+    "H1FY22": 0.9994,
+    "9MFY22": 0.9996,
+    "FY22_pres": 0.9997,
+    "H1FY23": 1.0,
+    "9MFY23": 1.0,
+    "FY23_pres": 0.9992,
+    "H1FY24": 0.9998,
+    "9MFY24": 0.9992,
+    "FY24_pres": 0.9994,
+    "H1FY25": 0.9982,
+    "9MFY25": 0.9988,
+    "FY25_pres": 0.9966,
+    "H1FY26": 0.9986,
+    "FY26_pres": 0.9987,
+    "9MFY21_FOD": 0.9945
+   },
+   "revenue": {
+    "FY18": null,
+    "FY19": 61.048,
+    "FY20": 250.571,
+    "FY21": null,
+    "FY22": 293.76,
+    "FY23": 263.872,
+    "FY24": 265.431,
+    "FY25": 263.677,
+    "FY26": 263.472
+   },
+   "revenue_other_periods": {
+    "FY22_13May21_to_31Mar22_consolidated_basis": 264.212,
+    "9MFY21_FOD": 188.224,
+    "H1FY22_from_13May21": 96.388,
+    "H1FY23": 132.153,
+    "H1FY24": 132.069,
+    "H1FY25": 132.475,
+    "H1FY26": 132.222
+   },
+   "incentive_revenue": {
+    "FY18": null,
+    "FY19": 1.176,
+    "FY20": 7.809,
+    "9MFY21": 5.269
+   },
+   "ebitda": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "ebitda_margin": {
+    "FY22": null,
+    "FY23": null,
+    "FY24": null,
+    "FY25": null,
+    "FY26": null
+   },
+   "pat": {
+    "FY22": 38.641,
+    "FY23": 15.796,
+    "FY24": 20.904,
+    "FY25": null,
+    "FY26": null
+   },
+   "other_disclosed_pl_items": {
+    "depreciation_amortisation": {
+     "FY22": 26.337,
+     "FY23": 32.341,
+     "FY24": 32.348
+    },
+    "interest_on_loans_from_trust": {
+     "FY22": null,
+     "FY23": 183.268,
+     "FY24": 175.764
+    },
+    "ndcf_FY26_presentation_rs_cr": 260.1,
+    "source": "SPV NDCF statements in AR FY2022-23 / FY2023-24 (old SEBI framework); FY26 NDCF from Q4FY26 presentation"
+   },
+   "valuation_assumptions": {
+    "source": "Valuation Report FY26 (INMACS Valuers, valuation date 31-Mar-2026, report dated 13-May-2026)",
+    "wacc": 0.08,
+    "cost_of_equity": 0.1503,
+    "post_tax_cost_of_debt": 0.0498,
+    "target_debt_to_capital": 0.7,
+    "risk_free_rate": 0.0716,
+    "equity_risk_premium": 0.0708,
+    "terminal_growth": 0.0,
+    "forecast_end": "2053-12-31",
+    "escalable_revenue_escalation_rate": null,
+    "escalation_rate_basis": "No escalable component",
+    "change_in_law_uplift_on_non_escalable": 0.0523,
+    "availability_assumed": ">=99.75% (max incentive); incentive = 0.02 x annual transmission charges x (availability - 98%), capped at 99.75%; no penalty (<95%) assumed",
+    "projected_revenue_FY27_rs_cr": 265.39,
+    "projected_revenue_FY27_rtm_rs_cr": null,
+    "opex_FY27_rs_cr": {
+     "om_incl_gst": 3.541,
+     "pima_project_mgmt_incl_gst": 0.531,
+     "power_charges": null,
+     "security": null,
+     "insurance": 3.38,
+     "key_managerial_personnel": 0.355,
+     "system_market_operation_charges": 0.185,
+     "audit": 0.03,
+     "other_admin": 0.109,
+     "breakdown_contingency": 0.05
+    },
+    "opex_escalation": {
+     "om_incl_gst": 0.0351,
+     "pima_project_mgmt_incl_gst": 0.0351,
+     "power_charges": 0.0525,
+     "security": 0.05,
+     "insurance": 0.0525,
+     "key_managerial_personnel": 0.0833,
+     "system_market_operation_charges": 0.0525,
+     "audit": 0.05,
+     "other_admin": 0.0525,
+     "breakdown_contingency": 0.0
+    },
+    "licence_fee": "0.11% of annual transmission charges",
+    "csr": "2% of average profits of previous 3 years",
+    "depreciation": "SLM over project life, 5% salvage; IT depreciation on WDV",
+    "receivable_days": 45,
+    "unbilled_revenue_days": 31,
+    "debt_rs_cr": 1065.495,
+    "debt_lender": "PGInvIT (shareholder loan)",
+    "interest_rate": 0.145,
+    "cash_at_valuation_rs_cr": 82.258,
+    "enterprise_value_rs_cr": 1805.911,
+    "equity_value_rs_cr": 822.674,
+    "tax": "New regime 25.17% (Sec 115BAA) throughout forecast"
+   }
+  }
+ },
+ "consolidated": {
+  "revenue_from_operations_rs_cr": {
+   "FY22_13May_to_31Mar": 1217.339,
+   "FY23": 1285.785,
+   "FY24": 1265.338,
+   "FY25": 1266.493,
+   "FY26": 1258.028
+  },
+  "other_income_rs_cr": {
+   "FY22_13May_to_31Mar": 26.074,
+   "FY23": 29.506,
+   "FY24": 37.384,
+   "FY25": 38.562,
+   "FY26": 38.618
+  },
+  "ebitda_rs_cr": {
+   "FY23": 1226.368,
+   "FY25": 1216.441,
+   "FY26": 1209.6
+  },
+  "ebitda_margin": {
+   "FY23": 0.9324,
+   "FY25": 0.9321,
+   "FY26": 0.93
+  },
+  "performance_bonus_incentive_rs_cr": {
+   "FY25": 42.538,
+   "FY26": 41.665
+  },
+  "trust_external_debt_31mar2026_rs_cr": 1064.033,
+  "note": "EBITDA FY23 from AR FY2022-23 (on total revenue incl. other income 13,152.91 mn less opex 889.23 mn); FY25 12,164.41 mn / 93.21% from AR FY2024-25; FY26 12,096 mn / 93% from AR FY2025-26 MD&A"
+ },
+ "revenue_reconciliation": {
+  "FY23": {
+   "sum_spv_rs_cr": 1285.785,
+   "consolidated_revenue_from_operations_rs_cr": 1285.785,
+   "gap_rs_cr": 0.0
+  },
+  "FY24": {
+   "sum_spv_rs_cr": 1265.338,
+   "consolidated_revenue_from_operations_rs_cr": 1265.338,
+   "gap_rs_cr": 0.0
+  },
+  "FY25": {
+   "sum_spv_rs_cr": 1266.493,
+   "consolidated_revenue_from_operations_rs_cr": 1266.493,
+   "gap_rs_cr": 0.0
+  },
+  "FY26": {
+   "sum_spv_rs_cr": 1258.028,
+   "consolidated_revenue_from_operations_rs_cr": 1258.028,
+   "gap_rs_cr": 0.0
+  },
+  "FY22": {
+   "sum_spv_full_year_rs_cr": 1370.608,
+   "sum_spv_13May21_31Mar22_rs_cr": 1217.339,
+   "consolidated_revenue_from_operations_rs_cr": 1217.339,
+   "gap_full_year_vs_consolidated_rs_cr": 153.269,
+   "explanation": "Consolidation only from 13-May-2021 (IPO acquisition); post-acquisition SPV figures reconcile exactly"
+  }
+ },
+ "sources": {
+  "availability_annual": "Valuation_Report_FY26.pdf pp.41,51,60,72,81 'Historical Average Annual Availability' charts (rendered to PNG); KATL FY18 and partial-year labels from Valuation_Report_FY22.pdf pp.34,43,51,60,68; cross-checked with Final Offer Document availability tables (FY17-FY20 identical) and Q4 presentations",
+  "availability_quarterly": "Investor presentations Q1/H1/Q3/Q4 FY22-FY26 'Operational Performance' slide (rendered to PNG); values provisional at time of each deck",
+  "revenue_FY23_FY26_and_FY22_post_acq": "Annual_Report_FY_2025_26.pdf Mandatory disclosures item 4 'Revenue of the InvIT for the last 5 years, project-wise' (excl. other income); FY22-FY25 also in Annual_Report_FY_2024_25.pdf",
+  "revenue_FY22_full_year": "Annual_Report_FY_2021_22.pdf p.43 MD&A pie; Annual_Report_FY_2022_23.pdf mandatory disclosures (April 1, 2021 to March 31, 2022 column)",
+  "revenue_FY18_FY20_and_incentives": "IPO Final Offer Document (https://www.pginvit.in/docs/IPO%20Resource/Final%20Offer%20Document.pdf) pp.148-156",
+  "revenue_half_year": "Half-Yearly Reports H1FY22-H1FY26 mandatory disclosures 'Details of revenue during the half year, project-wise'",
+  "pat": "SPV NDCF statements: Annual_Report_FY_2022_23.pdf (FY23, FY22 comparatives) and Annual_Report_FY_2023_24.pdf (FY24)",
+  "static": "Valuation_Report_FY26.pdf section 10 (company tables, element/COD tables, gross block, purchase price, tax); Final Offer Document 'Our Business' pp.147-156; Q4FY26 presentation portfolio slide",
+  "debt_31mar2026": "Annual_Report_FY_2025_26.pdf item 11 'monies lent by the InvIT'; matches Valuation_Report_FY26 'Borrowings as on date of valuation'",
+  "tsa_non_escalable_charges": "Final Offer Document p.148 table 'Remaining non-escalable transmission charges' (as of 31-Dec-2020)",
+  "valuation_assumptions": "Valuation_Report_FY26.pdf section 9-10 and Annexure 7 (Summary of Operating Expenses)",
+  "ev_at_ipo": "Half_Yearly_Report_H1_FY22.pdf mandatory disclosures (EV as of 31-Dec-2020 included in Final Offer Document)"
+ },
+ "notes": [
+  "Availability annual values = 98% target + 'availability over target' read from the FY26 valuation report charts; these are RPC-certified/final values and differ slightly from provisional figures in presentations (e.g. FY23 PPTL 99.84% vs 99.83% in Q4FY23 deck; FY23 KATL 99.99% vs 100.00%).",
+  "VTL FY26: valuation report shows 99.48% (actual, reduced by NHAI road-diversion shutdown; financial impact borne by NHAI) while the Q4FY26 presentation shows 100.00% (treats the 96-hour third-party shutdown as deemed available). availability_annual uses 99.48%.",
+  "KATL FY26 availability is provisional per both the valuation report and presentation. KATL FY19 98.10% is confirmed by the FY22 valuation report and the Final Offer Document.",
+  "Partial first years are included in availability_annual and flagged in availability_annual_partial_year_flags (VTL FY17, KATL FY18, PPTL/WTL/JPTL FY19). First full operating years: VTL FY18, KATL FY19, PPTL/WTL/JPTL FY20. FY21 values come from the FY22/FY26 valuation charts.",
+  "Quarterly availability: discrete quarters are available only for 1Q-3Q FY23, 1Q-4Q FY24, 1Q-4Q FY25 and 1Q-3Q FY26. FY22 decks give only H1/9M/FY cumulative figures; Q4FY23 and Q4FY26 decks give only the full year; no Q1FY27 deck was available. Missing quarters are null (not derived). Cumulative-period figures are in availability_cumulative_periods. Some cumulative figures are internally inconsistent across decks (e.g. JPTL 9MFY24 99.92% vs H1 99.98% and Q3 100%) - recorded as printed.",
+  "Revenue FY23-FY26 = SPV revenue from operations (transmission charges incl. incentive/'performance bonus'; excl. other income) as disclosed project-wise in the annual report; it sums exactly to consolidated revenue from operations.",
+  "Revenue FY22 = full fiscal year (1-Apr-2021 to 31-Mar-2022) SPV revenue (AR FY22/FY23); the consolidated basis (13-May-2021 onward) is in revenue_other_periods. JPTL FY22 (Rs 293.8 cr) is well above FY23 (Rs 263.9 cr), likely due to change-in-law arrears after CERC order of 28-Oct-2021 (not explicitly stated). The AR FY2022-23 also prints an FY23 column of Rs 1,309.6 cr that includes SPV other income; the FY26 AR's ex-other-income FY23 figures are used instead.",
+  "Revenue FY18-FY20 from the IPO Final Offer Document (pre-InvIT, Sponsor ownership); FY21 full-year SPV revenue was not found (only 9MFY21 in revenue_other_periods). PPTL/WTL FY19-FY21 revenue includes change-in-law amounts that were then passed to POWERGRID; PPTL/WTL/JPTL bought these rights in Mar-2022.",
+  "EBITDA and EBITDA margin per SPV are NOT disclosed in any downloaded document (annual/half-yearly reports, presentations, valuation reports give only consolidated EBITDA) - left null. Only consolidated EBITDA is given under 'consolidated'.",
+  "PAT: SPV standalone PAT is disclosed only in the old-format SPV NDCF statements (FY22-FY24). FY25/FY26 use the new SEBI NDCF format (starts from operating cash flow), so PAT is null. (The AR FY2024-25 annexure reproducing the old format repeats the FY24 numbers labelled as FY25 - not used.) FY22 PAT is labelled 'year ended 31-Mar-2022' but the lower depreciation (e.g. VTL 227.94 vs 317.03 mn in FY23) suggests it may cover only the post-acquisition period from 13-May-2021.",
+  "Debt at 31-Mar-2026 for each SPV is entirely the shareholder loan from PGInvIT at 14.5% (intra-group). Trust-level external debt is Rs 1,064.03 cr (HDFC Bank, ~6.6-6.75%).",
+  "Acquisition: 74% of all five SPVs acquired 13-May-2021 (IPO, consideration paid in units); remaining 26% of VTL on 31-Mar-2022 and of KATL/PPTL/WTL/JPTL on 30-Dec-2024. Purchase prices from the FY26 valuation report.",
+  "Only VTL has an escalable tariff component (initial Rs 3.7 cr in 2017); FY26 valuation escalates it at 4.53% (FOD/IPO projections used 4.32%). PPTL/WTL/JPTL carry change-in-law uplifts of 2.79%/3.45%/5.23% on non-escalable charges. KATL has a separate RTM (regulated tariff) 125 MVAr bus reactor (COD 5-Feb-2024); PPTL has an RTM 400 kV bay (completed, DOCO pending).",
+  "The task pointed to ./uploads/ on the IPO resources page; that page actually links its PDFs under ./docs/ - the Final Offer Document was downloaded from https://www.pginvit.in/docs/IPO%20Resource/Final%20Offer%20Document.pdf.",
+  "Valuation_Report_FY25.pdf and Valuation_Report_H1FY25.pdf (and Annexures FY2024-25 / H1FY25) are scanned images with no text layer; not needed because the FY26 report carries the full history.",
+  "VTL project award date: FY26 valuation says 31-Mar-2013, Final Offer Document says 31-Jul-2013 (not used in fields)."
+ ]
+}
