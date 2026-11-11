@@ -36,7 +36,6 @@ def build_qtrly(ws, Q):
     qs = Q['quarters']
     col = {q: L(3 + k) for k, q in enumerate(qs)}
     r = 2
-    put(ws, 'B1', 'Quarterly results as reported (Rs. cr); source: NSE results filings, investor presentations, half-yearly and annual reports', italic=True)
 
     def header(title, r):
         put(ws, f'B{r}', title, bold=True, fill=SEC_FILL)
@@ -98,7 +97,7 @@ def build_qtrly(ws, Q):
                        ('ndcf', 'Quarterly NDCF Build-up'), ('distribution', 'Distribution per unit and components')):
         if Q.get(key):
             r = block(title, Q[key], r, fmt=NUM2 if key == 'distribution' else NUM1)
-    notes = Q.get('notes') or []
+    notes = []
     if notes:
         put(ws, f'B{r}', 'Notes', bold=True)
         for k, n in enumerate(notes[:40]):

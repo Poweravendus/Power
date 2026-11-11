@@ -35,7 +35,7 @@ def build_sens_returns(ws, entry_date, first_pay):
     out = {}
     for top, n, is_exit in blocks:
         if not is_exit:
-            put(ws, f'B{top}', 'HOLD TO MATURITY  (distributions to FY54E; residual = NAV at 31-Mar-54)', bold=True)
+            put(ws, f'B{top}', 'HOLD TO MATURITY', bold=True)
         rl, rd, rp, rdist, rres, rtot = top + 1, top + 2, top + 3, top + 4, top + 5, top + 6
         put(ws, f'B{rl}', 'Financial year (quarter paid for)')
         put(ws, f'B{rd}', 'Payment date')
@@ -74,7 +74,6 @@ def build_sens_returns(ws, entry_date, first_pay):
             nav0, nav1 = lookup(CR['nav'], lab0), lookup(CR['nav'], lab1)
             put(ws, f'{x}{rres}', f'={nav0}+({nav1}-{nav0})*({x}{rd}-DATE({yr},3,31))/365', fmt=NUM2)
             put(ws, f'{x}{rtot}', f'={x}{rp}+{x}{rdist}+{x}{rres}', fmt=NUM2, bold=True)
-            put(ws, f'{L(5 + n)}{rres}', '<< NAV interpolated between the two 31-Mar NAVs around the exit date', italic=True)
             out['exit'] = (rd, rtot, x)
         else:
             put(ws, f'{last}{rres}', f'={lookup(CR["nav"], chr(34) + clabel(FYN) + chr(34))}', fmt=NUM2)
@@ -89,11 +88,10 @@ def build_sens_returns(ws, entry_date, first_pay):
     rd, rtot, last = out['mat']
     put(ws, 'C4', f'=XIRR(C{rtot + 1}:{last}{rtot + 1},C{rd}:{last}{rd})', fmt=PCT, bold=True)
     put(ws, 'C5', f'=XIRR(C{rtot}:{last}{rtot},C{rd}:{last}{rd})', fmt=PCT, bold=True)
-    put(ws, 'D3', '<< entry on the date in row %d; quarterly DPU from Consolidated; exit at modelled NAV' % (SEN['exit_hdr'] + 2), italic=True)
 
-    # debt mirror (as in IndiGrid rows 267-273), linked to Consolidated
+    # debt schedule, linked to Consolidated
     r = SEN['debt']
-    put(ws, f'B{r - 1}', 'DEBT  -  Rs. cr (mirror of Consolidated)', bold=True)
+    put(ws, f'B{r - 1}', 'DEBT  -  Rs. cr', bold=True)
     for k, (lab, row) in enumerate([('Opening Debt', CR['debt_open']), ('Addition', CR['debt_add']),
                                      ('Repayment', CR['debt_rep']), ('Closing', CR['debt_close']),
                                      ('Interest Rate', CR['int_rate']), ('Interest Cost', CR['fin'])]):
@@ -104,7 +102,7 @@ def build_sens_returns(ws, entry_date, first_pay):
 
 def build_cashflows(ws):
     std_sheet(ws, colA=6, widths={'B': 40})
-    put(ws, 'B1', 'Cash flows to the Trust (Rs. cr) - Bajaj Life view; FY27E onwards from Consolidated', italic=True)
+    put(ws, 'B1', 'Cash flows to the Trust (Rs. cr)', bold=True)
     for fy in range(2027, FYN + 1):
         put(ws, f'{L(3 + fy - 2027)}3', f'FY{fy}', bold=True, align='right', border_b=True)
     rows = [(4, None, 'Revenue from operations', CR['rev'], 1), (6, 'Less', 'Investment manager fees', CR['im'], -1),
@@ -138,12 +136,12 @@ def build_cashflows(ws):
 
 
 def build_irr(ws, units, val_date):
-    """IndiGrid method: annual NDCF to the Trust, 3/4 of the entry year, IRR() on the row; yield = NDCF / amount invested."""
+    """Annual NDCF to the Trust, 3/4 of the entry year, IRR() on the row; yield = NDCF / amount invested."""
     std_sheet(ws, colA=40)
     last = L(3 + FYN - 2027)
     put(ws, 'A2', 'No. of Units')
     put(ws, 'B2', units, fmt='General', color=BLUE)
-    put(ws, 'A3', 'Investment date (fixed input; IndiGrid used TODAY())')
+    put(ws, 'A3', 'Investment date')
     put(ws, 'B3', val_date, fmt='dd-mmm-yy', color=BLUE)
     put(ws, 'A5', 'Amount Invested')
     put(ws, 'B5', '=-(B2*Sensitivity_Bajaj!C2)/10000000', fmt=NUM)
@@ -159,6 +157,5 @@ def build_irr(ws, units, val_date):
     put(ws, 'C9', ws['C9'].value, fmt=NUM)
     put(ws, 'A11', 'IRR', bold=True)
     put(ws, 'B11', f'=IRR(B9:{last}9)', fmt=PCT, bold=True)
-    put(ws, 'C11', '<< FY27 = 3 of 4 quarters after the investment date (as IndiGrid); NDCF from Cashflows_Bajaj, no residual value', italic=True)
     put(ws, 'A14', 'Distribution Yield % on CMP', bold=True)
     put(ws, 'A15', 'Bajaj Life Projection', bold=True)

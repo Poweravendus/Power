@@ -1,4 +1,4 @@
-"""Build the PGInvIT model workbook mirroring the IndiGrid model structure."""
+"""Build the PGInvIT model workbook."""
 import json, sys, datetime as dt, os
 import openpyxl
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -74,7 +74,7 @@ if os.path.exists(qpath):
 else:
     put(W['Qtrly'], 'B2', 'Quarterly data pending', italic=True)
 
-# ---------------- IndiGrid visual conventions on every sheet ----------------
+# ---------------- visual conventions on every sheet ----------------
 import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
@@ -95,7 +95,6 @@ for it in A_ITEMS:
 F.fmt_assumption(W['Assumption'], item_rows, total_rows, 4, CI(acol(FYN)), [CI('AH'), CI('AI'), CI('AJ'), CI('AK')])
 F.fmt_cashflows(W['Cashflows_Bajaj'], 3 + FYN - 2027, 25)
 F.fmt_irr(W['IRR Calculation_Bajaj'], 3 + FYN - 2027)
-F.fmt_keysheet(W['Key Sheet New'], CI('T'), CI('AW'), CI('AY'), CI('AY') + 2054 - 2021, (29, 32))
 
 # collapse long empty bands in Consolidated (keep one spacer row)
 wc = W['Consolidated']
@@ -114,8 +113,6 @@ wsn = W['Sensitivity_Bajaj']
 for k in range(3, 3 + (FYN - 2026) * 4 + 2):
     wsn.column_dimensions[L(k)].width = 9.5
 wk = W['Key Sheet New']
-for col_, w in {'D': 38, 'E': 44, 'F': 12, 'G': 26, 'H': 70, 'L': 30, 'M': 20, 'N': 12, 'O': 12, 'P': 26, 'Q': 12, 'R': 12, 'S': 26}.items():
-    wk.column_dimensions[col_].width = w
 wq = W['Qtrly']
 for k in range(3, 3 + 21):
     wq.column_dimensions[L(k)].width = 9
@@ -127,7 +124,7 @@ if os.path.exists(qpath):
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
               ('Standalone (Trust)', 'Consolidated', 'Quarterly NDCF Build-up', 'Distribution per unit and components', 'Notes')}
     F.unfill_spacers(wq, 2, lastq, starts, 2, wq.max_row)
-# ---------------- IndiGrid number formats, row by row ----------------
+# ---------------- number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
 F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 252)
@@ -141,11 +138,7 @@ F.nf_simple(W['IRR Calculation_Bajaj'], 5, 9, 2, 3 + FYN - 2027, F.N0B)
 F.nf_simple(W['IRR Calculation_Bajaj'], 11, 11, 2, 2, '0.0%', pct_rows=(11,))
 F.nf_simple(W['IRR Calculation_Bajaj'], 15, 15, 3, 3 + FYN - 2027, '0.0%', pct_rows=(15,))
 W['IRR Calculation_Bajaj']['B2'].number_format = 'General'
-F.nf_keysheet(W['Key Sheet New'], [CI(x) for x in ('I', 'J', 'N', 'O', 'Q')] + list(range(CI('T'), CI('AW') + 1)) + list(range(CI('AY'), CI('AY') + 34)), 6, 32)
-W['Key Sheet New'].column_dimensions['R'].width = 12
 for n in names:
-    if n == 'Key Sheet New':
-        F.dash_zero(W[n])
     finish_sheet(W[n])
 wb.save(OUT)
 print('saved', OUT, '| trust-level expense base', drivers[14], '| SPV opex FY27', round(spv_opex27, 2))

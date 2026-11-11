@@ -1,4 +1,4 @@
-"""Shared helpers for the PGInvIT model builder (mirrors the IndiGrid model conventions)."""
+"""Shared helpers for the PGInvIT model builder."""
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter as L, column_index_from_string as CI
 

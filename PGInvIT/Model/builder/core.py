@@ -6,7 +6,7 @@ from common import *
 SPVS = ['VTL', 'KATL', 'PPTL', 'WTL', 'JPTL']
 VR_NAME = {'Vizag': 'VTL', 'Kala': 'KATL', 'Parli': 'PPTL', 'Warora': 'WTL', 'Jabalpur': 'JPTL'}
 FY0, FYN = 2026, 2054            # asset-level / assumption horizon (FY26 actual, FY27-FY54 forecast)
-S_FY0 = 2021                     # Sensitivity first column (C = FY21), so H = FY26 as in IndiGrid
+S_FY0 = 2021                     # Sensitivity first column (C = FY21), so H = FY26
 # PV of RTM (regulated tariff) projects, valued by the valuer on FCFE at Ke 15.03% incl. RTM debt (Rs cr; report p.55 and p.66)
 RTM_PV = {'KATL': 24.145, 'PPTL': 9.018}
 MON = {m: i + 1 for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
@@ -57,7 +57,7 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
     lastc = scol(FYN)
     put(ws, 'B2', 'Entry price, Rs./ unit', bold=True)
     put(ws, 'C2', price, fmt=NUM2, bold=True, color=BLUE)
-    put(ws, 'D2', '<<Punch In Entry Price (NSE close, 9-Nov-2026)', italic=True)
+    put(ws, 'D2', '<< Punch in entry price', italic=True)
     put(ws, 'B3', 'XIRR  -  5-year holding period', bold=True)
     put(ws, 'B4', 'XIRR  -  hold to maturity (distributions only)', bold=True)
     put(ws, 'B5', 'XIRR  -  hold to maturity (incl. residual NAV at FY54)', bold=True)
@@ -80,11 +80,10 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
                     put(ws, f'{scol(fy)}{r}', v, fmt=PCT2, color=RED)
             elif fy <= V[s]['last_fy']:
                 put(ws, f'{scol(fy)}{r}', 0.9975, fmt=PCT2, color=BLUE)
-    put(ws, f'B{SEN["avail"] + 5}', 'Forecast = 99.75% (valuer: management expects availability at or above 99.75%)', italic=True)
 
     # --- ladder assumptions
     r0 = SEN['ladder']
-    put(ws, f'B{r0 - 2}', 'TSA PAYMENT LADDER  -  ASSUMPTIONS (TBCB TSA, as described in the valuation report)', bold=True)
+    put(ws, f'B{r0 - 2}', 'TSA PAYMENT LADDER  -  ASSUMPTIONS', bold=True)
     put(ws, f'B{r0 - 1}', 'Parameter', bold=True, border_b=True)
     put(ws, f'C{r0 - 1}', 'Value', bold=True, border_b=True, align='right')
     ladder = [('Target availability', 0.98, '98% target; payment pro-rata below target'),
@@ -95,7 +94,6 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
     for k, (lab, v, note) in enumerate(ladder):
         put(ws, f'B{r0 + k}', lab)
         put(ws, f'C{r0 + k}', v, fmt=PCT2, color=BLUE)
-        put(ws, f'E{r0 + k}', note, italic=True)
     T, INC, CAP, PEN, PADD = [f'$C${r0 + k}' for k in range(5)]
     cap_factor = 1 + 0.02 * (0.9975 - 0.98) * 100
 
@@ -114,7 +112,6 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
                         fmt=NUM1, color=RED)
             elif fy in V[s]['rows']:
                 put(ws, f'{c}{r}', round(V[s]['rows'][fy]['rev'] / cap_factor, 4), fmt=NUM1, color=BLUE)
-    put(ws, f'B{SEN["tariff"] + 5}', 'Forecast = valuer revenue / incentive factor at 99.75% (1.035x); history = reported revenue grossed down at actual availability', italic=True)
 
     # --- effective tariff
     year_header(SEN['eff_hdr'], 'TRANSMISSION  -  EFFECTIVE TARIFF (REVENUE),  Rs. cr')
@@ -144,14 +141,12 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
                     put(ws, f'{c}{r}', v, fmt=PCT, color=RED)
             elif fy in margins.get(s, {}):
                 put(ws, f'{c}{r}', round(margins[s][fy], 4), fmt=PCT, color=BLUE)
-    put(ws, f'B{SEN["marg"] + 5}', 'Forecast margins rebuilt from the valuer\'s SPV cost assumptions (O&M, PM fee, insurance, licence fee, KMP, SMOC, audit, admin, contingency, CSR)', italic=True)
     return dict(T=T, INC=INC, CAP=CAP, PEN=PEN, PADD=PADD)
 
 
 # =================================================================================================
 def build_assetlevel(ws, V, margins, hist):
     std_sheet(ws, colA=2.57, widths={'B': 6.5, 'C': 30, 'AH': 34, 'AI': 10})
-    put(ws, 'C1', 'Source: Company / Valuation Report (INMACS Valuers, 31-Mar-2026); Rs. cr', italic=True)
     lastc = acol(FYN)
     info = {}
     for i, s in enumerate(SPVS):
@@ -237,7 +232,6 @@ def build_assetlevel(ws, V, margins, hist):
         put(ws, f'D{R(18)}', f'=D{R(15)}+D{R(16)}+D{R(17)}', fmt=NUM1, bold=True)
         put(ws, f'E{R(18)}', round(v['ev'], 3), fmt=NUM1, color=BLUE)
         put(ws, f'F{R(18)}', f'=D{R(18)}/E{R(18)}-1', fmt=PCT2)
-        put(ws, f'G{R(18)}', '<< EV per valuer and variance', italic=True)
         put(ws, f'D{R(19)}', 0.08, fmt=PCT2, color=BLUE)
         info[s] = dict(r0=r0, memo=m)
     return info
@@ -265,7 +259,7 @@ def build_assumption(ws, V, ainfo):
         c = acol(fy)
         put(ws, f'{c}1', dt.datetime(fy, 3, 31), fmt='mmm-yy', align='right')
         put(ws, f'{c}2', fy_label(fy), bold=True, align='right', border_b=True)
-    put(ws, 'AH2', 'Tag (for Consolidated SUMIFS)', bold=True, border_b=True)
+    put(ws, 'AH2', 'Tag', bold=True, border_b=True)
     for col, lab in (('AI', 'Annual repayment'), ('AJ', 'Interest rate'), ('AK', 'Tax rate')):
         put(ws, f'{col}{a_row("Loan from PGInvIT (closing)", 0) - 1}', lab, bold=True, border_b=True, align='right')
     asset_label = {'Revenue': 'Revenue', 'Total Expenses': 'Total Expenses', 'EBITDA': 'EBITDA', 'Capex': 'Capex',
@@ -330,9 +324,6 @@ def build_assumption(ws, V, ainfo):
                 c = acol(fy)
                 put(ws, f'{c}{tr}', f'=IF(OR({c}{a_row("Revenue")}=0,{c}{a_row("EBITDA")}=0),"",{c}{a_row("EBITDA")}/{c}{a_row("Revenue")})', fmt=PCT, bold=True)
     note = a_row(A_ITEMS[-1]) + 2
-    put(ws, f'C{note - 1}', 'Levered tax = valuer (unlevered) SPV tax less tax shield on interest paid to PGInvIT; floor at nil. Used for NDCF and consolidated tax; AUM stays on the valuer basis.', italic=True)
-    put(ws, f'C{note}', 'AUM at each 31-Mar = PV of the SPV\'s FCFF for later years only (the year\'s own cash flow is excluded, fixing the IndiGrid double count),', italic=True)
-    put(ws, f'C{note + 1}', 'discounted at each SPV\'s valuer WACC on the valuer\'s mid-year periods, plus the terminal value and RTM project value. FY26 ties to the valuer EV.', italic=True)
     put(ws, f'C{note + 2}', 'Check: FY26 AUM - valuer EV', bold=True)
     put(ws, f'D{note + 2}', '=D{0}-SUM({1})'.format(a_row('AUM (Rs. cr)'), ','.join(f'AssetLevelEst!E{ainfo[s]["r0"] + 18}' for s in SPVS)), fmt=NUM2, fill=CHK_FILL)
     return note + 4

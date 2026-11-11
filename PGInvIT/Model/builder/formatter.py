@@ -1,6 +1,6 @@
-"""Apply the IndiGrid model's visual conventions to every sheet of the PGInvIT workbook.
+"""Apply the model's visual conventions to every sheet of the PGInvIT workbook.
 
-Convention (decoded from the IndiGrid workbook's theme colours):
+Convention:
   dark grey  D9D9D9  label column and historical columns (white -15%)
   light grey F2F2F2  forecast columns (white -5%)
   mid grey   BFBFBF  total rows on Assumption (white -25%)
@@ -114,7 +114,7 @@ def fmt_consolidated(ws, hist_c1, hist_c2, fc_c1, fc_c2, last_row, growth_rows, 
             fill(a, LB)
             font(a, BLUE if not is_formula(a) else BLACK, bold=False)
         if b.value is not None:
-            font(b, BLACK, italic=True)
+            font(b, BLACK, italic=False)
     for k in (fc_c2 + 2, fc_c2 + 3):
         c = ws.cell(3, k)
         fill(c, DG)
@@ -173,9 +173,6 @@ def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_
     underline_row(ws, r0 - 1, 2, 3)
     for r in range(r0, r0 + 5):
         font(ws.cell(r, 3), BLUE)
-        e = ws.cell(r, 5)
-        fill(e, YEL)
-        font(e, BLACK, bold=True, italic=False)
     font(ws.cell(r0 - 2, 2), BLACK, bold=True)
     # hold to exit / maturity blocks
     for top, lastc in ((SEN['exit_hdr'], exit_last_col), (SEN['mat_hdr'], mat_last_col)):
@@ -347,7 +344,7 @@ DASH = {'#,##0.0_);(#,##0.0)': '#,##0.0_);(#,##0.0);"–"_)', '#,##0_);(#,##0)':
 
 
 def dash_zero(ws):
-    """Show zeros as a dash (IndiGrid Key Sheet convention) so nil lines read cleanly."""
+    """Show zeros as a dash so nil lines read cleanly."""
     for row in ws.iter_rows():
         for c in row:
             if c.value is not None and c.number_format in DASH:
@@ -355,7 +352,7 @@ def dash_zero(ws):
 
 
 # ================================================================================================
-# Number formats copied from the IndiGrid workbook, row by row (applied last)
+# Number formats, row by row (applied last)
 # ================================================================================================
 N0A = '#,##0;\\(#,##0\\)'            # AssetLevelEst / Assumption / NAV block
 N0B = '#,##0_);(#,##0)'              # Consolidated / Qtrly / Cashflows / Sensitivity debt

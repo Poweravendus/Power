@@ -58,14 +58,14 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     237: ('Proposed Distribution', ''), 238: ('Net Cash retained / (drawn)', ''), 239: ('Actual Distribution', 'b'),
     240: ('Check: distribution >= 90% of NDCF (SEBI floor)', ''), 241: ('AUM / Value of InvIT Assets - Enterprise Value', 'b'),
     242: ('Less: Net Debt', ''), 243: ('Equity (NAV)', 'b'), 244: ('NAV / unit, Rs.', 'b'), 245: ('Net Debt / AUM', 'p'),
-    249: ('Capital Raise', 'h'), 250: ('Rs. cr', ''), 251: ('Price at which dilution happens (prior-year NAV; avoids circularity)', ''), 252: ('Additional Units Issued, cr', ''),
+    249: ('Capital Raise', 'h'), 250: ('Rs. cr', ''), 251: ('Price at which dilution happens (prior-year NAV)', ''), 252: ('Additional Units Issued, cr', ''),
 }
-DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses FY26 base (Rs. cr), escalated with IM fee rate', None, NUM1),
-           21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block (FY26)', None, PCT2),
-           27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line, IndiGrid method; first TSA expiry = VTL, Jan-2052)', 2052, '0'),
-           91: ('Annual amortisation of intangibles (FY26 actual)', 14.8, NUM1),
-           228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY (inclusive); model distribution thereafter', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
-           236: ('FY27 DPU target (Rs./unit)', 12.0, NUM2)}
+DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
+           21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
+           27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line)', 2052, '0'),
+           91: ('Annual amortisation of intangibles', 14.8, NUM1),
+           228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
+           236: ('DPU target (Rs./unit)', 12.0, NUM2)}
 
 
 def build_consolidated(ws, H, drivers):
@@ -79,16 +79,11 @@ def build_consolidated(ws, H, drivers):
         for fy in range(C_FY0, FYN + 1):
             put(ws, f'{ccol(fy)}{r}', clabel(fy), bold=True, align='right', border_b=True)
     put(ws, 'AK3', 'Driver', bold=True, border_b=True, align='right')
-    put(ws, 'AL3', 'Forecast driver / note', bold=True, border_b=True)
+    put(ws, 'AL3', 'Driver', bold=True, border_b=True)
     for r, (lab, default, fmt) in DRIVERS.items():
         v = drivers.get(r, default)
         put(ws, f'AK{r}', v, fmt=fmt, color=BLUE)
-        put(ws, f'AL{r}', lab, italic=True)
-    put(ws, 'AL6', 'Forecast: sum of SPV revenue (Assumption, from AssetLevelEst / Sensitivity)', italic=True)
-    put(ws, 'AL14', ws['AL14'].value + '; forecast also includes SPV opex from Assumption', italic=True)
-    put(ws, 'AL37', 'Forecast: SPV tax after interest on loans from PGInvIT (Assumption, levered)', italic=True)
-    put(ws, 'AL241', 'AUM per Assumption (excludes the year\'s own cash flow - IndiGrid fix)', italic=True)
-    put(ws, 'AL237', 'MAX(90% of NDCF, MIN(DPU target x units, cash available)) - SEBI 90% is a floor', italic=True)
+        put(ws, f'AL{r}', lab)
 
     # ---------------- history -------------------------------------------------------------------
     for r, vals in H.items():

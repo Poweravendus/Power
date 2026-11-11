@@ -99,8 +99,8 @@ Note: this filing is a scanned document. Its text layer is partly garbled, so re
 
 ## Model
 
-`Model/PGInvIT_Model.xlsx` mirrors the IndiGrid model's eight sheets (Key Sheet New, Sensitivity_Bajaj, Cashflows_Bajaj, IRR Calculation_Bajaj, Consolidated, Qtrly, Assumption, AssetLevelEst). Rs crore throughout.
+`Model/PGInvIT_Model.xlsx`: eight sheets (Key Sheet New, Sensitivity_Bajaj, Cashflows_Bajaj, IRR Calculation_Bajaj, Consolidated, Qtrly, Assumption, AssetLevelEst), Rs crore throughout.
 
-- SPV DCFs reproduce the 31-Mar-2026 valuation (INMACS): EVs tie within 0.01%, except KATL at 0.45% because the valuer double-counts its terminal-year cash flow. FY26 NAV comes out at Rs 90.77 vs the reported Rs 90.79.
-- History: FY22-FY26 annual (audited) and 1QFY22-1QFY27 quarterly (NSE filings), extracted to `Model/data/*.json` with page citations.
-- Rebuild: the scripts in `Model/builder/` regenerate the workbook from the data files (`build_model.py`, then `recalc.py` for LibreOffice recalculation and `check.py` for the tie-out checks).
+- SPV DCFs reproduce the 31-Mar-2026 valuation (INMACS); FY26 NAV Rs 90.77 vs reported Rs 90.79.
+- History: FY22-FY26 annual (audited) and 1QFY22-1QFY27 quarterly (NSE filings), in `Model/data/*.json`.
+- Rebuild: `Model/builder/build_model.py`, then `recalc.py` (LibreOffice recalculation) and `check.py` (tie-out checks).
