@@ -72,7 +72,7 @@
 
 ## File versions
 - Model: KRN_Model_v1.xlsx (11-Nov-2026); KRN_Model_v2.xlsx (11-Nov-2026)
-- Note: KRN_Heat_Exchanger_Note_v1.docx
+- Note: KRN_Heat_Exchanger_Note_v1.docx; KRN_Heat_Exchanger_Note_v2.docx; KRN_Heat_Exchanger_Note_v3.docx (11-Nov-2026, base reset)
 - Evidence: notes/evidence.md
 
 ## 11-Nov-2026: standalone (parent) margin deep-dive (investor asked)
@@ -91,3 +91,18 @@ New sheet `Standalone_vs_Sub` in KRN_Model_v2.xlsx (script scratchpad/scripts/ad
 - Bear unchanged: Rs 394 (-59%).
 - All check rows 0 under bear, base and bull; selector back at 2. New Drivers rows 111-124 (value-per-unit factor, added output, extra capex, capex plan); rows 18 and 85 rewired. Scripts: scratchpad/scripts/update_krn_base_bull.py, run_scen_krn.py (updated), build_note_krn_v2.js.
 - Note v2 adds "Inside the numbers: the parent company vs the new subsidiary" and two new questions (subsidiary P&L / transfer pricing; s.115BAB). Note v1 kept unchanged.
+
+## 11-Nov-2026 (base reset): base = "most likely", old base kept as the floor -> model v2 updated in place, Note v3
+- Why: the base counted only committed volume (2QFY27 run-rate, new plant 50/65/72/78%, no value-per-unit gain, no new capacity), which lands below the price for a company priced on its plan. The investor asked for a growth base built from industry analysis and below guidance.
+- Floor (old base, memo on Valuations rows 108-118, pasted blue): revenue Rs 1,208 / 1,387 / 1,483 / 1,567 cr; EBITDA 204 / 243 / 262 / 276; PAT 143 / 173 / 189 / 209; EPS 21.79 / 26.38 / 28.84 / 31.89 (FY27E-FY30E); target Rs 791 (-18.2%), SELL.
+- New base: revenue Rs 1,228 / 1,615 / 1,995 / 2,464 cr; EBITDA margin 17.0 / 17.5 / 17.7 / 17.7%; PAT 146 / 204 / 256 / 320 cr; EPS 22.36 / 31.19 / 39.11 / 48.96. Target 30x FY28E = Rs 936 (-3.3%) => HOLD, 1.7 pts above the SELL line (HOLD from 29.5x, BUY from 35.7x). EV/EBITDA 18x cross-check Rs 791.
+- Bull (= management guidance, unchanged) Rs 1,434 (+48%); bear unchanged Rs 394 (-59%). Chance of management's plan already in the price = (967.40 - 936) / (1,434 - 936) = 6%.
+- Industry numbers used (D&B report in the QIP placement document, printed pages): India finned-tube heat exchangers USD 201.2 mn FY2026E -> 326.5 mn FY2030, 12.9% CAGR (p.149; history 145.4 -> 201.2 mn FY23-FY26E = 11.4%, p.115); India HVAC 13.7% CAGR FY25-FY30 (p.116); data centres in India 130 -> 271 CY21-CY25 = 20.2% (p.127, no forecast); global heat exchangers 8.5% CY26-CY30 (p.146); India heat-exchange exports USD 196.8 -> 327.4 mn FY21-FY25 = 13.6% (DGFT, pp.129-130); bus AC ~Rs 1,000 cr growing 20-25% (management, 3QFY26 call PDF 6, 16) with PM e-Bus Sewa 10,000 AC e-buses (pp.128-129). The 2024 Prospectus D&B report had the same finned-tube market at USD 326 mn by 2029 (p.201): the forecast has slipped a year.
+- Method (TAM sheet section D, rows 23-56): segment growth = market growth + haircut x KRN's shown share gain (domestic 31.7% vs 11.4%; exports 52.2% vs 13.6%; data centre 38.8% vs 20.2%; bus AC 42.2% vs 22.5%). Haircut 0.74 = mid of management's volume delivery on tested promises (0.64: new plant FY26, exports FY26, bus AC, old-plant claim) and all seven incl. FY27 on-track items (0.83); halved after FY28 (KRN ~half of the D&B domestic pool; more share needs uncommitted capacity). FY27E split (our estimate): domestic coils 588, data centre 300, exports 250, bus AC + rail 90. Industry build Rs 1,228 / 1,620 / 1,996 / 2,462 cr; model within 0.3%.
+- Position from floor (0%) to guidance (100%): 43% / 38% / 44% / 49% FY27-FY30. FY28 is just under the 40% rule of thumb: management's Rs 2,000 cr needs a +33% value per unit we cannot source. Below guidance every year on revenue and margin.
+- Base drivers changed (base rows only, reasons in column H, tag "Base reset 11-Nov-2026"): old-plant use 83/85/85/85% (row 11); new-plant use 51/77/86/90% (row 15); value per unit 1.00/1.05/1.07/1.08 (row 114); added output 0/0/1.25/3.4 lakh (row 118); extra capex 0/15/65/60 (row 122, ~Rs 40 cr per lakh as in the bull); staff-cost growth FY28-FY30 33/29/29% (row 60) so staff stays at the floor's share of sales and EBITDA keeps the approved ~17.5% path. Note: base staff growth is above the bull's 30/28/25% because the bull carries management's operating leverage (bull not rebuilt).
+- Checks: 0 formula errors (1,671 formulas); every check row 0 under bear, base and bull (Segments 0.0002 = FY22 rounding); Valuations C58 = 0; selector back at 2. Base FY27-30E CFO/PAT 0.47x (floor 0.72x): faster growth ties up working capital.
+- New sensitivity: no value-per-unit gain and no added capacity => target Rs 890 (-4.8%), SELL. Peer multiples still pending from Bloomberg; 30x kept in all cases.
+- Valuations additions: rows 120-127 (chance in price, floor-target memo, rating on the new base, distance to the nearest line); stale cells B83, C84:E84, C97:D97 from an earlier, longer table cleared; B49 wording updated.
+- Scripts: scratchpad/scripts/update_krn_base_reset.py (new), run_scen_krn.py (updated: path argument, base text in guidance table, TAM paste, new sensitivity), build_note_krn_v3.js (new; reads scratchpad/krn_floor_results.json for the floor). Note v3 = KRN_Heat_Exchanger_Note_v3.docx; v1 and v2 unchanged.
+- Not sourced: FY27 split of sales by segment (estimate); data-centre market forecast (D&B gives no forecast, only counts); rail oil-cooler revenue to date.
