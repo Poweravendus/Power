@@ -68,7 +68,7 @@ chk('Qtrly NDCF ties to reported every quarter', qchk and all(abs(q.cell(qchk[0]
 chk('NDCF = NDCF before capex + capex + net debt', all(abs(cv(235, fy) + cv(236, fy) + cv(237, fy) - cv(238, fy)) < 0.01 for fy in yrs))
 chk('Distribution >= 90% of NDCF (SEBI)', all(cv(246, fy) >= 0.9 * cv(238, fy) - 0.01 for fy in yrs))
 chk('Distribution never exceeds opening cash + cash available', all(cv(246, fy) <= cv(178, fy) + cv(240, fy) + 0.01 for fy in yrs))
-chk('Proposed = min(90% NDCF, DPU x units) from FY28', all(abs(cv(244, fy) - max(0, min(0.9 * cv(238, fy), cv(243, fy) * cv(56, fy)))) < 0.01 for fy in range(2028, 2055)))
+chk('Proposed = min(100% NDCF, DPU x units) from FY28', all(abs(cv(244, fy) - max(0, min(cv(238, fy), cv(243, fy) * cv(56, fy)))) < 0.01 for fy in range(2028, 2055)))
 chk('DPU x units = distribution', all(abs(cv(58, fy) * cv(56, fy) - cv(59, fy)) < 0.01 for fy in yrs))
 chk('FY27 DPU = Rs 12.00', abs(cv(58, 2027) - 12) < 1e-6)
 chk('NAV = AUM - net debt', all(abs(cv(249, fy) - cv(250, fy) - cv(251, fy)) < 0.01 for fy in yrs))
