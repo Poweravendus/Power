@@ -1,4 +1,4 @@
-"""Investor sheets (Sensitivity exit/maturity, Cashflows_Bajaj, IRR Calculation_Bajaj) and Key Sheet New."""
+"""Investor sheets (Sensitivity debt schedule, Cashflows_Bajaj, IRR Calculation_Bajaj)."""
 import datetime as dt
 from common import *
 from core import SPVS, SEN, scol, FYN, S_FY0, a_row, acol, FY0
@@ -26,37 +26,8 @@ def lookup(row, label_expr):
     return f'INDEX({C_RANGE(row)},MATCH({label_expr},{C_RANGE(CR["hdr"])},0))'
 
 
-def build_sens_returns(ws, entry_date, first_pay):
-    """Hold-to-maturity unitholder cash flows (quarterly distributions to FY54)."""
-    top = SEN['mat_hdr']
-    n = (FYN - 2026) * 4 - 1
-    put(ws, f'B{top - 1}', 'Amount - Rs. / unit', bold=True)
-    put(ws, f'B{top}', 'HOLD TO MATURITY', bold=True)
-    rl, rd, rp, rdist, rtot = top + 1, top + 2, top + 3, top + 4, top + 5
-    put(ws, f'B{rl}', 'Financial year (quarter paid for)')
-    put(ws, f'B{rd}', 'Payment date')
-    put(ws, f'B{rp}', 'Entry price')
-    put(ws, f'B{rdist}', 'Distribution  (DPU / 4)')
-    put(ws, f'B{rtot}', 'Total cash', bold=True)
-    put(ws, f'C{rl}', 'Entry', align='right')
-    put(ws, f'C{rd}', entry_date, fmt='dd-mmm-yy', color=BLUE)
-    put(ws, f'C{rp}', '=-$C$2', fmt=NUM2)
-    put(ws, f'C{rdist}', 0, fmt=NUM2)
-    put(ws, f'C{rtot}', f'=C{rp}+C{rdist}', fmt=NUM2, bold=True)
-    for k in range(n):
-        c = L(4 + k)
-        if k == 0:
-            put(ws, f'{c}{rd}', first_pay, fmt='dd-mmm-yy', color=BLUE)
-        else:
-            put(ws, f'{c}{rd}', f'=EOMONTH({L(3 + k)}{rd},3)', fmt='dd-mmm-yy')
-        # quarter paid for ends ~2 months before payment; label = fiscal year of that quarter
-        put(ws, f'{c}{rl}', f'="FY"&TEXT(MOD(YEAR(EDATE({c}{rd},-2))+IF(MONTH(EDATE({c}{rd},-2))>=4,1,0),100),"00")&"E"', align='right')
-        put(ws, f'{c}{rp}', 0, fmt=NUM2)
-        put(ws, f'{c}{rdist}', f'=IFERROR({lookup(CR["dpu"], f"{c}{rl}")}/4,0)', fmt=NUM2)
-        put(ws, f'{c}{rtot}', f'={c}{rp}+{c}{rdist}', fmt=NUM2, bold=True)
-    last = L(3 + n)
-    put(ws, 'C3', f'=XIRR(C{rtot}:{last}{rtot},C{rd}:{last}{rd})', fmt=PCT, bold=True)
-
+def build_sens_returns(ws, entry_date=None, first_pay=None):
+    """Debt schedule on the driver sheet (linked to Consolidated)."""
     # debt schedule, linked to Consolidated
     r = SEN['debt']
     put(ws, f'B{r - 1}', 'DEBT  -  Rs. cr', bold=True)

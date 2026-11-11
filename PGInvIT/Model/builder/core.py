@@ -12,9 +12,9 @@ RTM_PV = {'KATL': 24.145, 'PPTL': 9.018}
 MON = {m: i + 1 for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
 
 # ---- layout constants -------------------------------------------------------------------------
-SEN = dict(price=2, xirr_mat=3, avail_hdr=7, avail=8, tariff_hdr=15, tariff=16,
+SEN = dict(price=2, avail_hdr=7, avail=8, tariff_hdr=15, tariff=16,
            ladder=24, eff_hdr=31, eff=32, eff_tot=37, marg_hdr=40, marg=41, wc_hdr=48, wc=49,
-           mat_hdr=55, debt=74)
+           debt=56)
 A_BLOCK = 23                     # rows per SPV block in AssetLevelEst
 A_START = 3
 
@@ -58,7 +58,6 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
     put(ws, 'B2', 'Entry price, Rs./ unit', bold=True)
     put(ws, 'C2', price, fmt=NUM2, bold=True, color=BLUE)
     put(ws, 'D2', '<< Punch in entry price', italic=True)
-    put(ws, 'B3', 'XIRR  -  hold to maturity', bold=True)
 
     def year_header(r, title):
         put(ws, f'B{r - 1}', title, bold=True)
