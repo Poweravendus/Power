@@ -43,7 +43,13 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     175: ('Net cash flow generated from / (used in) financing activities', 'b'), 177: ('Net change in cash and cash equivalents', 'b'),
     178: ('Cash and cash equivalents at beginning', ''), 179: ('Cash and cash equivalents at end', 'b'),
     181: ('Working Capital', 'h'), 182: ('Receivable Days', ''), 183: ('Inventory Days', ''), 184: ('Payable Days', ''),
-    185: ('Working Capital Days', 'b'), 210: ('FCF (CFO + capex)', 'b'),
+    185: ('Working Capital Days', 'b'), 187: ('Abridged Cash Flow', 'h'), 188: ('Sources of Funds', 'b'),
+    189: ('Operating Cashflows before WC', ''), 190: ('Interest and other income received', ''), 192: ('Equity', ''),
+    193: ('Net Debt', ''), 194: ('Total Sources of Funds', 'b'), 196: ('Application of Funds (positive number indicates outflow)', 'b'),
+    197: ('Working Capital', ''), 198: ('Tax', ''), 199: ('CAPEX', ''), 200: ('Investments in SPVs / Acquisitions', ''),
+    201: ('Bank Deposits', ''), 202: ('Interest', ''), 203: ('Distributions to Unitholders', ''), 204: ('Others', ''),
+    205: ('Total Application of Funds', 'b'), 207: ('Net Cash', 'b'), 208: ('Check (vs cash flow statement)', 'g'),
+    210: ('FCF (CFO + capex)', 'b'),
     212: ('NDCF, Rs. cr', 'h'), 213: ('EBITDA at SPV', ''), 214: ('Finance Income', ''), 215: ('WC Movement', ''),
     216: ('Capex related movement', ''), 217: ('Tax at SPV', ''), 218: ('NDCF at SPV', 'b'), 219: ('Expenses at Trust (IM fee and Trust costs)', ''),
     220: ('Finance cost at Trust', ''), 221: ('MTM', ''), 222: ('DSRA', ''), 223: ('Retained at SPV / other adjustments', ''), 224: ('Tax at Trust', ''),
@@ -56,7 +62,8 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
 }
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses FY26 base (Rs. cr), escalated with IM fee rate', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block (FY26)', None, PCT2),
-           27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Annual scheduled repayment (FY26 actual); balance assumed refinanced', 8.3, NUM1),
+           27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line, IndiGrid method; first TSA expiry = VTL, Jan-2052)', 2052, '0'),
+           91: ('Annual amortisation of intangibles (FY26 actual)', 14.8, NUM1),
            228: ('Minimum cash balance (Rs. cr)', None, NUM), 235: ('DPU growth target, % p.a.', 0.0, PCT),
            236: ('FY27 DPU target (Rs./unit)', 12.0, NUM2)}
 
@@ -68,7 +75,7 @@ def build_consolidated(ws, H, drivers):
     fut = range(C_HIST_LAST + 1, FYN + 1)
     for r, (lab, kind) in ROWS.items():
         put(ws, f'B{r}', lab, bold=kind in ('h', 'b'), color=RED if kind == 'g' else None, border_b=kind == 'h')
-    for r in (3, 62, 117, 181, 212):
+    for r in (3, 62, 117, 181, 187, 212):
         for fy in range(C_FY0, FYN + 1):
             put(ws, f'{ccol(fy)}{r}', clabel(fy), bold=True, align='right', border_b=True)
     put(ws, 'AK3', 'Driver', bold=True, border_b=True, align='right')
@@ -131,7 +138,7 @@ def build_consolidated(ws, H, drivers):
             9: f'={p}9*(1+$AK$9)', 10: 0, 11: 0, 12: 0, 13: 0,
             14: f'={A("Total Expenses")}+$AK$14*(1+$AK$9)^{n}', 15: f'=SUM({c}9:{c}14)',
             17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 19: f'=IFERROR({c}17/{p}17-1,"")',
-            21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'={c}24*AVERAGE({p}85,{c}85)', 24: '=$AK$24',
+            21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'=MIN({c}24*AVERAGE({p}85,{c}85),{p}87+{c}85-{p}85)+({p}91-{c}91)', 24: '=$AK$24',
             26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}73,{c}76)', 29: 0,
             31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}', 38: 0, 39: 0,
             40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)', 43: f'={c}34-{c}40', 45: 0, 47: f'={c}43+{c}45',
@@ -139,16 +146,16 @@ def build_consolidated(ws, H, drivers):
             56: f'={p}56+{c}252', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}239',
             60: f'=IF({c}226>={c}59,"Yes","No")',
             64: f'={p}64+{c}163', 65: f'={p}65+{c}52-{c}59', 66: f'={c}64+{c}65', 68: f'={p}68',
-            73: f'={p}76', 74: '=$AK$74', 75: f'=MIN({c}73,$AK$75)', 76: f'={c}73+{c}74-{c}75',
+            73: f'={p}76', 74: '=$AK$74', 75: f'=IF({fy}>$AK$75,0,{c}73/($AK$75-{fy}+1))', 76: f'={c}73+{c}74-{c}75',
             78: f'={p}78', 79: f'={p}79', 80: f'={p}80', 81: f'={c}76+{c}78+{c}79+{c}80', 83: f'={c}66+{c}68+{c}81',
-            85: f'={p}85+{A("Capex")}', 86: f'={p}86+{c}23+{c}29', 87: f'={c}85-{c}86', 88: f'={p}88',
-            91: f'={p}91', 92: f'={p}92', 93: f'={p}93', 95: f'={p}95', 96: f'=SUM({c}90:{c}95)',
+            85: f'={p}85+{A("Capex")}', 86: f'={p}86+{c}23-({p}91-{c}91)+{c}29', 87: f'={c}85-{c}86', 88: f'={p}88',
+            91: f'=MAX(0,{p}91-$AK$91)', 92: f'={p}92', 93: f'={p}93', 95: f'={p}95', 96: f'=SUM({c}90:{c}95)',
             98: f'={c}183*{c}15/365', 99: f'={c}182*{c}6/365', 100: f'={p}100', 101: f'={c}102-{c}100', 102: f'={c}179',
             104: f'={p}104', 105: f'={c}98+{c}99+{c}102+{c}103+{c}104', 107: f'={c}184*{c}15/365', 108: f'={p}108', 109: f'={p}109',
             110: f'=SUM({c}107:{c}109)', 112: f'={c}105-{c}110', 114: f'={c}96+{c}112+{c}88+{c}87', 115: f'={c}83-{c}114',
             119: f'={c}34', 121: f'={c}23', 123: f'={c}29', 129: f'={c}28', 134: f'=SUM({c}119:{c}133)',
             136: f'={p}98-{c}98', 137: f'={p}99-{c}99',
-            139: f'={p}96-{c}96+{p}104-{c}104+{c}108-{p}108+{c}109-{p}109+{c}78-{p}78+{c}79-{p}79+{c}80-{p}80',
+            139: f'={p}96-{c}96-({p}91-{c}91)+{p}104-{c}104+{c}108-{p}108+{c}109-{p}109+{c}78-{p}78+{c}79-{p}79+{c}80-{p}80',
             140: f'={c}107-{p}107', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143', 145: f'=-{c}40', 146: f'={c}144+{c}145',
             148: f'=-({c}85-{p}85+{c}88-{p}88)', 161: f'=SUM({c}148:{c}160)', 163: f'={c}250', 166: f'={c}74', 167: f'=-{c}75',
             172: f'=-{c}28', 174: f'=-{c}59', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
@@ -170,7 +177,15 @@ def build_consolidated(ws, H, drivers):
             if r in (21, 24, 27):
                 fmt = PCT2
             put(ws, f'{c}{r}', form, fmt=fmt, bold=kind in ('b',), color=RED if kind == 'g' else None)
-    for r in (115,):
+    for fy in range(C_FY0, FYN + 1):
+        c = ccol(fy)
+        ab = {189: f'={c}134', 190: f'=N({c}156)', 192: f'=N({c}163)+N({c}164)', 193: f'=N({c}165)+N({c}166)+N({c}167)',
+              194: f'=SUM({c}189:{c}193)', 197: f'=-{c}143', 198: f'=-{c}145', 199: f'=-{c}148', 200: f'=-N({c}152)',
+              201: f'=-N({c}160)', 202: f'=-{c}172', 203: f'=-{c}174', 204: f'=-N({c}171)', 205: f'=SUM({c}197:{c}204)',
+              207: f'={c}194-{c}205', 208: f'={c}207-{c}177'}
+        for r, form in ab.items():
+            put(ws, f'{c}{r}', form, fmt=NUM1, bold=r in (194, 205, 207))
+    for r in (115, 208):
         for fy in range(C_FY0, FYN + 1):
             ws[f'{ccol(fy)}{r}'].fill = CHK_FILL
     put(ws, 'B246', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)

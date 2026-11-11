@@ -60,7 +60,7 @@ W['Assumption'].freeze_panes = 'D3'
 
 spv_opex27 = sum(opex[s][2027] for s in SPVS)
 nonim26 = sum(H[r][2026] for r in (10, 11, 12, 13, 14))
-drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=G23/AVERAGE(F85,G85)', 27: f'=G28/AVERAGE(F76,G76)', 228: '=G102'}
+drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=(G23-AK91)/AVERAGE(F85,G85)', 27: f'=G28/AVERAGE(F76,G76)', 228: '=G102'}
 build_consolidated(W['Consolidated'], H, drivers)
 W['Consolidated'].freeze_panes = 'C4'
 build_cashflows(W['Cashflows_Bajaj']); W['Cashflows_Bajaj'].freeze_panes = 'C4'
@@ -79,8 +79,8 @@ import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
 F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 252,
-                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 212, 249])
-for ref in [f'{_cc(fy)}115' for fy in range(2022, FYN + 1)] + ['G246']:
+                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 187, 212, 249])
+for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (115, 208)] + ['G246']:
     F.fill(W['Consolidated'][ref], F.YEL)
 if os.path.exists(qpath):
     F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
@@ -121,7 +121,7 @@ for k in range(3, 3 + 21):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
 # ---------------- no-fill spacer rows between sections ----------------
-F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 210, 212, 249}, 4, 252)
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 187, 210, 212, 249}, 4, 252)
 if os.path.exists(qpath):
     wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in

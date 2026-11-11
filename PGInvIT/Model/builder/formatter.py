@@ -430,7 +430,7 @@ def nf_consolidated(ws, c1, c2, last_row):
             _nf(ws.cell(r, k), fmt)
         drv = ws.cell(r, c2 + 2)
         if drv.value is not None:
-            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r == 75 and False else N1C if r == 236 else N0B)
+            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r == 75 else N1C if r in (236, 91) else N0B)
 
 
 def nf_assumption(ws, pct_rows, period_rows, c1, c2, extra_cols):
