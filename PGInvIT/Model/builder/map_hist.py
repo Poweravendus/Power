@@ -47,15 +47,8 @@ def build_H(path):
         163: C('cff_proceeds_from_issue_of_unit_capital'), 166: C('cff_proceeds_from_borrowings'), 167: C('cff_repayment_of_borrowings'),
         171: C('cff_dividend_paid_to_nci'), 172: C('cff_finance_cost_paid'), 174: C('cff_distribution_to_unitholders'),
         178: add(C('opening_cash'), C('cash_acquired_on_acquisition_date')),
-        218: N('ndcf_spv_level_sum_of_5_spvs'), 226: N('ndcf_trust_level'), 244: O('nav_per_unit_fair_value_rs'),
+        252: O('nav_per_unit_fair_value_rs'),
     }
-    # NDCF bridge from SPV-level NDCF to Trust NDCF (old framework FY22-24, revised FY25-26)
-    H[219] = add(N('trust_old_fees_interest_expenses_at_trust'), N('trust_new_cfo_of_trust'), N('trust_new_treasury_income'))
-    H[220] = N('trust_new_finance_cost_on_borrowings')
-    H[222] = N('trust_old_dsra_set_aside')
-    H[224] = N('trust_old_income_tax_statutory_dues')
-    H[225] = add(N('trust_old_repayment_of_external_debt'), N('trust_new_debt_repayment'))
-    H[223] = {fy: H[226][fy] - H[218][fy] - sum(H[r].get(fy) or 0 for r in (219, 220, 222, 224, 225)) for fy in H[226]}
     for r in list(H):
         H[r] = {k: v for k, v in H[r].items() if v is not None}
     return H, d

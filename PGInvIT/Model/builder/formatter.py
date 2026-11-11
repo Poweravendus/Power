@@ -394,8 +394,8 @@ def nf_sensitivity(ws, SEN, hist_c2, fc_c2, n_spv, exit_last, mat_last):
 
 
 CONS_NF = {7: '0%', 18: '0%', 19: '0%', 21: '0%', 24: '0.0%', 27: '0.0%', 41: '0%', 53: '0%', 54: '0%', 57: '0.0%',
-           58: N1C, 235: '0.0%', 236: '#,##0.0;\\-#,##0.0', 241: N0A, 242: N0A, 243: N0A, 244: N0A, 245: '0%',
-           246: '#,##0.00', 251: N0A, 252: '#,##0.0;\\(#,##0.0\\)'}
+           58: N1C, 242: '0.0%', 243: N1C, 249: N0A, 250: N0A, 251: N0A, 252: N1C, 253: '0%',
+           254: '#,##0.00', 258: N1C, 259: '#,##0.0;\\(#,##0.0\\)'}
 
 
 def nf_consolidated(ws, c1, c2, last_row):
@@ -405,7 +405,7 @@ def nf_consolidated(ws, c1, c2, last_row):
             _nf(ws.cell(r, k), fmt)
         drv = ws.cell(r, c2 + 2)
         if drv.value is not None:
-            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r in (75, 239) else N1C if r in (236, 91, 224) else N0B)
+            _nf(drv, '0.0%' if r in (9, 21, 24, 27) else '0' if r in (75,) else N1C if r in (91, 227) else N0B)
 
 
 def nf_assumption(ws, pct_rows, period_rows, c1, c2, extra_cols):

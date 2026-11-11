@@ -58,29 +58,26 @@ W['AssetLevelEst'].freeze_panes = 'D3'
 build_assumption(W['Assumption'], V, ainfo)
 W['Assumption'].freeze_panes = 'D3'
 
+qpath = f'{SP}/agentB/quarterly_history.json'
+from qtrly import build_qtrly
+QCOL, QROWS = build_qtrly(W['Qtrly'], json.load(open(qpath)))
 spv_opex27 = sum(opex[s][2027] for s in SPVS)
 nonim26 = sum(H[r][2026] for r in (10, 11, 12, 13, 14))
-drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=(G23-AK91)/AVERAGE(F85,G85)', 27: f'=G28/AVERAGE(F76,G76)', 228: '=G102'}
-build_consolidated(W['Consolidated'], H, drivers)
+drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=(G23-AK91)/AVERAGE(F85,G85)', 27: f'=G28/AVERAGE(F76,G76)'}
+build_consolidated(W['Consolidated'], H, drivers, QCOL, QROWS)
 W['Consolidated'].freeze_panes = 'C4'
 build_cashflows(W['Cashflows_Bajaj']); W['Cashflows_Bajaj'].freeze_panes = 'C4'
 build_irr(W['IRR Calculation_Bajaj'], UNITS, ENTRY)
 build_keysheet(W['Key Sheet New'], S, V)
 
-qpath = f'{SP}/agentB/quarterly_history.json'
-if os.path.exists(qpath):
-    from qtrly import build_qtrly
-    build_qtrly(W['Qtrly'], json.load(open(qpath)))
-else:
-    put(W['Qtrly'], 'B2', 'Quarterly data pending', italic=True)
 
 # ---------------- visual conventions on every sheet ----------------
 import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
-F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 252,
-                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 187, 212, 249])
-for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (115, 208)] + ['G246']:
+F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 259,
+                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 187, 212, 256])
+for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (115, 208, 233) if not (r == 233 and fy > 2026)] + ['G254']:
     F.fill(W['Consolidated'][ref], F.YEL)
 if os.path.exists(qpath):
     F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
@@ -98,7 +95,7 @@ F.fmt_irr(W['IRR Calculation_Bajaj'], 3 + FYN - 2027)
 
 # collapse long empty bands in Consolidated (keep one spacer row)
 wc = W['Consolidated']
-empty = [r for r in range(4, 253) if all(wc.cell(r, k).value is None for k in range(2, CI(_cc(FYN)) + 1))]
+empty = [r for r in range(4, 260) if all(wc.cell(r, k).value is None for k in range(2, CI(_cc(FYN)) + 1))]
 for r in empty:
     if r - 1 in empty and r + 1 in empty or (r - 1 in empty and r - 2 in empty):
         wc.row_dimensions[r].hidden = True
@@ -118,7 +115,7 @@ for k in range(3, 3 + 21):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
 # ---------------- no-fill spacer rows between sections ----------------
-F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 187, 210, 212, 249}, 4, 252)
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 187, 210, 212, 235, 242, 249, 256}, 4, 259)
 if os.path.exists(qpath):
     wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
@@ -127,7 +124,7 @@ if os.path.exists(qpath):
 # ---------------- number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
-F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 252)
+F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 259)
 pct_rows = [a_row(it, i) for it in ('EBITDA Margin %', 'WACC, %') for i in range(len(SPVS))] + [a_row('EBITDA Margin %')]
 per_rows = [a_row('Discount period', i) for i in range(len(SPVS))]
 F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK'), CI('AM')])

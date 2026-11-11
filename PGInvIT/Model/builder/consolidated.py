@@ -50,25 +50,33 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     201: ('Bank Deposits', ''), 202: ('Interest', ''), 203: ('Distributions to Unitholders', ''), 204: ('Others', ''),
     205: ('Total Application of Funds', 'b'), 207: ('Net Cash', 'b'), 208: ('Check (vs cash flow statement)', 'g'),
     210: ('FCF (CFO + capex)', 'b'),
-    212: ('NDCF, Rs. cr', 'h'), 213: ('EBITDA at SPV', ''), 214: ('Finance Income', ''), 215: ('WC Movement', ''),
-    216: ('Capex related movement', ''), 217: ('Tax at SPV', ''), 218: ('NDCF at SPV', 'b'), 219: ('Expenses at Trust (IM fee and Trust costs)', ''),
-    220: ('Finance cost at Trust', ''), 221: ('MTM', ''), 222: ('DSRA', ''), 223: ('Retained at SPV / other adjustments', ''), 224: ('Tax at Trust', ''),
-    225: ('Debt drawdown / (repayment)', ''), 226: ('NDCF Generated', 'b'), 228: ('Add: opening cash above minimum cash', ''),
-    229: ('Cash available before paying Distribution', 'b'), 235: ('DPU Growth, % (target)', 'p'), 236: ('DPU target, Rs./ unit', ''),
-    237: ('Proposed Distribution', ''), 238: ('Net Cash retained / (drawn)', ''), 239: ('Actual Distribution', 'b'),
-    240: ('Check: distribution >= 90% of NDCF (SEBI floor)', ''), 241: ('AUM / Value of InvIT Assets - Enterprise Value', 'b'),
-    242: ('Less: Net Debt', ''), 243: ('Equity (NAV)', 'b'), 244: ('NAV / unit, Rs.', 'b'), 245: ('Net Debt / AUM', 'p'),
-    249: ('Capital Raise', 'h'), 250: ('Rs. cr', ''), 251: ('Price at which dilution happens (prior-year NAV)', ''), 252: ('Additional Units Issued, cr', ''),
+    212: ('NDCF (as reported), Rs. cr', 'h'),
+    213: ('NDCF at SPV - VTL', ''), 214: ('NDCF at SPV - KATL', ''), 215: ('NDCF at SPV - PPTL', ''), 216: ('NDCF at SPV - WTL', ''),
+    217: ('NDCF at SPV - JPTL', ''), 218: ('NDCF at SPV', 'b'), 219: ('Interest income from SPVs', ''), 220: ('Dividend income from SPVs', ''),
+    221: ('Repayment of capital (SPV debt)', ''), 222: ('Distributions received from SPVs', 'b'), 223: ('Retained at SPVs', ''),
+    224: ('Cash flow from operating activities at Trust', ''), 225: ('Other income', ''), 226: ('WC movement', ''),
+    227: ('Tax at Trust', ''), 228: ('Finance cost on borrowing', ''), 229: ('Debt repayment', ''), 230: ('Capex', ''),
+    231: ('DSRA / other adjustments', ''), 232: ('NDCF Generated', 'b'), 233: ('Check vs reported NDCF', 'g'),
+    235: ('NDCF before CAPEX and Capital Raise', ''), 236: ('Less: CAPEX', ''), 237: ('Add: Net Debt', ''), 238: ('NDCF', 'b'),
+    239: ('Add: Capital Raise', ''), 240: ('Cash available before paying Distribution', 'b'),
+    242: ('DPU Growth, %', 'p'), 243: ('DPU, Rs./ unit', ''), 244: ('Proposed Distribution', ''), 245: ('Net Cash', ''),
+    246: ('Actual Distribution', 'b'), 247: ('Check', ''),
+    249: ('AUM/ Value of InvIT Assets - Enterprise Value', 'b'), 250: ('Less: Net Debt', ''), 251: ('Equity', 'b'), 252: ('Equity/ Share', 'b'),
+    253: ('Net Debt/ AUM (D/E)', 'p'),
+    256: ('Capital Raise', 'h'), 257: ('Rs. cr', ''), 258: ('Price at which dilution happens (prior-year NAV)', ''), 259: ('Additional Units Issued, cr', ''),
 }
+NDCF_Q = {213: 'NDCF at SPV - VTL', 214: 'NDCF at SPV - KATL', 215: 'NDCF at SPV - PPTL', 216: 'NDCF at SPV - WTL', 217: 'NDCF at SPV - JPTL',
+          219: 'Interest income from SPVs', 220: 'Dividend income from SPVs', 221: 'Repayment of capital (SPV debt)',
+          224: 'Cash flow from operating activities at Trust', 225: 'Other income', 226: 'WC movement', 227: 'Tax at Trust',
+          228: 'Finance cost on borrowing', 229: 'Debt repayment', 230: 'Capex', 231: 'DSRA / other adjustments'}
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
            27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line)', 2052, '0'),
            91: ('Annual amortisation of intangibles', 14.8, NUM1),
-           224: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1), 228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
-           236: ('DPU target (Rs./unit)', 12.0, NUM2)}
+           227: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 
 
-def build_consolidated(ws, H, drivers):
+def build_consolidated(ws, H, drivers, qcol, qrows):
     """H: {row: {fy: value}} historical inputs (Rs cr). drivers: overrides for DRIVERS defaults."""
     std_sheet(ws, colA=2.57, widths={'B': 46, 'AK': 10, 'AL': 52})
     hist = range(C_FY0, C_HIST_LAST + 1)
@@ -102,26 +110,34 @@ def build_consolidated(ws, H, drivers):
              105: f'={c}98+{c}99+{c}102+{c}103+{c}104', 110: f'=SUM({c}107:{c}109)', 112: f'={c}105-{c}110',
              114: f'={c}96+{c}112+{c}88+{c}87', 115: f'={c}83-{c}114',
              182: f'=IF({c}6=0,"",{c}99/{c}6*365)', 183: f'=IF({c}15=0,"",{c}98/{c}15*365)', 184: f'=IF({c}15=0,"",{c}107/{c}15*365)',
-             185: f'=IF({c}182="","",{c}182+{c}183-{c}184)', 210: f'={c}146+{c}148', 243: f'=IF({c}244="","",{c}244*{c}56)',
-             242: f'={c}76-{c}102', 134: f'=SUM({c}119:{c}133)', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143',
+             185: f'=IF({c}182="","",{c}182+{c}183-{c}184)', 210: f'={c}146+{c}148', 251: f'=IF({c}252="","",{c}252*{c}56)',
+             250: f'={c}76-{c}102', 134: f'=SUM({c}119:{c}133)', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143',
              146: f'={c}144+{c}145', 161: f'=SUM({c}148:{c}160)', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
-             179: f'={c}177+{c}178', 59: f'={c}58*{c}56', 218: f'=SUM({c}213:{c}217)' if H.get(213, {}).get(fy) is not None else None,
-             241: f'={c}243+{c}242' if fy < C_HIST_LAST else None}
+             179: f'={c}177+{c}178', 59: f'={c}58*{c}56', 218: f'=SUM({c}213:{c}217)', 222: f'=SUM({c}219:{c}221)',
+             223: f'={c}222-{c}218', 232: f'={c}222+SUM({c}224:{c}231)', 60: f'=IF({c}232>={c}59,"Yes","No")', 249: f'={c}251+{c}250' if fy < C_HIST_LAST else None}
+        qc = [qcol[q] for q in qcol if 2000 + int(q[-2:]) == fy]
+        for r, lab in NDCF_Q.items():
+            f[r] = f'=SUM(Qtrly!{qc[0]}{qrows[lab]}:{qc[-1]}{qrows[lab]})'
+        f[233] = f'={c}232-SUM(Qtrly!{qc[0]}{qrows["NDCF (as reported)"]}:{qc[-1]}{qrows["NDCF (as reported)"]})'
         f = {k: v for k, v in f.items() if v is not None}
         if 58 not in H or H[58].get(fy) is None:
             f[58] = f'=IF({c}56=0,"",{c}59/{c}56)'
         for r, form in f.items():
             if H.get(r, {}).get(fy) is None:
-                put(ws, f'{c}{r}', form, fmt=PCT if r in (18, 41, 53) else NUM1, bold=ROWS.get(r, ('', ''))[1] == 'b')
+                put(ws, f'{c}{r}', form, fmt=PCT if r in (18, 41, 53) else NUM1, bold=ROWS.get(r, ('', ''))[1] == 'b',
+                    color=RED if r == 233 else None)
         if p:
             for r, base in ((7, 6), (19, 17), (54, 52), (57, 58)):
                 put(ws, f'{c}{r}', f'=IFERROR({c}{base}/{p}{base}-1,"")', fmt=PCT, color=RED)
     G = ccol(C_HIST_LAST)
-    put(ws, f'{G}241', f'=Assumption!{acol(2026)}{a_row("AUM (Rs. cr)")}', fmt=NUM1, bold=True)
-    put(ws, f'{G}243', f'={G}241-{G}242', fmt=NUM1, bold=True)
-    put(ws, f'{G}244', f'={G}243/{G}56', fmt=NUM2, bold=True)
-    put(ws, f'{G}245', f'={G}242/{G}241', fmt=PCT)
-    put(ws, f'{G}236', f'={G}58', fmt=NUM2)
+    put(ws, f'{G}249', f'=Assumption!{acol(2026)}{a_row("AUM (Rs. cr)")}', fmt=NUM1, bold=True)
+    put(ws, f'{G}251', f'={G}249-{G}250', fmt=NUM1, bold=True)
+    put(ws, f'{G}252', f'={G}251/{G}56', fmt=NUM2, bold=True)
+    put(ws, f'{G}253', f'={G}250/{G}249', fmt=PCT)
+    put(ws, f'{G}243', f'={G}58', fmt=NUM2)
+    for fy in hist:
+        if fy < C_HIST_LAST:
+            put(ws, f'{ccol(fy)}253', f'={ccol(fy)}250/{ccol(fy)}249', fmt=PCT)
 
     # ---------------- forecast -------------------------------------------------------------------
     for fy in fut:
@@ -135,11 +151,11 @@ def build_consolidated(ws, H, drivers):
             17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 19: f'=IFERROR({c}17/{p}17-1,"")',
             21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'=MIN({c}24*AVERAGE({p}85,{c}85),{p}87+{c}85-{p}85)+({p}91-{c}91)', 24: '=$AK$24',
             26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}73,{c}76)', 29: 0,
-            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$224', 38: 0, 39: 0,
+            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$227', 38: 0, 39: 0,
             40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)', 43: f'={c}34-{c}40', 45: 0, 47: f'={c}43+{c}45',
             49: 0, 52: f'={c}43-{c}49', 53: f'=IF({c}6=0,"",{c}52/{c}6)', 54: f'=IFERROR({c}52/{p}52-1,"")',
-            56: f'={p}56+{c}252', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}239',
-            60: f'=IF({c}226>={c}59,"Yes","No")',
+            56: f'={p}56+{c}259', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}246',
+            60: f'=IF({c}232>={c}59,"Yes","No")',
             64: f'={p}64+{c}163', 65: f'={p}65+{c}52-{c}59', 66: f'={c}64+{c}65', 68: f'={p}68',
             73: f'={p}76', 74: '=$AK$74', 75: f'=IF({fy}>$AK$75,0,{c}73/($AK$75-{fy}+1))', 76: f'={c}73+{c}74-{c}75',
             78: f'={p}78', 79: f'={p}79', 80: f'={p}80', 81: f'={c}76+{c}78+{c}79+{c}80', 83: f'={c}66+{c}68+{c}81',
@@ -152,23 +168,25 @@ def build_consolidated(ws, H, drivers):
             136: f'={p}98-{c}98', 137: f'={p}99-{c}99',
             139: f'={p}96-{c}96-({p}91-{c}91)+{p}104-{c}104+{c}108-{p}108+{c}109-{p}109+{c}78-{p}78+{c}79-{p}79+{c}80-{p}80',
             140: f'={c}107-{p}107', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143', 145: f'=-{c}40', 146: f'={c}144+{c}145',
-            148: f'=-({c}85-{p}85+{c}88-{p}88)', 161: f'=SUM({c}148:{c}160)', 163: f'={c}250', 166: f'={c}74', 167: f'=-{c}75',
+            148: f'=-({c}85-{p}85+{c}88-{p}88)', 161: f'=SUM({c}148:{c}160)', 163: f'={c}257', 166: f'={c}74', 167: f'=-{c}75',
             172: f'=-{c}28', 174: f'=-{c}59', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
             178: f'={p}102', 179: f'={c}177+{c}178',
             182: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"]}', 183: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 1}',
             184: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 2}', 185: f'={c}182+{c}183-{c}184', 210: f'={c}146+{c}148',
-            213: f'={A("EBITDA")}', 214: f'={c}22', 215: f'={c}143', 216: f'={c}148', 217: f'=-{A("Taxation (levered, used for NDCF)")}',
-            218: f'=SUM({c}213:{c}217)', 219: f'={c}17-{c}213', 220: f'=-{c}28', 221: 0, 222: 0, 223: 0, 224: '=-$AK$224',
-            225: f'={c}74-{c}75', 226: f'=SUM({c}218:{c}225)', 228: f'=MAX(0,{p}102-$AK$228)', 229: f'={c}226+{c}228',
-            235: '=$AK$235', 236: (f'=$AK$236' if fy == C_HIST_LAST + 1 else f'={p}236*(1+{c}235)'),
-            237: f'=MAX(0.9*{c}226,MIN({c}236*{c}56,{c}229))', 238: f'={c}226-{c}239', 239: f'=IF({fy}<=$AK$239,{c}236*{c}56,MAX(0,{c}237))',
-            240: f'=IF({c}239>=0.9*{c}226-0.001,"ok","below 90% floor")',
-            241: f'={A("AUM (Rs. cr)")}', 242: f'={c}76-{c}102', 243: f'={c}241-{c}242', 244: f'={c}243/{c}56',
-            245: f'=IF({c}241=0,"",{c}242/{c}241)', 250: 0, 251: f'={p}244', 252: f'=IFERROR({c}250/{c}251,0)',
+            **{213 + i: f'=Assumption!{ac}{a_row("EBITDA", i)}-Assumption!{ac}{a_row("Taxation (levered, used for NDCF)", i)}' for i in range(len(SPVS))},
+            218: f'=SUM({c}213:{c}217)', 222: f'={c}218', 223: f'={c}222-{c}218', 224: f'={c}17-{A("EBITDA")}', 225: f'={c}22',
+            226: f'={c}143', 227: '=-$AK$227', 228: f'=-{c}28', 232: f'={c}222+SUM({c}224:{c}231)',
+            235: f'={c}232', 236: f'={c}148', 237: f'={c}166+{c}167', 238: f'=SUM({c}235:{c}237)', 239: f'={c}163',
+            240: f'={c}238+{c}239', 242: 0, 243: f'={p}243*(1+{c}242)',
+            244: (f'={c}243*{c}56' if fy == C_HIST_LAST + 1 else f'=MAX(0,MIN(0.9*{c}238,{c}243*{c}56))'),
+            245: f'={c}240-{c}244', 246: f'=IF(MIN({c}244,{c}178+{c}240)<0,0,MIN({c}244,{c}178+{c}240))',
+            247: f'=IF(AND({c}238-{c}246>0,{c}246/{c}238>=0.9),"ok","not ok")',
+            249: f'={A("AUM (Rs. cr)")}', 250: f'={c}76-{c}102', 251: f'={c}249-{c}250', 252: f'={c}251/{c}56',
+            253: f'=IF({c}249=0,"",{c}250/{c}249)', 257: 0, 258: f'={p}252', 259: f'=IFERROR({c}257/{c}258,0)',
         }
         for r, form in f.items():
             kind = ROWS.get(r, ('', ''))[1]
-            fmt = PCT if kind in ('g', 'p') or r in (18, 41, 53) else (NUM2 if r in (56, 58, 236, 244, 251, 252) else NUM1)
+            fmt = PCT if kind in ('g', 'p') or r in (18, 41, 53) else (NUM2 if r in (56, 58, 243, 252, 258, 259) else NUM1)
             if r in (21, 24, 27):
                 fmt = PCT2
             put(ws, f'{c}{r}', form, fmt=fmt, bold=kind in ('b',), color=RED if kind == 'g' else None)
@@ -183,5 +201,7 @@ def build_consolidated(ws, H, drivers):
     for r in (115, 208):
         for fy in range(C_FY0, FYN + 1):
             ws[f'{ccol(fy)}{r}'].fill = CHK_FILL
-    put(ws, 'B246', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)
-    put(ws, f'{G}246', f'={G}244-90.79', fmt=NUM2, fill=CHK_FILL)
+    put(ws, 'B254', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)
+    put(ws, f'{G}254', f'={G}252-90.79', fmt=NUM2, fill=CHK_FILL)
+    for fy in hist:
+        ws[f'{ccol(fy)}233'].fill = CHK_FILL
