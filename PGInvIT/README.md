@@ -96,3 +96,11 @@ Note: this filing is a scanned document. Its text layer is partly garbled, so re
 - Valuation reports: every half-year from H1 FY22 (Sep 2021) to FY26 (Mar 2026). The H1 FY27 (Sep 2026) report is expected on 2026-11-12, when the board approves Q2 FY27 results. It will be the first report by the new valuer, IndiaAppraisers.com Pvt. Ltd, which replaced INMACS Valuers from FY27.
 - Investor presentations: every quarter from H1 FY22 to Q4 FY26. There is no separate Q1 FY22 deck (the trust listed in May 2021; the first deck covers H1 FY22). PGInvIT did not file a Q1 FY27 investor presentation or hold a Q1 FY27 earnings call, according to NSE filings for Jul-Aug 2026.
 - Earnings call transcripts: text transcripts exist on the site only from Q2 FY24 (Nov 2023) onward. Calls from H1 FY22 to Q1 FY24 are audio-only on the site. No call appears to have been held for Q1 FY25 or Q3 FY25 (neither audio nor text is listed, and exchange filings show none).
+
+## Model
+
+`Model/PGInvIT_Model.xlsx` mirrors the IndiGrid model's eight sheets (Key Sheet New, Sensitivity_Bajaj, Cashflows_Bajaj, IRR Calculation_Bajaj, Consolidated, Qtrly, Assumption, AssetLevelEst). Rs crore throughout.
+
+- SPV DCFs reproduce the 31-Mar-2026 valuation (INMACS): EVs tie within 0.01%, except KATL at 0.45% because the valuer double-counts its terminal-year cash flow. FY26 NAV comes out at Rs 90.77 vs the reported Rs 90.79.
+- History: FY22-FY26 annual (audited) and 1QFY22-1QFY27 quarterly (NSE filings), extracted to `Model/data/*.json` with page citations.
+- Rebuild: the scripts in `Model/builder/` regenerate the workbook from the data files (`build_model.py`, then `recalc.py` for LibreOffice recalculation and `check.py` for the tie-out checks).

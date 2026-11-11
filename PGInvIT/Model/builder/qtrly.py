@@ -20,18 +20,36 @@ def build_qtrly(ws, Q):
             put(ws, f'{col[q]}{r + 1}', q, bold=True, align='right', border_b=True)
         return r + 2
 
+    def is_series(x):
+        return isinstance(x, dict) and any(k in col for k in x)
+
+    def lines(data, r, fmt, indent=''):
+        for line, vals in data.items():
+            if is_series(vals):
+                if not any(_num(vals.get(q)) for q in qs):
+                    continue
+                lab = indent + line.replace('_', ' ')
+                put(ws, f'B{r}', lab, bold=any(k in line.lower() for k in ('total', 'ndcf', 'ebitda', 'pbt', 'pat', 'distributed')))
+                for q in qs:
+                    v = vals.get(q)
+                    if _num(v):
+                        put(ws, f'{col[q]}{r}', v, fmt=fmt, color=RED)
+                    elif isinstance(v, str) and v:
+                        put(ws, f'{col[q]}{r}', v, color=RED, align='right')
+                r += 1
+            elif isinstance(vals, dict):
+                sub = {k: v for k, v in vals.items()}
+                has = any(is_series(v) and any(_num(v.get(q)) for q in qs) for v in sub.values()) or any(isinstance(v, dict) and not is_series(v) for v in sub.values())
+                if not has:
+                    continue
+                name = line.replace('_', ' ').replace('old framework', 'SEBI old NDCF framework (1QFY22-4QFY24)').replace('new framework', 'SEBI revised NDCF framework (1QFY25 onwards)')
+                put(ws, f'B{r}', indent + name, bold=True, italic=True)
+                r = lines(sub, r + 1, fmt, indent + '  ')
+        return r
+
     def block(title, data, r, fmt=NUM1):
         r = header(title, r)
-        for line, vals in data.items():
-            if not isinstance(vals, dict):
-                continue
-            put(ws, f'B{r}', line.replace('_', ' '), bold=any(k in line.lower() for k in ('total', 'profit', 'ndcf', 'ebitda', 'pbt', 'pat')))
-            for q in qs:
-                v = vals.get(q)
-                if _num(v):
-                    put(ws, f'{col[q]}{r}', v, fmt=fmt, color=RED)
-            r += 1
-        return r + 1
+        return lines(data, r, fmt) + 1
 
     for key, title in (('standalone', 'Standalone (Trust)'), ('consolidated', 'Consolidated'),
                        ('ndcf', 'Quarterly NDCF Build-up'), ('distribution', 'Distribution per unit and components')):
