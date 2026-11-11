@@ -351,3 +351,128 @@ def dash_zero(ws):
         for c in row:
             if c.value is not None and c.number_format in DASH:
                 c.number_format = DASH[c.number_format]
+
+
+# ================================================================================================
+# Number formats copied from the IndiGrid workbook, row by row (applied last)
+# ================================================================================================
+N0A = '#,##0;\\(#,##0\\)'            # AssetLevelEst / Assumption / NAV block
+N0B = '#,##0_);(#,##0)'              # Consolidated / Qtrly / Cashflows / Sensitivity debt
+N0K = '#,##0;\\(#,##0\\);"–"'        # Key Sheet
+N1C = '#,##0.0_);\\(#,##0.0\\)'      # DPU / EPU
+BLUE_ALE = 'FF0000FF'
+
+
+def _nf(c, fmt):
+    if c.value is not None and not (isinstance(c.value, str) and not c.value.startswith('=')):
+        c.number_format = fmt
+
+
+def nf_assetlevel(ws, blocks, c1, c2, memo_col):
+    bold_rows = {'EBITDA', 'EBITDA Margin', 'FCFF', 'FCFF with TV', 'PV of Cash Flows', 'WACC', 'Enterprise Value'}
+    for r0 in blocks:
+        for r in range(r0 + 1, r0 + 20):
+            lab = ws.cell(r, 3).value
+            fmt = {'EBITDA Margin': '0%', 'Present value factor': '#,##0.00', 'Discount period (yrs, mid-year)': '0.0',
+                   'WACC': '0.0%'}.get(lab, N0A)
+            if lab in bold_rows:
+                font(ws.cell(r, 3), BLACK, bold=True)
+            for k in range(c1, c2 + 1):
+                c = ws.cell(r, k)
+                _nf(c, fmt)
+                if lab == 'EBITDA Margin' and c.value is not None:
+                    font(c, BLUE_ALE, bold=True)
+                elif lab in bold_rows - {'WACC', 'Enterprise Value'} and c.value is not None:
+                    font(c, bold=True)
+            if lab == 'Enterprise Value':
+                _nf(ws.cell(r, c1 + 2), '0%')
+        for r in range(r0 + 1, r0 + 16):
+            lab = str(ws.cell(r, memo_col).value or '')
+            v = ws.cell(r, memo_col + 1)
+            fmt = ('0.00%' if lab.startswith(('WACC', 'Terminal growth')) else '0.0' if 'period' in lab else '0' if 'TV year' in lab
+                   else '0.0\\x' if 'EV /' in lab else '0.0%' if '%' in lab or 'yield' in lab else '#,##0;\\(#,##0\\);\\-')
+            _nf(v, fmt)
+
+
+def nf_sensitivity(ws, SEN, hist_c2, fc_c2, n_spv, exit_last, mat_last):
+    _nf(ws['C2'], '#,##0')
+    for ref in ('C3', 'C4', 'C5'):
+        _nf(ws[ref], '0.0%')
+    secs = [(SEN['avail'], n_spv, '0.0%', '0.0%'), (SEN['tariff'], n_spv, '#,##0', '#,##0'),
+            (SEN['eff'], n_spv + 1, '#,##0', '#,##0'), (SEN['marg'], n_spv, '0%', '0%'),
+            (SEN['wc'], 4, N0B, '#,##0.0')]
+    for first, n, fh, ff in secs:
+        for r in range(first, first + n):
+            for k in range(3, fc_c2 + 1):
+                _nf(ws.cell(r, k), fh if k <= hist_c2 else ff)
+    for r in range(SEN['ladder'], SEN['ladder'] + 5):
+        _nf(ws.cell(r, 3), '0.00%')
+    for top, last in ((SEN['exit_hdr'], exit_last), (SEN['mat_hdr'], mat_last)):
+        for k in range(3, last + 1):
+            _nf(ws.cell(top + 2, k), 'mmm-yy')
+            for r in range(top + 3, top + 8):
+                _nf(ws.cell(r, k), '#,##0.00')
+    d = SEN['debt']
+    for r in range(d, d + 6):
+        for k in range(3, fc_c2 + 1):
+            _nf(ws.cell(r, k), '0.00%' if r == d + 4 else N0B)
+
+
+CONS_NF = {7: '0%', 18: '0%', 19: '0%', 21: '0%', 24: '0.0%', 27: '0.0%', 41: '0%', 53: '0%', 54: '0%', 57: '0.0%',
+           58: N1C, 235: '0.0%', 236: '#,##0.0;\\-#,##0.0', 241: N0A, 242: N0A, 243: N0A, 244: N0A, 245: '0%',
+           246: '#,##0.00', 251: N0A, 252: '#,##0.0;\\(#,##0.0\\)'}
+
+
+def nf_consolidated(ws, c1, c2, last_row):
+    for r in range(4, last_row + 1):
+        fmt = CONS_NF.get(r, N0B)
+        for k in range(c1, c2 + 1):
+            _nf(ws.cell(r, k), fmt)
+        drv = ws.cell(r, c2 + 2)
+        if drv.value is not None:
+            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r == 75 and False else N1C if r == 236 else N0B)
+
+
+def nf_assumption(ws, pct_rows, period_rows, c1, c2, extra_cols):
+    for r in range(1, ws.max_row + 1):
+        for k in range(c1, c2 + 1):
+            c = ws.cell(r, k)
+            if r == 1:
+                _nf(c, 'mmm-yy')
+            elif r in pct_rows:
+                _nf(c, '0.0%')
+            elif r in period_rows:
+                _nf(c, '0.0')
+            else:
+                _nf(c, N0A)
+        for k in extra_cols:
+            c = ws.cell(r, k)
+            if isinstance(c.value, float) and c.value < 1:
+                _nf(c, '0.0%')
+            elif c.value is not None:
+                _nf(c, N0A)
+
+
+def nf_qtrly(ws, last_col):
+    for r in range(1, ws.max_row + 1):
+        lab = str(ws.cell(r, 2).value or '').lower()
+        fmt = N1C if ('dpu' in lab or 'epu' in lab) and 'derived' not in lab else '#,##0' if 'number' in lab else N0B
+        for k in range(3, last_col + 1):
+            _nf(ws.cell(r, k), fmt)
+
+
+def nf_simple(ws, r1, r2, c1, c2, fmt, pct_rows=()):
+    for r in range(r1, r2 + 1):
+        for k in range(c1, c2 + 1):
+            c = ws.cell(r, k)
+            if c.number_format in ('dd-mmm-yy', 'mmm-yy'):
+                continue
+            _nf(c, '0.0%' if r in pct_rows else fmt)
+
+
+def nf_keysheet(ws, cols, r1, r2):
+    for r in range(r1, r2 + 1):
+        for k in cols:
+            c = ws.cell(r, k)
+            if c.number_format not in ('0.00%', '"FY"0000"E"', '0'):
+                _nf(c, N0K)
