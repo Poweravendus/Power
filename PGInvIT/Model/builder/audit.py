@@ -87,9 +87,9 @@ def xirr(cfs, ds):
         m = (lo + hi) / 2
         lo, hi = (m, hi) if f(m) > 0 else (lo, m)
     return m
-r = SEN['exit_hdr']
-ds = [S.cell(r + 2, k).value for k in range(3, 25)]; cs = [S.cell(r + 6, k).value for k in range(3, 25)]
-chk('5-year XIRR recomputes', abs(xirr(cs, ds) - S['C3'].value) < 1e-4, f'{xirr(cs, ds):.4%} vs {S["C3"].value:.4%}')
+r = SEN['mat_hdr']
+ds = [S.cell(r + 2, k).value for k in range(3, 115)]; cs = [S.cell(r + 5, k).value for k in range(3, 115)]
+chk('Hold-to-maturity XIRR recomputes', abs(xirr(cs, ds) - S['C3'].value) < 1e-4, f'{xirr(cs, ds):.4%} vs {S["C3"].value:.4%}')
 irr = wb['IRR Calculation_Bajaj']
 row = [irr.cell(9, k).value for k in range(2, 31)]
 import numpy as np

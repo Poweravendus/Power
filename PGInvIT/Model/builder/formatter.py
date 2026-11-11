@@ -142,8 +142,8 @@ def fmt_qtrly(ws, last_col):
 
 def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_last_col):
     # top input / output box
-    band(ws, 2, 5, 2, 3, LB)
-    box(ws, 2, 5, 2, 3)
+    band(ws, 2, 3, 2, 3, LB)
+    box(ws, 2, 3, 2, 3)
     font(ws['C2'], BLUE, bold=True)
     font(ws['D2'], RED, italic=True)
     font(ws['D3'], RED, italic=True)
@@ -174,9 +174,9 @@ def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_
     for r in range(r0, r0 + 5):
         font(ws.cell(r, 3), BLUE)
     font(ws.cell(r0 - 2, 2), BLACK, bold=True)
-    # hold to exit / maturity blocks
-    for top, lastc in ((SEN['exit_hdr'], exit_last_col), (SEN['mat_hdr'], mat_last_col)):
-        r1, r2 = top + 1, top + 7 if top == SEN['mat_hdr'] else top + 6
+    # hold to maturity block
+    for top, lastc in ((SEN['mat_hdr'], mat_last_col),):
+        r1, r2 = top + 1, top + 5
         band(ws, r1, r2, 2, 3, DG)
         band(ws, r1, r2, 4, lastc, LG)
         underline_row(ws, r1, 2, lastc)
@@ -185,10 +185,10 @@ def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_
                 c = ws.cell(r, k)
                 if c.value is None:
                     continue
-                font(c, BLUE if (is_input(c) and not is_formula(c)) else RED, bold=r == top + 6)
-            font(ws.cell(r, 2), BLACK, bold=r in (top + 6, top + 7))
+                font(c, BLUE if (is_input(c) and not is_formula(c)) else RED, bold=r == top + 5)
+            font(ws.cell(r, 2), BLACK, bold=r == top + 5)
         font(ws.cell(top, 2), BLACK, bold=True)
-    fill(ws.cell(SEN['exit_hdr'] - 1, 2), DG)
+    fill(ws.cell(SEN['mat_hdr'] - 1, 2), DG)
     # debt mirror
     d = SEN['debt']
     band(ws, d, d + 5, 2, 2, DG)
@@ -394,8 +394,7 @@ def nf_assetlevel(ws, blocks, c1, c2, memo_col):
 
 def nf_sensitivity(ws, SEN, hist_c2, fc_c2, n_spv, exit_last, mat_last):
     _nf(ws['C2'], '#,##0')
-    for ref in ('C3', 'C4', 'C5'):
-        _nf(ws[ref], '0.0%')
+    _nf(ws['C3'], '0.0%')
     secs = [(SEN['avail'], n_spv, '0.0%', '0.0%'), (SEN['tariff'], n_spv, '#,##0', '#,##0'),
             (SEN['eff'], n_spv + 1, '#,##0', '#,##0'), (SEN['marg'], n_spv, '0%', '0%'),
             (SEN['wc'], 4, N0B, '#,##0.0')]
@@ -405,10 +404,10 @@ def nf_sensitivity(ws, SEN, hist_c2, fc_c2, n_spv, exit_last, mat_last):
                 _nf(ws.cell(r, k), fh if k <= hist_c2 else ff)
     for r in range(SEN['ladder'], SEN['ladder'] + 5):
         _nf(ws.cell(r, 3), '0.00%')
-    for top, last in ((SEN['exit_hdr'], exit_last), (SEN['mat_hdr'], mat_last)):
+    for top, last in ((SEN['mat_hdr'], mat_last),):
         for k in range(3, last + 1):
             _nf(ws.cell(top + 2, k), 'mmm-yy')
-            for r in range(top + 3, top + 8):
+            for r in range(top + 3, top + 6):
                 _nf(ws.cell(r, k), '#,##0.00')
     d = SEN['debt']
     for r in range(d, d + 6):

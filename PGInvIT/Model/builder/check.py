@@ -26,5 +26,5 @@ for lab, r, f in [('Revenue', 6, '{:,.0f}'), ('EBITDA', 17, '{:,.0f}'), ('PAT', 
     print(f'{lab:10s}', row(r, f))
 print('FY26 NAV check vs 90.79:', c['G246'].value)
 cf = wb['Cashflows_Bajaj']; print('Cashflows check row (FY27..):', [round(cf.cell(25, k).value or 0, 2) for k in range(3, 12)])
-s = wb['Sensitivity_Bajaj']; print('XIRR 5y', s['C3'].value, '| maturity dist only', s['C4'].value, '| maturity incl residual', s['C5'].value)
+s = wb['Sensitivity_Bajaj']; print('XIRR hold to maturity', s['C3'].value, '| B3', s['B3'].value, '| B4', s['B4'].value)
 irr = wb['IRR Calculation_Bajaj']; print('IRR calc:', irr['B11'].value, '| C9', irr['C9'].value, '| yields', [round(irr.cell(15,k).value,4) for k in range(3,8)])

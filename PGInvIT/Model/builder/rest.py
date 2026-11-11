@@ -27,67 +27,35 @@ def lookup(row, label_expr):
 
 
 def build_sens_returns(ws, entry_date, first_pay):
-    """Hold-to-exit (5 years) and hold-to-maturity unitholder cash flows (quarterly)."""
-    r = SEN['exit_hdr']
-    put(ws, f'B{r - 1}', 'Amount - Rs. / unit', bold=True)
-    put(ws, f'B{r}', 'HOLD TO EXIT   -   5.00 years', bold=True)
-    blocks = [(r, 20, True), (SEN['mat_hdr'], (FYN - 2026) * 4 - 1, False)]
-    out = {}
-    for top, n, is_exit in blocks:
-        if not is_exit:
-            put(ws, f'B{top}', 'HOLD TO MATURITY', bold=True)
-        rl, rd, rp, rdist, rres, rtot = top + 1, top + 2, top + 3, top + 4, top + 5, top + 6
-        put(ws, f'B{rl}', 'Financial year (quarter paid for)')
-        put(ws, f'B{rd}', 'Payment date')
-        put(ws, f'B{rp}', 'Entry price')
-        put(ws, f'B{rdist}', 'Distribution  (DPU / 4)')
-        put(ws, f'B{rres}', 'Exit NAV' if is_exit else 'Residual NAV at maturity')
-        put(ws, f'B{rtot}', 'Total cash', bold=True)
-        put(ws, f'C{rl}', 'Entry', align='right')
-        put(ws, f'C{rd}', entry_date, fmt='dd-mmm-yy', color=BLUE)
-        put(ws, f'C{rp}', '=-$C$2', fmt=NUM2)
-        put(ws, f'C{rdist}', 0, fmt=NUM2)
-        put(ws, f'C{rres}', 0, fmt=NUM2)
-        put(ws, f'C{rtot}', f'=C{rp}+C{rdist}+C{rres}', fmt=NUM2, bold=True)
-        for k in range(n):
-            c = L(4 + k)
-            if k == 0:
-                put(ws, f'{c}{rd}', first_pay, fmt='dd-mmm-yy', color=BLUE)
-            else:
-                put(ws, f'{c}{rd}', f'=EOMONTH({L(3 + k)}{rd},3)', fmt='dd-mmm-yy')
-            # quarter paid for ends ~2 months before payment; label = fiscal year of that quarter
-            put(ws, f'{c}{rl}', f'="FY"&TEXT(MOD(YEAR(EDATE({c}{rd},-2))+IF(MONTH(EDATE({c}{rd},-2))>=4,1,0),100),"00")&"E"', align='right')
-            put(ws, f'{c}{rp}', 0, fmt=NUM2)
-            put(ws, f'{c}{rdist}', f'=IFERROR({lookup(CR["dpu"], f"{c}{rl}")}/4,0)', fmt=NUM2)
-            put(ws, f'{c}{rres}', 0, fmt=NUM2)
-            put(ws, f'{c}{rtot}', f'={c}{rp}+{c}{rdist}+{c}{rres}', fmt=NUM2, bold=True)
-        last = L(3 + n)
-        if is_exit:
-            x = L(4 + n)
-            put(ws, f'{x}{rl}', 'Exit', align='right')
-            put(ws, f'{x}{rd}', f'=EDATE($C${rd},60)', fmt='dd-mmm-yy')
-            put(ws, f'{x}{rp}', 0, fmt=NUM2)
-            put(ws, f'{x}{rdist}', 0, fmt=NUM2)
-            yr = f'(YEAR({x}{rd})-IF(MONTH({x}{rd})<4,1,0))'
-            lab0 = f'"FY"&TEXT(MOD({yr},100),"00")&"E"'
-            lab1 = f'"FY"&TEXT(MOD({yr}+1,100),"00")&"E"'
-            nav0, nav1 = lookup(CR['nav'], lab0), lookup(CR['nav'], lab1)
-            put(ws, f'{x}{rres}', f'={nav0}+({nav1}-{nav0})*({x}{rd}-DATE({yr},3,31))/365', fmt=NUM2)
-            put(ws, f'{x}{rtot}', f'={x}{rp}+{x}{rdist}+{x}{rres}', fmt=NUM2, bold=True)
-            out['exit'] = (rd, rtot, x)
+    """Hold-to-maturity unitholder cash flows (quarterly distributions to FY54)."""
+    top = SEN['mat_hdr']
+    n = (FYN - 2026) * 4 - 1
+    put(ws, f'B{top - 1}', 'Amount - Rs. / unit', bold=True)
+    put(ws, f'B{top}', 'HOLD TO MATURITY', bold=True)
+    rl, rd, rp, rdist, rtot = top + 1, top + 2, top + 3, top + 4, top + 5
+    put(ws, f'B{rl}', 'Financial year (quarter paid for)')
+    put(ws, f'B{rd}', 'Payment date')
+    put(ws, f'B{rp}', 'Entry price')
+    put(ws, f'B{rdist}', 'Distribution  (DPU / 4)')
+    put(ws, f'B{rtot}', 'Total cash', bold=True)
+    put(ws, f'C{rl}', 'Entry', align='right')
+    put(ws, f'C{rd}', entry_date, fmt='dd-mmm-yy', color=BLUE)
+    put(ws, f'C{rp}', '=-$C$2', fmt=NUM2)
+    put(ws, f'C{rdist}', 0, fmt=NUM2)
+    put(ws, f'C{rtot}', f'=C{rp}+C{rdist}', fmt=NUM2, bold=True)
+    for k in range(n):
+        c = L(4 + k)
+        if k == 0:
+            put(ws, f'{c}{rd}', first_pay, fmt='dd-mmm-yy', color=BLUE)
         else:
-            put(ws, f'{last}{rres}', f'={lookup(CR["nav"], chr(34) + clabel(FYN) + chr(34))}', fmt=NUM2)
-            put(ws, f'B{rtot + 1}', 'Total cash excl. residual', bold=True)
-            put(ws, f'C{rtot + 1}', f'=C{rp}', fmt=NUM2)
-            for k in range(n):
-                c = L(4 + k)
-                put(ws, f'{c}{rtot + 1}', f'={c}{rdist}', fmt=NUM2)
-            out['mat'] = (rd, rtot, last)
-    rd, rtot, x = out['exit']
-    put(ws, 'C3', f'=XIRR(C{rtot}:{x}{rtot},C{rd}:{x}{rd})', fmt=PCT, bold=True)
-    rd, rtot, last = out['mat']
-    put(ws, 'C4', f'=XIRR(C{rtot + 1}:{last}{rtot + 1},C{rd}:{last}{rd})', fmt=PCT, bold=True)
-    put(ws, 'C5', f'=XIRR(C{rtot}:{last}{rtot},C{rd}:{last}{rd})', fmt=PCT, bold=True)
+            put(ws, f'{c}{rd}', f'=EOMONTH({L(3 + k)}{rd},3)', fmt='dd-mmm-yy')
+        # quarter paid for ends ~2 months before payment; label = fiscal year of that quarter
+        put(ws, f'{c}{rl}', f'="FY"&TEXT(MOD(YEAR(EDATE({c}{rd},-2))+IF(MONTH(EDATE({c}{rd},-2))>=4,1,0),100),"00")&"E"', align='right')
+        put(ws, f'{c}{rp}', 0, fmt=NUM2)
+        put(ws, f'{c}{rdist}', f'=IFERROR({lookup(CR["dpu"], f"{c}{rl}")}/4,0)', fmt=NUM2)
+        put(ws, f'{c}{rtot}', f'={c}{rp}+{c}{rdist}', fmt=NUM2, bold=True)
+    last = L(3 + n)
+    put(ws, 'C3', f'=XIRR(C{rtot}:{last}{rtot},C{rd}:{last}{rd})', fmt=PCT, bold=True)
 
     # debt schedule, linked to Consolidated
     r = SEN['debt']
