@@ -74,3 +74,13 @@
 - Model: KRN_Model_v1.xlsx (11-Nov-2026); KRN_Model_v2.xlsx (11-Nov-2026)
 - Note: KRN_Heat_Exchanger_Note_v1.docx
 - Evidence: notes/evidence.md
+
+## 11-Nov-2026: standalone (parent) margin deep-dive (investor asked)
+New sheet `Standalone_vs_Sub` in KRN_Model_v2.xlsx (script scratchpad/scripts/add_standalone_krn.py).
+- Parent EBITDA margin: 17.5% (1QFY25) -> 8.9% (4QFY26) -> 12.0% (2QFY27). Gross margin ~25% to 1QFY26, then 13-19%.
+- Main cause is arithmetic, and it ties: parent sold Rs 174.5 cr of raw material to KRN HVAC at ~cost in FY26 and bought Rs 120.5 cr back (AR FY26 related-party note). Standalone + subsidiary revenue - consolidated = Rs 295.1 cr = intercompany Rs 295.0 cr (FY25: 16.8 vs 16.7). Excluding sales to the subsidiary, parent EBITDA margin is 16.8% FY25 vs 16.9% FY26. Management said the same on the 2QFY26 and 3QFY26 calls.
+- Real point: parent plant is full (coils 453,573 FY25 vs 454,406 FY26). Parent EBITDA ~Rs 17-25 cr a quarter; 1HFY27 Rs 44.7 cr vs 1HFY26 Rs 49.4 cr (-10%, 2QFY26 was a one-off high Rs 29.6 cr). ALL group EBITDA growth is the subsidiary: implied subsidiary EBITDA -1.5 (1HFY26) -> 53.1 (1HFY27), 59% of group EBITDA in 2QFY27. Profit is concentrating in the entity with 476 inventory days and a 17.16% tax rate, with transfer prices set between the two.
+- Tax: KRN HVAC taxed at 17.16% (s.115BAB). Prospectus printed p.154 lists the condition "begin manufacturing on or before 31-Mar-2024"; new plant commercial production Apr/May-2025; KRN HVAC FY24 revenue Rs 0.2 cr. Open question, not a finding: does the 15% rate rest on the FY24 start, and is it accepted?
+- Margin quality: management attributes part of margin to inventory gains on rising copper (3QFY26 call) and says Daikin keeps KRN's rupee margin fixed when metal rises (2QFY27 call), so % margin falls when copper rises. 2QFY27 consolidated 15.3%: freight ~2 pts, material cost averaging ~2 pts, Daikin pricing, promotion (2QFY27 call). Implied subsidiary opex Rs 22.2 cr -> 35.0 cr QoQ.
+- 2QFY26 standalone cost split reported three ways (original: all materials Rs 183.1 cr; 3QFY26 filing: 82.5 + 100.6, internally inconsistent with its own 9M column; 2QFY27 filing: 79.1 + 104.1). Image-checked. Weak controls signal.
+- Base case risk: FY28E EBITDA margin 19.1% (gross margin 31%, RIPS incentive Rs 13.5 cr). Sensitivity: 17.5% -> target Rs 792 (-18%); 16.5% -> Rs 734 (-24%); 15.0% -> Rs 646 (-33%). Base not changed yet; for investor decision.
