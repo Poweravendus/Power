@@ -21,7 +21,7 @@ yrs = range(2022, 2036)
 def row(r, fmt='{:,.1f}'):
     return ' '.join((fmt.format(c[f'{ccol(fy)}{r}'].value) if isinstance(c[f'{ccol(fy)}{r}'].value, (int, float)) else str(c[f'{ccol(fy)}{r}'].value)) for fy in yrs)
 print('years      ', ' '.join(f'FY{fy%100}' for fy in yrs))
-for lab, r, f in [('Revenue', 6, '{:,.0f}'), ('EBITDA', 17, '{:,.0f}'), ('PAT', 43, '{:,.0f}'), ('Tax', 40, '{:,.0f}'), ('NDCF gen', 232, '{:,.0f}'), ('NDCF', 238, '{:,.0f}'), ('Prop', 244, '{:,.0f}'), ('Distrib', 246, '{:,.0f}'),
+for lab, r, f in [('Revenue', 6, '{:,.0f}'), ('EBITDA', 17, '{:,.0f}'), ('PAT', 43, '{:,.0f}'), ('Tax', 40, '{:,.0f}'), ('NDCF wf', 228, '{:,.0f}'), ('NDCF', 238, '{:,.0f}'), ('Prop', 244, '{:,.0f}'), ('Distrib', 246, '{:,.0f}'),
                   ('DPU', 58, '{:,.2f}'), ('BS diff', 115, '{:,.2f}'), ('Cash', 102, '{:,.0f}'), ('Debt', 76, '{:,.0f}'), ('AUM', 249, '{:,.0f}'), ('NAV/unit', 252, '{:,.2f}'), ('Check', 247, '{}')]:
     print(f'{lab:10s}', row(r, f))
 print('FY26 NAV check vs 90.79:', c['G254'].value)

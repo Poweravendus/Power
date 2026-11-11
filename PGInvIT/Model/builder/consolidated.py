@@ -52,11 +52,10 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     210: ('FCF (CFO + capex)', 'b'),
     212: ('NDCF (as reported), Rs. cr', 'h'),
     213: ('NDCF at SPV - VTL', ''), 214: ('NDCF at SPV - KATL', ''), 215: ('NDCF at SPV - PPTL', ''), 216: ('NDCF at SPV - WTL', ''),
-    217: ('NDCF at SPV - JPTL', ''), 218: ('NDCF at SPV', 'b'), 219: ('Interest income from SPVs', ''), 220: ('Dividend income from SPVs', ''),
-    221: ('Repayment of capital (SPV debt)', ''), 222: ('Distributions received from SPVs', 'b'), 223: ('Retained at SPVs', ''),
-    224: ('Cash flow from operating activities at Trust', ''), 225: ('Other income', ''), 226: ('WC movement', ''),
-    227: ('Tax at Trust', ''), 228: ('Finance cost on borrowing', ''), 229: ('Debt repayment', ''), 230: ('Capex', ''),
-    231: ('DSRA / other adjustments', ''), 232: ('NDCF Generated', 'b'), 233: ('Check vs reported NDCF', 'g'),
+    217: ('NDCF at SPV - JPTL', ''), 218: ('SPVs NDCF', 'b'), 219: ('Upstreamed to PGInvIT, % of SPVs NDCF', 'g'),
+    220: ('Cash flow from operating activities', ''), 221: ('Interest income', ''), 222: ('Dividend income', ''),
+    223: ('Repayment of capital (SPV debt)', ''), 224: ('Other income', ''), 225: ('Finance cost on borrowing', ''),
+    226: ('Debt repayment', ''), 227: ('CAPEX', ''), 228: ('NDCF (PGInvIT)', 'b'), 229: ('Check vs reported NDCF', 'g'),
     235: ('NDCF before CAPEX and Capital Raise', ''), 236: ('Less: CAPEX', ''), 237: ('Add: Net Debt', ''), 238: ('NDCF', 'b'),
     239: ('Add: Capital Raise', ''), 240: ('Cash available before paying Distribution', 'b'),
     242: ('DPU Growth, %', 'p'), 243: ('DPU, Rs./ unit', ''), 244: ('Proposed Distribution', ''), 245: ('Net Cash', ''),
@@ -66,14 +65,13 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     256: ('Capital Raise', 'h'), 257: ('Rs. cr', ''), 258: ('Price at which dilution happens (prior-year NAV)', ''), 259: ('Additional Units Issued, cr', ''),
 }
 NDCF_Q = {213: 'NDCF at SPV - VTL', 214: 'NDCF at SPV - KATL', 215: 'NDCF at SPV - PPTL', 216: 'NDCF at SPV - WTL', 217: 'NDCF at SPV - JPTL',
-          219: 'Interest income from SPVs', 220: 'Dividend income from SPVs', 221: 'Repayment of capital (SPV debt)',
-          224: 'Cash flow from operating activities at Trust', 225: 'Other income', 226: 'WC movement', 227: 'Tax at Trust',
-          228: 'Finance cost on borrowing', 229: 'Debt repayment', 230: 'Capex', 231: 'DSRA / other adjustments'}
+          220: 'Cash flow from operating activities', 221: 'Interest income', 222: 'Dividend income', 223: 'Repayment of capital (SPV debt)',
+          224: 'Other income', 225: 'Finance cost on borrowing', 226: 'Debt repayment', 227: 'CAPEX'}
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
            27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line)', 2052, '0'),
            91: ('Annual amortisation of intangibles', 14.8, NUM1),
-           227: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
+           220: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 
 
 def build_consolidated(ws, H, drivers, qcol, qrows):
@@ -113,19 +111,19 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
              185: f'=IF({c}182="","",{c}182+{c}183-{c}184)', 210: f'={c}146+{c}148', 251: f'=IF({c}252="","",{c}252*{c}56)',
              250: f'={c}76-{c}102', 134: f'=SUM({c}119:{c}133)', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143',
              146: f'={c}144+{c}145', 161: f'=SUM({c}148:{c}160)', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
-             179: f'={c}177+{c}178', 59: f'={c}58*{c}56', 218: f'=SUM({c}213:{c}217)', 222: f'=SUM({c}219:{c}221)',
-             223: f'={c}222-{c}218', 232: f'={c}222+SUM({c}224:{c}231)', 60: f'=IF({c}232>={c}59,"Yes","No")', 249: f'={c}251+{c}250' if fy < C_HIST_LAST else None}
+             179: f'={c}177+{c}178', 59: f'={c}58*{c}56', 218: f'=SUM({c}213:{c}217)', 219: f'=IFERROR(SUM({c}221:{c}223)/{c}218,"")',
+             228: f'=SUM({c}220:{c}227)', 60: f'=IF({c}228>={c}59,"Yes","No")', 249: f'={c}251+{c}250' if fy < C_HIST_LAST else None}
         qc = [qcol[q] for q in qcol if 2000 + int(q[-2:]) == fy]
         for r, lab in NDCF_Q.items():
             f[r] = f'=SUM(Qtrly!{qc[0]}{qrows[lab]}:{qc[-1]}{qrows[lab]})'
-        f[233] = f'={c}232-SUM(Qtrly!{qc[0]}{qrows["NDCF (as reported)"]}:{qc[-1]}{qrows["NDCF (as reported)"]})'
+        f[229] = f'={c}228-SUM(Qtrly!{qc[0]}{qrows["NDCF (as reported)"]}:{qc[-1]}{qrows["NDCF (as reported)"]})'
         f = {k: v for k, v in f.items() if v is not None}
         if 58 not in H or H[58].get(fy) is None:
             f[58] = f'=IF({c}56=0,"",{c}59/{c}56)'
         for r, form in f.items():
             if H.get(r, {}).get(fy) is None:
                 put(ws, f'{c}{r}', form, fmt=PCT if r in (18, 41, 53) else NUM1, bold=ROWS.get(r, ('', ''))[1] == 'b',
-                    color=RED if r == 233 else None)
+                    color=RED if r in (219, 229) else None)
         if p:
             for r, base in ((7, 6), (19, 17), (54, 52), (57, 58)):
                 put(ws, f'{c}{r}', f'=IFERROR({c}{base}/{p}{base}-1,"")', fmt=PCT, color=RED)
@@ -151,11 +149,11 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 19: f'=IFERROR({c}17/{p}17-1,"")',
             21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'=MIN({c}24*AVERAGE({p}85,{c}85),{p}87+{c}85-{p}85)+({p}91-{c}91)', 24: '=$AK$24',
             26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}73,{c}76)', 29: 0,
-            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$227', 38: 0, 39: 0,
+            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$220', 38: 0, 39: 0,
             40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)', 43: f'={c}34-{c}40', 45: 0, 47: f'={c}43+{c}45',
             49: 0, 52: f'={c}43-{c}49', 53: f'=IF({c}6=0,"",{c}52/{c}6)', 54: f'=IFERROR({c}52/{p}52-1,"")',
             56: f'={p}56+{c}259', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}246',
-            60: f'=IF({c}232>={c}59,"Yes","No")',
+            60: f'=IF({c}228>={c}59,"Yes","No")',
             64: f'={p}64+{c}163', 65: f'={p}65+{c}52-{c}59', 66: f'={c}64+{c}65', 68: f'={p}68',
             73: f'={p}76', 74: '=$AK$74', 75: f'=IF({fy}>$AK$75,0,{c}73/($AK$75-{fy}+1))', 76: f'={c}73+{c}74-{c}75',
             78: f'={p}78', 79: f'={p}79', 80: f'={p}80', 81: f'={c}76+{c}78+{c}79+{c}80', 83: f'={c}66+{c}68+{c}81',
@@ -174,9 +172,13 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             182: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"]}', 183: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 1}',
             184: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 2}', 185: f'={c}182+{c}183-{c}184', 210: f'={c}146+{c}148',
             **{213 + i: f'=Assumption!{ac}{a_row("EBITDA", i)}-Assumption!{ac}{a_row("Taxation (levered, used for NDCF)", i)}' for i in range(len(SPVS))},
-            218: f'=SUM({c}213:{c}217)', 222: f'={c}218', 223: f'={c}222-{c}218', 224: f'={c}17-{A("EBITDA")}', 225: f'={c}22',
-            226: f'={c}143', 227: '=-$AK$227', 228: f'=-{c}28', 232: f'={c}222+SUM({c}224:{c}231)',
-            235: f'={c}232', 236: f'={c}148', 237: f'={c}166+{c}167', 238: f'=SUM({c}235:{c}237)', 239: f'={c}163',
+            218: f'=SUM({c}213:{c}217)', 219: f'=IFERROR(SUM({c}221:{c}223)/{c}218,"")',
+            220: f'={c}17-{A("EBITDA")}+{c}143-$AK$220',
+            221: '=' + '+'.join(f'Assumption!{ac}{a_row("Interest on loan from PGInvIT", i)}' for i in range(len(SPVS))),
+            223: '=' + '+'.join(f'Assumption!{acol(fy - 1)}{a_row("Loan from PGInvIT (closing)", i)}-Assumption!{ac}{a_row("Loan from PGInvIT (closing)", i)}' for i in range(len(SPVS))),
+            222: f'={c}218-{c}221-{c}223', 224: f'={c}22', 225: f'=-{c}28', 226: f'={c}166+{c}167', 227: f'={c}148',
+            228: f'=SUM({c}220:{c}227)',
+            235: f'={c}228-{c}236-{c}237', 236: f'={c}148', 237: f'={c}166+{c}167', 238: f'=SUM({c}235:{c}237)', 239: f'={c}163',
             240: f'={c}238+{c}239', 242: 0, 243: f'={p}243*(1+{c}242)',
             244: (f'={c}243*{c}56' if fy == C_HIST_LAST + 1 else f'=MAX(0,MIN({c}238,{c}243*{c}56))'),
             245: f'={c}240-{c}244', 246: f'=IF(MIN({c}244,{c}178+{c}240)<0,0,MIN({c}244,{c}178+{c}240))',
@@ -204,4 +206,4 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
     put(ws, 'B254', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)
     put(ws, f'{G}254', f'={G}252-90.79', fmt=NUM2, fill=CHK_FILL)
     for fy in hist:
-        ws[f'{ccol(fy)}233'].fill = CHK_FILL
+        ws[f'{ccol(fy)}229'].fill = CHK_FILL

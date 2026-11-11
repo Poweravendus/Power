@@ -56,12 +56,15 @@ chk('Debt nil from FY52 and never negative', all(cv(76, fy) < 0.01 for fy in ran
 chk('No interest once debt is repaid', all(cv(28, fy) < 0.01 for fy in range(2053, 2055)))
 chk('Net block and intangibles never negative', all(cv(87, fy) >= -0.01 and cv(91, fy) >= -0.01 for fy in yrs))
 allyrs = range(2022, 2055)
-chk('NDCF Generated = distributions received + Trust lines (FY22-FY54)', all(abs(cv(222, fy) + sum(cv(r, fy) for r in range(224, 232)) - cv(232, fy)) < 0.01 for fy in allyrs))
-chk('NDCF at SPV = sum of five SPVs (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(213, 218)) - cv(218, fy)) < 0.01 for fy in allyrs))
-chk('Historical NDCF Generated = reported NDCF (FY22-FY26)', all(abs(cv(233, fy)) < 0.05 for fy in range(2022, 2027)), str([round(cv(233, fy), 3) for fy in range(2022, 2027)]))
-chk('Historical NDCF Generated = annual report NDCF', all(abs(cv(232, 2000 + int(k[2:])) - v) < 0.05 for k, v in H['ndcf']['ndcf_trust_level'].items()))
-ppt = {218: 1212.6, 219: 669.0, 220: 269.1, 221: 251.9, 224: -15.3, 225: 6.6, 228: -74.1, 229: -8.3, 230: -8.3, 232: 1090.6}
-chk('FY26 NDCF bridge = investor presentation (Rs cr, +/-0.15)', all(abs(cv(r, 2026) - v) < 0.15 for r, v in ppt.items()), str({r: round(cv(r, 2026), 1) for r in ppt}))
+chk('NDCF (PGInvIT) = sum of waterfall lines (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(220, 228)) - cv(228, fy)) < 0.01 for fy in allyrs))
+chk('SPVs NDCF = sum of five SPVs (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(213, 218)) - cv(218, fy)) < 0.01 for fy in allyrs))
+chk('Forecast: interest + dividend + repayment of capital = SPVs NDCF', all(abs(sum(cv(r, fy) for r in (221, 222, 223)) - cv(218, fy)) < 0.01 for fy in yrs))
+chk('Forecast dividend never negative', all(cv(222, fy) >= -0.01 for fy in yrs), f'min {min(cv(222, fy) for fy in yrs):,.1f}')
+chk('Historical NDCF (PGInvIT) = reported NDCF (FY22-FY26)', all(abs(cv(229, fy)) < 0.05 for fy in range(2022, 2027)), str([round(cv(229, fy), 3) for fy in range(2022, 2027)]))
+chk('Historical NDCF (PGInvIT) = annual report NDCF', all(abs(cv(228, 2000 + int(k[2:])) - v) < 0.05 for k, v in H['ndcf']['ndcf_trust_level'].items()))
+ppt = {218: 1212.6, 220: -15.3, 221: 669.0, 222: 269.1, 223: 251.9, 224: 6.6, 225: -74.1, 226: -8.3, 227: -8.3, 228: 1090.6}
+chk('FY26 waterfall = investor presentation (Rs cr, +/-0.15)', all(abs(cv(r, 2026) - v) < 0.15 for r, v in ppt.items()), str({r: round(cv(r, 2026), 1) for r in ppt}))
+chk('Waterfall NDCF = distribution-section NDCF (forecast)', all(abs(cv(228, fy) - cv(238, fy)) < 0.01 for fy in yrs))
 q = wb['Qtrly']
 qchk = [r for r in range(1, q.max_row + 1) if q.cell(r, 2).value == 'Check']
 chk('Qtrly NDCF ties to reported every quarter', qchk and all(abs(q.cell(qchk[0], k).value or 0) < 0.05 for k in range(3, 24)))
@@ -75,7 +78,7 @@ chk('NAV = AUM - net debt', all(abs(cv(249, fy) - cv(250, fy) - cv(251, fy)) < 0
 chk('FY26 NAV within Rs 0.05 of reported 90.79', abs(cv(252, 2026) - 90.79) < 0.05, f'{cv(252, 2026):.2f}')
 cf = wb['Cashflows_Bajaj']
 chk('Cashflows_Bajaj NDCF = Consolidated NDCF', all(abs(cf.cell(25, 3 + k).value or 0) < 0.01 for k in range(28)))
-chk('Tax in NDCF = consolidated tax', all(abs(A[f'{acol(fy)}{a_row("EBITDA")}'].value - sum(cv(r, fy) for r in range(213, 218)) - cv(227, fy) - cv(40, fy)) < 0.01 for fy in yrs))
+chk('Tax in NDCF = consolidated tax', all(abs(A[f'{acol(fy)}{a_row("EBITDA")}'].value - sum(cv(r, fy) for r in range(213, 218)) + C['AK220'].value - cv(40, fy)) < 0.01 for fy in yrs))
 
 # 5. History in Consolidated = audited figures
 P, B = H['pnl'], H['bs']

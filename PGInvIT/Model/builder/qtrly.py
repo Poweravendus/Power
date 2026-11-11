@@ -109,21 +109,22 @@ def build_qtrly(ws, Q):
     return col, nd_rows
 
 
-NDCF_LINES = ['NDCF at SPV - VTL', 'NDCF at SPV - KATL', 'NDCF at SPV - PPTL', 'NDCF at SPV - WTL', 'NDCF at SPV - JPTL', 'NDCF at SPV',
-              'Interest income from SPVs', 'Dividend income from SPVs', 'Repayment of capital (SPV debt)', 'Distributions received from SPVs',
-              'Retained at SPVs', 'Cash flow from operating activities at Trust', 'Other income', 'WC movement', 'Tax at Trust',
-              'Finance cost on borrowing', 'Debt repayment', 'Capex', 'DSRA / other adjustments', 'NDCF Generated', 'NDCF (as reported)', 'Check']
-NDCF_BOLD = {'NDCF at SPV', 'Distributions received from SPVs', 'NDCF Generated'}
+NDCF_LINES = ['NDCF at SPV - VTL', 'NDCF at SPV - KATL', 'NDCF at SPV - PPTL', 'NDCF at SPV - WTL', 'NDCF at SPV - JPTL', 'SPVs NDCF',
+              'Upstreamed to PGInvIT, % of SPVs NDCF', 'Cash flow from operating activities', 'Interest income', 'Dividend income',
+              'Repayment of capital (SPV debt)', 'Other income', 'Finance cost on borrowing', 'Debt repayment', 'CAPEX',
+              'NDCF (PGInvIT)', 'NDCF (as reported)', 'Check']
+NDCF_BOLD = {'SPVs NDCF', 'NDCF (PGInvIT)'}
 
 
 def ndcf_block(ws, Q, col, r0):
-    """Quarterly NDCF in the layout of the investor presentation bridge (same lines as Consolidated)."""
+    """Quarterly NDCF waterfall in the layout of the investor presentation (same lines as Consolidated)."""
     N, S = Q['ndcf'], Q['standalone']
     qs = Q['quarters']
     rows = {lab: r0 + k for k, lab in enumerate(NDCF_LINES)}
     v = lambda key, q: N.get(key, {}).get(q) or 0
     for lab, r in rows.items():
-        put(ws, f'B{r}', lab, bold=lab in NDCF_BOLD, italic=lab == 'Check')
+        put(ws, f'B{r}', lab, bold=lab in NDCF_BOLD, italic=lab in ('Check', 'Upstreamed to PGInvIT, % of SPVs NDCF'))
+    R = rows
     for k, q in enumerate(qs):
         c = col[q]
         old = k < 12   # SEBI old NDCF framework up to 4QFY24, revised framework from 1QFY25
@@ -131,37 +132,37 @@ def ndcf_block(ws, Q, col, r0):
         vals = {f'NDCF at SPV - {s}': v(f'spv.{s}.{fw}.ndcf', q) for s in ('VTL', 'KATL', 'PPTL', 'WTL', 'JPTL')}
         fin = S['finance_costs'].get(q) or 0
         if old:
-            vals.update({'Interest income from SPVs': v('trust.old_framework.interest_received', q),
-                         'Dividend income from SPVs': v('trust.old_framework.dividend_received', q),
+            # old format: Trust fees include interest (split out using the standalone P&L); tax, DSRA and other
+            # retentions are Trust-level operating items
+            parts = [v('trust.old_framework.fees_interest_expenses', q), fin, v('trust.old_framework.income_tax', q),
+                     sum(v(f'trust.old_framework.{x}', q) for x in ('dsra', 'invested_in_portfolio', 'other_adjustment', 'ipo_expense_reimbursement',
+                                                                     'provision_reserve', 'proceeds_reinvested', 'fresh_issuance',
+                                                                     'capital_reduction', 'sale_proceeds', 'sale_costs'))]
+            vals.update({'Cash flow from operating activities': '=' + '+'.join(f'{round(p, 4)}' for p in parts).replace('+-', '-'),
+                         'Interest income': v('trust.old_framework.interest_received', q),
+                         'Dividend income': v('trust.old_framework.dividend_received', q),
                          'Repayment of capital (SPV debt)': v('trust.old_framework.spv_debt_repayment_received', q),
-                         'Cash flow from operating activities at Trust': f'={round(v("trust.old_framework.fees_interest_expenses", q), 4)}+{round(fin, 4)}',
                          'Other income': v('trust.old_framework.other_income', q),
-                         'Tax at Trust': v('trust.old_framework.income_tax', q),
                          'Finance cost on borrowing': f'=-{round(fin, 4)}',
                          'Debt repayment': v('trust.old_framework.external_debt_repayment', q),
-                         'DSRA / other adjustments': sum(v(f'trust.old_framework.{x}', q) for x in (
-                             'dsra', 'invested_in_portfolio', 'other_adjustment', 'ipo_expense_reimbursement', 'provision_reserve',
-                             'proceeds_reinvested', 'fresh_issuance', 'capital_reduction', 'sale_proceeds', 'sale_costs')),
                          'NDCF (as reported)': v('trust.old_framework.ndcf', q)})
         else:
             intr = S['interest_on_loans_to_spvs'].get(q) or 0
             div = v('trust.new_framework.dividend_post_period', q)
-            vals.update({'Interest income from SPVs': intr, 'Dividend income from SPVs': div,
+            vals.update({'Cash flow from operating activities': v('trust.new_framework.cfo', q) + v('trust.new_framework.reserve', q) + v('trust.new_framework.sale_proceeds', q),
+                         'Interest income': intr, 'Dividend income': div,
                          'Repayment of capital (SPV debt)': v('trust.new_framework.spv_distributions_received', q) - intr - div,
-                         'Cash flow from operating activities at Trust': v('trust.new_framework.cfo', q),
                          'Other income': v('trust.new_framework.treasury_income', q),
                          'Finance cost on borrowing': v('trust.new_framework.finance_cost', q),
                          'Debt repayment': v('trust.new_framework.debt_repayment', q),
-                         'Capex': v('trust.new_framework.capex', q),
-                         'DSRA / other adjustments': v('trust.new_framework.reserve', q) + v('trust.new_framework.sale_proceeds', q),
+                         'CAPEX': v('trust.new_framework.capex', q),
                          'NDCF (as reported)': v('trust.new_framework.ndcf', q)})
         for lab, x in vals.items():
             if isinstance(x, str) or abs(x) > 1e-9:
-                put(ws, f'{c}{rows[lab]}', x if isinstance(x, str) else round(x, 4), fmt=NUM1, color=RED)
-        R = rows
-        put(ws, f'{c}{R["NDCF at SPV"]}', f'=SUM({c}{R["NDCF at SPV - VTL"]}:{c}{R["NDCF at SPV - JPTL"]})', fmt=NUM1, bold=True)
-        put(ws, f'{c}{R["Distributions received from SPVs"]}', f'=SUM({c}{R["Interest income from SPVs"]}:{c}{R["Repayment of capital (SPV debt)"]})', fmt=NUM1, bold=True)
-        put(ws, f'{c}{R["Retained at SPVs"]}', f'={c}{R["Distributions received from SPVs"]}-{c}{R["NDCF at SPV"]}', fmt=NUM1)
-        put(ws, f'{c}{R["NDCF Generated"]}', f'={c}{R["Distributions received from SPVs"]}+SUM({c}{R["Cash flow from operating activities at Trust"]}:{c}{R["DSRA / other adjustments"]})', fmt=NUM1, bold=True)
-        put(ws, f'{c}{R["Check"]}', f'={c}{R["NDCF Generated"]}-{c}{R["NDCF (as reported)"]}', fmt=NUM1)
+                put(ws, f'{c}{R[lab]}', x if isinstance(x, str) else round(x, 4), fmt=NUM1, color=RED)
+        put(ws, f'{c}{R["SPVs NDCF"]}', f'=SUM({c}{R["NDCF at SPV - VTL"]}:{c}{R["NDCF at SPV - JPTL"]})', fmt=NUM1, bold=True)
+        put(ws, f'{c}{R["Upstreamed to PGInvIT, % of SPVs NDCF"]}',
+            f'=IFERROR(SUM({c}{R["Interest income"]}:{c}{R["Repayment of capital (SPV debt)"]})/{c}{R["SPVs NDCF"]},"")', fmt=PCT)
+        put(ws, f'{c}{R["NDCF (PGInvIT)"]}', f'=SUM({c}{R["Cash flow from operating activities"]}:{c}{R["CAPEX"]})', fmt=NUM1, bold=True)
+        put(ws, f'{c}{R["Check"]}', f'={c}{R["NDCF (PGInvIT)"]}-{c}{R["NDCF (as reported)"]}', fmt=NUM1)
     return r0 + len(NDCF_LINES) + 1, rows
