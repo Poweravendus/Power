@@ -1,7 +1,7 @@
 """Key Sheet New: SPV register, contracted tariff schedule and revenue strip (linked to Sensitivity, single source)."""
 import datetime as dt
 from common import *
-from core import SPVS, SEN, scol, a_row, acol
+from core import SPVS, SEN, scol, a_row, acol, A_START, A_BLOCK
 
 STRIP0, STRIPN = 2027, 2056          # revenue strip FY27E..FY56E in T:AW (as IndiGrid)
 TSA0, TSAN = 2021, 2054              # contracted non-escalable charges by contract year in AY:BV
@@ -62,7 +62,7 @@ def build_keysheet(ws, S, V):
                 fmt = PCT2
             put(ws, f'{c}{r}', v, fmt=fmt, fill=ROW_FILL, border_b=True, align='left' if isinstance(v, str) else 'right',
                 color=RED if isinstance(v, (int, float)) and c not in ('B',) else None)
-        put(ws, f'O{r}', f'=AssetLevelEst!E{3 + 27 * i + 18}', fmt=NUM1, fill=ROW_FILL, border_b=True)
+        put(ws, f'O{r}', f'=AssetLevelEst!E{A_START + A_BLOCK * i + 18}', fmt=NUM1, fill=ROW_FILL, border_b=True)
         for fy in range(STRIP0, STRIPN + 1):
             if fy <= 2054:
                 put(ws, f'{tcol(fy)}{r}', f'=N(Sensitivity_Bajaj!{scol(fy)}{SEN["eff"] + i})', fmt='#,##0;\\(#,##0\\);"–"')

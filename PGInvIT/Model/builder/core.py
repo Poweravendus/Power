@@ -15,7 +15,7 @@ MON = {m: i + 1 for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
 SEN = dict(price=2, xirr5=3, xirr_mat=4, xirr_mat_res=5, avail_hdr=7, avail=8, tariff_hdr=15, tariff=16,
            ladder=24, eff_hdr=31, eff=32, eff_tot=37, marg_hdr=40, marg=41, wc_hdr=48, wc=49,
            exit_hdr=55, mat_hdr=64, debt=74)
-A_BLOCK = 27                     # rows per SPV block in AssetLevelEst
+A_BLOCK = 23                     # rows per SPV block in AssetLevelEst
 A_START = 3
 
 
@@ -150,7 +150,7 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
 
 # =================================================================================================
 def build_assetlevel(ws, V, margins, hist):
-    std_sheet(ws, colA=2.57, widths={'B': 4.57, 'C': 30, 'AH': 34, 'AI': 10})
+    std_sheet(ws, colA=2.57, widths={'B': 6.5, 'C': 30, 'AH': 34, 'AI': 10})
     put(ws, 'C1', 'Source: Company / Valuation Report (INMACS Valuers, 31-Mar-2026); Rs. cr', italic=True)
     lastc = acol(FYN)
     info = {}
@@ -165,8 +165,7 @@ def build_assetlevel(ws, V, margins, hist):
             put(ws, f'{acol(fy)}{R(0)}', fy_label(fy), bold=True, align='right', border_b=True)
         labels = ['Revenue', 'Total Expenses', 'EBITDA', 'EBITDA Margin', 'Capex', 'Changes in WC', 'Taxation',
                   'Other adjustments', 'FCFF', 'TV', 'FCFF with TV', 'Discount period (yrs, mid-year)', 'Present value factor',
-                  'PV of Cash Flows', 'PV of Cash Flows', 'PV of TV Cash Flows', 'RTM project value (valuer)', 'Enterprise Value', 'WACC',
-                  'Memo: Valuer FCFF', 'Check: model FCFF - valuer FCFF', 'Memo: Valuer NOPAT', 'Memo: Valuer book depreciation']
+                  'PV of Cash Flows', 'PV of Cash Flows', 'PV of TV Cash Flows', 'RTM project value (valuer)', 'Enterprise Value', 'WACC']
         for k, lab in enumerate(labels, start=1):
             put(ws, f'B{R(k)}', s)
             put(ws, f'C{R(k)}', lab, bold=lab in ('FCFF', 'Enterprise Value'))
@@ -216,9 +215,6 @@ def build_assetlevel(ws, V, margins, hist):
                 put(ws, f'{c}{R(6)}', round(row['wc'], 4), fmt=NUM1, color=BLUE)
                 put(ws, f'{c}{R(7)}', round(tax, 4), fmt=NUM1, color=BLUE)
                 put(ws, f'{c}{R(12)}', row['per'], fmt=NUM2, color=BLUE)
-                put(ws, f'{c}{R(20)}', round(row['fcff'], 4), fmt=NUM1, color=BLUE)
-                put(ws, f'{c}{R(22)}', round(row['nopat'], 4), fmt=NUM1, color=BLUE)
-                put(ws, f'{c}{R(23)}', round(row['dep'], 4), fmt=NUM1, color=BLUE)
             elif fy > FY0:
                 for k in (5, 6, 7):
                     put(ws, f'{c}{R(k)}', 0, fmt=NUM1)
@@ -234,8 +230,6 @@ def build_assetlevel(ws, V, margins, hist):
             put(ws, f'{c}{R(11)}', f'={c}{R(9)}+{c}{R(10)}', fmt=NUM1)
             put(ws, f'{c}{R(13)}', f'=IF({c}{R(12)}=0,0,1/(1+$D${R(19)})^{c}{R(12)})', fmt='0.0000')
             put(ws, f'{c}{R(14)}', f'={c}{R(9)}*{c}{R(13)}', fmt=NUM1)
-            if row:
-                put(ws, f'{c}{R(21)}', f'={c}{R(9)}-{c}{R(20)}', fmt=NUM2)
         E, F = acol(FY0 + 1), lastc
         put(ws, f'D{R(15)}', f'=SUM({E}{R(14)}:{F}{R(14)})', fmt=NUM1)
         put(ws, f'D{R(16)}', f'=SUMPRODUCT({E}{R(10)}:{F}{R(10)},{E}{R(13)}:{F}{R(13)})', fmt=NUM1)

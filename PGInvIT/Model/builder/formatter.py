@@ -209,10 +209,10 @@ def fmt_assetlevel(ws, blocks, first_col, last_col, memo_col):
     summary = {'PV of Cash Flows', 'PV of TV Cash Flows', 'RTM project value (valuer)', 'Enterprise Value', 'WACC'}
     for r0 in blocks:
         font(ws.cell(r0 - 1, 3), NAVY, bold=True)
-        band(ws, r0, r0 + 23, 3, last_col, LG)
+        band(ws, r0, r0 + 19, 3, last_col, LG)
         underline_row(ws, r0, 3, last_col)
         seen_pv = False
-        for r in range(r0 + 1, r0 + 24):
+        for r in range(r0 + 1, r0 + 20):
             lab = ws.cell(r, 3).value
             if lab == 'PV of Cash Flows':
                 if seen_pv:
