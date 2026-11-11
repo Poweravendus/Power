@@ -137,9 +137,9 @@ F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI')
 if os.path.exists(qpath):
     F.nf_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
 F.nf_simple(W['Cashflows_Bajaj'], 4, 25, 3, 3 + FYN - 2027, F.N0B)
-F.nf_simple(W['IRR Calculation_Bajaj'], 5, 14, 2, 3 + FYN - 2027, F.N0B)
-F.nf_simple(W['IRR Calculation_Bajaj'], 11, 12, 2, 2, '0.0%', pct_rows=(11, 12))
-F.nf_simple(W['IRR Calculation_Bajaj'], 17, 18, 3, 3 + FYN - 2027, '0.0%', pct_rows=(17, 18))
+F.nf_simple(W['IRR Calculation_Bajaj'], 5, 9, 2, 3 + FYN - 2027, F.N0B)
+F.nf_simple(W['IRR Calculation_Bajaj'], 11, 11, 2, 2, '0.0%', pct_rows=(11,))
+F.nf_simple(W['IRR Calculation_Bajaj'], 15, 15, 3, 3 + FYN - 2027, '0.0%', pct_rows=(15,))
 W['IRR Calculation_Bajaj']['B2'].number_format = 'General'
 F.nf_keysheet(W['Key Sheet New'], [CI(x) for x in ('I', 'J', 'N', 'O', 'Q')] + list(range(CI('T'), CI('AW') + 1)) + list(range(CI('AY'), CI('AY') + 34)), 6, 32)
 W['Key Sheet New'].column_dimensions['R'].width = 12

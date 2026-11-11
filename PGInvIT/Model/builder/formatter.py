@@ -294,28 +294,29 @@ def fmt_cashflows(ws, last_col, check_row):
 
 
 def fmt_irr(ws, last_col):
-    for r in (7, 8, 16):
-        for k in range(2 if r != 16 else 3, last_col + 1):
-            c = ws.cell(r, k)
-            fill(c, LG)
-            font(c, BLACK, bold=True)
-            c.alignment = Alignment(horizontal='center')
-    for ref in ('B11', 'B12'):
-        fill(ws[ref], YEL)
-        font(ws[ref], BLACK, bold=True)
+    for k in range(2, last_col + 1):
+        c = ws.cell(8, k)
+        fill(c, LG)
+        font(c, BLACK, bold=True)
+        c.alignment = Alignment(horizontal='center')
+    fill(ws['B11'], YEL)
+    font(ws['B11'], BLACK, bold=True)
     for ref in ('B2', 'B3'):
         font(ws[ref], BLUE)
-    for r in (16, 17, 18):
+    for r in (14, 15):
         a = ws.cell(r, 1)
-        fill(a, HDRB if r == 16 else None)
+        fill(a, HDRB if r == 14 else None)
         font(a, BLACK, bold=True)
         for k in range(1, last_col + 1):
             ws.cell(r, k).border = Border(top=THIN, bottom=THIN, left=THIN, right=THIN)
-            if r > 16:
+            if k > 1:
                 ws.cell(r, k).alignment = Alignment(horizontal='center')
-    for r in (9, 14):
-        for k in range(2, last_col + 1):
-            ws.cell(r, k).alignment = Alignment(horizontal='center')
+        if r == 14:
+            for k in range(3, last_col + 1):
+                fill(ws.cell(r, k), LG)
+                font(ws.cell(r, k), BLACK, bold=True)
+    for k in range(2, last_col + 1):
+        ws.cell(9, k).alignment = Alignment(horizontal='center')
 
 
 def fmt_keysheet(ws, strip_c1, strip_c2, tsa_c1, tsa_c2, seg_rows):
@@ -430,7 +431,7 @@ def nf_consolidated(ws, c1, c2, last_row):
             _nf(ws.cell(r, k), fmt)
         drv = ws.cell(r, c2 + 2)
         if drv.value is not None:
-            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r == 75 else N1C if r in (236, 91) else N0B)
+            _nf(drv, '0.0%' if r in (9, 21, 24, 27, 235) else '0' if r in (75, 239) else N1C if r in (236, 91) else N0B)
 
 
 def nf_assumption(ws, pct_rows, period_rows, c1, c2, extra_cols):

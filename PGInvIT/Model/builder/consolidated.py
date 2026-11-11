@@ -64,7 +64,7 @@ DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level exp
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block (FY26)', None, PCT2),
            27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line, IndiGrid method; first TSA expiry = VTL, Jan-2052)', 2052, '0'),
            91: ('Annual amortisation of intangibles (FY26 actual)', 14.8, NUM1),
-           228: ('Minimum cash balance (Rs. cr)', None, NUM), 235: ('DPU growth target, % p.a.', 0.0, PCT),
+           228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY (inclusive); model distribution thereafter', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
            236: ('FY27 DPU target (Rs./unit)', 12.0, NUM2)}
 
 
@@ -166,7 +166,7 @@ def build_consolidated(ws, H, drivers):
             218: f'=SUM({c}213:{c}217)', 219: f'={c}17-{c}213', 220: f'=-{c}28', 221: 0, 222: 0, 223: 0, 224: 0,
             225: f'={c}74-{c}75', 226: f'=SUM({c}218:{c}225)', 228: f'=MAX(0,{p}102-$AK$228)', 229: f'={c}226+{c}228',
             235: '=$AK$235', 236: (f'=$AK$236' if fy == C_HIST_LAST + 1 else f'={p}236*(1+{c}235)'),
-            237: f'=MAX(0.9*{c}226,MIN({c}236*{c}56,{c}229))', 238: f'={c}226-{c}237', 239: f'=MAX(0,{c}237)',
+            237: f'=MAX(0.9*{c}226,MIN({c}236*{c}56,{c}229))', 238: f'={c}226-{c}239', 239: f'=IF({fy}<=$AK$239,{c}236*{c}56,MAX(0,{c}237))',
             240: f'=IF({c}239>=0.9*{c}226-0.001,"ok","below 90% floor")',
             241: f'={A("AUM (Rs. cr)")}', 242: f'={c}76-{c}102', 243: f'={c}241-{c}242', 244: f'={c}243/{c}56',
             245: f'=IF({c}241=0,"",{c}242/{c}241)', 250: 0, 251: f'={p}244', 252: f'=IFERROR({c}250/{c}251,0)',
