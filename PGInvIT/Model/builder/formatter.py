@@ -1,0 +1,353 @@
+"""Apply the IndiGrid model's visual conventions to every sheet of the PGInvIT workbook.
+
+Convention (decoded from the IndiGrid workbook's theme colours):
+  dark grey  D9D9D9  label column and historical columns (white -15%)
+  light grey F2F2F2  forecast columns (white -5%)
+  mid grey   BFBFBF  total rows on Assumption (white -25%)
+  light blue E3ECF6  input / output boxes (accent6 +80%)
+  steel blue 336699  Assumption header (accent1), white bold text
+  pale blue  D6E0EB  summary labels in AssetLevelEst (accent1 +80%)
+  fonts: red FF0000 historical inputs (driver sheet) and growth rows (italic); blue 0033CC forecast inputs;
+         green 00B050 carry-forward links; black formulas.
+"""
+from openpyxl.styles import PatternFill, Font, Border, Side, Alignment
+from openpyxl.utils import get_column_letter as L, column_index_from_string as CI
+
+DG, LG, MG, LB, SB, PB = 'FFD9D9D9', 'FFF2F2F2', 'FFBFBFBF', 'FFE3ECF6', 'FF336699', 'FFD6E0EB'
+YEL, ORG, HDRB = 'FFFFFF00', 'FFFFC000', 'FFDDEBF7'
+RED, BLUE, GREEN, BLACK, WHITE, NAVY = 'FFFF0000', 'FF0033CC', 'FF00B050', 'FF000000', 'FFFFFFFF', 'FF00008B'
+THIN, MED = Side(style='thin'), Side(style='medium')
+
+
+def fill(c, rgb):
+    c.fill = PatternFill('solid', fgColor=rgb) if rgb else PatternFill(fill_type=None)
+
+
+def font(c, color=None, bold=None, italic=None):
+    f = c.font
+    c.font = Font(name='Arial', size=9, bold=f.b if bold is None else bold, italic=f.i if italic is None else italic,
+                  color=color if color else (f.color if f.color is not None and getattr(f.color, 'type', None) == 'rgb' else BLACK))
+
+
+def is_formula(c):
+    return isinstance(c.value, str) and c.value.startswith('=')
+
+
+def is_input(c):
+    return isinstance(c.value, (int, float)) and not isinstance(c.value, bool) or (hasattr(c.value, 'year') and not is_formula(c))
+
+
+def carry_forward(c):
+    """'=G78' style link to the previous column on the same row."""
+    if not is_formula(c):
+        return False
+    prev = L(c.column - 1) + str(c.row)
+    return c.value.replace('$', '') == '=' + prev
+
+
+def band(ws, r1, r2, c1, c2, rgb):
+    for r in range(r1, r2 + 1):
+        for k in range(c1, c2 + 1):
+            fill(ws.cell(r, k), rgb)
+
+
+def box(ws, r1, r2, c1, c2, side=MED):
+    for r in range(r1, r2 + 1):
+        for k in range(c1, c2 + 1):
+            c = ws.cell(r, k)
+            b = c.border
+            c.border = Border(top=side if r == r1 else b.top, bottom=side if r == r2 else b.bottom,
+                              left=side if k == c1 else b.left, right=side if k == c2 else b.right)
+
+
+def underline_row(ws, r, c1, c2):
+    for k in range(c1, c2 + 1):
+        c = ws.cell(r, k)
+        c.border = Border(bottom=THIN)
+        font(c, bold=True)
+
+
+def color_values(ws, r1, r2, c1, c2, hist_cols, input_hist=BLACK, input_fcst=BLUE, formula_fcst=BLACK, links_green=False):
+    for r in range(r1, r2 + 1):
+        for k in range(c1, c2 + 1):
+            c = ws.cell(r, k)
+            if c.value is None:
+                continue
+            red_row = c.font.color is not None and getattr(c.font.color, 'rgb', None) == RED and c.font.i
+            if red_row:
+                continue
+            if k in hist_cols:
+                if is_input(c):
+                    font(c, input_hist)
+                else:
+                    font(c, BLACK)
+            else:
+                if is_input(c):
+                    font(c, input_fcst)
+                elif links_green and carry_forward(c):
+                    font(c, GREEN)
+                else:
+                    font(c, formula_fcst)
+
+
+# ------------------------------------------------------------------------------------------------
+def fmt_consolidated(ws, hist_c1, hist_c2, fc_c1, fc_c2, last_row, growth_rows, header_rows):
+    band(ws, 2, last_row, 2, 2, DG)
+    band(ws, 2, last_row, hist_c1, hist_c2, DG)
+    band(ws, 2, last_row, fc_c1, fc_c2, LG)
+    for r in range(2, last_row + 1):
+        for k in range(hist_c1, fc_c2 + 1):
+            c = ws.cell(r, k)
+            if not (isinstance(c.value, str) and not c.value.startswith('=')):
+                c.alignment = Alignment(horizontal='right')
+    color_values(ws, 4, last_row, hist_c1, fc_c2, set(range(hist_c1, hist_c2 + 1)), input_hist=BLACK, links_green=True)
+    for r in growth_rows:
+        for k in range(2, fc_c2 + 1):
+            c = ws.cell(r, k)
+            font(c, RED, italic=True)
+    for r in header_rows:
+        underline_row(ws, r, 2, fc_c2)
+    # driver columns (AK value, AL note)
+    for r in range(3, last_row + 1):
+        a, b = ws.cell(r, fc_c2 + 2), ws.cell(r, fc_c2 + 3)
+        if a.value is not None:
+            fill(a, LB)
+            font(a, BLUE if not is_formula(a) else BLACK, bold=False)
+        if b.value is not None:
+            font(b, BLACK, italic=True)
+    for k in (fc_c2 + 2, fc_c2 + 3):
+        c = ws.cell(3, k)
+        fill(c, DG)
+        font(c, BLACK, bold=True)
+
+
+def fmt_qtrly(ws, last_col):
+    last = ws.max_row
+    notes_row = next((r for r in range(1, last + 1) if ws.cell(r, 2).value == 'Notes'), last + 1)
+    band(ws, 2, notes_row - 1, 2, last_col, DG)
+    for r in range(2, notes_row):
+        b = ws.cell(r, 2)
+        if b.font.b and b.fill is not None and ws.cell(r + 1, 2).value == 'Rs. cr':
+            underline_row(ws, r, 2, last_col)
+        if b.value == 'Rs. cr':
+            underline_row(ws, r, 2, last_col)
+        for k in range(3, last_col + 1):
+            c = ws.cell(r, k)
+            if c.value is not None:
+                font(c, BLACK)
+                c.alignment = Alignment(horizontal='right')
+    for r in range(notes_row, last + 1):
+        font(ws.cell(r, 2), BLACK)
+
+
+def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_last_col):
+    # top input / output box
+    band(ws, 2, 5, 2, 3, LB)
+    box(ws, 2, 5, 2, 3)
+    font(ws['C2'], BLUE, bold=True)
+    font(ws['D2'], RED, italic=True)
+    font(ws['D3'], RED, italic=True)
+    hist = set(range(hist_c1, hist_c2 + 1))
+    for hdr, first in ((SEN['avail_hdr'], SEN['avail']), (SEN['tariff_hdr'], SEN['tariff']), (SEN['eff_hdr'], SEN['eff']),
+                       (SEN['marg_hdr'], SEN['marg']), (SEN['wc'] - 1, SEN['wc'])):
+        n = 4 if hdr == SEN['wc'] - 1 else (n_spv + 1 if hdr == SEN['eff_hdr'] else n_spv)
+        last = first + n - 1
+        band(ws, hdr, last, 2, 2, DG)
+        band(ws, hdr, last, hist_c1, hist_c2, DG)
+        band(ws, hdr, last, hist_c2 + 1, fc_c2, LG)
+        underline_row(ws, hdr, 2, fc_c2)
+        for r in range(first, last + 1):
+            for k in range(hist_c1, fc_c2 + 1):
+                c = ws.cell(r, k)
+                if c.value is None:
+                    continue
+                bold = r == SEN['eff_tot'] or (hdr == SEN['wc'] - 1 and r == last)
+                font(c, RED if k in hist else BLUE, bold=bold)
+        font(ws.cell(hdr - 1, 2), BLACK, bold=True)
+        nr = last + 1
+        if ws.cell(nr, 2).value:
+            font(ws.cell(nr, 2), RED, italic=True)
+    # ladder
+    r0 = SEN['ladder']
+    band(ws, r0 - 1, r0 + 4, 2, 3, DG)
+    underline_row(ws, r0 - 1, 2, 3)
+    for r in range(r0, r0 + 5):
+        font(ws.cell(r, 3), BLUE)
+        e = ws.cell(r, 5)
+        fill(e, YEL)
+        font(e, BLACK, bold=True, italic=False)
+    font(ws.cell(r0 - 2, 2), BLACK, bold=True)
+    # hold to exit / maturity blocks
+    for top, lastc in ((SEN['exit_hdr'], exit_last_col), (SEN['mat_hdr'], mat_last_col)):
+        r1, r2 = top + 1, top + 7 if top == SEN['mat_hdr'] else top + 6
+        band(ws, r1, r2, 2, 3, DG)
+        band(ws, r1, r2, 4, lastc, LG)
+        underline_row(ws, r1, 2, lastc)
+        for r in range(r1 + 1, r2 + 1):
+            for k in range(3, lastc + 1):
+                c = ws.cell(r, k)
+                if c.value is None:
+                    continue
+                font(c, BLUE if (is_input(c) and not is_formula(c)) else RED, bold=r == top + 6)
+            font(ws.cell(r, 2), BLACK, bold=r in (top + 6, top + 7))
+        font(ws.cell(top, 2), BLACK, bold=True)
+    fill(ws.cell(SEN['exit_hdr'] - 1, 2), DG)
+    # debt mirror
+    d = SEN['debt']
+    band(ws, d, d + 5, 2, 2, DG)
+    band(ws, d, d + 5, hist_c2 + 1, fc_c2, LG)
+    for r in range(d, d + 6):
+        for k in range(hist_c2 + 1, fc_c2 + 1):
+            c = ws.cell(r, k)
+            if c.value is not None:
+                font(c, GREEN, bold=r == d + 3)
+    font(ws.cell(d - 1, 2), BLACK, bold=True)
+
+
+def fmt_assetlevel(ws, blocks, first_col, last_col, memo_col):
+    """blocks: list of r0 (header row of each SPV block)."""
+    summary = {'PV of Cash Flows', 'PV of TV Cash Flows', 'RTM project value (valuer)', 'Enterprise Value', 'WACC'}
+    for r0 in blocks:
+        font(ws.cell(r0 - 1, 3), NAVY, bold=True)
+        band(ws, r0, r0 + 23, 3, last_col, LG)
+        underline_row(ws, r0, 3, last_col)
+        seen_pv = False
+        for r in range(r0 + 1, r0 + 24):
+            lab = ws.cell(r, 3).value
+            if lab == 'PV of Cash Flows':
+                if seen_pv:
+                    fill(ws.cell(r, 3), PB)
+                seen_pv = True
+            elif lab in summary:
+                fill(ws.cell(r, 3), PB)
+            if isinstance(lab, str) and lab.startswith(('Memo', 'Check')):
+                font(ws.cell(r, 3), BLACK, italic=True)
+            for k in range(first_col, last_col + 1):
+                c = ws.cell(r, k)
+                if c.value is None:
+                    continue
+                font(c, BLUE if is_input(c) else BLACK)
+                if not (isinstance(c.value, str) and not c.value.startswith('=')):
+                    c.alignment = Alignment(horizontal='right')
+            if isinstance(lab, str) and lab.startswith('Check'):
+                band(ws, r, r, first_col + 1, last_col, YEL)
+        # variance cell and memo block
+        fill(ws.cell(r0 + 18, first_col + 2), YEL)
+        for r in range(r0 + 1, r0 + 16):
+            v = ws.cell(r, memo_col + 1)
+            if v.value is None:
+                continue
+            if is_input(v):
+                font(v, BLUE)
+            elif isinstance(v.value, str) and '!' not in v.value and v.value.startswith('=D') or (isinstance(v.value, str) and v.value.startswith('=E')):
+                font(v, GREEN)
+            else:
+                font(v, BLACK)
+            if 'Variance' in str(ws.cell(r, memo_col).value):
+                fill(v, YEL)
+
+
+def fmt_assumption(ws, item_rows, total_rows, first_col, last_col, extra_cols):
+    for k in range(3, last_col + 1):
+        c = ws.cell(2, k)
+        fill(c, SB)
+        font(c, WHITE, bold=True)
+    for k in extra_cols:
+        c = ws.cell(2, k)
+        fill(c, SB)
+        font(c, WHITE, bold=True)
+    for r in item_rows:
+        band(ws, r, r, 3, last_col, LG)
+        for k in range(first_col, last_col + 1):
+            c = ws.cell(r, k)
+            if c.value is not None:
+                font(c, BLUE if is_input(c) else BLACK)
+        for k in extra_cols:
+            c = ws.cell(r, k)
+            if c.value is not None:
+                fill(c, LB)
+                font(c, BLUE if is_input(c) else BLACK, italic=False)
+    for r in total_rows:
+        band(ws, r, r, 3, last_col, MG)
+        for k in range(3, last_col + 1):
+            font(ws.cell(r, k), BLACK, bold=True)
+    for r in range(1, ws.max_row + 1):
+        a = ws.cell(r, 1)
+        if a.value:
+            font(a, BLACK, bold=True)
+
+
+def fmt_cashflows(ws, last_col, check_row):
+    for k in range(3, last_col + 1):
+        c = ws.cell(3, k)
+        fill(c, LB)
+        font(c, BLACK, bold=True)
+        c.alignment = Alignment(horizontal='center')
+    fill(ws['B1'], LG)
+    font(ws['B1'], BLACK, bold=True, italic=False)
+    for r in range(4, check_row + 1):
+        for k in range(3, last_col + 1):
+            c = ws.cell(r, k)
+            if c.value is not None:
+                c.alignment = Alignment(horizontal='center')
+    band(ws, check_row, check_row, 2, last_col, YEL)
+
+
+def fmt_irr(ws, last_col):
+    for r in (7, 8, 16):
+        for k in range(2 if r != 16 else 3, last_col + 1):
+            c = ws.cell(r, k)
+            fill(c, LG)
+            font(c, BLACK, bold=True)
+            c.alignment = Alignment(horizontal='center')
+    for ref in ('B11', 'B12'):
+        fill(ws[ref], YEL)
+        font(ws[ref], BLACK, bold=True)
+    for ref in ('B2', 'B3'):
+        font(ws[ref], BLUE)
+    for r in (16, 17, 18):
+        a = ws.cell(r, 1)
+        fill(a, HDRB if r == 16 else None)
+        font(a, BLACK, bold=True)
+        for k in range(1, last_col + 1):
+            ws.cell(r, k).border = Border(top=THIN, bottom=THIN, left=THIN, right=THIN)
+            if r > 16:
+                ws.cell(r, k).alignment = Alignment(horizontal='center')
+    for r in (9, 14):
+        for k in range(2, last_col + 1):
+            ws.cell(r, k).alignment = Alignment(horizontal='center')
+
+
+def fmt_keysheet(ws, strip_c1, strip_c2, tsa_c1, tsa_c2, seg_rows):
+    for k in range(strip_c1, strip_c2 + 1):
+        c = ws.cell(11, k)
+        fill(c, DG)
+    for k in range(tsa_c1, tsa_c2 + 1):
+        fill(ws.cell(11, k), DG)
+    for r in range(6, 11):
+        for k in range(tsa_c1, tsa_c2 + 1):
+            c = ws.cell(r, k)
+            if c.value is not None:
+                font(c, RED)
+        for k in range(strip_c1, strip_c2 + 1):
+            font(ws.cell(r, k), BLACK)
+    r1, r2 = seg_rows
+    band(ws, r1, r1, 19, strip_c2, DG)
+    band(ws, r2, r2, 19, strip_c2, DG)
+    for k in range(19, strip_c2 + 1):
+        font(ws.cell(r1, k), BLACK, bold=True)
+        font(ws.cell(r2, k), BLACK, bold=True)
+    fill(ws['T3'], 'FF1F4E79')
+    fill(ws['AY3'], 'FF1F4E79')
+
+
+DASH = {'#,##0.0_);(#,##0.0)': '#,##0.0_);(#,##0.0);"–"_)', '#,##0_);(#,##0)': '#,##0_);(#,##0);"–"_)',
+        '#,##0.00_);(#,##0.00)': '#,##0.00_);(#,##0.00);"–"_)', '0.0%': '0.0%;-0.0%;"–"', '0.00%': '0.00%;-0.00%;"–"'}
+
+
+def dash_zero(ws):
+    """Show zeros as a dash (IndiGrid Key Sheet convention) so nil lines read cleanly."""
+    for row in ws.iter_rows():
+        for c in row:
+            if c.value is not None and c.number_format in DASH:
+                c.number_format = DASH[c.number_format]

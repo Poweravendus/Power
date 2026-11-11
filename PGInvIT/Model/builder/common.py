@@ -64,7 +64,9 @@ def finish_sheet(ws):
             if c.value is not None and (c.font is None or c.font.name != 'Arial'):
                 c.font = font()
     for r in range(1, ws.max_row + 1):
+        hidden = ws.row_dimensions[r].hidden
         ws.row_dimensions[r].height = 12
+        ws.row_dimensions[r].hidden = hidden
 
 
 def fy_label(fy, est=False):

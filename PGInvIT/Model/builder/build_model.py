@@ -74,7 +74,54 @@ if os.path.exists(qpath):
 else:
     put(W['Qtrly'], 'B2', 'Quarterly data pending', italic=True)
 
+# ---------------- IndiGrid visual conventions on every sheet ----------------
+import formatter as F
+from core import A_ITEMS, a_row, A_START, A_BLOCK
+from rest import ccol as _cc
+F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 252,
+                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 212, 249])
+for ref in [f'{_cc(fy)}115' for fy in range(2022, FYN + 1)] + ['G246']:
+    F.fill(W['Consolidated'][ref], F.YEL)
+if os.path.exists(qpath):
+    F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
+F.fmt_sensitivity(W['Sensitivity_Bajaj'], SEN, 3, CI(scol(2026)), CI(scol(FYN)), len(SPVS),
+                  exit_last_col=4 + 20, mat_last_col=3 + (FYN - 2026) * 4 - 1)
+F.fmt_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
+item_rows, total_rows = [], []
+for it in A_ITEMS:
+    item_rows += [a_row(it, i) for i in range(len(SPVS))]
+    if W['Assumption'].cell(a_row(it), 3).value:
+        total_rows.append(a_row(it))
+F.fmt_assumption(W['Assumption'], item_rows, total_rows, 4, CI(acol(FYN)), [CI('AH'), CI('AI'), CI('AJ'), CI('AK')])
+F.fmt_cashflows(W['Cashflows_Bajaj'], 3 + FYN - 2027, 25)
+F.fmt_irr(W['IRR Calculation_Bajaj'], 3 + FYN - 2027)
+F.fmt_keysheet(W['Key Sheet New'], CI('T'), CI('AW'), CI('AY'), CI('AY') + 2054 - 2021, (29, 32))
+
+# collapse long empty bands in Consolidated (keep one spacer row)
+wc = W['Consolidated']
+empty = [r for r in range(4, 253) if all(wc.cell(r, k).value is None for k in range(2, CI(_cc(FYN)) + 1))]
+for r in empty:
+    if r - 1 in empty and r + 1 in empty or (r - 1 in empty and r - 2 in empty):
+        wc.row_dimensions[r].hidden = True
+# widths so dates / large numbers never show ###
+for k in range(3, CI(_cc(FYN)) + 1):
+    wc.column_dimensions[L(k)].width = 9
+wi = W['IRR Calculation_Bajaj']
+wi.column_dimensions['A'].width = 46
+for k in range(2, 3 + FYN - 2027 + 1):
+    wi.column_dimensions[L(k)].width = 11
+wsn = W['Sensitivity_Bajaj']
+for k in range(3, 3 + (FYN - 2026) * 4 + 2):
+    wsn.column_dimensions[L(k)].width = 9.5
+wk = W['Key Sheet New']
+for col_, w in {'D': 38, 'E': 44, 'F': 12, 'G': 26, 'H': 70, 'L': 30, 'M': 20, 'N': 12, 'O': 12, 'P': 26, 'Q': 12, 'R': 12, 'S': 26}.items():
+    wk.column_dimensions[col_].width = w
+wq = W['Qtrly']
+for k in range(3, 3 + 21):
+    wq.column_dimensions[L(k)].width = 9
+wq.column_dimensions['B'].width = 52
 for n in names:
+    F.dash_zero(W[n])
     finish_sheet(W[n])
 wb.save(OUT)
 print('saved', OUT, '| trust-level expense base', drivers[14], '| SPV opex FY27', round(spv_opex27, 2))

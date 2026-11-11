@@ -124,7 +124,7 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
         for fy in range(S_FY0, FYN + 1):
             c = scol(fy)
             t, a = f'{c}{SEN["tariff"] + i}', f'{c}{SEN["avail"] + i}'
-            put(ws, f'{c}{r}', f'=IF(N({t})=0,0,{t}*IF({a}>={CAP},1+{INC}*({CAP}-{T})*100,IF({a}>={T},1+{INC}*({a}-{T})*100,IF({a}>={PEN},{a}/{T},{a}/{T}-{PADD}*({PEN}-{a})*100))))', fmt=NUM1)
+            put(ws, f'{c}{r}', f'=IF(N({t})=0,"",{t}*IF({a}>={CAP},1+{INC}*({CAP}-{T})*100,IF({a}>={T},1+{INC}*({a}-{T})*100,IF({a}>={PEN},{a}/{T},{a}/{T}-{PADD}*({PEN}-{a})*100))))', fmt=NUM1)
     r = SEN['eff_tot']
     put(ws, f'B{r}', 'Total', bold=True)
     for fy in range(S_FY0, FYN + 1):
@@ -294,7 +294,7 @@ def build_assumption(ws, V, ainfo):
                          f'SUMIFS(AssetLevelEst!{c}:{c},AssetLevelEst!$B:$B,$C{r},AssetLevelEst!$C:$C,"{lab}"))')
                     put(ws, f'{c}{r}', f, fmt=NUM2 if item == 'Discount period' else NUM1)
                 elif item == 'EBITDA Margin %':
-                    put(ws, f'{c}{r}', f'=IF({c}{a_row("Revenue", i)}=0,"",{c}{a_row("EBITDA", i)}/{c}{a_row("Revenue", i)})', fmt=PCT)
+                    put(ws, f'{c}{r}', f'=IF(OR({c}{a_row("Revenue", i)}=0,{c}{a_row("EBITDA", i)}=0),"",{c}{a_row("EBITDA", i)}/{c}{a_row("Revenue", i)})', fmt=PCT)
                 elif item == 'WACC, %':
                     put(ws, f'{c}{r}', f'=AssetLevelEst!$D${ainfo[s]["r0"] + 19}', fmt=PCT2)
                 elif item == 'Loan from PGInvIT (closing)':
@@ -326,7 +326,7 @@ def build_assumption(ws, V, ainfo):
                     put(ws, f'{c}{r}', f, fmt=NUM1)
         tr = a_row(item)
         if item not in ('EBITDA Margin %', 'WACC, %', 'Discount period'):
-            put(ws, f'C{tr}', f'Total {item}', bold=True)
+            put(ws, f'C{tr}', item if item.startswith('Total') else f'Total {item}', bold=True)
             for fy in range(FY0, FYN + 1):
                 c = acol(fy)
                 put(ws, f'{c}{tr}', f'=SUM({c}{a_row(item, 0)}:{c}{a_row(item, 4)})', fmt=NUM1, bold=True)
@@ -334,7 +334,7 @@ def build_assumption(ws, V, ainfo):
             put(ws, f'C{tr}', 'Portfolio EBITDA margin', bold=True)
             for fy in range(FY0, FYN + 1):
                 c = acol(fy)
-                put(ws, f'{c}{tr}', f'=IF({c}{a_row("Revenue")}=0,"",{c}{a_row("EBITDA")}/{c}{a_row("Revenue")})', fmt=PCT, bold=True)
+                put(ws, f'{c}{tr}', f'=IF(OR({c}{a_row("Revenue")}=0,{c}{a_row("EBITDA")}=0),"",{c}{a_row("EBITDA")}/{c}{a_row("Revenue")})', fmt=PCT, bold=True)
     note = a_row(A_ITEMS[-1]) + 2
     put(ws, f'C{note - 1}', 'Levered tax = valuer (unlevered) SPV tax less tax shield on interest paid to PGInvIT; floor at nil. Used for NDCF and consolidated tax; AUM stays on the valuer basis.', italic=True)
     put(ws, f'C{note}', 'AUM at each 31-Mar = PV of the SPV\'s FCFF for later years only (the year\'s own cash flow is excluded, fixing the IndiGrid double count),', italic=True)
