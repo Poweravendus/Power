@@ -29,3 +29,10 @@ Tags: [A] audited / auditor-certified, [M] management, [S] secondary, [E] estima
 
 ## Conflicts
 - C1 DRHP vs RHP EBITDA FY24/FY25 (Rs.0.1 cr) - RHP used. C2 restated vs statutory PAT FY23-FY25 - restated used. C3 press release prior-year column error. C4 filer OCR error 1QFY26 revenue. C5 FY25 BS Rs.0.01 mn rounding. C6 hedging statement vs accounts.
+
+## Added 11-Nov-2026 (base reset)
+- E19 [S] India jewellery demand, tonnes: 544.6 / 315.9 / 610.9 / 600.6 / 575.8 / 563.4 / 430.5 CY19-CY25; Q1CY25 81.6, Q1CY26 66.1 (WGC via CareEdge, Prospectus p.158).
+- E20 [S] Market CAGRs CY25-CY30P: total gold jewellery 11.4% (p.155), wholesale 13.1% (p.171), organised wholesale makers 15.4% (p.175).
+- E21 [S] WGC Gold Demand Trends India Q3 2026: jewellery 99.9 t (-20% YoY), value Rs.1,48,700 cr (+16%); Jan-Sep 2026 241.1 t vs 295.4 t (-18%); MCX gold average Rs.1,48,891/10 g in Jul-Sep 2026, -1% QoQ, +45% YoY. https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-india-focus-q3-2026
+- E22 [A] Working-capital plans: DRHP p.122 (FY26 receivables Rs.87.2 cr at 20 days = Rs.1,591 cr revenue; FY27 Rs.98.6 cr = Rs.1,800 cr); Prospectus p.118 (FY27 receivables Rs.143.8 cr at 25 days, inventory Rs.258.9 cr at 45 days = Rs.2,100 cr).
+- E23 [M] No numeric volume or margin outlook (1QFY27 call p.10).
