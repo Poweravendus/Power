@@ -140,7 +140,7 @@ def build_sensitivity(ws, V, hist, margins, price, entry_date):
                 if v is not None:
                     put(ws, f'{c}{r}', v, fmt=PCT, color=RED)
             elif fy in margins.get(s, {}):
-                put(ws, f'{c}{r}', round(margins[s][fy], 4), fmt=PCT, color=BLUE)
+                put(ws, f'{c}{r}', margins[s][fy], fmt=PCT, color=BLUE)
     return dict(T=T, INC=INC, CAP=CAP, PEN=PEN, PADD=PADD)
 
 
@@ -168,7 +168,8 @@ def build_assetlevel(ws, V, margins, hist):
         memo = ['WACC (nominal, post-tax)', 'Terminal growth rate (g) - input', 'Terminal-year FCFF (valuer)',
                 'TV discounting period (yrs)', 'Terminal value, undiscounted (TV)', 'TV year (FY)', 'PV of terminal value',
                 'PV of explicit period', 'RTM project value (valuer)', 'Enterprise Value (derived)', 'EV per valuer',
-                'Variance (derived vs valuer)', 'Memo: TV as % of EV', 'Memo: EV / first-yr EBITDA', 'Memo: first-yr FCFF yield on EV']
+                'Variance (derived vs valuer)', 'Memo: TV as % of EV', 'Memo: EV / first-yr EBITDA', 'Memo: first-yr FCFF yield on EV',
+                'RTM life end (FY)']
         m = {lab: R(k + 1) for k, lab in enumerate(memo)}
         for lab, rr in m.items():
             put(ws, f'AH{rr}', lab)
@@ -188,6 +189,7 @@ def build_assetlevel(ws, V, margins, hist):
         put(ws, f'AI{m["Memo: TV as % of EV"]}', f'=IF(D{R(18)}=0,0,D{R(16)}/D{R(18)})', fmt=PCT)
         put(ws, f'AI{m["Memo: EV / first-yr EBITDA"]}', f'=IF(E{R(3)}=0,0,D{R(18)}/E{R(3)})', fmt='0.0x')
         put(ws, f'AI{m["Memo: first-yr FCFF yield on EV"]}', f'=IF(D{R(18)}=0,0,E{R(9)}/D{R(18)})', fmt=PCT)
+        put(ws, f'AI{m["RTM life end (FY)"]}', {'KATL': 2049, 'PPTL': 2051}.get(s, 2027), fmt='0', color=BLUE)
 
         sr_eff, sr_mar = SEN['eff'] + i, SEN['marg'] + i
         for fy in range(FY0, FYN + 1):
@@ -253,14 +255,14 @@ def a_row(item, i=None):
 
 
 def build_assumption(ws, V, ainfo):
-    std_sheet(ws, colA=12, widths={'B': 12, 'C': 24, 'AH': 16})
+    std_sheet(ws, colA=12, widths={'B': 12, 'C': 30, 'AH': 16, 'AI': 16, 'AJ': 12, 'AK': 10, 'AL': 13, 'AM': 10})
     put(ws, 'C2', 'Rs. cr', bold=True)
     for fy in range(FY0, FYN + 1):
         c = acol(fy)
         put(ws, f'{c}1', dt.datetime(fy, 3, 31), fmt='mmm-yy', align='right')
         put(ws, f'{c}2', fy_label(fy), bold=True, align='right', border_b=True)
     put(ws, 'AH2', 'Tag', bold=True, border_b=True)
-    for col, lab in (('AI', 'Annual repayment'), ('AJ', 'Interest rate'), ('AK', 'Tax rate')):
+    for col, lab in (('AI', 'Annual repayment'), ('AJ', 'Interest rate'), ('AK', 'Tax rate'), ('AL', 'MAT until FY'), ('AM', 'MAT rate')):
         put(ws, f'{col}{a_row("Loan from PGInvIT (closing)", 0) - 1}', lab, bold=True, border_b=True, align='right')
     asset_label = {'Revenue': 'Revenue', 'Total Expenses': 'Total Expenses', 'EBITDA': 'EBITDA', 'Capex': 'Capex',
                    'Changes in WC': 'Changes in WC', 'Taxation': 'Taxation', 'FCFF': 'FCFF', 'TV': 'TV',
@@ -291,6 +293,8 @@ def build_assumption(ws, V, ainfo):
                         put(ws, f'AI{r}', SPV_LOAN[s][1], fmt=NUM1, color=BLUE)
                         put(ws, f'AJ{r}', 0.145, fmt=PCT2, color=BLUE)
                         put(ws, f'AK{r}', 0.2517, fmt=PCT2, color=BLUE)
+                        put(ws, f'AL{r}', 2031 if s == 'VTL' else 0, fmt='0', color=BLUE)
+                        put(ws, f'AM{r}', 0.17472, fmt=PCT2, color=BLUE)
                     else:
                         put(ws, f'{c}{r}', f'=MAX(0,{L(CI(c) - 1)}{r}-$AI{r})', fmt=NUM1)
                 elif item == 'Interest on loan from PGInvIT':
@@ -300,7 +304,7 @@ def build_assumption(ws, V, ainfo):
                 elif item == 'Taxation (levered, used for NDCF)':
                     lr = a_row('Loan from PGInvIT (closing)', i)
                     if fy > FY0:
-                        put(ws, f'{c}{r}', f'=MAX(0,{c}{a_row("Taxation", i)}-$AK{lr}*{c}{a_row("Interest on loan from PGInvIT", i)})', fmt=NUM1)
+                        put(ws, f'{c}{r}', f'=MAX(0,{c}{a_row("Taxation", i)}-IF(YEAR({c}$1)<=$AL{lr},$AM{lr},$AK{lr})*{c}{a_row("Interest on loan from PGInvIT", i)})', fmt=NUM1)
                 elif item == 'AUM (Rs. cr)':
                     m = ainfo[s]['memo']
                     fc, per, w = a_row('FCFF', i), a_row('Discount period', i), f'{c}{a_row("WACC, %", i)}'
@@ -308,7 +312,7 @@ def build_assumption(ws, V, ainfo):
                     tv = f'AssetLevelEst!$AI${m["Terminal value, undiscounted (TV)"]}'
                     tvp = f'AssetLevelEst!$AI${m["TV discounting period (yrs)"]}'
                     tvy = f'AssetLevelEst!$AI${m["TV year (FY)"]}'
-                    rtm = f'AssetLevelEst!$D${ainfo[s]["r0"] + 17}'
+                    rtm = f'AssetLevelEst!$D${ainfo[s]["r0"] + 17}*MAX(0,MIN(1,(AssetLevelEst!$AI${m["RTM life end (FY)"]}-YEAR({c}$1))/(AssetLevelEst!$AI${m["RTM life end (FY)"]}-{FY0})))'
                     f = (f'=SUMPRODUCT(($D$1:$AF$1>{c}$1)*$D{fc}:$AF{fc}*(1+{w})^(-($D{per}:$AF{per}-{k})))'
                          f'+IF({tvy}>YEAR({c}$1),{tv}*(1+{w})^(-({tvp}-{k})),{tv})+{rtm}')
                     put(ws, f'{c}{r}', f, fmt=NUM1)
@@ -324,6 +328,6 @@ def build_assumption(ws, V, ainfo):
                 c = acol(fy)
                 put(ws, f'{c}{tr}', f'=IF(OR({c}{a_row("Revenue")}=0,{c}{a_row("EBITDA")}=0),"",{c}{a_row("EBITDA")}/{c}{a_row("Revenue")})', fmt=PCT, bold=True)
     note = a_row(A_ITEMS[-1]) + 2
-    put(ws, f'C{note + 2}', 'Check: FY26 AUM - valuer EV', bold=True)
+    put(ws, f'C{note + 2}', 'Check: AUM vs valuer EV', bold=True)
     put(ws, f'D{note + 2}', '=D{0}-SUM({1})'.format(a_row('AUM (Rs. cr)'), ','.join(f'AssetLevelEst!E{ainfo[s]["r0"] + 18}' for s in SPVS)), fmt=NUM2, fill=CHK_FILL)
     return note + 4

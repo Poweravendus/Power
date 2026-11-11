@@ -92,7 +92,7 @@ for it in A_ITEMS:
     item_rows += [a_row(it, i) for i in range(len(SPVS))]
     if W['Assumption'].cell(a_row(it), 3).value:
         total_rows.append(a_row(it))
-F.fmt_assumption(W['Assumption'], item_rows, total_rows, 4, CI(acol(FYN)), [CI('AH'), CI('AI'), CI('AJ'), CI('AK')])
+F.fmt_assumption(W['Assumption'], item_rows, total_rows, 4, CI(acol(FYN)), [CI('AH'), CI('AI'), CI('AJ'), CI('AK'), CI('AL'), CI('AM')])
 F.fmt_cashflows(W['Cashflows_Bajaj'], 3 + FYN - 2027, 25)
 F.fmt_irr(W['IRR Calculation_Bajaj'], 3 + FYN - 2027)
 
@@ -130,7 +130,7 @@ F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len
 F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 252)
 pct_rows = [a_row(it, i) for it in ('EBITDA Margin %', 'WACC, %') for i in range(len(SPVS))] + [a_row('EBITDA Margin %')]
 per_rows = [a_row('Discount period', i) for i in range(len(SPVS))]
-F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK')])
+F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK'), CI('AM')])
 if os.path.exists(qpath):
     F.nf_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
 F.nf_simple(W['Cashflows_Bajaj'], 4, 25, 3, 3 + FYN - 2027, F.N0B)

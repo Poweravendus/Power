@@ -27,7 +27,7 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     96: ('Non Current Assets (excl. block)', 'b'), 98: ('Inventories', ''), 99: ('Trade Receivables', ''),
     100: ('Other bank balances (term deposits)', ''), 101: ('Cash and cash equivalents', ''), 102: ('Cash & Cash Equivalents (incl. investments)', 'b'),
     104: ('Other Current Assets', ''), 105: ('Current Assets', 'b'), 107: ('Trade Payables', ''), 108: ('Other Current Liabilities', ''),
-    109: ('Provisions', ''), 110: ('Current Liabilities', 'b'), 112: ('Working Capital Including Cash', 'b'), 114: ('Total Assets', 'b'),
+    109: ('Provisions', ''), 110: ('Current Liabilities', 'b'), 112: ('Working Capital Including Cash', 'b'), 114: ('Total Assets (net of current liabilities)', 'b'),
     115: ('Diff', 'g'),
     117: ('Cash Flow Statement (INR cr.)', 'h'), 118: ('A. CASH FLOW FROM OPERATING ACTIVITIES', 'b'), 119: ('Profit before tax', ''),
     121: ('Depreciation and amortisation expense', ''), 123: ('Impairment / (reversal of impairment)', ''), 129: ('Finance costs', ''),
@@ -64,7 +64,7 @@ DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level exp
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
            27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line)', 2052, '0'),
            91: ('Annual amortisation of intangibles', 14.8, NUM1),
-           228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
+           224: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1), 228: ('Minimum cash balance (Rs. cr)', None, NUM), 239: ('Pay DPU target up to FY', 2027, '0'), 235: ('DPU growth target, % p.a.', 0.0, PCT),
            236: ('DPU target (Rs./unit)', 12.0, NUM2)}
 
 
@@ -135,7 +135,7 @@ def build_consolidated(ws, H, drivers):
             17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 19: f'=IFERROR({c}17/{p}17-1,"")',
             21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'=MIN({c}24*AVERAGE({p}85,{c}85),{p}87+{c}85-{p}85)+({p}91-{c}91)', 24: '=$AK$24',
             26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}73,{c}76)', 29: 0,
-            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}', 38: 0, 39: 0,
+            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$224', 38: 0, 39: 0,
             40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)', 43: f'={c}34-{c}40', 45: 0, 47: f'={c}43+{c}45',
             49: 0, 52: f'={c}43-{c}49', 53: f'=IF({c}6=0,"",{c}52/{c}6)', 54: f'=IFERROR({c}52/{p}52-1,"")',
             56: f'={p}56+{c}252', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}239',
@@ -157,8 +157,8 @@ def build_consolidated(ws, H, drivers):
             178: f'={p}102', 179: f'={c}177+{c}178',
             182: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"]}', 183: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 1}',
             184: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 2}', 185: f'={c}182+{c}183-{c}184', 210: f'={c}146+{c}148',
-            213: f'={A("EBITDA")}', 214: f'={c}22', 215: f'={c}143', 216: f'={c}148', 217: f'=-{c}40',
-            218: f'=SUM({c}213:{c}217)', 219: f'={c}17-{c}213', 220: f'=-{c}28', 221: 0, 222: 0, 223: 0, 224: 0,
+            213: f'={A("EBITDA")}', 214: f'={c}22', 215: f'={c}143', 216: f'={c}148', 217: f'=-{A("Taxation (levered, used for NDCF)")}',
+            218: f'=SUM({c}213:{c}217)', 219: f'={c}17-{c}213', 220: f'=-{c}28', 221: 0, 222: 0, 223: 0, 224: '=-$AK$224',
             225: f'={c}74-{c}75', 226: f'=SUM({c}218:{c}225)', 228: f'=MAX(0,{p}102-$AK$228)', 229: f'={c}226+{c}228',
             235: '=$AK$235', 236: (f'=$AK$236' if fy == C_HIST_LAST + 1 else f'={p}236*(1+{c}235)'),
             237: f'=MAX(0.9*{c}226,MIN({c}236*{c}56,{c}229))', 238: f'={c}226-{c}239', 239: f'=IF({fy}<=$AK$239,{c}236*{c}56,MAX(0,{c}237))',

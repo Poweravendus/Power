@@ -103,4 +103,4 @@ Note: this filing is a scanned document. Its text layer is partly garbled, so re
 
 - SPV DCFs reproduce the 31-Mar-2026 valuation (INMACS); FY26 NAV Rs 90.77 vs reported Rs 90.79.
 - History: FY22-FY26 annual (audited) and 1QFY22-1QFY27 quarterly (NSE filings), in `Model/data/*.json`.
-- Rebuild: `Model/builder/build_model.py`, then `recalc.py` (LibreOffice recalculation) and `check.py` (tie-out checks).
+- Rebuild: `Model/builder/build_model.py`, then `recalc.py` (LibreOffice recalculation) and `check.py` (tie-out checks) and `audit.py` (independent audit against source data).
