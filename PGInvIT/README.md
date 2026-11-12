@@ -36,6 +36,7 @@ Page: https://www.pginvit.in/pub-valuations.aspx
 | [Valuation_Report_H1FY24.pdf](Valuation_Reports/Valuation_Report_H1FY24.pdf) | 112 | https://www.pginvit.in/uploads/648713e1-2b5f-41ed-9a85-583890613246/Valuation_Report-H1FY23.pdf |
 | [Valuation_Report_H1FY25.pdf](Valuation_Reports/Valuation_Report_H1FY25.pdf) | 110 | https://www.pginvit.in/uploads/9c5ee3ef-c184-4c1f-a76d-2fbb65872f9f/Valuation_Report-H1FY25.pdf |
 | [Valuation_Report_H1FY26.pdf](Valuation_Reports/Valuation_Report_H1FY26.pdf) | 137 | https://www.pginvit.in/uploads/6d6e10ad-cf23-402d-bcfd-646f19df8bb7/1._Valuation_Report.pdf |
+| [Valuation_Report_H1FY27.pdf](Valuation_Reports/Valuation_Report_H1FY27.pdf) | 120 | https://nsearchives.nseindia.com/corporate/PGINVIT_12112026134039_INTIMATIONBM.pdf (Annexure-II, pp.33-152) |
 | [Valuation_Report_H1_FY22.pdf](Valuation_Reports/Valuation_Report_H1_FY22.pdf) | 124 | https://www.pginvit.in/uploads/4fad1cbc-9452-4f54-81a4-ab1803fd893a/Valuation_Report_H1FY22.pdf |
 
 ## Investor Presentations (quarterly results)
@@ -82,18 +83,20 @@ Page: https://www.pginvit.in/earning_calls.aspx
 
 ## Quarterly Results (exchange filings)
 
-Source: NSE corporate announcements (the PGInvIT website had not posted these as of 2026-11-11).
+Source: NSE corporate announcements.
 
 | File | Pages | Source URL |
 |---|---|---|
 | [Results_Q1_FY27_Jun2026.pdf](Quarterly_Results/Results_Q1_FY27_Jun2026.pdf) | 26 | https://nsearchives.nseindia.com/corporate/PGINVIT_28072026144237_OUTCOMEBM.pdf |
+| [Results_Q2_FY27_Sep2026.pdf](Quarterly_Results/Results_Q2_FY27_Sep2026.pdf) | 168 | https://nsearchives.nseindia.com/corporate/PGINVIT_12112026134039_INTIMATIONBM.pdf (board outcome: results, Rs 3.00 distribution, valuation report) |
+| [Half_Yearly_Report_H1_FY27.pdf](Quarterly_Results/Half_Yearly_Report_H1_FY27.pdf) | 245 | https://nsearchives.nseindia.com/corporate/PGINVIT_12112026140441_INTIMATIONHYR.pdf |
 
 Note: this filing is a scanned document. Its text layer is partly garbled, so read numbers off the page image, not copied text.
 
 ## Coverage notes
 
 - Annual reports: FY2021-22 to FY2025-26 (all five years since listing in May 2021), each with its Annexures volume (standalone/consolidated financials, SPV financials, valuation summary).
-- Valuation reports: every half-year from H1 FY22 (Sep 2021) to FY26 (Mar 2026). The H1 FY27 (Sep 2026) report is expected on 2026-11-12, when the board approves Q2 FY27 results. It will be the first report by the new valuer, IndiaAppraisers.com Pvt. Ltd, which replaced INMACS Valuers from FY27.
+- Valuation reports: every half-year from H1 FY22 (Sep 2021) to H1 FY27 (Sep 2026). H1 FY27 is the first report by the new valuer, IndiaAppraisers.com Pvt. Ltd (IBBI/RV-E/07/2020/129), which replaced INMACS Valuers: EV Rs 8,732 cr (Mar-26: Rs 8,672 cr), WACC 7.36% (Mar-26: 8.00%), NAV Rs 91.74 per unit (Mar-26: Rs 90.79).
 - Investor presentations: every quarter from H1 FY22 to Q4 FY26. There is no separate Q1 FY22 deck (the trust listed in May 2021; the first deck covers H1 FY22). PGInvIT did not file a Q1 FY27 investor presentation or hold a Q1 FY27 earnings call, according to NSE filings for Jul-Aug 2026.
 - Earnings call transcripts: text transcripts exist on the site only from Q2 FY24 (Nov 2023) onward. Calls from H1 FY22 to Q1 FY24 are audio-only on the site. No call appears to have been held for Q1 FY25 or Q3 FY25 (neither audio nor text is listed, and exchange filings show none).
 
