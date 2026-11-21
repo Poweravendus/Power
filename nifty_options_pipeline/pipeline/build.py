@@ -1,0 +1,145 @@
+"""Assemble the standard-schema dataset from cached raw files.
+
+Steps: parse every cached F&O file (old format up to the cutover, UDiFF after), parse the
+index close files into a spot/VIX series, join, derive is_monthly_expiry and dte, and write
+Parquet partitioned by year plus one month as a CSV sample.
+"""
+from __future__ import annotations
+
+import datetime as dt
+import logging
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+from . import config
+from .download import KIND_FO_OLD, KIND_FO_UDIFF, KIND_INDEX, MANIFEST_FO, MANIFEST_INDEX
+from .manifest import Manifest
+from .parse import ParseError, parse_index_close, parse_old, parse_udiff
+
+log = logging.getLogger(__name__)
+
+
+def chosen_fo_files(manifest: Manifest) -> list[tuple[dt.date, str, Path]]:
+    """One (date, kind, path) per trading day: old format up to OLD_FORMAT_LAST_DATE, UDiFF after.
+
+    Inside the overlap window both files exist; the old format is the primary source there
+    (it is what the pre-2024 history comes from) and the UDiFF copy is only used by the
+    validation report for reconciliation.
+    """
+    old = {e.date: e for e in manifest.ok_entries(KIND_FO_OLD)}
+    new = {e.date: e for e in manifest.ok_entries(KIND_FO_UDIFF)}
+    out = []
+    for d in sorted(set(old) | set(new)):
+        if d <= config.OLD_FORMAT_LAST_DATE and d in old:
+            out.append((d, KIND_FO_OLD, config.ROOT / old[d].path))
+        elif d in new:
+            out.append((d, KIND_FO_UDIFF, config.ROOT / new[d].path))
+        else:  # old-format file after the cutover date: unexpected, use it but say so
+            log.warning("%s only has an old-format file although it is after the cutover", d)
+            out.append((d, KIND_FO_OLD, config.ROOT / old[d].path))
+    return out
+
+
+def build_spot_vix(manifest: Manifest | None = None) -> pd.DataFrame:
+    manifest = manifest or Manifest(MANIFEST_INDEX)
+    rows = []
+    for e in manifest.ok_entries(KIND_INDEX):
+        try:
+            rows.append(parse_index_close(config.ROOT / e.path, e.date))
+        except ParseError as err:
+            log.error("%s", err)
+    df = pd.DataFrame(rows)
+    df["trade_date"] = pd.to_datetime(df["trade_date"])
+    return df.sort_values("trade_date").reset_index(drop=True)
+
+
+def monthly_expiry_flags(expiries: pd.Series) -> set[dt.date]:
+    """The monthly expiry of a calendar month is the last expiry date seen in that month."""
+    ex = pd.Series(sorted(set(expiries.dropna())))
+    ex = pd.to_datetime(ex)
+    last = ex.groupby([ex.dt.year, ex.dt.month]).max()
+    return {d.date() for d in last}
+
+
+def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None:
+    fo_manifest = Manifest(MANIFEST_FO)
+    files = chosen_fo_files(fo_manifest)
+    if years:
+        files = [f for f in files if f[0].year in years]
+    log.info("parsing %d F&O files", len(files))
+
+    frames, problems = [], []
+    for d, kind, path in files:
+        try:
+            df = parse_old(path, d) if kind == KIND_FO_OLD else parse_udiff(path, d)
+        except (ParseError, Exception) as err:  # noqa: BLE001
+            log.error("%s %s: %s", kind, d, err)
+            problems.append({"trade_date": d, "kind": kind, "error": str(err)})
+            continue
+        if df.attrs.get("actual_expiry_mismatches"):
+            problems.append({"trade_date": d, "kind": kind,
+                             "error": f"{df.attrs['actual_expiry_mismatches']} rows where FininstrmActlXpryDt != XpryDt"})
+        frames.append(df)
+    fo = pd.concat(frames, ignore_index=True)
+    fo["trade_date"] = pd.to_datetime(fo["trade_date"])
+    fo["expiry"] = pd.to_datetime(fo["expiry"])
+
+    spot = build_spot_vix()
+    config.PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+    spot.to_parquet(config.SPOT_VIX_PARQUET, index=False)
+    log.info("spot/vix series: %d days -> %s", len(spot), config.SPOT_VIX_PARQUET)
+
+    fo = fo.merge(spot[["trade_date", "spot_close", "vix_close"]], on="trade_date", how="left")
+    has_file_underlying = fo["underlying"].notna() & (fo["underlying"] > 0)
+    fo["underlying_source"] = np.where(has_file_underlying, "file", "spot_join")
+    fo["underlying"] = np.where(has_file_underlying, fo["underlying"], fo["spot_close"])
+    fo.loc[fo["underlying"].isna(), "underlying_source"] = "missing"
+
+    # Monthly-expiry flag from option expiries only (futures only ever list monthlies, and
+    # the validation report checks that every futures expiry is flagged monthly).
+    monthly = monthly_expiry_flags(fo.loc[fo["instrument"] == "OPT", "expiry"])
+    fo["is_monthly_expiry"] = fo["expiry"].dt.date.isin(monthly)
+    fo["dte"] = (fo["expiry"] - fo["trade_date"]).dt.days.astype("int32")
+    fo["year"] = fo["trade_date"].dt.year
+
+    fo = fo[config.SCHEMA_COLUMNS + ["year"]].sort_values(
+        ["trade_date", "instrument", "expiry", "strike", "option_type"]).reset_index(drop=True)
+
+    config.FO_PARQUET_DIR.mkdir(parents=True, exist_ok=True)
+    for y, part in fo.groupby("year"):
+        out_dir = config.FO_PARQUET_DIR / f"year={y}"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        part.drop(columns="year").to_parquet(out_dir / "nifty_fo.parquet", index=False)
+        log.info("year %d: %d rows -> %s", y, len(part), out_dir)
+
+    # expiry calendar, handy for the strategy code and for eyeballing
+    cal = (fo[fo["instrument"] == "OPT"].groupby("expiry")
+           .agg(first_seen=("trade_date", "min"), last_seen=("trade_date", "max"), rows=("close", "size"))
+           .reset_index())
+    cal["is_monthly_expiry"] = cal["expiry"].dt.date.isin(monthly)
+    cal["weekday"] = cal["expiry"].dt.day_name()
+    cal.to_csv(config.EXPIRY_CALENDAR_CSV, index=False)
+
+    # CSV sample for eyeballing
+    config.SAMPLE_DIR.mkdir(parents=True, exist_ok=True)
+    sm = pd.Period(sample_month, freq="M")
+    sample = fo[fo["trade_date"].dt.to_period("M") == sm].drop(columns="year")
+    sample_path = config.SAMPLE_DIR / f"nifty_fo_sample_{sample_month}.csv"
+    sample.to_csv(sample_path, index=False)
+    log.info("sample month %s: %d rows -> %s", sample_month, len(sample), sample_path)
+
+    if problems:
+        pd.DataFrame(problems).to_csv(config.PROCESSED_DIR / "build_problems.csv", index=False)
+        log.warning("%d files had problems, see build_problems.csv", len(problems))
+    elif (config.PROCESSED_DIR / "build_problems.csv").exists():
+        (config.PROCESSED_DIR / "build_problems.csv").unlink()
+
+
+def load_fo(years: list[int] | None = None) -> pd.DataFrame:
+    parts = sorted(config.FO_PARQUET_DIR.glob("year=*/nifty_fo.parquet"))
+    if years:
+        parts = [p for p in parts if int(p.parent.name.split("=")[1]) in years]
+    df = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
+    return df

@@ -1,0 +1,5 @@
+# raw NSE downloads (~2 GB) are cached locally, never committed
+data/raw/
+logs/
+__pycache__/
+*.pyc
