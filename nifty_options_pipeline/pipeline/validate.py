@@ -440,14 +440,26 @@ def section_integrity(fo: pd.DataFrame, flags: list[str]) -> str:
         flags.append(f"{len(hl)} traded rows with close outside the day's range (section 8)")
     zero_close_oi = int(((fo["close"] <= 0) & (fo["open_interest"] > 0)).sum())
     out.append(f"- Rows with close <= 0 but open interest > 0: {zero_close_oi}\n")
-    zs = opt[opt["settle"] <= 0]
-    zs_expiry = zs[zs["dte"] == 0]
-    zs_dead = zs[(zs["dte"] > 0) & (zs["open_interest"] == 0) & (zs["contracts_traded"] == 0)]
-    zs_live = zs[(zs["dte"] > 0) & ((zs["open_interest"] > 0) | (zs["contracts_traded"] > 0))]
-    out.append(f"- Option rows with settle <= 0: {len(zs):,} = expiry-day rows expiring worthless {len(zs_expiry):,} "
-               f"(expected) + untraded zero-OI strikes before expiry {len(zs_dead):,} (old format leaves settle at 0 "
-               f"for strikes nobody holds; `close` there is a stale last-traded price) + rows WITH OI or volume but "
-               f"settle 0 before expiry {len(zs_live):,}\n")
+    # Expiry day: NSE's settle column does NOT hold option values on dte == 0. It is 0 for every
+    # strike up to Jan 2020 and the index final settlement price for every strike from Feb 2020.
+    ed = opt[opt["dte"] == 0]
+    ed_zero = ed[ed["settle"] == 0]
+    ed_idx = ed[np.isclose(ed["settle"], ed["underlying"], atol=0.01)]
+    ed_other = ed[(ed["settle"] != 0) & ~np.isclose(ed["settle"], ed["underlying"], atol=0.01)]
+    out.append(f"- Expiry-day option rows (dte == 0): {len(ed):,}. `settle` there is NOT an option value: "
+               f"{len(ed_zero):,} rows have settle = 0 (all expiries up to {ed_zero['trade_date'].max():%Y-%m-%d}), "
+               f"{len(ed_idx):,} rows have settle = index final settlement price = underlying "
+               f"(from {ed_idx['trade_date'].min():%Y-%m-%d}), {len(ed_other):,} rows have something else. "
+               f"Use `value` (intrinsic vs underlying) on expiry day, never `settle`.\n")
+    if len(ed_other):
+        flags.append(f"{len(ed_other)} expiry-day option rows where settle is neither 0 nor the index settlement price (section 8)")
+        out.append(md_table(ed_other[["trade_date", "expiry", "strike", "option_type", "close", "settle", "underlying"]].head(20)))
+    zs = opt[(opt["settle"] <= 0) & (opt["dte"] > 0)]
+    zs_dead = zs[(zs["open_interest"] == 0) & (zs["contracts_traded"] == 0)]
+    zs_live = zs[(zs["open_interest"] > 0) | (zs["contracts_traded"] > 0)]
+    out.append(f"- Pre-expiry option rows with settle <= 0: {len(zs):,} = untraded zero-OI strikes {len(zs_dead):,} "
+               f"(old format leaves settle at 0 for strikes nobody holds; `close` there is a stale last-traded price) + "
+               f"rows WITH OI or volume but settle 0 {len(zs_live):,}\n")
     if len(zs_live):
         share_novol = (zs_live["contracts_traded"] == 0).mean() * 100
         flags.append(f"{len(zs_live)} option rows with open interest/volume but settle = 0 before expiry "
@@ -469,12 +481,48 @@ def section_integrity(fo: pd.DataFrame, flags: list[str]) -> str:
     out.append(f"- Minimum strike step on near expiries by year: {step.groupby(level=0).min().groupby(lambda d: d.year).min().to_dict()}\n")
     out.append("- Units: `contracts_traded` is in contracts (lots); `open_interest` is in units of underlying "
                "(lots x lot size) in BOTH formats, consistent with each other on the overlap dates. Lot size changed over "
-               "time (75 -> 50 -> 25 -> 75), so OI is not comparable across years without dividing by lot size.\n")
+               "time (75 -> 50 -> 25 -> 75 -> 65 from Jan 2026), so OI is not comparable across years without "
+               "dividing by lot size.\n")
     probs = config.PROCESSED_DIR / "build_problems.csv"
     if probs.exists():
         p = pd.read_csv(probs)
         flags.append(f"{len(p)} files had parse problems during build (see data/processed/build_problems.csv)")
         out.append("\n" + FLAG + " build problems:\n" + md_table(p.head(30)))
+    return "\n".join(out)
+
+
+def section_expiry_value(fo: pd.DataFrame, flags: list[str]) -> str:
+    out = ["## 9. Expiry-day `value` = intrinsic check\n"]
+    out.append("`value` = `settle` for dte > 0; on dte == 0 it is intrinsic against `underlying` "
+               "(CE: max(0, underlying - strike), PE: max(0, strike - underlying)). Whole-dataset check first, then "
+               "four sample expiries with the strikes around the money.\n")
+    opt = fo[fo["instrument"] == "OPT"]
+    ed = opt[opt["dte"] == 0].copy()
+    intrinsic = np.where(ed["option_type"] == "CE", (ed["underlying"] - ed["strike"]).clip(lower=0),
+                         (ed["strike"] - ed["underlying"]).clip(lower=0))
+    diff = (ed["value"] - intrinsic).abs()
+    pre = opt[opt["dte"] > 0]
+    out.append(f"- Expiry-day option rows: {len(ed):,}; max |value - intrinsic| = {diff.max():.4f}; rows with "
+               f"|diff| > 0.005: {int((diff > 0.005).sum())}; rows with value NaN: {int(ed['value'].isna().sum())}\n")
+    out.append(f"- Pre-expiry option rows: {len(pre):,}; rows where value != settle: "
+               f"{int(((pre['value'] != pre['settle']) & pre['settle'].notna()).sum())}\n")
+    if (diff > 0.005).any() or ed["value"].isna().any():
+        flags.append("expiry-day value does not equal intrinsic on some rows (section 9)")
+    out.append(f"- `traded` = contracts_traded > 0: {int(opt['traded'].sum()):,} of {len(opt):,} option rows ({opt['traded'].mean() * 100:.1f}%)\n")
+    for y in (2019, 2021, 2024, 2026):
+        days = sorted(set(ed.loc[ed["trade_date"].dt.year == y, "trade_date"]))
+        if not days:
+            continue
+        d = days[len(days) // 2]
+        day = ed[ed["trade_date"] == d].copy()
+        S = float(day["underlying"].iloc[0])
+        near = day[(day["strike"] - S).abs() <= 150].sort_values(["strike", "option_type"])
+        near["intrinsic"] = np.where(near["option_type"] == "CE", (near["underlying"] - near["strike"]).clip(lower=0),
+                                     (near["strike"] - near["underlying"]).clip(lower=0))
+        near["diff"] = near["value"] - near["intrinsic"]
+        out.append(f"\n### 9.{y}: expiry {d:%Y-%m-%d}, underlying (Nifty close) {S:,.2f}, "
+                   f"max |diff| over all {len(day)} strikes that day = {(day['value'] - np.where(day['option_type'] == 'CE', (day['underlying'] - day['strike']).clip(lower=0), (day['strike'] - day['underlying']).clip(lower=0))).abs().max():.4f}\n")
+        out.append(md_table(near[["strike", "option_type", "close", "settle", "underlying", "value", "intrinsic", "diff", "contracts_traded"]]))
     return "\n".join(out)
 
 
@@ -492,6 +540,7 @@ def write_report(seed: int = 42) -> None:
         section_spot_vix(fo, spot, flags),
         section_overlap(fo_m, flags),
         section_integrity(fo, flags),
+        section_expiry_value(fo, flags),
     ]
     head = [f"# NIFTY options data validation report\n",
             f"Generated {dt.datetime.now(dt.timezone.utc):%Y-%m-%d %H:%M UTC}. Rows: {len(fo):,}; "

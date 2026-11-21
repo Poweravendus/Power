@@ -71,7 +71,9 @@ reports/validation_report.md
 | option_type | CE / PE / '' for futures |
 | open, high, low, close, settle | close = last traded price (stale when volume is 0); settle = exchange settlement price |
 | contracts_traded | contracts (lots). Old `CONTRACTS` = UDiFF `TtlTradgVol`, verified equal on overlap dates |
-| open_interest | **units of underlying** (lots x lot size) in both formats; lot size changed 75 -> 50 -> 25 -> 75 over the period |
+| open_interest | **units of underlying** (lots x lot size) in both formats; lot size changed 75 -> 50 -> 25 -> 75 -> 65 (from Jan 2026) over the period |
+| value | option value for marking: `settle` when dte > 0; on expiry day (dte == 0) intrinsic against `underlying`, because NSE's settle column there holds the index final settlement price (from Feb 2020) or 0 (before). Futures: always `settle`. |
+| traded | contracts_traded > 0 |
 | underlying | UDiFF `UndrlygPric` when present (from 2024), else Nifty 50 close joined from the index file |
 | vix_close | India VIX close joined from the index file |
 | is_monthly_expiry | TRUE when a NIFTY future expires on the same date (NSE lists futures only for monthlies). Beyond the horizon of listed futures (long-dated options) it falls back to "last expiry seen in the calendar month". No weekday assumption. |
@@ -91,6 +93,7 @@ or `pipeline.build.load_fo()`.
   June 2023 monthly traded as expiry 2023-06-29 until 27 June and as 2023-06-28 on its last day.
 - Weekly expiries have no same-expiry future. Only monthly expiries do. For a weekly, the
   forward has to come from the next monthly future, the spot plus carry, or put-call parity.
+- On expiry day `settle` is NOT the option's value (index settlement price from Feb 2020, 0 before). Use `value`.
 - Old-format rows for strikes with no open interest carry `settle = 0` and a stale `close`.
   Treat `settle = 0` before expiry as "no price".
 - `open_interest` is not comparable across years without dividing by the lot size.

@@ -106,6 +106,19 @@ def monthly_expiry_flags(cal: pd.DataFrame, fut_expiries: set[dt.date]) -> set[d
     return out
 
 
+def option_value(fo: pd.DataFrame) -> pd.Series:
+    """Option value usable for marking a book: `settle` before expiry, intrinsic value against
+    `underlying` on expiry day. On dte == 0 NSE's settle column does not hold option values:
+    from Feb 2020 it carries the index final settlement price for every strike, and in 2019 /
+    Jan 2020 it is 0 for every strike. Futures keep settle (on expiry day that is the index
+    final settlement price, which is the right value). Raw `settle` is left untouched."""
+    intrinsic_ce = (fo["underlying"] - fo["strike"]).clip(lower=0)
+    intrinsic_pe = (fo["strike"] - fo["underlying"]).clip(lower=0)
+    intrinsic = np.where(fo["option_type"] == "CE", intrinsic_ce, intrinsic_pe)
+    on_expiry_opt = (fo["dte"] == 0) & (fo["instrument"] == "OPT")
+    return pd.Series(np.where(on_expiry_opt, intrinsic, fo["settle"]), index=fo.index, dtype="float64")
+
+
 def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None:
     fo_manifest = Manifest(MANIFEST_FO)
     files = chosen_fo_files(fo_manifest)
@@ -150,6 +163,8 @@ def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None
     fo["is_monthly_expiry"] = fo["expiry"].dt.date.isin(monthly)
     fo["is_last_expiry_in_month"] = fo["expiry"].dt.date.isin(last_in_month)
     fo["dte"] = (fo["expiry"] - fo["trade_date"]).dt.days.astype("int32")
+    fo["value"] = option_value(fo)
+    fo["traded"] = fo["contracts_traded"] > 0
     fo["year"] = fo["trade_date"].dt.year
 
     fo = fo[config.SCHEMA_COLUMNS + ["year"]].sort_values(

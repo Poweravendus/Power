@@ -75,6 +75,9 @@ SCHEMA_COLUMNS = [
     "trade_date", "symbol", "instrument", "expiry", "strike", "option_type",
     "open", "high", "low", "close", "settle", "contracts_traded", "open_interest",
     "underlying", "vix_close", "is_monthly_expiry", "dte",
+    # value: settle, except on expiry day (dte == 0) where NSE's settle column holds the index final
+    # settlement price (Feb 2020 onward) or 0 (before); there value = intrinsic vs underlying.
+    "value", "traded",
     # helper columns (not in the requested schema, kept because they are cheap and useful)
     "is_last_expiry_in_month", "underlying_source", "source_format",
 ]

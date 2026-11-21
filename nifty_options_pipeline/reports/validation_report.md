@@ -1,6 +1,6 @@
 # NIFTY options data validation report
 
-Generated 2026-11-21 15:50 UTC. Rows: 4,120,590; trade dates: 1,957 (2019-01-01 .. 2026-11-20); spot-check seed 42.
+Generated 2026-11-21 16:36 UTC. Rows: 4,120,590; trade dates: 1,957 (2019-01-01 .. 2026-11-20); spot-check seed 42.
 
 ## 0. Flags
 
@@ -315,7 +315,9 @@ Total contract-days with any difference: **0**
 
 - Rows with close <= 0 but open interest > 0: 0
 
-- Option rows with settle <= 0: 69,346 = expiry-day rows expiring worthless 8,582 (expected) + untraded zero-OI strikes before expiry 42,264 (old format leaves settle at 0 for strikes nobody holds; `close` there is a stale last-traded price) + rows WITH OI or volume but settle 0 before expiry 18,500
+- Expiry-day option rows (dte == 0): 79,540. `settle` there is NOT an option value: 8,582 rows have settle = 0 (all expiries up to 2020-01-30), 70,958 rows have settle = index final settlement price = underlying (from 2020-02-06), 0 rows have something else. Use `value` (intrinsic vs underlying) on expiry day, never `settle`.
+
+- Pre-expiry option rows with settle <= 0: 60,764 = untraded zero-OI strikes 42,264 (old format leaves settle at 0 for strikes nobody holds; `close` there is a stale last-traded price) + rows WITH OI or volume but settle 0 18,500
 
 | year | rows |
 |---|---|
@@ -334,4 +336,86 @@ Total contract-days with any difference: **0**
 
 - Minimum strike step on near expiries by year: {2019: 50.0, 2020: 50.0, 2021: 50.0, 2022: 50.0, 2023: 50.0, 2024: 50.0, 2025: 50.0, 2026: 50.0}
 
-- Units: `contracts_traded` is in contracts (lots); `open_interest` is in units of underlying (lots x lot size) in BOTH formats, consistent with each other on the overlap dates. Lot size changed over time (75 -> 50 -> 25 -> 75), so OI is not comparable across years without dividing by lot size.
+- Units: `contracts_traded` is in contracts (lots); `open_interest` is in units of underlying (lots x lot size) in BOTH formats, consistent with each other on the overlap dates. Lot size changed over time (75 -> 50 -> 25 -> 75 -> 65 from Jan 2026), so OI is not comparable across years without dividing by lot size.
+
+## 9. Expiry-day `value` = intrinsic check
+
+`value` = `settle` for dte > 0; on dte == 0 it is intrinsic against `underlying` (CE: max(0, underlying - strike), PE: max(0, strike - underlying)). Whole-dataset check first, then four sample expiries with the strikes around the money.
+
+- Expiry-day option rows: 79,540; max |value - intrinsic| = 0.0000; rows with |diff| > 0.005: 0; rows with value NaN: 0
+
+- Pre-expiry option rows: 4,035,179; rows where value != settle: 0
+
+- `traded` = contracts_traded > 0: 1,430,445 of 4,114,719 option rows (34.8%)
+
+
+### 9.2019: expiry 2019-07-18, underlying (Nifty close) 11,596.90, max |diff| over all 156 strikes that day = 0.0000
+
+| strike | option_type | close | settle | underlying | value | intrinsic | diff | contracts_traded |
+|---|---|---|---|---|---|---|---|---|
+| 11,450.00 | CE | 141.35 | 0.00 | 11,596.90 | 146.90 | 146.90 | 0.00 | 542.00 |
+| 11,450.00 | PE | 0.05 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 8,385.00 |
+| 11,500.00 | CE | 99.45 | 0.00 | 11,596.90 | 96.90 | 96.90 | 0.00 | 23,105.00 |
+| 11,500.00 | PE | 0.05 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 63,401.00 |
+| 11,550.00 | CE | 49.05 | 0.00 | 11,596.90 | 46.90 | 46.90 | 0.00 | 37,841.00 |
+| 11,550.00 | PE | 0.05 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 152,374.00 |
+| 11,600.00 | CE | 4.30 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 402,187.00 |
+| 11,600.00 | PE | 1.35 | 0.00 | 11,596.90 | 3.10 | 3.10 | 0.00 | 886,229.00 |
+| 11,650.00 | CE | 0.15 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 858,479.00 |
+| 11,650.00 | PE | 33.85 | 0.00 | 11,596.90 | 53.10 | 53.10 | 0.00 | 688,364.00 |
+| 11,700.00 | CE | 0.05 | 0.00 | 11,596.90 | 0.00 | 0.00 | 0.00 | 908,072.00 |
+| 11,700.00 | PE | 84.15 | 0.00 | 11,596.90 | 103.10 | 103.10 | 0.00 | 265,469.00 |
+
+
+### 9.2021: expiry 2021-07-08, underlying (Nifty close) 15,727.90, max |diff| over all 170 strikes that day = 0.0000
+
+| strike | option_type | close | settle | underlying | value | intrinsic | diff | contracts_traded |
+|---|---|---|---|---|---|---|---|---|
+| 15,600.00 | CE | 123.50 | 15,727.90 | 15,727.90 | 127.90 | 127.90 | 0.00 | 114,304.00 |
+| 15,600.00 | PE | 0.20 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 725,631.00 |
+| 15,650.00 | CE | 72.85 | 15,727.90 | 15,727.90 | 77.90 | 77.90 | 0.00 | 198,358.00 |
+| 15,650.00 | PE | 0.30 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 1,100,966.00 |
+| 15,700.00 | CE | 23.65 | 15,727.90 | 15,727.90 | 27.90 | 27.90 | 0.00 | 1,522,726.00 |
+| 15,700.00 | PE | 1.15 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 3,397,572.00 |
+| 15,750.00 | CE | 0.50 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 2,161,904.00 |
+| 15,750.00 | PE | 26.05 | 15,727.90 | 15,727.90 | 22.10 | 22.10 | 0.00 | 2,322,912.00 |
+| 15,800.00 | CE | 0.20 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 2,919,293.00 |
+| 15,800.00 | PE | 76.40 | 15,727.90 | 15,727.90 | 72.10 | 72.10 | 0.00 | 2,511,373.00 |
+| 15,850.00 | CE | 0.15 | 15,727.90 | 15,727.90 | 0.00 | 0.00 | 0.00 | 2,250,094.00 |
+| 15,850.00 | PE | 126.10 | 15,727.90 | 15,727.90 | 122.10 | 122.10 | 0.00 | 1,130,695.00 |
+
+
+### 9.2024: expiry 2024-07-04, underlying (Nifty close) 24,302.15, max |diff| over all 238 strikes that day = 0.0000
+
+| strike | option_type | close | settle | underlying | value | intrinsic | diff | contracts_traded |
+|---|---|---|---|---|---|---|---|---|
+| 24,200.00 | CE | 99.20 | 24,302.15 | 24,302.15 | 102.15 | 102.15 | 0.00 | 3,472,360.00 |
+| 24,200.00 | PE | 0.20 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 20,104,678.00 |
+| 24,250.00 | CE | 49.05 | 24,302.15 | 24,302.15 | 52.15 | 52.15 | 0.00 | 8,163,687.00 |
+| 24,250.00 | PE | 0.35 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 29,073,071.00 |
+| 24,300.00 | CE | 2.20 | 24,302.15 | 24,302.15 | 2.15 | 2.15 | 0.00 | 61,324,620.00 |
+| 24,300.00 | PE | 3.15 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 83,425,758.00 |
+| 24,350.00 | CE | 0.20 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 59,786,066.00 |
+| 24,350.00 | PE | 50.90 | 24,302.15 | 24,302.15 | 47.85 | 47.85 | 0.00 | 36,630,166.00 |
+| 24,400.00 | CE | 0.15 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 36,724,387.00 |
+| 24,400.00 | PE | 100.85 | 24,302.15 | 24,302.15 | 97.85 | 97.85 | 0.00 | 15,630,030.00 |
+| 24,450.00 | CE | 0.10 | 24,302.15 | 24,302.15 | 0.00 | 0.00 | 0.00 | 19,428,635.00 |
+| 24,450.00 | PE | 150.60 | 24,302.15 | 24,302.15 | 147.85 | 147.85 | 0.00 | 3,258,225.00 |
+
+
+### 9.2026: expiry 2026-06-16, underlying (Nifty close) 23,989.15, max |diff| over all 206 strikes that day = 0.0000
+
+| strike | option_type | close | settle | underlying | value | intrinsic | diff | contracts_traded |
+|---|---|---|---|---|---|---|---|---|
+| 23,850.00 | CE | 136.75 | 23,989.15 | 23,989.15 | 139.15 | 139.15 | 0.00 | 4,996,714.00 |
+| 23,850.00 | PE | 0.15 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 15,757,900.00 |
+| 23,900.00 | CE | 86.85 | 23,989.15 | 23,989.15 | 89.15 | 89.15 | 0.00 | 18,072,805.00 |
+| 23,900.00 | PE | 0.15 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 34,054,760.00 |
+| 23,950.00 | CE | 37.05 | 23,989.15 | 23,989.15 | 39.15 | 39.15 | 0.00 | 30,969,363.00 |
+| 23,950.00 | PE | 0.60 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 34,689,213.00 |
+| 24,000.00 | CE | 1.95 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 50,290,193.00 |
+| 24,000.00 | PE | 14.65 | 23,989.15 | 23,989.15 | 10.85 | 10.85 | 0.00 | 23,587,709.00 |
+| 24,050.00 | CE | 0.25 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 21,167,355.00 |
+| 24,050.00 | PE | 63.25 | 23,989.15 | 23,989.15 | 60.85 | 60.85 | 0.00 | 4,161,485.00 |
+| 24,100.00 | CE | 0.15 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 12,823,531.00 |
+| 24,100.00 | PE | 113.40 | 23,989.15 | 23,989.15 | 110.85 | 110.85 | 0.00 | 1,989,414.00 |
