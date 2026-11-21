@@ -130,9 +130,54 @@ def parse_index_close(path: Path, file_date: dt.date) -> dict:
         out[f"{key}_close"] = pd.to_numeric(r["Closing Index Value"], errors="coerce")
         d = pd.to_datetime(r["Index Date"], format="%d-%m-%Y", errors="coerce")
         if pd.isna(d) or d.date() != file_date:
-            raise ParseError(f"index file {path.name}: '{name}' row dated {r['Index Date']}, expected {file_date}")
+            # A few NSE files (e.g. 6, 10, 11 April 2023) write the date as MM-DD-YYYY. Accept
+            # that spelling only when the swapped date equals the file's own date, and say so.
+            d2 = pd.to_datetime(r["Index Date"], format="%m-%d-%Y", errors="coerce")
+            if pd.isna(d2) or d2.date() != file_date:
+                raise ParseError(f"index file {path.name}: '{name}' row dated {r['Index Date']}, expected {file_date}")
+            out["date_format_note"] = f"'{name}' row dated {r['Index Date']} (MM-DD-YYYY, file is {file_date})"
         if len(rows) > 1:
             closes = pd.to_numeric(rows["Closing Index Value"], errors="coerce").nunique()
             if closes > 1:
                 raise ParseError(f"index file {path.name}: {len(rows)} '{name}' rows with different closes")
     return out
+
+
+def parse_mkt_report(path: Path, file_date: dt.date, symbol: str = config.SYMBOL) -> pd.DataFrame:
+    """NSE F&O market-activity report (archives/fo/mkt/foDDMMYYYY.zip): members foDDMMYYYY.csv
+    (futures) and opDDMMYYYY.csv (options). Zero-padded fixed-width numbers, EXP_DATE dd/mm/yyyy,
+    OPEN_INT* in units of underlying, NO_OF_CONT in contracts. There is NO settlement price, so
+    settle is NaN. Used only to fill a weekday missing from the bhavcopy archive."""
+    frames = []
+    with zipfile.ZipFile(path) as z:
+        for name in z.namelist():
+            low = name.lower()
+            is_fut = low == f"fo{file_date:%d%m%Y}.csv"
+            is_opt = low == f"op{file_date:%d%m%Y}.csv"
+            if not (is_fut or is_opt):
+                continue
+            with z.open(name) as f:
+                raw = pd.read_csv(io.TextIOWrapper(f, encoding="utf-8", errors="replace"), dtype=str, skipinitialspace=True)
+            raw.columns = [c.strip().rstrip("*") for c in raw.columns]
+            raw = raw.apply(lambda col: col.str.strip())
+            sel = raw[(raw["SYMBOL"] == symbol) & (raw["INSTRUMENT"].isin(["OPTIDX", "FUTIDX"]))].copy()
+            if sel.empty:
+                continue
+            frames.append(pd.DataFrame({
+                "trade_date": file_date,
+                "symbol": sel["SYMBOL"],
+                "instrument": np.where(sel["INSTRUMENT"] == "OPTIDX", "OPT", "FUT"),
+                "expiry": pd.to_datetime(sel["EXP_DATE"], format="%d/%m/%Y"),
+                "strike": sel["STR_PRICE"] if is_opt else 0.0,
+                "option_type": sel["OPT_TYPE"] if is_opt else "",
+                "open": sel["OPEN_PRICE"], "high": sel["HI_PRICE"], "low": sel["LO_PRICE"], "close": sel["CLOSE_PRICE"],
+                "settle": np.nan,
+                "contracts_traded": sel["NO_OF_CONT"],
+                "open_interest": sel["OPEN_INT"],
+                "underlying": np.nan,
+            }))
+    if not frames:
+        raise ParseError(f"market report {path.name}: no {symbol} index rows found")
+    df = pd.concat(frames, ignore_index=True)
+    df["trade_date"] = pd.to_datetime(df["trade_date"])
+    return _finish(df, file_date, "mkt_report")

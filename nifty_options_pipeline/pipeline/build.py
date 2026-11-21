@@ -14,9 +14,9 @@ import numpy as np
 import pandas as pd
 
 from . import config
-from .download import KIND_FO_OLD, KIND_FO_UDIFF, KIND_INDEX, MANIFEST_FO, MANIFEST_INDEX
+from .download import KIND_FO_MKT, KIND_FO_OLD, KIND_FO_UDIFF, KIND_INDEX, MANIFEST_FO, MANIFEST_INDEX
 from .manifest import Manifest
-from .parse import ParseError, parse_index_close, parse_old, parse_udiff
+from .parse import ParseError, parse_index_close, parse_mkt_report, parse_old, parse_udiff
 
 log = logging.getLogger(__name__)
 
@@ -30,15 +30,19 @@ def chosen_fo_files(manifest: Manifest) -> list[tuple[dt.date, str, Path]]:
     """
     old = {e.date: e for e in manifest.ok_entries(KIND_FO_OLD)}
     new = {e.date: e for e in manifest.ok_entries(KIND_FO_UDIFF)}
+    mkt = {e.date: e for e in manifest.ok_entries(KIND_FO_MKT)}
     out = []
-    for d in sorted(set(old) | set(new)):
+    for d in sorted(set(old) | set(new) | set(mkt)):
         if d <= config.OLD_FORMAT_LAST_DATE and d in old:
             out.append((d, KIND_FO_OLD, config.ROOT / old[d].path))
         elif d in new:
             out.append((d, KIND_FO_UDIFF, config.ROOT / new[d].path))
-        else:  # old-format file after the cutover date: unexpected, use it but say so
+        elif d in old:  # old-format file after the cutover date: unexpected, use it but say so
             log.warning("%s only has an old-format file although it is after the cutover", d)
             out.append((d, KIND_FO_OLD, config.ROOT / old[d].path))
+        else:
+            log.warning("%s: no bhavcopy in NSE's archive, filling from the market-activity report (no settle)", d)
+            out.append((d, KIND_FO_MKT, config.ROOT / mkt[d].path))
     return out
 
 
@@ -51,16 +55,55 @@ def build_spot_vix(manifest: Manifest | None = None) -> pd.DataFrame:
         except ParseError as err:
             log.error("%s", err)
     df = pd.DataFrame(rows)
+    if "date_format_note" not in df.columns:
+        df["date_format_note"] = None
     df["trade_date"] = pd.to_datetime(df["trade_date"])
     return df.sort_values("trade_date").reset_index(drop=True)
 
 
-def monthly_expiry_flags(expiries: pd.Series) -> set[dt.date]:
-    """The monthly expiry of a calendar month is the last expiry date seen in that month."""
-    ex = pd.Series(sorted(set(expiries.dropna())))
-    ex = pd.to_datetime(ex)
+def expiry_status(opt: pd.DataFrame, tolerance_days: int = 7) -> pd.DataFrame:
+    """One row per option expiry with first/last listing date and a status.
+
+    status = 'expired' (listed through to expiry), 'active' (listed on the last trade date,
+    expiry still ahead) or 'removed' (vanished from the listings well before its expiry date:
+    NSE re-dated long-dated contracts when it moved the expiry weekday, and the old dates
+    linger in the history). Removed expiries must not decide which expiry is the monthly one.
+    """
+    cal = (opt.groupby("expiry").agg(first_seen=("trade_date", "min"), last_seen=("trade_date", "max"),
+                                     rows=("close", "size")).reset_index())
+    last_trade = opt["trade_date"].max()
+    horizon = cal["expiry"].clip(upper=last_trade)
+    alive = cal["last_seen"] >= horizon - pd.Timedelta(days=tolerance_days)
+    cal["status"] = np.where(~alive, "removed", np.where(cal["expiry"] > last_trade, "active", "expired"))
+    return cal
+
+
+def last_in_month_flags(cal: pd.DataFrame) -> set[dt.date]:
+    """Literal rule: the last expiry date seen in each calendar month (ignoring 'removed' ones)."""
+    ex = pd.to_datetime(cal.loc[cal["status"] != "removed", "expiry"])
     last = ex.groupby([ex.dt.year, ex.dt.month]).max()
     return {d.date() for d in last}
+
+
+def monthly_expiry_flags(cal: pd.DataFrame, fut_expiries: set[dt.date]) -> set[dt.date]:
+    """Monthly expiry = an option expiry date on which a NIFTY future also expires (NSE lists
+    futures only for monthly expiries). Beyond the horizon of listed futures (long-dated
+    options) fall back to the last-in-month rule.
+
+    The literal last-in-month rule is kept as a separate column because it is wrong whenever a
+    weekly from the following month is pulled back across the month boundary by a holiday
+    (e.g. the 1 May 2025 weekly expired on 30 April 2025), and when a monthly is re-dated at
+    short notice (June 2023 appears under both 2023-06-29 and 2023-06-28).
+    """
+    last_in_month = last_in_month_flags(cal)
+    horizon = max(fut_expiries)
+    out = set()
+    for e in pd.to_datetime(cal["expiry"]).dt.date:
+        if e in fut_expiries:
+            out.add(e)
+        elif e > horizon and e in last_in_month:
+            out.add(e)
+    return out
 
 
 def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None:
@@ -72,8 +115,9 @@ def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None
 
     frames, problems = [], []
     for d, kind, path in files:
+        parser = {KIND_FO_OLD: parse_old, KIND_FO_UDIFF: parse_udiff, KIND_FO_MKT: parse_mkt_report}[kind]
         try:
-            df = parse_old(path, d) if kind == KIND_FO_OLD else parse_udiff(path, d)
+            df = parser(path, d)
         except (ParseError, Exception) as err:  # noqa: BLE001
             log.error("%s %s: %s", kind, d, err)
             problems.append({"trade_date": d, "kind": kind, "error": str(err)})
@@ -99,8 +143,12 @@ def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None
 
     # Monthly-expiry flag from option expiries only (futures only ever list monthlies, and
     # the validation report checks that every futures expiry is flagged monthly).
-    monthly = monthly_expiry_flags(fo.loc[fo["instrument"] == "OPT", "expiry"])
+    cal = expiry_status(fo[fo["instrument"] == "OPT"])
+    fut_expiries = set(fo.loc[fo["instrument"] == "FUT", "expiry"].dt.date)
+    monthly = monthly_expiry_flags(cal, fut_expiries)
+    last_in_month = last_in_month_flags(cal)
     fo["is_monthly_expiry"] = fo["expiry"].dt.date.isin(monthly)
+    fo["is_last_expiry_in_month"] = fo["expiry"].dt.date.isin(last_in_month)
     fo["dte"] = (fo["expiry"] - fo["trade_date"]).dt.days.astype("int32")
     fo["year"] = fo["trade_date"].dt.year
 
@@ -115,10 +163,9 @@ def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None
         log.info("year %d: %d rows -> %s", y, len(part), out_dir)
 
     # expiry calendar, handy for the strategy code and for eyeballing
-    cal = (fo[fo["instrument"] == "OPT"].groupby("expiry")
-           .agg(first_seen=("trade_date", "min"), last_seen=("trade_date", "max"), rows=("close", "size"))
-           .reset_index())
     cal["is_monthly_expiry"] = cal["expiry"].dt.date.isin(monthly)
+    cal["is_last_expiry_in_month"] = cal["expiry"].dt.date.isin(last_in_month)
+    cal["has_future"] = cal["expiry"].dt.date.isin(fut_expiries)
     cal["weekday"] = cal["expiry"].dt.day_name()
     cal.to_csv(config.EXPIRY_CALENDAR_CSV, index=False)
 

@@ -60,6 +60,12 @@ def udiff_fo_path(d: dt.date) -> str:
     return f"/content/fo/BhavCopy_NSE_FO_0_0_0_{d:%Y%m%d}_F_0000.csv.zip"
 
 
+def mkt_report_path(d: dt.date) -> str:
+    """F&O 'market activity report' zip: per-contract OHLC/OI/volume but NO settlement price.
+    Only used to fill weekdays where the bhavcopy is missing from NSE's archive (e.g. 2021-03-30)."""
+    return f"/archives/fo/mkt/fo{d:%d%m%Y}.zip"
+
+
 def index_close_path(d: dt.date) -> str:
     return f"/content/indices/ind_close_all_{d:%d%m%Y}.csv"
 
@@ -70,5 +76,5 @@ SCHEMA_COLUMNS = [
     "open", "high", "low", "close", "settle", "contracts_traded", "open_interest",
     "underlying", "vix_close", "is_monthly_expiry", "dte",
     # helper columns (not in the requested schema, kept because they are cheap and useful)
-    "underlying_source", "source_format",
+    "is_last_expiry_in_month", "underlying_source", "source_format",
 ]

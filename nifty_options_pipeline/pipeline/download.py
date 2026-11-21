@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 
 KIND_FO_OLD = "fo_old"
 KIND_FO_UDIFF = "fo_udiff"
+KIND_FO_MKT = "fo_mkt"      # gap filler, see config.mkt_report_path
 KIND_INDEX = "index"
 
 MANIFEST_FO = config.RAW_DIR / "manifest_fo.csv"
@@ -44,6 +45,8 @@ def url_path_for(kind: str, d: dt.date) -> str:
         return config.old_fo_path(d)
     if kind == KIND_FO_UDIFF:
         return config.udiff_fo_path(d)
+    if kind == KIND_FO_MKT:
+        return config.mkt_report_path(d)
     if kind == KIND_INDEX:
         return config.index_close_path(d)
     raise ValueError(kind)
@@ -67,6 +70,10 @@ def _content_ok(kind: str, content: bytes) -> str | None:
         return "not a zip file"
     with zipfile.ZipFile(io.BytesIO(content)) as z:
         names = z.namelist()
+        if kind == KIND_FO_MKT:
+            if not any(n.lower().startswith("op") and n.lower().endswith(".csv") for n in names):
+                return f"market report zip without an op*.csv member: {names}"
+            return None
         if len(names) != 1 or not names[0].lower().endswith(".csv"):
             return f"unexpected zip members {names}"
     return None
@@ -114,7 +121,14 @@ def download_range(what: str, start: dt.date, end: dt.date, delay: float = 1.0,
     client = NSEClient(delay=delay)
     counts = {"ok": 0, "404": 0, "error": 0, "cached": 0, "404-cached": 0}
     for d in daterange(start, end):
-        for kind in kinds_for(d):
+        kinds = list(kinds_for(d))
+        if what == "fo" and d.weekday() < 5:
+            # Gap filler: when every bhavcopy format is a 404 on a weekday, also ask for the
+            # market-activity report so a real archive hole can still be filled (no settle there).
+            primary = [manifest.get(k, d) for k in kinds]
+            if primary and all(e is not None and e.status == "404" for e in primary):
+                kinds.append(KIND_FO_MKT)
+        for kind in kinds:
             skip = should_skip(manifest, kind, d, today, recheck_404, recheck_window_days)
             if skip:
                 counts[skip] += 1

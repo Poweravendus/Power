@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 from . import config
-from .build import load_fo
+from .build import expiry_status, load_fo
 from .download import KIND_FO_OLD, KIND_FO_UDIFF, KIND_INDEX, MANIFEST_FO, MANIFEST_INDEX
 from .holidays import holiday_calendar
 from .manifest import Manifest
@@ -27,8 +27,10 @@ def md_table(df: pd.DataFrame, floatfmt: str = "{:,.2f}") -> str:
     lines = ["| " + " | ".join(str(c) for c in cols) + " |", "|" + "|".join("---" for _ in cols) + "|"]
     for _, row in df.iterrows():
         cells = []
-        for v in row:
-            if isinstance(v, (float, np.floating)):
+        for c, v in zip(cols, row):
+            if str(c) == "year" and not pd.isna(v):
+                cells.append(str(int(v)))
+            elif isinstance(v, (float, np.floating)):
                 cells.append("" if pd.isna(v) else floatfmt.format(v))
             elif isinstance(v, (pd.Timestamp, dt.datetime)):
                 cells.append(v.strftime("%Y-%m-%d"))
@@ -72,6 +74,9 @@ def section_calendar(fo: pd.DataFrame, spot: pd.DataFrame, fo_m: Manifest, idx_m
     all_wd = _weekday_dates(start, end)
     fo_set = set(fo_days)
     unexplained = [d for d in all_wd if d not in fo_set and d not in hol_map]
+    filled = sorted(set(fo.loc[fo["source_format"] == "mkt_report", "trade_date"].dt.date))
+    if filled:
+        out.append(f"\nWeekdays with no bhavcopy that were filled from the market-activity report: {[str(d) for d in filled]}\n")
     out.append("\n### 1a. Weekdays with no F&O file that are NOT in the holiday list\n")
     if unexplained:
         flags.append(f"{len(unexplained)} weekday(s) have no F&O bhavcopy and are not in the holiday list (section 1a)")
@@ -124,6 +129,13 @@ def section_formats(fo: pd.DataFrame, fo_m: Manifest, flags: list[str]) -> str:
         flags.append(f"observed last old-format date {max(old_ok)} != configured {config.OLD_FORMAT_LAST_DATE}")
     if first_udiff_only != config.UDIFF_FIRST_DATE:
         flags.append(f"observed cutover {first_udiff_only} != configured {config.UDIFF_FIRST_DATE}")
+    mkt_days = sorted(set(fo.loc[fo["source_format"] == "mkt_report", "trade_date"].dt.date))
+    if mkt_days:
+        flags.append(f"{len(mkt_days)} trading day(s) have no bhavcopy in NSE's archive and were filled from the "
+                     f"F&O market-activity report, which has no settlement price and lists traded contracts only: "
+                     f"{[str(d) for d in mkt_days]} (section 2)")
+        out.append(f"- {FLAG} days filled from the market-activity report (source_format = mkt_report, settle = NaN): "
+                   f"{[str(d) for d in mkt_days]}\n")
     g = fo.groupby([fo["trade_date"].dt.year, "source_format", "instrument"]).size().unstack(["source_format", "instrument"]).fillna(0).astype(int)
     g.columns = [f"{a}_{b}" for a, b in g.columns]
     g.index.name = "year"
@@ -140,11 +152,23 @@ def section_formats(fo: pd.DataFrame, fo_m: Manifest, flags: list[str]) -> str:
 def section_expiries(fo: pd.DataFrame, flags: list[str]) -> str:
     out = ["## 3. Expiry calendar\n"]
     opt = fo[fo["instrument"] == "OPT"]
-    cal = (opt.groupby("expiry").agg(first_seen=("trade_date", "min"), last_seen=("trade_date", "max"),
-                                     is_monthly=("is_monthly_expiry", "first")).reset_index())
+    cal = expiry_status(opt)
+    cal["is_monthly"] = opt.groupby("expiry")["is_monthly_expiry"].first().reindex(cal["expiry"]).to_numpy()
     cal["weekday"] = cal["expiry"].dt.day_name()
+    removed = cal[cal["status"] == "removed"]
+    cal = cal[cal["status"] != "removed"]
     monthly = cal[cal["is_monthly"]]
-    out.append("Monthly expiry = last expiry date observed in each calendar month (from option listings).\n")
+    out.append("`is_monthly_expiry` = an option expiry on which a NIFTY future also expires (futures are listed "
+               "only for monthlies); beyond the futures horizon (long-dated options) it falls back to the last "
+               "expiry seen in the calendar month. The literal last-in-month rule is kept in "
+               "`is_last_expiry_in_month`; section 3c lists where the two disagree.\n")
+    out.append("\n### 3-pre. Expiries listed at some point but removed before expiry (re-dated by NSE). "
+               "Their rows are kept; they are flagged monthly only if a future carried the same date.\n")
+    if len(removed):
+        flags.append(f"{len(removed)} expiry dates were listed and later removed/re-dated by NSE "
+                     f"({int(removed['rows'].sum()):,} rows, almost all zero-volume long-dated contracts) (section 3)")
+    out.append(md_table(removed.assign(weekday=removed["expiry"].dt.day_name())[
+        ["expiry", "weekday", "first_seen", "last_seen", "rows"]], floatfmt="{:.0f}"))
     out.append("\n### 3a. Monthly expiry dates by year\n")
     for y, grp in monthly.groupby(monthly["expiry"].dt.year):
         items = [f"{d:%Y-%m-%d} ({d:%a})" for d in grp["expiry"]]
@@ -156,12 +180,38 @@ def section_expiries(fo: pd.DataFrame, flags: list[str]) -> str:
     out.append(md_table(wk.reset_index().rename(columns={"expiry": "year"}), floatfmt="{:.0f}"))
 
     out.append("\n### 3c. Consistency checks\n")
-    fut_exp = set(fo.loc[fo["instrument"] == "FUT", "expiry"].dt.date)
+    fut_cal = expiry_status(fo[fo["instrument"] == "FUT"])
+    fut_removed = fut_cal[fut_cal["status"] == "removed"]
+    out.append(f"- Futures expiries removed/re-dated before expiry (ignored below): "
+               f"{[f'{d:%Y-%m-%d}' for d in fut_removed['expiry']]}\n")
+    fut_exp = set(fut_cal.loc[fut_cal["status"] != "removed", "expiry"].dt.date)
     mon_set = set(monthly["expiry"].dt.date)
     not_monthly_fut = sorted(fut_exp - mon_set)
     out.append(f"- Futures expiries not flagged as monthly: {len(not_monthly_fut)} {[str(d) for d in not_monthly_fut][:20]}\n")
     if not_monthly_fut:
-        flags.append(f"{len(not_monthly_fut)} futures expiries are not the last option expiry of their month (section 3c)")
+        flags.append(f"{len(not_monthly_fut)} futures expiries are not flagged monthly (section 3c)")
+    # where the futures-based flag and the literal last-in-month rule disagree
+    opt_cal = opt.groupby("expiry")[["is_monthly_expiry", "is_last_expiry_in_month"]].first().reset_index()
+    opt_cal = opt_cal[opt_cal["expiry"] <= fo["trade_date"].max() + pd.Timedelta(days=100)]
+    dis = opt_cal[opt_cal["is_monthly_expiry"] != opt_cal["is_last_expiry_in_month"]].copy()
+    dis["weekday"] = dis["expiry"].dt.day_name()
+    dis["why"] = np.where(dis["is_monthly_expiry"],
+                          "a future expired on this date, but a later option expiry exists in the same month (monthly re-dated: sudden holiday or expiry-weekday change)",
+                          "last expiry of the month but no future: a next-month weekly pulled back by a holiday, or a removed date")
+    out.append(f"- Expiries where `is_monthly_expiry` != `is_last_expiry_in_month` (within the futures horizon): {len(dis)}\n")
+    if len(dis):
+        flags.append(f"{len(dis)} expiries where the futures-based monthly flag disagrees with the literal "
+                     f"last-expiry-in-month rule (section 3c) - this is why the literal rule was not used")
+        out.append(md_table(dis[["expiry", "weekday", "is_monthly_expiry", "is_last_expiry_in_month", "why"]]))
+    # months with two monthly expiries (same contract under two dates)
+    mm = monthly.assign(ym=monthly["expiry"].dt.to_period("M")).groupby("ym")["expiry"].apply(list)
+    twice = mm[mm.apply(len) > 1]
+    out.append(f"- Months with more than one monthly expiry date: {len(twice)}\n")
+    if len(twice):
+        flags.append(f"{len(twice)} month(s) carry two monthly expiry dates because NSE re-dated the contract mid-life; "
+                     f"a position held across the change sees its expiry date change (section 3c)")
+        out.append(md_table(pd.DataFrame({"month": [str(k) for k in twice.index],
+                                          "expiry_dates": [", ".join(f"{d:%Y-%m-%d}" for d in v) for v in twice]})))
     # months in the traded range without a monthly expiry
     months = pd.period_range(fo["trade_date"].min(), fo["trade_date"].max(), freq="M")
     have = set(pd.to_datetime(monthly["expiry"]).dt.to_period("M"))
@@ -275,6 +325,15 @@ def section_spot_vix(fo: pd.DataFrame, spot: pd.DataFrame, flags: list[str]) -> 
     na_spot = s[s["spot_close"].isna() | (s["spot_close"] <= 0)]
     na_vix = s[s["vix_close"].isna() | (s["vix_close"] <= 0)]
     out.append(f"- Index-file days: {n}; days with missing/zero Nifty 50 close: {len(na_spot)}; missing/zero India VIX close: {len(na_vix)}\n")
+    partial_vix = s[s["vix_close"].notna() & s[["vix_open", "vix_high", "vix_low"]].isna().any(axis=1)]
+    out.append(f"- Days where the VIX row has a close but '-' for open/high/low: {len(partial_vix)} "
+               f"{[f'{d:%Y-%m-%d}' for d in partial_vix['trade_date']][:15]}\n")
+    notes = s[s["date_format_note"].notna()] if "date_format_note" in s.columns else s.iloc[0:0]
+    if len(notes):
+        flags.append(f"{len(notes)} index files had the date written MM-DD-YYYY; accepted because the swapped "
+                     f"date equals the file date (section 6)")
+        out.append(f"- {FLAG} index files with MM-DD-YYYY dates (accepted, see note): "
+                   f"{[f'{d:%Y-%m-%d}' for d in notes['trade_date']]}\n")
     if len(na_spot):
         flags.append(f"{len(na_spot)} index-file days with no Nifty 50 close (section 6)")
         out.append(md_table(na_spot[["trade_date", "spot_close", "vix_close"]]))

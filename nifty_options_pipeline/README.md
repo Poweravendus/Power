@@ -27,6 +27,7 @@ dates previously recorded as 404 (dates in the last 7 days are always re-checked
 | F&O bhavcopy, UDiFF | `nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_YYYYMMDD_F_0000.csv.zip` | 2024-01-01 .. (NSE back-filled Jan-Jul 2024; only format from 2024-07-08) |
 | Index closes (Nifty 50 + India VIX) | `archives.nseindia.com/content/indices/ind_close_all_DDMMYYYY.csv` | whole range |
 | Trading holidays | `www.nseindia.com/api/holiday-master?type=trading` (current year only) + bundled `nse_trading_holidays.csv` | 2019 .. |
+| Gap filler | `archives.nseindia.com/archives/fo/mkt/foDDMMYYYY.zip` (F&O market-activity report: OHLC, OI, volume, **no settle**) | only weekdays whose bhavcopy is missing from the archive (2021-03-30) |
 
 Both archive hosts serve both path families; the downloader falls back to the other host on
 errors (not on 404). The main site `www.nseindia.com` is behind Akamai and often answers 403
@@ -46,7 +47,7 @@ pipeline/config.py             paths, dates, URL templates, schema
 pipeline/nse_session.py        requests.Session with browser headers, warm-up, retry/backoff, 1 s delay
 pipeline/manifest.py           append-only CSV manifest => resumability
 pipeline/download.py           raw file download + cache (data/raw/, git-ignored)
-pipeline/parse.py              old / UDiFF / index-file parsers -> standard columns
+pipeline/parse.py              old / UDiFF / market-report / index-file parsers -> standard columns
 pipeline/build.py              join, derived columns, Parquet by year, CSV sample, expiry calendar
 pipeline/holidays.py           NSE holiday API (best effort) + bundled list
 pipeline/validate.py           markdown validation report
@@ -73,16 +74,21 @@ reports/validation_report.md
 | open_interest | **units of underlying** (lots x lot size) in both formats; lot size changed 75 -> 50 -> 25 -> 75 over the period |
 | underlying | UDiFF `UndrlygPric` when present (from 2024), else Nifty 50 close joined from the index file |
 | vix_close | India VIX close joined from the index file |
-| is_monthly_expiry | TRUE when the expiry is the last expiry date seen in its calendar month (data-driven, no weekday assumption) |
+| is_monthly_expiry | TRUE when a NIFTY future expires on the same date (NSE lists futures only for monthlies). Beyond the horizon of listed futures (long-dated options) it falls back to "last expiry seen in the calendar month". No weekday assumption. |
+| is_last_expiry_in_month | helper: the literal "last expiry date in its calendar month" rule, kept for comparison. It is wrong when a next-month weekly is pulled back across the month boundary by a holiday (30 Apr 2025) and when a monthly is re-dated at short notice (June 2023); the report lists every disagreement. |
 | dte | calendar days from trade_date to expiry |
 | underlying_source | `file` / `spot_join` / `missing` (helper) |
-| source_format | `old` / `udiff` (helper) |
+| source_format | `old` / `udiff` / `mkt_report` (helper; `mkt_report` rows have settle = NaN and only traded contracts) |
 
 Read it with `pd.read_parquet('data/processed/nifty_fo')` (pandas reads the `year=` partitions)
 or `pipeline.build.load_fo()`.
 
 ## Things to know before backtesting
 
+- NSE re-dates contracts. When it moved the expiry weekday (Thursday -> Tuesday in 2025) the
+  long-dated contracts were re-listed under new dates; the old dates linger in the history with
+  zero volume and are listed in the report. When a holiday was declared at short notice the
+  June 2023 monthly traded as expiry 2023-06-29 until 27 June and as 2023-06-28 on its last day.
 - Weekly expiries have no same-expiry future. Only monthly expiries do. For a weekly, the
   forward has to come from the next monthly future, the spot plus carry, or put-call parity.
 - Old-format rows for strikes with no open interest carry `settle = 0` and a stale `close`.
