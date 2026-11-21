@@ -78,6 +78,11 @@ SCHEMA_COLUMNS = [
     # value: settle, except on expiry day (dte == 0) where NSE's settle column holds the index final
     # settlement price (Feb 2020 onward) or 0 (before); there value = intrinsic vs underlying.
     "value", "traded",
+    # value_suspect: settlement price violates strike monotonicity against a better-traded
+    # neighbour (NSE's theoretical settle on illiquid strikes is often wrong). value_interp =
+    # value, except on suspect rows where it is the linear interpolation between the nearest
+    # non-suspect strikes (NaN if there is no clean neighbour on each side). `value` is untouched.
+    "value_suspect", "value_interp",
     # helper columns (not in the requested schema, kept because they are cheap and useful)
     "is_last_expiry_in_month", "underlying_source", "source_format",
 ]

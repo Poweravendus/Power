@@ -1,6 +1,6 @@
 # NIFTY options data validation report
 
-Generated 2026-11-21 16:36 UTC. Rows: 4,120,590; trade dates: 1,957 (2019-01-01 .. 2026-11-20); spot-check seed 42.
+Generated 2026-11-21 17:41 UTC. Rows: 4,120,590; trade dates: 1,957 (2019-01-01 .. 2026-11-20); spot-check seed 42.
 
 ## 0. Flags
 
@@ -11,6 +11,7 @@ Generated 2026-11-21 16:36 UTC. Rows: 4,120,590; trade dates: 1,957 (2019-01-01 
 - **FLAG** 3 index files had the date written MM-DD-YYYY; accepted because the swapped date equals the file date (section 6)
 - **FLAG** 18500 option rows with open interest/volume but settle = 0 before expiry (76% of them untraded that day, so `close` is a stale print there) (section 8)
 - **FLAG** 42,264 pre-expiry option rows have settle = 0 (untraded, zero OI; mostly old format). Treat settle=0 as 'no price', not a price (section 8)
+- **FLAG** 228,120 option rows (5.7%) carry a settlement price that violates strike monotonicity; 5-9% of near-the-money rows. Flagged in `value_suspect`, interpolation in `value_interp` (section 10)
 
 ## 1. Trading-day calendar
 
@@ -419,3 +420,21 @@ Total contract-days with any difference: **0**
 | 24,050.00 | PE | 63.25 | 23,989.15 | 23,989.15 | 60.85 | 60.85 | 0.00 | 4,161,485.00 |
 | 24,100.00 | CE | 0.15 | 23,989.15 | 23,989.15 | 0.00 | 0.00 | 0.00 | 12,823,531.00 |
 | 24,100.00 | PE | 113.40 | 23,989.15 | 23,989.15 | 110.85 | 110.85 | 0.00 | 1,989,414.00 |
+
+## 10. Suspect settlement prices (`value_suspect`)
+
+A pre-expiry option row is flagged when its `value` violates strike monotonicity against a neighbour (a put worth more than the next higher-strike put, or a call worth more than the next lower-strike call, by more than 1 point) and it is the thinner-traded side of the violating pair. These are NSE theoretical settlement prices on illiquid strikes and are not usable as prices. `value` is left untouched; `value_interp` carries a linear interpolation between the nearest clean strikes for those rows.
+
+| year | rows | suspect_% | suspect_% strikes x100 | suspect_% strikes x50 | suspect_% within 8% of spot | suspect_% traded rows | suspect_% near & dte<=45 | interp_unavailable |
+|---|---|---|---|---|---|---|---|---|
+| 2019 | 765,496.00 | 3.13 | 1.03 | 11.07 | 5.22 | 1.56 | 5.18 | 40.00 |
+| 2020 | 726,121.00 | 4.67 | 1.64 | 12.25 | 6.24 | 3.33 | 6.49 | 200.00 |
+| 2021 | 500,885.00 | 5.99 | 1.05 | 13.91 | 6.94 | 4.06 | 6.14 | 265.00 |
+| 2022 | 551,031.00 | 6.44 | 0.96 | 14.23 | 7.87 | 4.91 | 6.69 | 257.00 |
+| 2023 | 331,594.00 | 7.16 | 1.11 | 16.80 | 8.44 | 4.32 | 6.02 | 195.00 |
+| 2024 | 388,370.00 | 7.42 | 0.90 | 17.36 | 8.57 | 4.60 | 6.49 | 185.00 |
+| 2025 | 385,460.00 | 7.00 | 0.91 | 16.37 | 8.14 | 4.55 | 6.31 | 215.00 |
+| 2026 | 385,649.00 | 6.55 | 1.34 | 14.45 | 7.35 | 5.07 | 5.57 | 145.00 |
+
+
+- Suspect rows: 228,120 (5.65% of pre-expiry option rows); median contracts traded on them: 0; median |value - interpolation|: 46.5 pts; 90th percentile: 168.0 pts

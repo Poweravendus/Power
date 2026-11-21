@@ -526,6 +526,36 @@ def section_expiry_value(fo: pd.DataFrame, flags: list[str]) -> str:
     return "\n".join(out)
 
 
+def section_suspect_values(fo: pd.DataFrame, flags: list[str]) -> str:
+    out = ["## 10. Suspect settlement prices (`value_suspect`)\n"]
+    out.append("A pre-expiry option row is flagged when its `value` violates strike monotonicity against a neighbour "
+               "(a put worth more than the next higher-strike put, or a call worth more than the next lower-strike call, by "
+               "more than 1 point) and it is the thinner-traded side of the violating pair. These are NSE theoretical "
+               "settlement prices on illiquid strikes and are not usable as prices. `value` is left untouched; `value_interp` "
+               "carries a linear interpolation between the nearest clean strikes for those rows.\n")
+    opt = fo[(fo["instrument"] == "OPT") & (fo["dte"] > 0) & fo["value"].notna()].copy()
+    opt["year"] = opt["trade_date"].dt.year
+    opt["near"] = (opt["strike"] / opt["underlying"] - 1).abs() <= 0.08
+    opt["odd50"] = (opt["strike"] % 100) != 0
+    tab = opt.groupby("year").apply(lambda d: pd.Series({
+        "rows": len(d), "suspect_%": d["value_suspect"].mean() * 100,
+        "suspect_% strikes x100": d.loc[~d["odd50"], "value_suspect"].mean() * 100,
+        "suspect_% strikes x50": d.loc[d["odd50"], "value_suspect"].mean() * 100,
+        "suspect_% within 8% of spot": d.loc[d["near"], "value_suspect"].mean() * 100,
+        "suspect_% traded rows": d.loc[d["traded"], "value_suspect"].mean() * 100,
+        "suspect_% near & dte<=45": d.loc[d["near"] & (d["dte"] <= 45), "value_suspect"].mean() * 100,
+        "interp_unavailable": int((d["value_suspect"] & d["value_interp"].isna()).sum()),
+    }), include_groups=False).round(2).reset_index()
+    out.append(md_table(tab, floatfmt="{:,.2f}"))
+    sus = opt[opt["value_suspect"]]
+    dev = (sus["value"] - sus["value_interp"]).abs()
+    out.append(f"\n- Suspect rows: {len(sus):,} ({len(sus) / len(opt) * 100:.2f}% of pre-expiry option rows); median contracts traded on them: "
+               f"{sus['contracts_traded'].median():.0f}; median |value - interpolation|: {dev.median():.1f} pts; 90th percentile: {dev.quantile(0.9):.1f} pts\n")
+    flags.append(f"{len(sus):,} option rows ({len(sus) / len(opt) * 100:.1f}%) carry a settlement price that violates strike "
+                 f"monotonicity; 5-9% of near-the-money rows. Flagged in `value_suspect`, interpolation in `value_interp` (section 10)")
+    return "\n".join(out)
+
+
 def write_report(seed: int = 42) -> None:
     fo = load_fo()
     spot = pd.read_parquet(config.SPOT_VIX_PARQUET)
@@ -541,6 +571,7 @@ def write_report(seed: int = 42) -> None:
         section_overlap(fo_m, flags),
         section_integrity(fo, flags),
         section_expiry_value(fo, flags),
+        section_suspect_values(fo, flags),
     ]
     head = [f"# NIFTY options data validation report\n",
             f"Generated {dt.datetime.now(dt.timezone.utc):%Y-%m-%d %H:%M UTC}. Rows: {len(fo):,}; "

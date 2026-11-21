@@ -74,6 +74,8 @@ reports/validation_report.md
 | open_interest | **units of underlying** (lots x lot size) in both formats; lot size changed 75 -> 50 -> 25 -> 75 -> 65 (from Jan 2026) over the period |
 | value | option value for marking: `settle` when dte > 0; on expiry day (dte == 0) intrinsic against `underlying`, because NSE's settle column there holds the index final settlement price (from Feb 2020) or 0 (before). Futures: always `settle`. |
 | traded | contracts_traded > 0 |
+| value_suspect | TRUE when `value` violates strike monotonicity against a better-traded neighbour (NSE theoretical settle on illiquid strikes, often tens of points off). ~6% of pre-expiry option rows, mostly 50-step strikes with no volume. |
+| value_interp | `value`, except on suspect rows where it is the linear interpolation between the nearest clean strikes on each side (NaN if none). `value` itself is never altered. |
 | underlying | UDiFF `UndrlygPric` when present (from 2024), else Nifty 50 close joined from the index file |
 | vix_close | India VIX close joined from the index file |
 | is_monthly_expiry | TRUE when a NIFTY future expires on the same date (NSE lists futures only for monthlies). Beyond the horizon of listed futures (long-dated options) it falls back to "last expiry seen in the calendar month". No weekday assumption. |

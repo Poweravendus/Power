@@ -119,6 +119,42 @@ def option_value(fo: pd.DataFrame) -> pd.Series:
     return pd.Series(np.where(on_expiry_opt, intrinsic, fo["settle"]), index=fo.index, dtype="float64")
 
 
+def flag_suspect_values(fo: pd.DataFrame, min_deviation: float = 1.0) -> pd.DataFrame:
+    """Flag option rows whose `value` violates strike monotonicity (a put worth more than the
+    next higher-strike put, a call worth more than the next lower-strike call). In a violating
+    adjacent pair the row with fewer contracts traded is the suspect one (ties: both). Expiry-day
+    rows are intrinsic by construction and never suspect. Adds value_suspect and value_interp
+    (linear interpolation between the nearest clean strikes on each side; NaN if none)."""
+    fo = fo.copy()
+    fo["value_suspect"] = False
+    fo["value_interp"] = fo["value"]
+    m = (fo["instrument"] == "OPT") & (fo["dte"] > 0) & fo["value"].notna()
+    opt = fo.loc[m, ["trade_date", "expiry", "option_type", "strike", "value", "contracts_traded"]]
+    opt = opt.sort_values(["trade_date", "expiry", "option_type", "strike"])
+    g = opt.groupby(["trade_date", "expiry", "option_type"], sort=False)
+    pv, nv = g["value"].shift(1), g["value"].shift(-1)
+    pc, nc = g["contracts_traded"].shift(1), g["contracts_traded"].shift(-1)
+    is_put = (opt["option_type"] == "PE").to_numpy()
+    v, c = opt["value"].to_numpy(), opt["contracts_traded"].to_numpy()
+    viol_prev = np.where(is_put, v < pv.to_numpy() - min_deviation, v > pv.to_numpy() + min_deviation)
+    viol_next = np.where(is_put, v > nv.to_numpy() + min_deviation, v < nv.to_numpy() - min_deviation)
+    suspect = (viol_prev & (c <= pc.to_numpy())) | (viol_next & (c <= nc.to_numpy()))
+    suspect = np.nan_to_num(suspect.astype(float)).astype(bool)
+    opt["value_suspect"] = suspect
+    clean_v = opt["value"].where(~opt["value_suspect"])
+    clean_k = opt["strike"].where(~opt["value_suspect"])
+    g2 = opt.assign(cv=clean_v, ck=clean_k).groupby(["trade_date", "expiry", "option_type"], sort=False)
+    v_prev, k_prev = g2["cv"].ffill(), g2["ck"].ffill()
+    v_next, k_next = g2["cv"].bfill(), g2["ck"].bfill()
+    with np.errstate(invalid="ignore", divide="ignore"):
+        interp = v_prev + (v_next - v_prev) * (opt["strike"] - k_prev) / (k_next - k_prev)
+    opt["value_interp"] = np.where(opt["value_suspect"], interp, opt["value"])
+    fo.loc[opt.index, "value_suspect"] = opt["value_suspect"]
+    fo.loc[opt.index, "value_interp"] = opt["value_interp"]
+    log.info("suspect option values: %d of %d pre-expiry option rows (%.2f%%)", int(suspect.sum()), len(opt), suspect.mean() * 100)
+    return fo
+
+
 def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None:
     fo_manifest = Manifest(MANIFEST_FO)
     files = chosen_fo_files(fo_manifest)
@@ -165,6 +201,7 @@ def build(years: list[int] | None = None, sample_month: str = "2024-07") -> None
     fo["dte"] = (fo["expiry"] - fo["trade_date"]).dt.days.astype("int32")
     fo["value"] = option_value(fo)
     fo["traded"] = fo["contracts_traded"] > 0
+    fo = flag_suspect_values(fo)
     fo["year"] = fo["trade_date"].dt.year
 
     fo = fo[config.SCHEMA_COLUMNS + ["year"]].sort_values(
