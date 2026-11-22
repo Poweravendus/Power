@@ -89,9 +89,10 @@ tot_ev = sum(spv[s]['ev'] for s in SPVS)
 tot_eb = sum(spv[s]['ebitda'] for s in SPVS)
 tot_tar = sum(spv[s]['tariff'] for s in SPVS)
 nd26 = hist[2026]['netdebt']
-eq26 = tot_ev - nd26
+nd_sep = d.ND_SEP
+eq_sep = tot_ev - nd_sep
 dy = 12 / d.PRICE
-prem = d.PRICE / hist[2026]['nav'] - 1
+prem = d.PRICE / d.NAV_SEP - 1
 irr = M['irr']
 c27, c28 = cons[2027], cons[2028]
 ipo_ev = sum(spv[s]['ev_ipo'] for s in SPVS)
@@ -103,7 +104,7 @@ debt_sp = sum(spv[s]['debt_sponsor'] for s in SPVS)
 P(0, 'POWERGRID Infrastructure Investment Trust')
 t = E[1]
 r = rows(t)
-fill_row(r[0], [None, 'POWERGRID Infrastructure Investment Trust', None, '11-Nov-26'])
+fill_row(r[0], [None, 'POWERGRID Infrastructure Investment Trust', None, '22-Nov-26'])
 fill_row(r[1], [None, 'InvITs', None, 'xx'])
 fill_row(r[2], [None, f1(d.PRICE), None, f0(d.mcap), None, 'xx'])
 fill_row(r[3], [None, f'{pct(dy)} for FY2027', None, 'CRISIL AAA / Stable; ICRA AAA (Stable); CARE AAA; Stable', None, 'NA'])
@@ -116,8 +117,8 @@ P(5, [('POWERGRID Infrastructure Investment Trust', True), (' (PGInvIT), sponsor
        'the Trust was set up to monetise part of POWERGRID’s tariff-based competitive bidding (TBCB) portfolio while giving unitholders contracted, availability-linked cash flows. '
        'Five years on, the portfolio is unchanged in composition: it still comprises the five TBCB transmission SPVs acquired from the Sponsor at listing. '
        'What has changed is ownership – the Trust bought the balance 26% in VTL in March 2022 and in the other four SPVs in December 2024, and now owns 100% of all five.', False)])
-P(6, [(f'As of 31 March 2026, the Trust’s Enterprise Value (AUM) stood at Rs. {f0(tot_ev)} crore, based on the Independent Valuation Report dated 13 May 2026, '
-       f'all of which relates to the 5 operational transmission SPVs. Net debt stood at Rs. {f0(nd26)} crore, a net borrowing ratio of ~5% against the 70% regulatory ceiling.', True)])
+P(6, [(f'As of 30 September 2026, the Trust’s Enterprise Value (AUM) stood at Rs. {f0(tot_ev)} crore, based on the half-yearly Independent Valuation Report by IndiaAppraisers, '
+       f'all of which relates to the 5 operational transmission SPVs, and NAV was Rs. {f2(d.NAV_SEP)} per unit. Net debt stood at Rs. {f0(nd_sep)} crore, a net borrowing ratio of {pct(d.NBR_SEP)} against the 70% regulatory ceiling.', True)])
 P(7, 'The operational portfolio as of 31 March 2026 comprises the following assets:')
 P(8, 'Transmission:')
 states = sorted({x.strip() for s in SPVS for x in d.STATES[s].split(',')})
@@ -127,12 +128,12 @@ P(10, [('Strong operating track record: ', True), (f'The portfolio has an averag
 P(11, [('Strong Counterparty profile: ', True), (f'100% of AUM, amounting to Rs. {f0(tot_ev)} crore, is inter-state (ISTS) and billed and collected by the Central Transmission Utility (CTUIL) through the national pool; billed receivables were equivalent to ~19 days of billing at 31 March 2026.', False)])
 P(12, [('High availability: ', True), (f'Portfolio availability has remained consistently above the 98% normative level, averaging approximately {avg_av26 * 100:.2f}% in FY2026, with every SPV at or above 99.87%.', False)])
 kill(range(13, 23))
-P(23, 'SPV-wise revenue and AUM – FY2026')
+P(23, 'SPV-wise revenue (FY2026) and AUM (30 September 2026)')
 t = E[24]
 rv26 = {s: spv[s]['rev'][2026] for s in SPVS}
 spec = [(1, [s, f0(rv26[s]), pc(rv26[s] / hist[2026]['rev']), '', f0(spv[s]['ev']), pc(spv[s]['ev_sh'])]) for s in BY_EV]
 spec.append((4, ['Total reported – FY2026', f0(hist[2026]['rev']), '100.0%', '', f0(tot_ev), '100.0%']))
-fill_row(rows(t)[0], ['SPV'])
+fill_row(rows(t)[0], ['SPV', None, None, None, 'Operational AUM at Sep-26 (Rs. crore)'])
 rebuild(t, 1, spec)
 kill(range(25, 37))
 P(38, f'Taken together, an operational base of approximately Rs. {f0(tot_ev)} crore across five inter-state transmission SPVs, with 100% of revenue availability-linked and settled through the CTU pool, '
@@ -153,12 +154,13 @@ P(45, [('Trustee – IDBI Trusteeship Services Limited: ', True),
 P(46, [('Investment Manager – POWERGRID Unchahar Transmission Limited (PUTL): ', True),
        ('PUTL is a wholly owned subsidiary of the Sponsor and is responsible for investment decisions, financing, distribution policy and overall stewardship of the Trust under an Investment Management Agreement dated 18 December 2020.', False)])
 t = E[48]
-fill_row(rows(t)[1], ['Operational assets (5)', f0(tot_ev), '', 'Equity', f0(eq26)])
-fill_row(rows(t)[2], ['', '', '', 'Debt (net)', f0(nd26)])
+fill_row(rows(t)[1], ['Operational assets (5)', f0(tot_ev), '', 'Equity', f0(eq_sep)])
+fill_row(rows(t)[2], ['', '', '', 'Debt (net)', f0(nd_sep)])
 fill_row(rows(t)[3], ['Total', f0(tot_ev), '', 'Total', f0(tot_ev)])
-P(49, 'Portfolio Overview – at listing (May 2021) and as on 31 March 2026')
+P(47, 'Enterprise Value and funding details - As on September 30, 2026')
+P(49, 'Portfolio Overview – at listing (May 2021) and as on 30 September 2026')
 t = E[50]
-fill_row(rows(t)[0], [None, 'At listing (May 2021)', 'As on 31 March 2026'])
+fill_row(rows(t)[0], [None, 'At listing (May 2021)', 'As on 30 September 2026'])
 fill_row(rows(t)[1], ['No. of assets', '5', '5'])
 fill_row(rows(t)[2], [None, '3,699', '3,699'])
 fill_row(rows(t)[3], [None, '6,630', '6,630'])
@@ -170,7 +172,7 @@ kill(51, 52)
 # =================================================================== S2: portfolio detail (landscape)
 P(54, 'Details around the Operational Transmission portfolio – as on 31 March 2026:')
 t = E[55]
-fill_row(rows(t)[0], [None, None, None, None, None, None, None, None, None, None, None, None, 'Tariff FY27E (Rs. cr p.a. at 98% avail.)', None, None, None, 'EBITDA (% of SPV EBITDA)'])
+fill_row(rows(t)[0], [None, None, None, None, None, None, None, None, None, None, None, None, 'Tariff FY27E (Rs. cr p.a. at 98% avail.)', "EV (Rs. crore) as on Sep'26", None, None, 'EBITDA (% of SPV EBITDA)'])
 spec = []
 for k, s in enumerate(BY_EV):
     x = spv[s]
@@ -216,7 +218,8 @@ ms = [('2020', ['•  Trust settled by POWERGRID on 14 September 2020', '•  In
                 '•  Acquired balance 26% in KATL, PPTL, WTL and JPTL for Rs. 507 crore, funded by a Rs. 506 crore term loan – Trust now owns 100% of all SPVs']),
       ('2025', ['•  SPVs renamed, dropping the “POWERGRID” prefix', '•  In-principle approval for a consortium with POWERGRID (PGInvIT 74%) to bid for up to two TBCB projects (~Rs. 500 crore)',
                 '•  PPTL 400 kV line bay (RTM) charged on schedule (December 2025)']),
-      ('2026', ['•  FY26 DPU of Rs. 12.00 – fourth consecutive year at Rs. 12; FY27 guidance of Rs. 12.00', '•  New CEO (June 2026); IndiaAppraisers appointed valuer for FY27–FY28 (August 2026)'])]
+      ('2026', ['•  FY26 DPU of Rs. 12.00 – fourth consecutive year at Rs. 12; FY27 guidance of Rs. 12.00', '•  New CEO (June 2026); IndiaAppraisers appointed valuer for FY27–FY28 (August 2026)',
+                '•  First IndiaAppraisers valuation: WACC 7.36%, NAV Rs. 91.74 per unit (30 September 2026)'])]
 rebuild(t, 1, [(1, [y, lines]) for y, lines in ms])
 
 # =================================================================== S7: growth, NAV, DPU
@@ -261,7 +264,7 @@ lead(93, 'The portfolio has not changed since listing. The asset count has staye
 lead(94, f'Leverage is negligible. Net debt / AUM was below 1% until FY24 and rose to ~{pc(H[2026]["netdebt"] / H[2026]["aum"], 0)} after the December 2024 term loan. Gross borrowings of Rs. {f0(H[2026]["debt"])} crore compare with a 70% regulatory ceiling, '
       'leaving the Trust a large debt capacity it has so far had no use for. All borrowings are floating-rate (T-bill and repo linked), at an average cost of 6.97% in FY26.')
 lead(95, f'NAV per unit has eroded rather than compounded. NAV per unit moved from Rs. 101.1 in FY22 to Rs. {f1(navs[-1])} in FY26, with the large swings driven by valuation inputs. '
-      f'DPU, by contrast, has been held flat at Rs. 12.00 every year since FY23, after Rs. 10.50 for the shortened FY22. Aggregate distributions were Rs. {f0(H[2026]["dist"])} crore in FY26, and cumulative distributions since listing have reached Rs. {f2(d.total_dist)} per unit, including the Q1 FY27 payout. '
+      f'DPU, by contrast, has been held flat at Rs. 12.00 every year since FY23, after Rs. 10.50 for the shortened FY22. Aggregate distributions were Rs. {f0(H[2026]["dist"])} crore in FY26, and cumulative distributions since listing have reached Rs. {f2(d.total_dist)} per unit, including the H1 FY27 payouts. '
       'A meaningful share of each DPU is repayment of SPV debt – return of capital rather than income – which is why NAV falls as distributions are paid.')
 # NAV drivers
 anchor = E[96]
@@ -277,7 +280,9 @@ items = [
     ('sub', None, 'The balance 26% in four SPVs was bought for Rs. 507 crore against a valuation of Rs. 694 crore, fully debt-funded with no new units, so the discount accrued entirely to existing unitholders.'),
     ('lab', 'FY26 (Rs. 90.8/unit, -3.5%): ', None),
     ('sub', None, 'WACC was unchanged at 8.00%, so the decline is the underlying run-off: enterprise value fell from Rs. 9,004 crore to Rs. 8,672 crore as one more year of contracted cash flow was distributed.'),
-    ('sub', None, 'A new valuer (IndiaAppraisers) takes over from FY27. Given the history, the first H1 FY27 valuation is a near-term source of NAV volatility in either direction.'),
+    ('lab', f'H1 FY27 (Rs. {f2(d.NAV_SEP)}/unit, +{pc(d.NAV_SEP / 90.79 - 1)}): ', None),
+    ('sub', None, 'The new valuer, IndiaAppraisers, cut WACC to 7.36% from 8.00%. Most of the change comes from the equity risk premium, now taken from long-run domestic index returns at 4.32% (7.08% before), with the risk-free rate at the 7.18% 10-year G-sec yield.'),
+    ('sub', None, f'Enterprise value rose to Rs. {f0(tot_ev)} crore from Rs. 8,672 crore despite six more months of cash flow being paid out. The valuer also moved every SPV to a 28.6% tax rate (25.17% before), which trims projected cash flows and partly offsets the lower discount rate.'),
 ]
 prev = anchor
 for kind, lab, txt in items:
@@ -296,16 +301,16 @@ for q, qd, dpu, i_, dv, rp, tr_ in d.dist_q:
     a = byfy.setdefault(fy, [0, 0, 0, 0, 0])
     for k, x in enumerate((i_, dv, rp, tr_, dpu)):
         a[k] += x or 0
-spec = [(1, [f'FY{y % 100}' if y < 2027 else 'FY27 (Q1)'] + [f1(x) for x in byfy[y]]) for y in sorted(byfy)]
+spec = [(1, [f'FY{y % 100}' if y < 2027 else 'FY27 (H1)'] + [f1(x) for x in byfy[y]]) for y in sorted(byfy)]
 tot = [sum(byfy[y][k] for y in byfy) for k in range(5)]
-spec.append((11, ['Total (incl. Q1 FY27)'] + [f1(x) for x in tot]))
+spec.append((11, ['Total (incl. H1 FY27)'] + [f1(x) for x in tot]))
 rebuild(t, 1, spec)
 P(121, f'The units listed at a premium to NAV and have swung either side of it since. On an average-price basis the premium was widest in FY23 at {pc(d.fy_avg["FY23"] / 86.04 - 1)} – when the valuation reset cut NAV faster than the price – and the units moved to a discount in FY25 as the market priced in the tariff step-down. '
-      f'At the current market price the units trade at a {pc(prem)} premium to the March 2026 NAV of Rs. {f2(hist[2026]["nav"])}.')
+      f'At the current market price the units trade at a {pc(prem)} premium to the September 2026 NAV of Rs. {f2(d.NAV_SEP)}.')
 t = E[122]
 delete_grid_cols(t, [1, 2, 3, 4])
 mp = [d.fy_avg[f'FY{y % 100}'] for y in yrs] + [d.fy_avg['FY27 YTD']]
-nv = navs + [hist[2026]['nav']]
+nv = navs + [d.NAV_SEP]
 fill_row(rows(t)[1], [None] + [f1(x) for x in mp])
 fill_row(rows(t)[2], [None] + [f1(x) for x in nv])
 fill_row(rows(t)[3], [None] + [pc(a / b - 1, 1, True) for a, b in zip(mp, nv)])
@@ -379,7 +384,8 @@ P(150, 'All five SPVs have a long record of high line availability. Their revenu
        'Availability has been above 99.5% at every SPV in every year since listing, and between 99.87% and 100.00% in FY2026. As a result, the portfolio has earned close to the maximum incentive almost every year.')
 _unused = ('The revenue of a transmission SPV is completely delinked from the power demand-supply situation and volatility in electricity prices. Moreover, factors affecting line availability, such as unchecked vegetation, lightning or high ambient temperature causing wear and tear of insulators leading to flashovers, are routine and do not entail significant cost and are easily rectifiable, thereby minimising outage time. Furthermore, any outage due to extreme weather conditions, cyclones or excessive lightning is usually classified as an act of God and is covered under the force majeure clause of the TSA and thus does not impact line availability.')
 P(152, 'The flip side of fixed tariffs is that revenue can only move down. Under the bid tariff profile, the quoted non-escalable charges of PPTL, WTL and JPTL fall by roughly 30% from contract year 11. '
-       f'The Independent Valuer’s projections place this in FY2028, taking consolidated revenue from ~Rs. {f0(c27["rev"])} crore in FY27E to ~Rs. {f0(c28["rev"])} crore in FY28E (-{pc(1 - c28["rev"] / c27["rev"], 0)}), which is consistent with management’s own guidance of a 23–24% decline.')
+       f'Both Independent Valuers place this in FY2028, taking consolidated revenue from ~Rs. {f0(c27["rev"])} crore in FY27E to ~Rs. {f0(c28["rev"])} crore in FY28E (-{pc(1 - c28["rev"] / c27["rev"], 0)}), which is consistent with management’s own guidance of a 23–24% decline. '
+       'Quarterly revenue of Rs. 311 crore in Q1 FY27 and Rs. 314 crore in Q2 FY27 confirms that the step-down has not yet started.')
 P(153, 'Within the operating fleet the portfolio is flat to declining by design, since availability-linked tariffs are fixed at bid and step down on a defined schedule, and the Trust has made no third-party acquisitions to offset it.')
 t = E[155]
 delete_grid_cols(t, [1, 8, 15])
@@ -473,19 +479,20 @@ P(184, [('Escalation: ', True), ('O&M charges escalate at 3.51% a year under the
 P(185, [('Contract renewal: ', True), ('The running O&M contract with POWERGRID was valid until March 2026 and is to be renewed on terms linked to CERC O&M norms. The last extension was on unchanged terms, but the renewal is a related-party contract worth tracking.', False)])
 P(186, [('Sponsor dependence: ', True), ('POWERGRID’s ~1.88 lakh ckm network gives the Trust access to spares, crews and protection expertise that a standalone owner of five assets could not afford – the main reason availability has been close to 100%.', False)])
 P(187, 'Healthy debt coverage metrics ')
-P(188, f'PGInvIT’s financial risk profile is very strong, evident from its negligible leverage. Net debt/AUM was ~{pc(nd26 / tot_ev, 0)} as on March 31, 2026, against the 70% regulatory ceiling. '
+P(188, f'PGInvIT’s financial risk profile is very strong, evident from its negligible leverage. The net borrowing ratio was {pct(d.NBR_SEP)} as on September 30, 2026, against the 70% regulatory ceiling. '
        'Leverage has headroom to rise sharply if the Trust finds acquisitions, which management has said will be predominantly debt-funded.')
-P(189, f'Gross borrowings stood at Rs. {f0(H[2026]["debt"])} crore as on 31 March 2026, against AUM of Rs. {f0(tot_ev)} crore. The book consists of two 16-year secured rupee term loans from HDFC Bank: Rs. 561 crore linked to the 3-month T-bill (T-bill + 127 bps, drawn March 2022) and Rs. 503 crore linked to the RBI repo rate (repo + 150 bps, drawn December 2024). '
+P(189, f'Gross borrowings stood at Rs. {f0(d.DEBT_SEP)} crore as on 30 September 2026 (Rs. {f0(H[2026]["debt"])} crore at 31 March 2026), against AUM of Rs. {f0(tot_ev)} crore. The book consists of two 16-year secured rupee term loans from HDFC Bank: Rs. 561 crore (at 31 March 2026) linked to the 3-month T-bill (T-bill + 127 bps, drawn March 2022) and Rs. 503 crore linked to the RBI repo rate (repo + 150 bps, drawn December 2024). '
        'Both are 100% floating, the average cost of debt was 6.97% in FY2026, ~73% of principal is repayable after ten years, and the Trust and the loan facility carry AAA ratings.')
 P(190, 'Borrowings, leverage and AUM – FY22 to FY26')
 t = E[191]
 delete_grid_cols(t, [1, 2, 3, 4])
-q1d = 1061.96
+q1d = d.DEBT_SEP
+fill_row(rows(t)[0], [None] * 6 + ['H1 FY27'])
 fill_row(rows(t)[1], [None] + [f0(H[y]['debt']) for y in yrs] + [f0(q1d)])
 fill_row(rows(t)[2], [None, '<6.0%', '7.20%', '8.18%*', '7.92%', '6.97%', '~6.7%'])
-fill_row(rows(t)[3], [None] + [f0(H[y]['netdebt']) for y in yrs] + [''])
-fill_row(rows(t)[4], [None] + [f0(H[y]['aum']) for y in yrs] + [''])
-fill_row(rows(t)[5], [None] + [pc(H[y]['netdebt'] / H[y]['aum']) for y in yrs] + ['5.1%'])
+fill_row(rows(t)[3], [None] + [f0(H[y]['netdebt']) for y in yrs] + [f0(nd_sep)])
+fill_row(rows(t)[4], [None] + [f0(H[y]['aum']) for y in yrs] + [f0(tot_ev)])
+fill_row(rows(t)[5], [None] + [pc(H[y]['netdebt'] / H[y]['aum']) for y in yrs] + [pc(d.NBR_SEP)])
 footnote(E[191], '* H1 FY24 average; full-year FY24 average not disclosed. FY22 cost is the rate at drawdown.')
 t = E[194]
 fill_row(rows(t)[1], ['Term loans – HDFC Bank', '100%'])
@@ -511,7 +518,7 @@ fill_row(rows(t)[1], [None, 'Availability-linked TSA tariff (quoted non-escalabl
 fill_row(rows(t)[2], ['Availability – FY27E onwards', '99.75% (incentive cap) for all SPVs'])
 fill_row(rows(t)[3], [None, 'Contracted TSA schedule, incl. ~30% step-down at PPTL, WTL and JPTL in FY28'])
 fill_row(rows(t)[4], [None, 'O&M 3.51% p.a.; Investment Manager fee 6.75% p.a.'])
-fill_row(rows(t)[5], [None, '8.0% WACC (Independent Valuer, March 2026)'])
+fill_row(rows(t)[5], [None, '7.36% WACC (Independent Valuer, September 2026); SPV tax at 28.6%'])
 t = E[205]
 py = list(range(2027, 2032))
 cc = [cons[y] for y in py]
@@ -539,14 +546,16 @@ upd = {  # row: (PG, IndiGrid, Anzen)
     10: ('910.0', '952.6', '336.1'),
     21: (f0(hist[2026]['rev'] + 38.6), None, None),
     24: (f0(hist[2026]['ndcf']), None, None),
-    27: (f0(d.mcap), f0(172.55 * 95.256), f0(129.50 * 33.606)),
-    29: (f2(d.PRICE), '172.55', '129.50'),
-    30: (pc(prem), pc(172.55 / 148.24 - 1), pc(129.50 / 124.78 - 1)),
-    31: (f0(H[2026]['debt']), None, None),
-    32: (pc(nd26 / tot_ev), None, None),
+    26: (f'{f0(tot_ev)} (Sep-26)', None, None),
+    27: (f0(d.mcap), f0(d.MK['peers']['INDIGRID']['price'] * 95.256), f0(129.50 * 33.606)),
+    28: (f2(d.NAV_SEP) + ' (Sep-26)', None, None),
+    29: (f2(d.PRICE), f2(d.MK['peers']['INDIGRID']['price']), '129.50 (last trade 11-Nov-26)'),
+    30: (pc(prem), pc(d.MK['peers']['INDIGRID']['price'] / 148.24 - 1), pc(129.50 / 124.78 - 1)),
+    31: (f'{f0(d.DEBT_SEP)} (Sep-26)', None, None),
+    32: (pc(d.NBR_SEP) + ' (Sep-26)', None, None),
     33: ('~6.97% (FY26)', None, None),
     37: ('12.00', None, None),
-    38: (f2(d.total_dist) + ' (to Q1 FY27)', None, None),
+    38: (f2(d.total_dist) + ' (to Q2 FY27)', None, None),
     39: (pct(d.ret_dist), None, None),
     40: (pct(d.ret_cap), None, None),
     41: (pct(d.ret_total), None, None),
@@ -556,8 +565,8 @@ rs = rows(t)
 fill_row(rs[0], [None, 'POWERGRID Infrastructure Investment Trust', 'IndiGrid Infrastructure Trust'])
 for k, vals in upd.items():
     fill_row(rs[k], [None] + list(vals))
-fill_row(rs[27], ['Market capitalisation (Rs. crore, 09-Nov-26)'])
-fill_row(rs[29], ['CMP (Rs. per unit, 09-Nov-26)'])
+fill_row(rs[27], ['Market capitalisation (Rs. crore, 20-Nov-26)'])
+fill_row(rs[29], ['CMP (Rs. per unit, 20-Nov-26)'])
 
 # =================================================================== key arguments / risks / monitorables
 args = [
@@ -569,7 +578,7 @@ args = [
     ('Counterparty risk is pooled, not negotiated. ',
      'Revenue is billed and collected by CTUIL through the national ISTS pool, so no SPV depends on a single state utility. Collection efficiency was 101%–104.5% in FY2024–FY2025, and receivable days have fallen from 43 in FY2022 to 19 in FY2026.'),
     ('A high current yield backed by an unbroken distribution record. ',
-     f'The Trust has paid 20 consecutive distributions totalling Rs. {f2(d.total_dist)} per unit since listing, with DPU held at Rs. 12.00 for four straight years and guided at Rs. 12.00 for FY2027 – an {pct(dy)} yield at the current price. Since listing, the units have delivered an annualised total return of {pct(d.ret_total)}, almost all of it from distributions.'),
+     f'The Trust has paid {len(d.dist_q)} consecutive distributions totalling Rs. {f2(d.total_dist)} per unit since listing, with DPU held at Rs. 12.00 for four straight years and guided at Rs. 12.00 for FY2027 – an {pct(dy)} yield at the current price. Since listing, the units have delivered an annualised total return of {pct(d.ret_total)}, almost all of it from distributions.'),
     ('Optionality from acquisitions and the TBCB consortium – but only optionality. ',
      'A consortium with POWERGRID to bid for up to two TBCB projects (~Rs. 500 crore) has board approvals, and management reports talks with two or three private owners. Combined with the balance-sheet headroom, a single sizeable acquisition would change the DPU outlook. In five years, however, none has been executed, so we ascribe no value to it.'),
 ]
@@ -578,9 +587,9 @@ for i, (lead, txt) in zip(range(212, 217), args):
 risks = [
     ('Contracted tariff step-down from FY2028 – ', f'the largest single risk. Quoted charges at PPTL, WTL and JPTL fall by ~30% from contract year 11, taking consolidated revenue from ~Rs. {f0(c27["rev"])} crore in FY27E to ~Rs. {f0(c28["rev"])} crore in FY28E. On our model, NDCF falls to ~Rs. {f0(c28["ndcf"])} crore and DPU to ~Rs. {f2(c28["dpu"])} in FY28E (from Rs. 12.00), declining gradually thereafter. Management has said that Rs. 12 cannot be maintained without new assets.'),
     ('No acquisitions since listing – ', 'the Sponsor has no right-of-first-offer pipeline for the Trust and has stated a preference for securitisation over InvIT monetisation. Third-party operating assets have been scarce and keenly priced, and the TBCB consortium still awaits Government approval.'),
-    ('Low hold-to-maturity return at the current price – ', f'at Rs. {f1(d.PRICE)} the units trade at a {pc(prem)} premium to NAV, and our hold-to-maturity XIRR is only {pct(irr)}, below the 7.16% risk-free rate used by the Independent Valuer. Without acquisitions, today’s yield overstates the long-run return because part of each distribution is return of capital on a finite-life asset base.'),
+    ('Low hold-to-maturity return at the current price – ', f'at Rs. {f1(d.PRICE)} the units trade at a {pc(prem)} premium to NAV, and our hold-to-maturity XIRR is only {pct(irr)}, below the 7.18% 10-year G-sec yield the Independent Valuer uses as its risk-free rate. Without acquisitions, today’s yield overstates the long-run return because part of each distribution is return of capital on a finite-life asset base.'),
     ('Floating-rate debt – ', 'all borrowings are linked to the 3-month T-bill or the repo rate. The book is small, so a 100 bps rise costs only ~Rs. 11 crore a year (~Rs. 0.12 per unit), but any debt-funded acquisition would raise this exposure materially.'),
-    ('Valuation volatility from valuer changes – ', 'NAV moved from Rs. 101.1 to Rs. 86.0 and back to Rs. 94.1 largely because of changes in valuer and WACC methodology, with impairments and reversals of over Rs. 1,000 crore. A new valuer takes over from FY2027.'),
+    ('Valuation volatility from valuer changes – ', 'NAV moved from Rs. 101.1 to Rs. 86.0, back to Rs. 94.1 and now Rs. 91.74 largely because of changes in valuer and WACC methodology, with impairments and reversals of over Rs. 1,000 crore. The new valuer’s 7.36% WACC rests on a 4.32% equity risk premium, well below the 7.08% used previously; a return to the earlier approach would cut NAV materially.'),
     ('Related-party concentration – ', 'the Sponsor is also the Project Manager, O&M contractor, owner of the Investment Manager and the seller of every asset the Trust owns. The O&M contract renewal due from March 2026 and the pricing of any future Sponsor transaction need scrutiny.'),
     ('Governance – ', 'the Investment Manager’s board is below the SEBI independent-director requirement, operating under a relaxation extended to 31 December 2026, and appointments depend on Ministry of Power orders.'),
 ]
@@ -591,7 +600,7 @@ kill(range(219 + len(risks), 228))
 mons = [
     ('FY2028 distribution guidance – ', 'whether management guides to a lower DPU for FY2028 or uses reserves and debt to bridge the step-down, and whether NDCF covers the distribution without drawing down reserves.'),
     ('Acquisitions and the TBCB consortium – ', 'Government approval for the consortium with POWERGRID, the first bid outcome, and any third-party or state-asset acquisition – its size, IRR versus the Trust’s cost of capital, and funding mix.'),
-    ('NAV under the new valuer – ', 'the H1 FY2027 valuation by IndiaAppraisers (due with the 12 November 2026 results) and any change in WACC methodology versus the 8.00% used for FY2026.'),
+    ('Valuation and tax assumptions – ', 'whether IndiaAppraisers keeps its 4.32% equity risk premium and 7.36% WACC at the March 2027 valuation, and whether its 28.6% SPV tax rate (25.17% previously) is confirmed by management; on our model the higher tax rate costs ~Rs. 10–15 crore of NDCF a year from FY30.'),
     ('O&M contract renewal and costs – ', 'the terms of the renewed O&M agreement with POWERGRID and the trend in O&M and fee expenses as the revenue base shrinks.'),
     ('Availability and interest rates – ', 'SPV-level availability against the 99.75% incentive cap, and the T-bill and repo rates that set the Trust’s floating cost of debt.'),
 ]

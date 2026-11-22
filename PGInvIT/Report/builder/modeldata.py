@@ -16,10 +16,10 @@ for i, s in enumerate(SPVS):
                          rev_path={fy: A[f'{acol(fy)}{a_row("Revenue", i)}'].value for fy in range(2027, 2055)})
 for fy in range(2022, 2055):
     c = ccol(fy)
-    out['cons'][fy] = {k: C[f'{c}{r}'].value for k, r in dict(rev=6, ebitda=17, pat=43, dpu=58, dist=59, units=56, debt=76, cash=102,
-                                                              aum=241, netdebt=242, nav=244, ndcf=226, capex=216, debtflow=225,
-                                                              cash_avail=229, dpu_g=57, prop=237, netcash=238, actual=239, tax=40,
-                                                              fin=28, oi=22, im=9).items()}
+    out['cons'][fy] = {k: C[f'{c}{r}'].value for k, r in dict(rev=6, ebitda=17, pat=43, dpu=58, dist=59, units=56, debt=78, cash=112,
+                                                              aum=262, netdebt=263, nav=265, ndcf=251, capex=249, debtflow=250,
+                                                              cash_avail=253, dpu_g=57, prop=257, netcash=258, actual=259, tax=40,
+                                                              fin=28, oi=22, im=9, ndcf_pre=248, dpu_tgt=256, raise_=252).items()}
 out['irr'] = I['B11'].value
 out['price'] = S['C2'].value
 json.dump(out, open('modeldata.json', 'w'), indent=1, default=str)

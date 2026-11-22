@@ -25,7 +25,7 @@ VAL_DATE = dt.date(2026, 3, 31)
 UNITS_MN = 909.9992
 UNITS_CR = 90.99992
 PRICE = M['price']
-PRICE_DATE = '09-Nov-26'
+PRICE_DATE = '20-Nov-26'
 
 
 def iso(s):
@@ -125,7 +125,7 @@ def xirr(cfs, ds):
 
 
 LIST_DATE = dt.date(2021, 5, 14)
-LATEST = dt.date(2026, 11, 9)
+LATEST = dt.date(2026, 11, 20)
 ret_total = xirr([-100] + [x[2] for x in dist_q] + [PRICE], [LIST_DATE] + [x[1] for x in dist_q] + [LATEST])
 ret_cap = (PRICE / 100) ** (1 / ((LATEST - LIST_DATE).days / 365)) - 1
 ret_dist = ret_total - ret_cap
@@ -133,3 +133,9 @@ ret_dist = ret_total - ret_cap
 # ---- market ----------------------------------------------------------------------------------------
 fy_avg = MK['fy_avg']
 mcap = PRICE * UNITS_CR
+
+# ---- 30-Sep-2026 (H1 FY27) position: valuation report and Q2 FY27 results --------------------------
+NAV_SEP = 91.74
+ND_SEP = 408.715          # borrowings Rs 1,059.89 cr less cash and bank balances Rs 651.18 cr (net borrowings statement)
+DEBT_SEP = 1059.891
+NBR_SEP = 0.0468
