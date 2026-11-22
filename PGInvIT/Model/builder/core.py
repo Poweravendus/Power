@@ -255,6 +255,8 @@ A_ITEMS = ['Revenue', 'Total Expenses', 'EBITDA', 'EBITDA Margin %', 'Capex', 'C
            'Loan from PGInvIT (closing)', 'Interest on loan from PGInvIT', 'Taxation (levered, used for NDCF)']
 # SPV loans from the Trust at 31-Mar-26 and FY26 net repayment (Rs cr; eliminated on consolidation, 14.5% p.a.)
 SPV_LOAN = {'VTL': (738.688, 29.80), 'KATL': (183.677, 6.39), 'PPTL': (1113.035, 71.37), 'WTL': (1366.007, 80.70), 'JPTL': (1065.495, 55.30)}
+# SPV borrowings from the Trust at 30-Sep-2026 (valuation report, Rs cr, incl. RTM loans)
+SPV_LOAN_SEP26 = {'VTL': 732.688, 'KATL': 175.301, 'PPTL': 1077.485, 'WTL': 1319.107, 'JPTL': 1039.795}
 A_STEP = 8
 
 
@@ -265,14 +267,14 @@ def a_row(item, i=None):
 
 
 def build_assumption(ws, V, ainfo):
-    std_sheet(ws, colA=12, widths={'B': 12, 'C': 30, 'AH': 16, 'AI': 16, 'AJ': 12, 'AK': 10, 'AL': 13, 'AM': 10})
+    std_sheet(ws, colA=12, widths={'B': 12, 'C': 30, 'AH': 16, 'AI': 16, 'AJ': 12, 'AK': 10, 'AL': 13, 'AM': 10, 'AN': 16})
     put(ws, 'C2', 'Rs. cr', bold=True)
     for fy in range(FY0, FYN + 1):
         c = acol(fy)
         put(ws, f'{c}1', dt.datetime(fy, 3, 31), fmt='mmm-yy', align='right')
         put(ws, f'{c}2', fy_label(fy), bold=True, align='right', border_b=True)
     put(ws, 'AH2', 'Tag', bold=True, border_b=True)
-    for col, lab in (('AI', 'Annual repayment'), ('AJ', 'Interest rate'), ('AK', 'Tax rate'), ('AL', 'MAT until FY'), ('AM', 'MAT rate')):
+    for col, lab in (('AI', 'Annual repayment'), ('AJ', 'Interest rate'), ('AK', 'Tax rate'), ('AL', 'MAT until FY'), ('AM', 'MAT rate'), ('AN', 'Balance 30-Sep-26')):
         put(ws, f'{col}{a_row("Loan from PGInvIT (closing)", 0) - 1}', lab, bold=True, border_b=True, align='right')
     asset_label = {'Revenue': 'Revenue', 'Total Expenses': 'Total Expenses', 'EBITDA': 'EBITDA', 'Capex': 'Capex',
                    'Changes in WC': 'Changes in WC', 'Taxation': 'Taxation', 'FCFF': 'FCFF', 'TV': 'TV',
@@ -305,6 +307,9 @@ def build_assumption(ws, V, ainfo):
                         put(ws, f'AK{r}', 0.286, fmt=PCT2, color=BLUE)     # valuer Sep-26: 28.60% for all SPVs
                         put(ws, f'AL{r}', 2031 if s == 'VTL' else 0, fmt='0', color=BLUE)
                         put(ws, f'AM{r}', 0.16307, fmt=PCT2, color=BLUE)   # valuer Sep-26: VTL old regime 16.307% till FY31
+                        put(ws, f'AN{r}', SPV_LOAN_SEP26[s], fmt=NUM1, color=BLUE)
+                    elif fy == FY0 + 1:   # FY27: balance at 30-Sep-26 less half a year of repayment
+                        put(ws, f'{c}{r}', f'=MAX(0,$AN{r}-$AI{r}/2)', fmt=NUM1)
                     else:
                         put(ws, f'{c}{r}', f'=MAX(0,{L(CI(c) - 1)}{r}-$AI{r})', fmt=NUM1)
                 elif item == 'Interest on loan from PGInvIT':

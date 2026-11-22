@@ -72,7 +72,7 @@ chk('FY26 waterfall = investor presentation (Rs cr, +/-0.15)', all(abs(cv(r, 202
 chk('Waterfall NDCF = distribution-section NDCF (forecast)', all(abs(cv(228, fy) - cv(238, fy)) < 0.01 for fy in yrs))
 q = wb['Qtrly']
 qchk = [r for r in range(1, q.max_row + 1) if q.cell(r, 2).value == 'Check']
-chk('Qtrly NDCF ties to reported every quarter', qchk and all(abs(q.cell(qchk[0], k).value or 0) < 0.05 for k in range(3, 24)))
+chk('Qtrly NDCF ties to reported every quarter', qchk and all(abs(q.cell(qchk[0], k).value or 0) < 0.05 for k in range(3, 3 + len(json.load(open(f'{SP}/agentB/quarterly_history.json'))['quarters']))))
 chk('NDCF = NDCF before capex + capex + net debt', all(abs(cv(235, fy) + cv(236, fy) + cv(237, fy) - cv(238, fy)) < 0.01 for fy in yrs))
 chk('Distribution >= 90% of NDCF (SEBI)', all(cv(246, fy) >= 0.9 * cv(238, fy) - 0.01 for fy in yrs))
 chk('Distribution never exceeds opening cash + cash available', all(cv(246, fy) <= cv(178, fy) + cv(240, fy) + 0.01 for fy in yrs))
