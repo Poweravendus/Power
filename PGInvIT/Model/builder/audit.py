@@ -32,6 +32,20 @@ for i, s in enumerate(SPVS):
     d, e = L[f'D{r0 + 18}'].value, L[f'E{r0 + 18}'].value
     chk(f'{s} EV within 0.5% of valuer', abs(d / e - 1) < 0.005, f'{d:,.1f} vs {e:,.1f}')
 
+
+# 2b. Sep-26 valuation report reconciliation (IndiaAppraisers): PV of explicit period, PV of TV, RTM, WACC, tax inputs, SPV loans
+VR = json.load(open(f'{SP}/build/vr27.json'))
+from core import SPV_LOAN_SEP26, VR_NAME
+As = wb['Assumption']
+for name, b in VR.items():
+    s = VR_NAME[name.split()[0]]; i = SPVS.index(s); r0 = A_START + A_BLOCK * i
+    pv_e, pv_t = L[f'D{r0 + 15}'].value, L[f'D{r0 + 16}'].value
+    chk(f'{s} PV explicit / PV TV / WACC = valuer', abs(pv_e - b['pv_explicit'] / 10) < 0.05 and abs(pv_t - b['pv_tv'] / 10) < 0.05 and abs(L[f'D{r0 + 19}'].value - 0.0736) < 1e-9,
+        f"{pv_e:,.1f}/{b['pv_explicit'] / 10:,.1f}  {pv_t:,.1f}/{b['pv_tv'] / 10:,.1f}")
+    lr = a_row('Loan from PGInvIT (closing)', i)
+    chk(f'{s} tax rate 28.60% and Sep-26 loan balance = valuer', abs(As[f'AK{lr}'].value - 0.286) < 1e-9 and abs(As[f'AN{lr}'].value - SPV_LOAN_SEP26[s]) < 1e-6)
+chk('RTM project values = valuer (KATL Rs 26.9 cr, PPTL Rs 12.6 cr)', abs(RTM_PV['KATL'] - (VR['Kala Amb Transmission Limited']['rtm_pv_explicit'] + VR['Kala Amb Transmission Limited']['rtm_pv_tv'] + VR['Kala Amb Transmission Limited']['rtm_borrowings']) / 10) < 0.01
+    and abs(RTM_PV['PPTL'] - (VR['Parli Power Transmission Limited']['rtm_pv_explicit'] + VR['Parli Power Transmission Limited']['rtm_pv_tv'] + VR['Parli Power Transmission Limited']['rtm_borrowings']) / 10) < 0.01)
 # 3. Independent AUM roll-forward (excludes the year's own cash flow)
 def aum(s, t):
     v = V[s]; w = v['wacc']; k = t - VAL_T
@@ -53,44 +67,57 @@ for t in (2027, 2030, 2040, 2054):
 yrs = range(2027, 2055)
 cv = lambda r, fy: C[f'{ccol(fy)}{r}'].value or 0
 chk('Revenue = sum of SPV revenue', all(abs(cv(6, fy) - A[f'{acol(fy)}{a_row("Revenue")}'].value) < 0.01 for fy in yrs))
-chk('Balance sheet balances FY22-FY54', all(abs(cv(115, fy)) < 0.01 for fy in range(2022, 2055)))
-chk('Abridged CF ties to CF statement FY22-FY54', all(abs(cv(208, fy)) < 0.01 for fy in range(2022, 2055)))
-chk('Closing cash (CF) = balance sheet cash', all(abs(cv(179, fy) - cv(102, fy)) < 0.01 for fy in yrs))
-chk('Cash never negative', all(cv(102, fy) >= -0.01 for fy in yrs), f'min {min(cv(102, fy) for fy in yrs):,.1f}')
-chk('Debt nil from FY52 and never negative', all(cv(76, fy) < 0.01 for fy in range(2052, 2055)) and all(cv(76, fy) >= -0.01 for fy in yrs))
+chk('Balance sheet balances FY22-FY54', all(abs(cv(128, fy)) < 0.01 for fy in range(2022, 2055)))
+chk('BS detail: unitholders funds, DTL, net block, cash, current liabilities re-add (FY22-FY54)', all(
+    abs(sum(cv(r, fy) for r in range(64, 68)) - cv(68, fy)) < 0.01 and abs(sum(cv(r, fy) for r in range(80, 83)) - cv(83, fy)) < 0.01
+    and abs(cv(90, fy) - cv(91, fy) - cv(92, fy) - cv(93, fy)) < 0.01 and abs(sum(cv(r, fy) for r in range(109, 112)) - cv(112, fy)) < 0.01
+    and abs(sum(cv(r, fy) for r in range(117, 123)) - cv(123, fy)) < 0.01 for fy in range(2022, 2055)))
+for fy_ in ('FY22', 'FY23', 'FY24', 'FY25', 'FY26'):
+    y_ = 2000 + int(fy_[2:]); Bs = H['bs']
+    chk(f'{fy_} BS lines = annual report (equity, DTL, net block, intangibles, cash, CA, CL)',
+        abs(cv(68, y_) - Bs['unitholders_equity'][fy_]) < 0.02 and abs(cv(83, y_) - Bs['deferred_tax_liability_net'][fy_]) < 0.02
+        and abs(cv(93, y_) - Bs['net_block_ppe'][fy_]) < 0.02 and abs(cv(98, y_) - Bs['intangibles'][fy_]) < 0.02
+        and abs(cv(115, y_) - Bs['total_current_assets'][fy_]) < 0.02
+        and abs(cv(123, y_) + Bs['current_maturities'][fy_] - Bs['total_current_liabilities'][fy_]) < 0.02
+        and abs(cv(105, y_) + cv(93, y_) + cv(94, y_) - Bs['total_non_current_assets'][fy_]) < 0.02,
+        f"eq {cv(68, y_):,.1f}/{Bs['unitholders_equity'][fy_]:,.1f} CA {cv(115, y_):,.1f}/{Bs['total_current_assets'][fy_]:,.1f}")
+chk('Abridged CF ties to CF statement FY22-FY54', all(abs(cv(221, fy)) < 0.01 for fy in range(2022, 2055)))
+chk('Closing cash (CF) = balance sheet cash', all(abs(cv(192, fy) - cv(112, fy)) < 0.01 for fy in yrs))
+chk('Cash never negative', all(cv(112, fy) >= -0.01 for fy in yrs), f'min {min(cv(112, fy) for fy in yrs):,.1f}')
+chk('Debt nil from FY52 and never negative', all(cv(78, fy) < 0.01 for fy in range(2052, 2055)) and all(cv(78, fy) >= -0.01 for fy in yrs))
 chk('No interest once debt is repaid', all(cv(28, fy) < 0.01 for fy in range(2053, 2055)))
-chk('Net block and intangibles never negative', all(cv(87, fy) >= -0.01 and cv(91, fy) >= -0.01 for fy in yrs))
+chk('Net block and intangibles never negative', all(cv(93, fy) >= -0.01 and cv(98, fy) >= -0.01 for fy in yrs))
 allyrs = range(2022, 2055)
-chk('NDCF (PGInvIT) = sum of waterfall lines (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(220, 228)) - cv(228, fy)) < 0.01 for fy in allyrs))
-chk('SPVs NDCF = sum of five SPVs (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(213, 218)) - cv(218, fy)) < 0.01 for fy in allyrs))
-chk('Forecast: interest + dividend + repayment of capital = SPVs NDCF', all(abs(sum(cv(r, fy) for r in (221, 222, 223)) - cv(218, fy)) < 0.01 for fy in yrs))
-chk('Forecast dividend never negative', all(cv(222, fy) >= -0.01 for fy in yrs), f'min {min(cv(222, fy) for fy in yrs):,.1f}')
-chk('Historical NDCF (PGInvIT) = reported NDCF (FY22-FY26)', all(abs(cv(229, fy)) < 0.05 for fy in range(2022, 2027)), str([round(cv(229, fy), 3) for fy in range(2022, 2027)]))
-chk('Historical NDCF (PGInvIT) = annual report NDCF', all(abs(cv(228, 2000 + int(k[2:])) - v) < 0.05 for k, v in H['ndcf']['ndcf_trust_level'].items()))
-ppt = {218: 1212.6, 220: -15.3, 221: 669.0, 222: 269.1, 223: 251.9, 224: 6.6, 225: -74.1, 226: -8.3, 227: -8.3, 228: 1090.6}
+chk('NDCF (PGInvIT) = sum of waterfall lines (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(233, 241)) - cv(241, fy)) < 0.01 for fy in allyrs))
+chk('SPVs NDCF = sum of five SPVs (FY22-FY54)', all(abs(sum(cv(r, fy) for r in range(226, 231)) - cv(231, fy)) < 0.01 for fy in allyrs))
+chk('Forecast: interest + dividend + repayment of capital = SPVs NDCF', all(abs(sum(cv(r, fy) for r in (234, 235, 236)) - cv(231, fy)) < 0.01 for fy in yrs))
+chk('Forecast dividend never negative', all(cv(235, fy) >= -0.01 for fy in yrs), f'min {min(cv(235, fy) for fy in yrs):,.1f}')
+chk('Historical NDCF (PGInvIT) = reported NDCF (FY22-FY26)', all(abs(cv(242, fy)) < 0.05 for fy in range(2022, 2027)), str([round(cv(242, fy), 3) for fy in range(2022, 2027)]))
+chk('Historical NDCF (PGInvIT) = annual report NDCF', all(abs(cv(241, 2000 + int(k[2:])) - v) < 0.05 for k, v in H['ndcf']['ndcf_trust_level'].items()))
+ppt = {231: 1212.6, 233: -15.3, 234: 669.0, 235: 269.1, 236: 251.9, 237: 6.6, 238: -74.1, 239: -8.3, 240: -8.3, 241: 1090.6}
 chk('FY26 waterfall = investor presentation (Rs cr, +/-0.15)', all(abs(cv(r, 2026) - v) < 0.15 for r, v in ppt.items()), str({r: round(cv(r, 2026), 1) for r in ppt}))
-chk('Waterfall NDCF = distribution-section NDCF (forecast)', all(abs(cv(228, fy) - cv(238, fy)) < 0.01 for fy in yrs))
+chk('Waterfall NDCF = distribution-section NDCF (forecast)', all(abs(cv(241, fy) - cv(251, fy)) < 0.01 for fy in yrs))
 q = wb['Qtrly']
 qchk = [r for r in range(1, q.max_row + 1) if q.cell(r, 2).value == 'Check']
 chk('Qtrly NDCF ties to reported every quarter', qchk and all(abs(q.cell(qchk[0], k).value or 0) < 0.05 for k in range(3, 3 + len(json.load(open(f'{SP}/agentB/quarterly_history.json'))['quarters']))))
-chk('NDCF = NDCF before capex + capex + net debt', all(abs(cv(235, fy) + cv(236, fy) + cv(237, fy) - cv(238, fy)) < 0.01 for fy in yrs))
-chk('Distribution >= 90% of NDCF (SEBI)', all(cv(246, fy) >= 0.9 * cv(238, fy) - 0.01 for fy in yrs))
-chk('Distribution never exceeds opening cash + cash available', all(cv(246, fy) <= cv(178, fy) + cv(240, fy) + 0.01 for fy in yrs))
-chk('Proposed = min(100% NDCF, DPU x units) from FY28', all(abs(cv(244, fy) - max(0, min(cv(238, fy), cv(243, fy) * cv(56, fy)))) < 0.01 for fy in range(2028, 2055)))
+chk('NDCF = NDCF before capex + capex + net debt', all(abs(cv(248, fy) + cv(249, fy) + cv(250, fy) - cv(251, fy)) < 0.01 for fy in yrs))
+chk('Distribution >= 90% of NDCF (SEBI)', all(cv(259, fy) >= 0.9 * cv(251, fy) - 0.01 for fy in yrs))
+chk('Distribution never exceeds opening cash + cash available', all(cv(259, fy) <= cv(191, fy) + cv(253, fy) + 0.01 for fy in yrs))
+chk('Proposed = min(100% NDCF, DPU x units) from FY28', all(abs(cv(257, fy) - max(0, min(cv(251, fy), cv(256, fy) * cv(56, fy)))) < 0.01 for fy in range(2028, 2055)))
 chk('DPU x units = distribution', all(abs(cv(58, fy) * cv(56, fy) - cv(59, fy)) < 0.01 for fy in yrs))
 chk('FY27 DPU = Rs 12.00', abs(cv(58, 2027) - 12) < 1e-6)
-chk('NAV = AUM - net debt', all(abs(cv(249, fy) - cv(250, fy) - cv(251, fy)) < 0.01 for fy in yrs))
-chk('FY26 NAV within Rs 0.05 of reported 90.79', abs(cv(252, 2026) - 90.79) < 0.05, f'{cv(252, 2026):.2f}')
+chk('NAV = AUM - net debt', all(abs(cv(262, fy) - cv(263, fy) - cv(264, fy)) < 0.01 for fy in yrs))
+chk('FY26 NAV within Rs 0.05 of reported 90.79', abs(cv(265, 2026) - 90.79) < 0.05, f'{cv(265, 2026):.2f}')
 cf = wb['Cashflows_Bajaj']
 chk('Cashflows_Bajaj NDCF = Consolidated NDCF', all(abs(cf.cell(25, 3 + k).value or 0) < 0.01 for k in range(28)))
-chk('Tax in NDCF = consolidated tax', all(abs(A[f'{acol(fy)}{a_row("EBITDA")}'].value - sum(cv(r, fy) for r in range(213, 218)) + C['AK220'].value - cv(40, fy)) < 0.01 for fy in yrs))
+chk('Tax in NDCF = consolidated tax', all(abs(A[f'{acol(fy)}{a_row("EBITDA")}'].value - sum(cv(r, fy) for r in range(226, 231)) + C['AK233'].value - cv(40, fy)) < 0.01 for fy in yrs))
 
 # 5. History in Consolidated = audited figures
 P, B = H['pnl'], H['bs']
 for fy in ('FY22', 'FY24', 'FY26'):
     y = 2000 + int(fy[2:])
     chk(f'{fy} revenue / PAT / net assets match audited', abs(cv(6, y) - P['revenue_from_operations'][fy]) < 0.01 and abs(cv(43, y) - P['profit_after_tax'][fy]) < 0.2
-        and abs(cv(114, y) - (B['total_assets'][fy] - (B['total_current_liabilities'][fy] - (B['current_maturities'][fy] or 0)))) < 0.5, f'rev {cv(6, y):,.1f} PAT {cv(43, y):,.1f} TA {cv(114, y):,.1f}')
+        and abs(cv(127, y) - (B['total_assets'][fy] - (B['total_current_liabilities'][fy] - (B['current_maturities'][fy] or 0)))) < 0.5, f'rev {cv(6, y):,.1f} PAT {cv(43, y):,.1f} TA {cv(127, y):,.1f}')
 
 # 6. Effective tariff history = reported SPV revenue
 spv = json.load(open(f'{SP}/agentC/spv_history.json'))['spvs']
@@ -120,9 +147,9 @@ chk('IRR Calculation_Bajaj recomputes', abs(irr_(row) - irr['B11'].value) < 1e-4
 # 8. No hard-coded numbers in Consolidated forecast columns except driver zeros
 hard = []
 for fy in yrs:
-    for rr in range(4, 260):
+    for rr in range(4, 273):
         c = wf['Consolidated'][f'{ccol(fy)}{rr}']
-        if isinstance(c.value, (int, float)) and c.value != 0 and rr != 242:
+        if isinstance(c.value, (int, float)) and c.value != 0 and rr != 255:
             hard.append(c.coordinate)
 chk('No non-zero hard-codes in Consolidated forecast', not hard, ', '.join(hard[:10]))
 print('\nFAILED:', fails if fails else 'none')

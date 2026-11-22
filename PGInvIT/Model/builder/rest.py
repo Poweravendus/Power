@@ -6,8 +6,8 @@ from core import SPVS, SEN, scol, FYN, S_FY0, a_row, acol, FY0
 C_FY0, C_HIST_LAST = 2022, 2026     # Consolidated: C = FY22 ... G = FY26, H = FY27E ... AI = FY54E
 CR = dict(hdr=3, rev=6, im=9, pm=10, om=11, emp=12, ins=13, oth=14, texp=15, ebitda=17, oi_yld=21, oi=22, da=23, da_rate=24,
           ebit=26, int_rate=27, fin=28, imp=29, pbt=31, pbt2=34, tax=40, pat=43, pat_after=47, mi=49, pat_min=52,
-          units=56, dpu=58, dist=59, nav=252, aum=249, netdebt=250, ndcf=238, debt_open=73, debt_add=74, debt_rep=75,
-          debt_close=76, cash=102, capex_cf=148, wc_cf=143, tax_cf=145, int_cf=172, fy_end=3)
+          units=56, dpu=58, dist=59, nav=265, aum=262, netdebt=263, ndcf=251, debt_open=75, debt_add=76, debt_rep=77,
+          debt_close=78, cash=112, capex_cf=161, wc_cf=156, tax_cf=158, int_cf=185, fy_end=3)
 
 
 def ccol(fy):
@@ -48,7 +48,7 @@ def build_cashflows(ws):
             (7, 'Less', 'Other expenses (SPV opex and Trust expenses)', None, -1), (9, None, 'EBITDA', None, 0),
             (11, 'Add:', 'Other Income', CR['oi'], 1), (12, 'Less:', 'Tax', CR['tax'], -1), (13, None, 'WC Movement', CR['wc_cf'], 1),
             (14, 'Less', 'Capex', CR['capex_cf'], 1), (15, 'Add:', 'Proceeds of long term borrowings', CR['debt_add'], 1),
-            (16, 'Add:', 'Capital Raise', 163, 1), (18, None, 'Cash Available for Debt Servicing', None, 0),
+            (16, 'Add:', 'Capital Raise', 176, 1), (18, None, 'Cash Available for Debt Servicing', None, 0),
             (20, 'Less:', 'Interest paid', CR['fin'], -1), (21, 'Less:', 'Repayment of long term borrowings', CR['debt_rep'], -1),
             (23, None, 'NDCF (to Trust, after debt service)', None, 0)]
     for r, pre, lab, src, sign in rows:

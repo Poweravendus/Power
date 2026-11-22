@@ -17,61 +17,68 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     52: ('PAT after Minority', 'b'), 53: ('margin, %', 'g'), 54: ('growth, %', 'g'), 56: ('No. of units, cr', ''),
     57: ('DPU growth', 'g'), 58: ('DPU, Rs./ unit', 'b'), 59: ('Distribution, Rs. cr', ''),
     60: ('Is NDCF generated higher than Distribution', ''),
-    62: ('Balance Sheet', 'h'), 63: ("Unitholders' Funds", 'b'), 64: ('Unit Capital', ''), 65: ('Other Equity / Reserves', ''),
-    66: ("Unitholders' Funds", 'b'), 68: ('Minority Interest', ''), 70: ('Long Term Borrowings', ''), 71: ('Short Term Borrowings', ''),
-    72: ('Current Maturities of Long Term', ''), 73: ('Opening Debt', ''), 74: ('Addition', ''), 75: ('Repayment', ''),
-    76: ('Closing Balance', 'b'), 78: ('Deferred Tax liability (net)', ''), 79: ('Other long term liabilities', ''),
-    80: ('Long term provisions', ''), 81: ('Non Current Liabilities', 'b'), 83: ("Total Liabilities and Unitholders' Funds", 'b'),
-    85: ('Gross Block', ''), 86: ('Acc. Depreciation and impairment', ''), 87: ('Net Block', 'b'), 88: ('CWIP', ''),
-    91: ('Intangible Assets', ''), 92: ('Goodwill', ''), 93: ('Non-Current Investments', ''), 95: ('Other Non-Current Assets', ''),
-    96: ('Non Current Assets (excl. block)', 'b'), 98: ('Inventories', ''), 99: ('Trade Receivables', ''),
-    100: ('Other bank balances (term deposits)', ''), 101: ('Cash and cash equivalents', ''), 102: ('Cash & Cash Equivalents (incl. investments)', 'b'),
-    104: ('Other Current Assets', ''), 105: ('Current Assets', 'b'), 107: ('Trade Payables', ''), 108: ('Other Current Liabilities', ''),
-    109: ('Provisions', ''), 110: ('Current Liabilities', 'b'), 112: ('Working Capital Including Cash', 'b'), 114: ('Total Assets (net of current liabilities)', 'b'),
-    115: ('Diff', 'g'),
-    117: ('Cash Flow Statement (INR cr.)', 'h'), 118: ('A. CASH FLOW FROM OPERATING ACTIVITIES', 'b'), 119: ('Profit before tax', ''),
-    121: ('Depreciation and amortisation expense', ''), 123: ('Impairment / (reversal of impairment)', ''), 129: ('Finance costs', ''),
-    130: ('Interest and other income (shown in investing)', ''), 133: ('Other non-cash adjustments', ''),
-    134: ('Operating profit before change in assets and liabilities', 'b'), 136: ('Inventories', ''), 137: ('Trade receivables', ''),
-    139: ('Other current and non-current assets / liabilities', ''), 140: ('Trade payables', ''),
-    143: ('Changes in assets and liabilities', 'b'), 144: ('Cash flow generated from operations', 'b'), 145: ('Direct taxes (paid) / refund', ''),
-    146: ('Net cash flows generated from operating activities', 'b'), 147: ('B. CASH FLOW FROM INVESTING ACTIVITIES', 'b'),
-    148: ('Purchase of PPE (incl. CWIP)', ''), 152: ('Acquisition of SPVs / non-controlling interest', ''), 156: ('Interest and other income received', ''),
-    160: ('Other investing (deposits, mutual funds, net)', ''), 161: ('Net cash flow (used in) investing activities', 'b'),
-    162: ('C. CASH FLOW FROM FINANCING ACTIVITIES', 'b'), 163: ('Proceeds from issue of unit capital', ''), 166: ('Proceeds of borrowings', ''),
-    167: ('Repayment of borrowings', ''), 171: ('Other financing', ''), 172: ('Interest paid', ''), 174: ('Payment of distributions to unitholders', ''),
-    175: ('Net cash flow generated from / (used in) financing activities', 'b'), 177: ('Net change in cash and cash equivalents', 'b'),
-    178: ('Cash and cash equivalents at beginning', ''), 179: ('Cash and cash equivalents at end', 'b'),
-    181: ('Working Capital', 'h'), 182: ('Receivable Days', ''), 183: ('Inventory Days', ''), 184: ('Payable Days', ''),
-    185: ('Working Capital Days', 'b'), 187: ('Abridged Cash Flow', 'h'), 188: ('Sources of Funds', 'b'),
-    189: ('Operating Cashflows before WC', ''), 190: ('Interest and other income received', ''), 192: ('Equity', ''),
-    193: ('Net Debt', ''), 194: ('Total Sources of Funds', 'b'), 196: ('Application of Funds (positive number indicates outflow)', 'b'),
-    197: ('Working Capital', ''), 198: ('Tax', ''), 199: ('CAPEX', ''), 200: ('Investments in SPVs / Acquisitions', ''),
-    201: ('Bank Deposits', ''), 202: ('Interest', ''), 203: ('Distributions to Unitholders', ''), 204: ('Others', ''),
-    205: ('Total Application of Funds', 'b'), 207: ('Net Cash', 'b'), 208: ('Check (vs cash flow statement)', 'g'),
-    210: ('FCF (CFO + capex)', 'b'),
-    212: ('NDCF (as reported), Rs. cr', 'h'),
-    213: ('NDCF at SPV - VTL', ''), 214: ('NDCF at SPV - KATL', ''), 215: ('NDCF at SPV - PPTL', ''), 216: ('NDCF at SPV - WTL', ''),
-    217: ('NDCF at SPV - JPTL', ''), 218: ('SPVs NDCF', 'b'), 219: ('Upstreamed to PGInvIT, % of SPVs NDCF', 'g'),
-    220: ('Cash flow from operating activities', ''), 221: ('Interest income', ''), 222: ('Dividend income', ''),
-    223: ('Repayment of capital (SPV debt)', ''), 224: ('Other income', ''), 225: ('Finance cost on borrowing', ''),
-    226: ('Debt repayment', ''), 227: ('CAPEX', ''), 228: ('NDCF (PGInvIT)', 'b'), 229: ('Check vs reported NDCF', 'g'),
-    235: ('NDCF before CAPEX and Capital Raise', ''), 236: ('Less: CAPEX', ''), 237: ('Add: Net Debt', ''), 238: ('NDCF', 'b'),
-    239: ('Add: Capital Raise', ''), 240: ('Cash available before paying Distribution', 'b'),
-    242: ('DPU Growth, %', 'p'), 243: ('DPU, Rs./ unit', ''), 244: ('Proposed Distribution', ''), 245: ('Net Cash', ''),
-    246: ('Actual Distribution', 'b'), 247: ('Check', ''),
-    249: ('AUM/ Value of InvIT Assets - Enterprise Value', 'b'), 250: ('Less: Net Debt', ''), 251: ('Equity', 'b'), 252: ('Equity/ Share', 'b'),
-    253: ('Net Debt/ AUM (D/E)', 'p'),
-    256: ('Capital Raise', 'h'), 257: ('Rs. cr', ''), 258: ('Price at which dilution happens (prior-year NAV)', ''), 259: ('Additional Units Issued, cr', ''),
+    62: ('Balance Sheet', 'h'), 63: ("Unitholders' Funds", 'b'), 64: ('Unit Capital', ''),
+    65: ('Distributions - repayment of capital (SPV debt)', ''), 66: ('Capital Reserve', ''), 67: ('Retained Earnings', ''),
+    68: ("Unitholders' Funds", 'b'), 70: ('Minority Interest', ''), 72: ('Long Term Borrowings', ''), 73: ('Short Term Borrowings', ''),
+    74: ('Current Maturities of Long Term', ''), 75: ('Opening Debt', ''), 76: ('Addition', ''), 77: ('Repayment', ''),
+    78: ('Closing Balance', 'b'), 80: ('Deferred tax liability - depreciation difference', ''),
+    81: ('Less: Deferred tax asset - MAT credit entitlement', ''), 82: ('Less: Deferred tax asset - unused tax losses and others', ''),
+    83: ('Deferred Tax liability (net)', 'b'), 84: ('Other long term liabilities', ''), 85: ('Long term provisions', ''),
+    86: ('Non Current Liabilities', 'b'), 88: ("Total Liabilities and Unitholders' Funds", 'b'),
+    90: ('Gross Block', ''), 91: ('Acc. Depreciation', ''), 92: ('Impairment', ''), 93: ('Net Block', 'b'), 94: ('CWIP', ''),
+    96: ('Intangible Assets - gross', ''), 97: ('Intangible Assets - acc. amortisation and impairment', ''), 98: ('Intangible Assets (net)', ''),
+    99: ('Goodwill', ''), 100: ('Non-Current Investments', ''), 101: ('Non-current trade receivables', ''),
+    102: ('Other non-current financial assets', ''), 103: ('Non-current tax assets (net)', ''), 104: ('Other Non-Current Assets', ''),
+    105: ('Non Current Assets', 'b'), 107: ('Inventories', ''), 108: ('Trade Receivables', ''), 109: ('Current Investments', ''),
+    110: ('Cash and cash equivalents', ''), 111: ('Other bank balances (term deposits)', ''),
+    112: ('Cash & Cash Equivalents (incl. bank balances)', 'b'), 113: ('Other current financial assets', ''),
+    114: ('Other Current Assets', ''), 115: ('Current Assets', 'b'), 117: ('Trade Payables', ''), 118: ('Dues for capital expenditure', ''),
+    119: ('Other current financial liabilities', ''), 120: ('Other Current Liabilities', ''), 121: ('Provisions', ''),
+    122: ('Current tax liabilities (net)', ''), 123: ('Current Liabilities', 'b'), 125: ('Working Capital Including Cash', 'b'),
+    127: ('Total Assets (net of current liabilities)', 'b'), 128: ('Diff', 'g'),
+    130: ('Cash Flow Statement (INR cr.)', 'h'), 131: ('A. CASH FLOW FROM OPERATING ACTIVITIES', 'b'), 132: ('Profit before tax', ''),
+    134: ('Depreciation and amortisation expense', ''), 136: ('Impairment / (reversal of impairment)', ''), 142: ('Finance costs', ''),
+    143: ('Interest and other income (shown in investing)', ''), 146: ('Other non-cash adjustments', ''),
+    147: ('Operating profit before change in assets and liabilities', 'b'), 149: ('Inventories', ''), 150: ('Trade receivables', ''),
+    152: ('Other current and non-current assets / liabilities', ''), 153: ('Trade payables', ''),
+    156: ('Changes in assets and liabilities', 'b'), 157: ('Cash flow generated from operations', 'b'), 158: ('Direct taxes (paid) / refund', ''),
+    159: ('Net cash flows generated from operating activities', 'b'), 160: ('B. CASH FLOW FROM INVESTING ACTIVITIES', 'b'),
+    161: ('Purchase of PPE (incl. CWIP)', ''), 165: ('Acquisition of SPVs / non-controlling interest', ''), 169: ('Interest and other income received', ''),
+    173: ('Other investing (deposits, mutual funds, net)', ''), 174: ('Net cash flow (used in) investing activities', 'b'),
+    175: ('C. CASH FLOW FROM FINANCING ACTIVITIES', 'b'), 176: ('Proceeds from issue of unit capital', ''), 179: ('Proceeds of borrowings', ''),
+    180: ('Repayment of borrowings', ''), 184: ('Other financing', ''), 185: ('Interest paid', ''), 187: ('Payment of distributions to unitholders', ''),
+    188: ('Net cash flow generated from / (used in) financing activities', 'b'), 190: ('Net change in cash and cash equivalents', 'b'),
+    191: ('Cash and cash equivalents at beginning', ''), 192: ('Cash and cash equivalents at end', 'b'),
+    194: ('Working Capital', 'h'), 195: ('Receivable Days', ''), 196: ('Inventory Days', ''), 197: ('Payable Days', ''),
+    198: ('Working Capital Days', 'b'), 200: ('Abridged Cash Flow', 'h'), 201: ('Sources of Funds', 'b'),
+    202: ('Operating Cashflows before WC', ''), 203: ('Interest and other income received', ''), 205: ('Equity', ''),
+    206: ('Net Debt', ''), 207: ('Total Sources of Funds', 'b'), 209: ('Application of Funds (positive number indicates outflow)', 'b'),
+    210: ('Working Capital', ''), 211: ('Tax', ''), 212: ('CAPEX', ''), 213: ('Investments in SPVs / Acquisitions', ''),
+    214: ('Bank Deposits', ''), 215: ('Interest', ''), 216: ('Distributions to Unitholders', ''), 217: ('Others', ''),
+    218: ('Total Application of Funds', 'b'), 220: ('Net Cash', 'b'), 221: ('Check (vs cash flow statement)', 'g'),
+    223: ('FCF (CFO + capex)', 'b'),
+    225: ('NDCF (as reported), Rs. cr', 'h'),
+    226: ('NDCF at SPV - VTL', ''), 227: ('NDCF at SPV - KATL', ''), 228: ('NDCF at SPV - PPTL', ''), 229: ('NDCF at SPV - WTL', ''),
+    230: ('NDCF at SPV - JPTL', ''), 231: ('SPVs NDCF', 'b'), 232: ('Upstreamed to PGInvIT, % of SPVs NDCF', 'g'),
+    233: ('Cash flow from operating activities', ''), 234: ('Interest income', ''), 235: ('Dividend income', ''),
+    236: ('Repayment of capital (SPV debt)', ''), 237: ('Other income', ''), 238: ('Finance cost on borrowing', ''),
+    239: ('Debt repayment', ''), 240: ('CAPEX', ''), 241: ('NDCF (PGInvIT)', 'b'), 242: ('Check vs reported NDCF', 'g'),
+    248: ('NDCF before CAPEX and Capital Raise', ''), 249: ('Less: CAPEX', ''), 250: ('Add: Net Debt', ''), 251: ('NDCF', 'b'),
+    252: ('Add: Capital Raise', ''), 253: ('Cash available before paying Distribution', 'b'),
+    255: ('DPU Growth, %', 'p'), 256: ('DPU, Rs./ unit', ''), 257: ('Proposed Distribution', ''), 258: ('Net Cash', ''),
+    259: ('Actual Distribution', 'b'), 260: ('Check', ''),
+    262: ('AUM/ Value of InvIT Assets - Enterprise Value', 'b'), 263: ('Less: Net Debt', ''), 264: ('Equity', 'b'), 265: ('Equity/ Share', 'b'),
+    266: ('Net Debt/ AUM (D/E)', 'p'),
+    269: ('Capital Raise', 'h'), 270: ('Rs. cr', ''), 271: ('Price at which dilution happens (prior-year NAV)', ''), 272: ('Additional Units Issued, cr', ''),
 }
-NDCF_Q = {213: 'NDCF at SPV - VTL', 214: 'NDCF at SPV - KATL', 215: 'NDCF at SPV - PPTL', 216: 'NDCF at SPV - WTL', 217: 'NDCF at SPV - JPTL',
-          220: 'Cash flow from operating activities', 221: 'Interest income', 222: 'Dividend income', 223: 'Repayment of capital (SPV debt)',
-          224: 'Other income', 225: 'Finance cost on borrowing', 226: 'Debt repayment', 227: 'CAPEX'}
+NDCF_Q = {226: 'NDCF at SPV - VTL', 227: 'NDCF at SPV - KATL', 228: 'NDCF at SPV - PPTL', 229: 'NDCF at SPV - WTL', 230: 'NDCF at SPV - JPTL',
+          233: 'Cash flow from operating activities', 234: 'Interest income', 235: 'Dividend income', 236: 'Repayment of capital (SPV debt)',
+          237: 'Other income', 238: 'Finance cost on borrowing', 239: 'Debt repayment', 240: 'CAPEX'}
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
-           27: ('Interest rate on borrowings', None, PCT2), 74: ('New borrowings', 0.0, NUM), 75: ('Debt fully repaid by FY (straight line)', 2052, '0'),
-           91: ('Annual amortisation of intangibles', 14.8, NUM1),
-           220: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
+           27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Debt fully repaid by FY (straight line)', 2052, '0'),
+           98: ('Annual amortisation of intangibles', 14.8, NUM1),
+           233: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 
 
 def build_consolidated(ws, H, drivers, qcol, qrows):
@@ -81,7 +88,7 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
     fut = range(C_HIST_LAST + 1, FYN + 1)
     for r, (lab, kind) in ROWS.items():
         put(ws, f'B{r}', lab, bold=kind in ('h', 'b'), color=RED if kind == 'g' else None, border_b=kind == 'h')
-    for r in (3, 62, 117, 181, 187, 212):
+    for r in (3, 62, 130, 194, 200, 225):
         for fy in range(C_FY0, FYN + 1):
             put(ws, f'{ccol(fy)}{r}', clabel(fy), bold=True, align='right', border_b=True)
     put(ws, 'AK3', 'Driver', bold=True, border_b=True, align='right')
@@ -103,39 +110,39 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
         f = {15: f'=SUM({c}9:{c}14)', 17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 26: f'={c}17+{c}22-{c}23',
              31: f'={c}26-{c}28-{c}29', 34: f'={c}31+{c}32', 40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)',
              43: f'={c}34-{c}40', 47: f'={c}43+{c}45', 52: f'={c}43-{c}49', 53: f'=IF({c}6=0,"",{c}52/{c}6)',
-             66: f'={c}64+{c}65', 73: f'={c}70+{c}71+{c}72', 76: f'={c}73', 81: f'={c}76+{c}78+{c}79+{c}80',
-             83: f'={c}66+{c}68+{c}81', 87: f'={c}85-{c}86', 96: f'=SUM({c}90:{c}95)', 102: f'={c}100+{c}101',
-             105: f'={c}98+{c}99+{c}102+{c}103+{c}104', 110: f'=SUM({c}107:{c}109)', 112: f'={c}105-{c}110',
-             114: f'={c}96+{c}112+{c}88+{c}87', 115: f'={c}83-{c}114',
-             182: f'=IF({c}6=0,"",{c}99/{c}6*365)', 183: f'=IF({c}15=0,"",{c}98/{c}15*365)', 184: f'=IF({c}15=0,"",{c}107/{c}15*365)',
-             185: f'=IF({c}182="","",{c}182+{c}183-{c}184)', 210: f'={c}146+{c}148', 251: f'=IF({c}252="","",{c}252*{c}56)',
-             250: f'={c}76-{c}102', 134: f'=SUM({c}119:{c}133)', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143',
-             146: f'={c}144+{c}145', 161: f'=SUM({c}148:{c}160)', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
-             179: f'={c}177+{c}178', 59: f'={c}58*{c}56', 218: f'=SUM({c}213:{c}217)', 219: f'=IFERROR(SUM({c}221:{c}223)/{c}218,"")',
-             228: f'=SUM({c}220:{c}227)', 60: f'=IF({c}228>={c}59,"Yes","No")', 249: f'={c}251+{c}250' if fy < C_HIST_LAST else None}
+             68: f'=SUM({c}64:{c}67)', 83: f'=SUM({c}80:{c}82)', 98: f'={c}96-{c}97', 75: f'={c}72+{c}73+{c}74', 78: f'={c}75', 86: f'={c}78+{c}83+{c}84+{c}85',
+             88: f'={c}68+{c}70+{c}86', 93: f'={c}90-{c}91-{c}92', 105: f'=SUM({c}98:{c}104)', 112: f'=SUM({c}109:{c}111)',
+             115: f'={c}107+{c}108+{c}112+{c}113+{c}114', 123: f'=SUM({c}117:{c}122)', 125: f'={c}115-{c}123',
+             127: f'={c}105+{c}125+{c}94+{c}93', 128: f'={c}88-{c}127',
+             195: f'=IF({c}6=0,"",{c}108/{c}6*365)', 196: f'=IF({c}15=0,"",{c}107/{c}15*365)', 197: f'=IF({c}15=0,"",{c}117/{c}15*365)',
+             198: f'=IF({c}195="","",{c}195+{c}196-{c}197)', 223: f'={c}159+{c}161', 264: f'=IF({c}265="","",{c}265*{c}56)',
+             263: f'={c}78-{c}112', 147: f'=SUM({c}132:{c}146)', 156: f'=SUM({c}149:{c}155)', 157: f'={c}147+{c}156',
+             159: f'={c}157+{c}158', 174: f'=SUM({c}161:{c}173)', 188: f'=SUM({c}176:{c}187)', 190: f'={c}159+{c}174+{c}188',
+             192: f'={c}190+{c}191', 59: f'={c}58*{c}56', 231: f'=SUM({c}226:{c}230)', 232: f'=IFERROR(SUM({c}234:{c}236)/{c}231,"")',
+             241: f'=SUM({c}233:{c}240)', 60: f'=IF({c}241>={c}59,"Yes","No")', 262: f'={c}264+{c}263' if fy < C_HIST_LAST else None}
         qc = [qcol[q] for q in qcol if 2000 + int(q[-2:]) == fy]
         for r, lab in NDCF_Q.items():
             f[r] = f'=SUM(Qtrly!{qc[0]}{qrows[lab]}:{qc[-1]}{qrows[lab]})'
-        f[229] = f'={c}228-SUM(Qtrly!{qc[0]}{qrows["NDCF (as reported)"]}:{qc[-1]}{qrows["NDCF (as reported)"]})'
+        f[242] = f'={c}241-SUM(Qtrly!{qc[0]}{qrows["NDCF (as reported)"]}:{qc[-1]}{qrows["NDCF (as reported)"]})'
         f = {k: v for k, v in f.items() if v is not None}
         if 58 not in H or H[58].get(fy) is None:
             f[58] = f'=IF({c}56=0,"",{c}59/{c}56)'
         for r, form in f.items():
             if H.get(r, {}).get(fy) is None:
                 put(ws, f'{c}{r}', form, fmt=PCT if r in (18, 41, 53) else NUM1, bold=ROWS.get(r, ('', ''))[1] == 'b',
-                    color=RED if r in (219, 229) else None)
+                    color=RED if r in (232, 242) else None)
         if p:
             for r, base in ((7, 6), (19, 17), (54, 52), (57, 58)):
                 put(ws, f'{c}{r}', f'=IFERROR({c}{base}/{p}{base}-1,"")', fmt=PCT, color=RED)
     G = ccol(C_HIST_LAST)
-    put(ws, f'{G}249', f'=Assumption!{acol(2026)}{a_row("AUM (Rs. cr)")}', fmt=NUM1, bold=True)
-    put(ws, f'{G}251', f'={G}249-{G}250', fmt=NUM1, bold=True)
-    put(ws, f'{G}252', f'={G}251/{G}56', fmt=NUM2, bold=True)
-    put(ws, f'{G}253', f'={G}250/{G}249', fmt=PCT)
-    put(ws, f'{G}243', f'={G}58', fmt=NUM2)
+    put(ws, f'{G}262', f'=Assumption!{acol(2026)}{a_row("AUM (Rs. cr)")}', fmt=NUM1, bold=True)
+    put(ws, f'{G}264', f'={G}262-{G}263', fmt=NUM1, bold=True)
+    put(ws, f'{G}265', f'={G}264/{G}56', fmt=NUM2, bold=True)
+    put(ws, f'{G}266', f'={G}263/{G}262', fmt=PCT)
+    put(ws, f'{G}256', f'={G}58', fmt=NUM2)
     for fy in hist:
         if fy < C_HIST_LAST:
-            put(ws, f'{ccol(fy)}253', f'={ccol(fy)}250/{ccol(fy)}249', fmt=PCT)
+            put(ws, f'{ccol(fy)}266', f'={ccol(fy)}263/{ccol(fy)}262', fmt=PCT)
 
     # ---------------- forecast -------------------------------------------------------------------
     for fy in fut:
@@ -147,63 +154,63 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             9: f'={p}9*(1+$AK$9)', 10: 0, 11: 0, 12: 0, 13: 0,
             14: f'={A("Total Expenses")}+$AK$14*(1+$AK$9)^{n}', 15: f'=SUM({c}9:{c}14)',
             17: f'={c}6-{c}15', 18: f'=IF({c}6=0,"",{c}17/{c}6)', 19: f'=IFERROR({c}17/{p}17-1,"")',
-            21: '=$AK$21', 22: f'={c}21*{p}102', 23: f'=MIN({c}24*AVERAGE({p}85,{c}85),{p}87+{c}85-{p}85)+({p}91-{c}91)', 24: '=$AK$24',
-            26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}73,{c}76)', 29: 0,
-            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$220', 38: 0, 39: 0,
+            21: '=$AK$21', 22: f'={c}21*{p}112', 23: f'=MIN({c}24*AVERAGE({p}90,{c}90),{p}93+{c}90-{p}90)+({p}98-{c}98)', 24: '=$AK$24',
+            26: f'={c}17+{c}22-{c}23', 27: '=$AK$27', 28: f'={c}27*AVERAGE({c}75,{c}78)', 29: 0,
+            31: f'={c}26-{c}28-{c}29', 32: 0, 34: f'={c}31+{c}32', 37: f'={A("Taxation (levered, used for NDCF)")}+$AK$233', 38: 0, 39: 0,
             40: f'=SUM({c}37:{c}39)', 41: f'=IF({c}34=0,"",{c}40/{c}34)', 43: f'={c}34-{c}40', 45: 0, 47: f'={c}43+{c}45',
             49: 0, 52: f'={c}43-{c}49', 53: f'=IF({c}6=0,"",{c}52/{c}6)', 54: f'=IFERROR({c}52/{p}52-1,"")',
-            56: f'={p}56+{c}259', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}246',
-            60: f'=IF({c}228>={c}59,"Yes","No")',
-            64: f'={p}64+{c}163', 65: f'={p}65+{c}52-{c}59', 66: f'={c}64+{c}65', 68: f'={p}68',
-            73: f'={p}76', 74: '=$AK$74', 75: f'=IF({fy}>$AK$75,0,{c}73/($AK$75-{fy}+1))', 76: f'={c}73+{c}74-{c}75',
-            78: f'={p}78', 79: f'={p}79', 80: f'={p}80', 81: f'={c}76+{c}78+{c}79+{c}80', 83: f'={c}66+{c}68+{c}81',
-            85: f'={p}85+{A("Capex")}', 86: f'={p}86+{c}23-({p}91-{c}91)+{c}29', 87: f'={c}85-{c}86', 88: f'={p}88',
-            91: f'=MAX(0,{p}91-$AK$91)', 92: f'={p}92', 93: f'={p}93', 95: f'={p}95', 96: f'=SUM({c}90:{c}95)',
-            98: f'={c}183*{c}15/365', 99: f'={c}182*{c}6/365', 100: f'={p}100', 101: f'={c}102-{c}100', 102: f'={c}179',
-            104: f'={p}104', 105: f'={c}98+{c}99+{c}102+{c}103+{c}104', 107: f'={c}184*{c}15/365', 108: f'={p}108', 109: f'={p}109',
-            110: f'=SUM({c}107:{c}109)', 112: f'={c}105-{c}110', 114: f'={c}96+{c}112+{c}88+{c}87', 115: f'={c}83-{c}114',
-            119: f'={c}34', 121: f'={c}23', 123: f'={c}29', 129: f'={c}28', 134: f'=SUM({c}119:{c}133)',
-            136: f'={p}98-{c}98', 137: f'={p}99-{c}99',
-            139: f'={p}96-{c}96-({p}91-{c}91)+{p}104-{c}104+{c}108-{p}108+{c}109-{p}109+{c}78-{p}78+{c}79-{p}79+{c}80-{p}80',
-            140: f'={c}107-{p}107', 143: f'=SUM({c}136:{c}142)', 144: f'={c}134+{c}143', 145: f'=-{c}40', 146: f'={c}144+{c}145',
-            148: f'=-({c}85-{p}85+{c}88-{p}88)', 161: f'=SUM({c}148:{c}160)', 163: f'={c}257', 166: f'={c}74', 167: f'=-{c}75',
-            172: f'=-{c}28', 174: f'=-{c}59', 175: f'=SUM({c}163:{c}174)', 177: f'={c}146+{c}161+{c}175',
-            178: f'={p}102', 179: f'={c}177+{c}178',
-            182: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"]}', 183: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 1}',
-            184: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 2}', 185: f'={c}182+{c}183-{c}184', 210: f'={c}146+{c}148',
-            **{213 + i: f'=Assumption!{ac}{a_row("EBITDA", i)}-Assumption!{ac}{a_row("Taxation (levered, used for NDCF)", i)}' for i in range(len(SPVS))},
-            218: f'=SUM({c}213:{c}217)', 219: f'=IFERROR(SUM({c}221:{c}223)/{c}218,"")',
-            220: f'={c}17-{A("EBITDA")}+{c}143-$AK$220',
-            221: '=' + '+'.join(f'Assumption!{ac}{a_row("Interest on loan from PGInvIT", i)}' for i in range(len(SPVS))),
-            223: '=' + '+'.join(f'Assumption!{acol(fy - 1)}{a_row("Loan from PGInvIT (closing)", i)}-Assumption!{ac}{a_row("Loan from PGInvIT (closing)", i)}' for i in range(len(SPVS))),
-            222: f'={c}218-{c}221-{c}223', 224: f'={c}22', 225: f'=-{c}28', 226: f'={c}166+{c}167', 227: f'={c}148',
-            228: f'=SUM({c}220:{c}227)',
-            235: f'={c}228-{c}236-{c}237', 236: f'={c}148', 237: f'={c}166+{c}167', 238: f'=SUM({c}235:{c}237)', 239: f'={c}163',
-            240: f'={c}238+{c}239', 242: 0, 243: f'={p}243*(1+{c}242)',
-            244: (f'={c}243*{c}56' if fy == C_HIST_LAST + 1 else f'=MAX(0,MIN({c}238,{c}243*{c}56))'),
-            245: f'={c}240-{c}244', 246: f'=IF(MIN({c}244,{c}178+{c}240)<0,0,MIN({c}244,{c}178+{c}240))',
-            247: f'=IF(AND(ROUND({c}238-{c}246,2)>=0,{c}246/{c}238>=0.9),"ok","not ok")',
-            249: f'={A("AUM (Rs. cr)")}', 250: f'={c}76-{c}102', 251: f'={c}249-{c}250', 252: f'={c}251/{c}56',
-            253: f'=IF({c}249=0,"",{c}250/{c}249)', 257: 0, 258: f'={p}252', 259: f'=IFERROR({c}257/{c}258,0)',
+            56: f'={p}56+{c}272', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}259',
+            60: f'=IF({c}241>={c}59,"Yes","No")',
+            64: f'={p}64+{c}176', 65: f'={p}65', 66: f'={p}66', 67: f'={p}67+{c}52-{c}59', 68: f'=SUM({c}64:{c}67)', 70: f'={p}70',
+            75: f'={p}78', 76: '=$AK$76', 77: f'=IF({fy}>$AK$77,0,{c}75/($AK$77-{fy}+1))', 78: f'={c}75+{c}76-{c}77',
+            80: f'={p}80', 81: f'={p}81', 82: f'={p}82', 83: f'=SUM({c}80:{c}82)', 84: f'={p}84', 85: f'={p}85', 86: f'={c}78+{c}83+{c}84+{c}85', 88: f'={c}68+{c}70+{c}86',
+            90: f'={p}90+{A("Capex")}', 91: f'={p}91+{c}23-({p}98-{c}98)', 92: f'={p}92+{c}29', 93: f'={c}90-{c}91-{c}92', 94: f'={p}94',
+            96: f'={p}96', 97: f'={c}96-{c}98', 98: f'=MAX(0,{p}98-$AK$98)', 99: f'={p}99', 100: f'={p}100', 101: f'={p}101', 102: f'={p}102', 103: f'={p}103', 104: f'={p}104', 105: f'=SUM({c}98:{c}104)',
+            107: f'={c}196*{c}15/365', 108: f'={c}195*{c}6/365', 109: f'={p}109', 111: f'={p}111', 110: f'={c}112-{c}111-{c}109', 112: f'={c}192',
+            113: f'={p}113', 114: f'={p}114', 115: f'={c}107+{c}108+{c}112+{c}113+{c}114', 117: f'={c}197*{c}15/365', 118: f'={p}118', 119: f'={p}119', 120: f'={p}120', 121: f'={p}121', 122: f'={p}122',
+            123: f'=SUM({c}117:{c}122)', 125: f'={c}115-{c}123', 127: f'={c}105+{c}125+{c}94+{c}93', 128: f'={c}88-{c}127',
+            132: f'={c}34', 134: f'={c}23', 136: f'={c}29', 142: f'={c}28', 147: f'=SUM({c}132:{c}146)',
+            149: f'={p}107-{c}107', 150: f'={p}108-{c}108',
+            152: f'={p}105-{c}105-({p}98-{c}98)+{p}113-{c}113+{p}114-{c}114+SUM({c}118:{c}122)-SUM({p}118:{p}122)+{c}83-{p}83+{c}84-{p}84+{c}85-{p}85',
+            153: f'={c}117-{p}117', 156: f'=SUM({c}149:{c}155)', 157: f'={c}147+{c}156', 158: f'=-{c}40', 159: f'={c}157+{c}158',
+            161: f'=-({c}90-{p}90+{c}94-{p}94)', 174: f'=SUM({c}161:{c}173)', 176: f'={c}270', 179: f'={c}76', 180: f'=-{c}77',
+            185: f'=-{c}28', 187: f'=-{c}59', 188: f'=SUM({c}176:{c}187)', 190: f'={c}159+{c}174+{c}188',
+            191: f'={p}112', 192: f'={c}190+{c}191',
+            195: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"]}', 196: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 1}',
+            197: f'=Sensitivity_Bajaj!{scol(fy)}{SEN["wc"] + 2}', 198: f'={c}195+{c}196-{c}197', 223: f'={c}159+{c}161',
+            **{226 + i: f'=Assumption!{ac}{a_row("EBITDA", i)}-Assumption!{ac}{a_row("Taxation (levered, used for NDCF)", i)}' for i in range(len(SPVS))},
+            231: f'=SUM({c}226:{c}230)', 232: f'=IFERROR(SUM({c}234:{c}236)/{c}231,"")',
+            233: f'={c}17-{A("EBITDA")}+{c}156-$AK$233',
+            234: '=' + '+'.join(f'Assumption!{ac}{a_row("Interest on loan from PGInvIT", i)}' for i in range(len(SPVS))),
+            236: '=' + '+'.join(f'Assumption!{acol(fy - 1)}{a_row("Loan from PGInvIT (closing)", i)}-Assumption!{ac}{a_row("Loan from PGInvIT (closing)", i)}' for i in range(len(SPVS))),
+            235: f'={c}231-{c}234-{c}236', 237: f'={c}22', 238: f'=-{c}28', 239: f'={c}179+{c}180', 240: f'={c}161',
+            241: f'=SUM({c}233:{c}240)',
+            248: f'={c}241-{c}249-{c}250', 249: f'={c}161', 250: f'={c}179+{c}180', 251: f'=SUM({c}248:{c}250)', 252: f'={c}176',
+            253: f'={c}251+{c}252', 255: 0, 256: f'={p}256*(1+{c}255)',
+            257: (f'={c}256*{c}56' if fy == C_HIST_LAST + 1 else f'=MAX(0,MIN({c}251,{c}256*{c}56))'),
+            258: f'={c}253-{c}257', 259: f'=IF(MIN({c}257,{c}191+{c}253)<0,0,MIN({c}257,{c}191+{c}253))',
+            260: f'=IF(AND(ROUND({c}251-{c}259,2)>=0,{c}259/{c}251>=0.9),"ok","not ok")',
+            262: f'={A("AUM (Rs. cr)")}', 263: f'={c}78-{c}112', 264: f'={c}262-{c}263', 265: f'={c}264/{c}56',
+            266: f'=IF({c}262=0,"",{c}263/{c}262)', 270: 0, 271: f'={p}265', 272: f'=IFERROR({c}270/{c}271,0)',
         }
         for r, form in f.items():
             kind = ROWS.get(r, ('', ''))[1]
-            fmt = PCT if kind in ('g', 'p') or r in (18, 41, 53) else (NUM2 if r in (56, 58, 243, 252, 258, 259) else NUM1)
+            fmt = PCT if kind in ('g', 'p') or r in (18, 41, 53) else (NUM2 if r in (56, 58, 256, 265, 271, 272) else NUM1)
             if r in (21, 24, 27):
                 fmt = PCT2
             put(ws, f'{c}{r}', form, fmt=fmt, bold=kind in ('b',), color=RED if kind == 'g' else None)
     for fy in range(C_FY0, FYN + 1):
         c = ccol(fy)
-        ab = {189: f'={c}134', 190: f'=N({c}156)', 192: f'=N({c}163)+N({c}164)', 193: f'=N({c}165)+N({c}166)+N({c}167)',
-              194: f'=SUM({c}189:{c}193)', 197: f'=-{c}143', 198: f'=-{c}145', 199: f'=-{c}148', 200: f'=-N({c}152)',
-              201: f'=-N({c}160)', 202: f'=-{c}172', 203: f'=-{c}174', 204: f'=-N({c}171)', 205: f'=SUM({c}197:{c}204)',
-              207: f'={c}194-{c}205', 208: f'={c}207-{c}177'}
+        ab = {202: f'={c}147', 203: f'=N({c}169)', 205: f'=N({c}176)+N({c}177)', 206: f'=N({c}178)+N({c}179)+N({c}180)',
+              207: f'=SUM({c}202:{c}206)', 210: f'=-{c}156', 211: f'=-{c}158', 212: f'=-{c}161', 213: f'=-N({c}165)',
+              214: f'=-N({c}173)', 215: f'=-{c}185', 216: f'=-{c}187', 217: f'=-N({c}184)', 218: f'=SUM({c}210:{c}217)',
+              220: f'={c}207-{c}218', 221: f'={c}220-{c}190'}
         for r, form in ab.items():
             put(ws, f'{c}{r}', form, fmt=NUM1, bold=r in (194, 205, 207))
-    for r in (115, 208):
+    for r in (128, 221):
         for fy in range(C_FY0, FYN + 1):
             ws[f'{ccol(fy)}{r}'].fill = CHK_FILL
-    put(ws, 'B254', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)
-    put(ws, f'{G}254', f'={G}252-90.79', fmt=NUM2, fill=CHK_FILL)
+    put(ws, 'B267', 'Check: FY26 NAV / unit vs valuer NAV (Rs. 90.79)', italic=True)
+    put(ws, f'{G}267', f'={G}265-90.79', fmt=NUM2, fill=CHK_FILL)
     for fy in hist:
-        ws[f'{ccol(fy)}229'].fill = CHK_FILL
+        ws[f'{ccol(fy)}242'].fill = CHK_FILL

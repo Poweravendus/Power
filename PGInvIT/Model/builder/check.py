@@ -21,10 +21,10 @@ yrs = range(2022, 2036)
 def row(r, fmt='{:,.1f}'):
     return ' '.join((fmt.format(c[f'{ccol(fy)}{r}'].value) if isinstance(c[f'{ccol(fy)}{r}'].value, (int, float)) else str(c[f'{ccol(fy)}{r}'].value)) for fy in yrs)
 print('years      ', ' '.join(f'FY{fy%100}' for fy in yrs))
-for lab, r, f in [('Revenue', 6, '{:,.0f}'), ('EBITDA', 17, '{:,.0f}'), ('PAT', 43, '{:,.0f}'), ('Tax', 40, '{:,.0f}'), ('NDCF wf', 228, '{:,.0f}'), ('NDCF', 238, '{:,.0f}'), ('Prop', 244, '{:,.0f}'), ('Distrib', 246, '{:,.0f}'),
-                  ('DPU', 58, '{:,.2f}'), ('BS diff', 115, '{:,.2f}'), ('Cash', 102, '{:,.0f}'), ('Debt', 76, '{:,.0f}'), ('AUM', 249, '{:,.0f}'), ('NAV/unit', 252, '{:,.2f}'), ('Check', 247, '{}')]:
+for lab, r, f in [('Revenue', 6, '{:,.0f}'), ('EBITDA', 17, '{:,.0f}'), ('PAT', 43, '{:,.0f}'), ('Tax', 40, '{:,.0f}'), ('NDCF wf', 241, '{:,.0f}'), ('NDCF', 251, '{:,.0f}'), ('Prop', 257, '{:,.0f}'), ('Distrib', 259, '{:,.0f}'),
+                  ('DPU', 58, '{:,.2f}'), ('BS diff', 128, '{:,.2f}'), ('Cash', 112, '{:,.0f}'), ('Debt', 78, '{:,.0f}'), ('AUM', 262, '{:,.0f}'), ('NAV/unit', 265, '{:,.2f}'), ('Check', 260, '{}')]:
     print(f'{lab:10s}', row(r, f))
-print('FY26 NAV check vs 90.79:', c['G254'].value)
+print('FY26 NAV check vs 90.79:', c['G267'].value)
 cf = wb['Cashflows_Bajaj']; print('Cashflows check row (FY27..):', [round(cf.cell(25, k).value or 0, 2) for k in range(3, 12)])
 s = wb['Sensitivity_Bajaj']; print('Sensitivity B3/C3 (should be empty):', s['B3'].value, s['C3'].value)
 irr = wb['IRR Calculation_Bajaj']; print('IRR calc:', irr['B11'].value, '| C9', irr['C9'].value, '| yields', [round(irr.cell(15,k).value,4) for k in range(3,8)])

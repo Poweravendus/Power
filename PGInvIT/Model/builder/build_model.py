@@ -38,7 +38,7 @@ put(ws, f'B{r - 2}', 'WORKING CAPITAL  -  DAYS (consolidated)', bold=True)
 put(ws, f'B{r - 1}', 'Days', bold=True, border_b=True)
 for fy in range(S_FY0, FYN + 1):
     put(ws, f'{scol(fy)}{r - 1}', fy_label(fy, fy > 2026), bold=True, align='right', border_b=True)
-for k, (lab, crow) in enumerate([('Receivable Days', 182), ('Inventory Days', 183), ('Payable Days', 184)]):
+for k, (lab, crow) in enumerate([('Receivable Days', 195), ('Inventory Days', 196), ('Payable Days', 197)]):
     put(ws, f'B{r + k}', lab)
     for fy in range(2022, FYN + 1):
         c = scol(fy)
@@ -63,7 +63,7 @@ from qtrly import build_qtrly
 QCOL, QROWS = build_qtrly(W['Qtrly'], json.load(open(qpath)))
 spv_opex27 = sum(opex[s][2027] for s in SPVS)
 nonim26 = sum(H[r][2026] for r in (10, 11, 12, 13, 14))
-drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=(G23-AK91)/AVERAGE(F85,G85)', 27: f'=G28/AVERAGE(F76,G76)'}
+drivers = {14: round(nonim26 - spv_opex27, 3), 21: 0.055, 24: f'=(G23-AK98)/AVERAGE(F90,G90)', 27: f'=G28/AVERAGE(F78,G78)'}
 build_consolidated(W['Consolidated'], H, drivers, QCOL, QROWS)
 W['Consolidated'].freeze_panes = 'C4'
 build_cashflows(W['Cashflows_Bajaj']); W['Cashflows_Bajaj'].freeze_panes = 'C4'
@@ -75,9 +75,9 @@ build_keysheet(W['Key Sheet New'], S, V)
 import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
-F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 259,
-                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 117, 181, 187, 212, 256])
-for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (115, 208, 229) if not (r == 229 and fy > 2026)] + ['G254']:
+F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 272,
+                   growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 130, 194, 200, 225, 269])
+for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (128, 221, 242) if not (r == 242 and fy > 2026)] + ['G267']:
     F.fill(W['Consolidated'][ref], F.YEL)
 if os.path.exists(qpath):
     F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
@@ -95,7 +95,7 @@ F.fmt_irr(W['IRR Calculation_Bajaj'], 3 + FYN - 2027)
 
 # collapse long empty bands in Consolidated (keep one spacer row)
 wc = W['Consolidated']
-empty = [r for r in range(4, 260) if all(wc.cell(r, k).value is None for k in range(2, CI(_cc(FYN)) + 1))]
+empty = [r for r in range(4, 273) if all(wc.cell(r, k).value is None for k in range(2, CI(_cc(FYN)) + 1))]
 for r in empty:
     if r - 1 in empty and r + 1 in empty or (r - 1 in empty and r - 2 in empty):
         wc.row_dimensions[r].hidden = True
@@ -115,7 +115,7 @@ for k in range(3, 3 + len(json.load(open(qpath))['quarters'])):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
 # ---------------- no-fill spacer rows between sections ----------------
-F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 117, 181, 187, 210, 212, 235, 242, 249, 256}, 4, 259)
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 130, 194, 200, 223, 225, 248, 255, 262, 269}, 4, 272)
 if os.path.exists(qpath):
     wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
@@ -124,7 +124,7 @@ if os.path.exists(qpath):
 # ---------------- number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
-F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 259)
+F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 272)
 pct_rows = [a_row(it, i) for it in ('EBITDA Margin %', 'WACC, %') for i in range(len(SPVS))] + [a_row('EBITDA Margin %')]
 per_rows = [a_row('Discount period', i) for i in range(len(SPVS))]
 F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK'), CI('AM'), CI('AN')])
