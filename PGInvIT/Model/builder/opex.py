@@ -28,7 +28,7 @@ def build_opex(vr_path, spv_path, cons_path):
     return V, opex, margins, detail
 
 if __name__ == '__main__':
-    V, opex, margins, detail = build_opex('vr26.json', '../agentC/spv_history.json', '../agentA/consolidated_history.json')
+    V, opex, margins, detail = build_opex('vr27.json', '../agentC/spv_history.json', '../agentA/consolidated_history.json')
     tot27 = 0
     for s in SPVS:
         r = V[s]['rows']

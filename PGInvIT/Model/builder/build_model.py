@@ -16,7 +16,7 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else f'{SP}/build/PGInvIT_Model.xlsx'
 PRICE, ENTRY, FIRST_PAY = 105.64, dt.datetime(2026, 11, 11), dt.datetime(2026, 11, 30)
 UNITS = 909999200
 
-V, opex, margins, _ = build_opex(f'{SP}/build/vr26.json', f'{SP}/agentC/spv_history.json', f'{SP}/agentA/consolidated_history.json')
+V, opex, margins, _ = build_opex(f'{SP}/build/vr27.json', f'{SP}/agentC/spv_history.json', f'{SP}/agentA/consolidated_history.json')
 S = json.load(open(f'{SP}/agentC/spv_history.json'))['spvs']
 H, CJ = build_H(f'{SP}/agentA/consolidated_history.json')
 hist = {'avail': {s: S[s]['availability_annual'] for s in SPVS},

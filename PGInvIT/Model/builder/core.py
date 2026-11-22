@@ -7,8 +7,12 @@ SPVS = ['VTL', 'KATL', 'PPTL', 'WTL', 'JPTL']
 VR_NAME = {'Vizag': 'VTL', 'Kala': 'KATL', 'Parli': 'PPTL', 'Warora': 'WTL', 'Jabalpur': 'JPTL'}
 FY0, FYN = 2026, 2054            # asset-level / assumption horizon (FY26 actual, FY27-FY54 forecast)
 S_FY0 = 2021                     # Sensitivity first column (C = FY21), so H = FY26
-# PV of RTM (regulated tariff) projects, valued by the valuer on FCFE at Ke 15.03% incl. RTM debt (Rs cr; report p.55 and p.66)
-RTM_PV = {'KATL': 24.145, 'PPTL': 9.018}
+# Valuation basis: IndiaAppraisers half-yearly valuation, 30-Sep-2026 (WACC 7.36%). VAL_T = valuation date in fiscal-year units.
+VAL_T = 2026.5
+# Valuer's EV at 31-Mar-2026 (INMACS), kept as the FY26 actual AUM (Rs cr)
+EV_MAR26 = {'VTL': 2025.211, 'KATL': 387.356, 'PPTL': 2082.157, 'WTL': 2371.154, 'JPTL': 1805.911}
+# RTM (regulated tariff) projects: valued by the valuer on FCFE at Ke 13.05% plus RTM borrowings (Rs cr, Sep-26 report)
+RTM_PV = {'KATL': 26.916, 'PPTL': 12.576}
 MON = {m: i + 1 for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
 
 # ---- layout constants -------------------------------------------------------------------------
@@ -40,12 +44,16 @@ def valuer_data(vr):
     for name, b in vr.items():
         spv = VR_NAME[name.split()[0]]
         rows = {}
-        for r in b['rows']:
+        for k, r in enumerate(b['rows']):
             fy, d = fy_of(r['date'])
-            rows[fy] = dict(rev=r['revenue'] / 10, nopat=r['nopat'] / 10, dep=r['dep'] / 10, capex=-r['capex'] / 10,
-                            wc=-r['dwc'] / 10, fcff=r['fcff'] / 10, per=r['yearfrac'], months=r['months'], date=d)
+            ann = 12 / r['months'] if k == 0 and r['months'] < 12 else 1   # first period after the valuation date is a stub: annualise P&L
+            rev, nopat, dep = r['revenue'] / 10 * ann, r['nopat'] / 10 * ann, r['dep'] / 10 * ann
+            capex, wc = -r['capex'] / 10, -r['dwc'] / 10
+            rows[fy] = dict(rev=rev, nopat=nopat, dep=dep, capex=capex, wc=wc, fcff=nopat + dep - capex - wc,
+                            fcff_val=r['fcff'] / 10, stub=r['months'] if ann > 1 else 12, per=r['yearfrac'],
+                            months=12 if ann > 1 else r['months'], date=d)
         tv = b['tv']
-        out[spv] = dict(name=name, rows=rows, ev=b['ev'] / 10, pv_tv=b['pv_tv'] / 10,
+        out[spv] = dict(name=name, rows=rows, ev=b['ev'] / 10, pv_tv=b['pv_tv'] / 10, wacc=b.get('wacc', 0.08),
                         rtm=RTM_PV.get(spv, 0.0),
                         tv_fcff=tv['fcff'] / 10, tv_per=tv['yearfrac'], last_fy=max(rows))
     return out
@@ -166,7 +174,7 @@ def build_assetlevel(ws, V, margins, hist):
                 'TV discounting period (yrs)', 'Terminal value, undiscounted (TV)', 'TV year (FY)', 'PV of terminal value',
                 'PV of explicit period', 'RTM project value (valuer)', 'Enterprise Value (derived)', 'EV per valuer',
                 'Variance (derived vs valuer)', 'Memo: TV as % of EV', 'Memo: EV / first-yr EBITDA', 'Memo: first-yr FCFF yield on EV',
-                'RTM life end (FY)']
+                'RTM life end (FY)', 'FY27 months after valuation date (stub)']
         m = {lab: R(k + 1) for k, lab in enumerate(memo)}
         for lab, rr in m.items():
             put(ws, f'AH{rr}', lab)
@@ -187,6 +195,8 @@ def build_assetlevel(ws, V, margins, hist):
         put(ws, f'AI{m["Memo: EV / first-yr EBITDA"]}', f'=IF(E{R(3)}=0,0,D{R(18)}/E{R(3)})', fmt='0.0x')
         put(ws, f'AI{m["Memo: first-yr FCFF yield on EV"]}', f'=IF(D{R(18)}=0,0,E{R(9)}/D{R(18)})', fmt=PCT)
         put(ws, f'AI{m["RTM life end (FY)"]}', {'KATL': 2049, 'PPTL': 2051}.get(s, 2027), fmt='0', color=BLUE)
+        put(ws, f'AI{m["FY27 months after valuation date (stub)"]}', v['rows'][FY0 + 1]['stub'], fmt='0', color=BLUE)
+        STUB = f'$AI${m["FY27 months after valuation date (stub)"]}'
 
         sr_eff, sr_mar = SEN['eff'] + i, SEN['marg'] + i
         for fy in range(FY0, FYN + 1):
@@ -223,7 +233,10 @@ def build_assetlevel(ws, V, margins, hist):
                 put(ws, f'{c}{R(10)}', 0, fmt=NUM1)
             put(ws, f'{c}{R(11)}', f'={c}{R(9)}+{c}{R(10)}', fmt=NUM1)
             put(ws, f'{c}{R(13)}', f'=IF({c}{R(12)}=0,0,1/(1+$D${R(19)})^{c}{R(12)})', fmt='0.0000')
-            put(ws, f'{c}{R(14)}', f'={c}{R(9)}*{c}{R(13)}', fmt=NUM1)
+            if fy == FY0 + 1:   # only the cash flow after the valuation date (30-Sep-26) is discounted
+                put(ws, f'{c}{R(14)}', f'=(({c}{R(3)}-{c}{R(7)})*{STUB}/12-{c}{R(5)}-{c}{R(6)}-{c}{R(8)})*{c}{R(13)}', fmt=NUM1)
+            else:
+                put(ws, f'{c}{R(14)}', f'={c}{R(9)}*{c}{R(13)}', fmt=NUM1)
         E, F = acol(FY0 + 1), lastc
         put(ws, f'D{R(15)}', f'=SUM({E}{R(14)}:{F}{R(14)})', fmt=NUM1)
         put(ws, f'D{R(16)}', f'=SUMPRODUCT({E}{R(10)}:{F}{R(10)},{E}{R(13)}:{F}{R(13)})', fmt=NUM1)
@@ -231,7 +244,7 @@ def build_assetlevel(ws, V, margins, hist):
         put(ws, f'D{R(18)}', f'=D{R(15)}+D{R(16)}+D{R(17)}', fmt=NUM1, bold=True)
         put(ws, f'E{R(18)}', round(v['ev'], 3), fmt=NUM1, color=BLUE)
         put(ws, f'F{R(18)}', f'=D{R(18)}/E{R(18)}-1', fmt=PCT2)
-        put(ws, f'D{R(19)}', 0.08, fmt=PCT2, color=BLUE)
+        put(ws, f'D{R(19)}', v['wacc'], fmt=PCT2, color=BLUE)
         info[s] = dict(r0=r0, memo=m)
     return info
 
@@ -289,9 +302,9 @@ def build_assumption(ws, V, ainfo):
                         put(ws, f'{c}{r}', SPV_LOAN[s][0], fmt=NUM1, color=RED)
                         put(ws, f'AI{r}', SPV_LOAN[s][1], fmt=NUM1, color=BLUE)
                         put(ws, f'AJ{r}', 0.145, fmt=PCT2, color=BLUE)
-                        put(ws, f'AK{r}', 0.2517, fmt=PCT2, color=BLUE)
+                        put(ws, f'AK{r}', 0.286, fmt=PCT2, color=BLUE)     # valuer Sep-26: 28.60% for all SPVs
                         put(ws, f'AL{r}', 2031 if s == 'VTL' else 0, fmt='0', color=BLUE)
-                        put(ws, f'AM{r}', 0.17472, fmt=PCT2, color=BLUE)
+                        put(ws, f'AM{r}', 0.16307, fmt=PCT2, color=BLUE)   # valuer Sep-26: VTL old regime 16.307% till FY31
                     else:
                         put(ws, f'{c}{r}', f'=MAX(0,{L(CI(c) - 1)}{r}-$AI{r})', fmt=NUM1)
                 elif item == 'Interest on loan from PGInvIT':
@@ -305,14 +318,17 @@ def build_assumption(ws, V, ainfo):
                 elif item == 'AUM (Rs. cr)':
                     m = ainfo[s]['memo']
                     fc, per, w = a_row('FCFF', i), a_row('Discount period', i), f'{c}{a_row("WACC, %", i)}'
-                    k = f'(YEAR({c}$1)-{FY0})'
+                    k = f'(YEAR({c}$1)-{VAL_T})'
                     tv = f'AssetLevelEst!$AI${m["Terminal value, undiscounted (TV)"]}'
                     tvp = f'AssetLevelEst!$AI${m["TV discounting period (yrs)"]}'
                     tvy = f'AssetLevelEst!$AI${m["TV year (FY)"]}'
-                    rtm = f'AssetLevelEst!$D${ainfo[s]["r0"] + 17}*MAX(0,MIN(1,(AssetLevelEst!$AI${m["RTM life end (FY)"]}-YEAR({c}$1))/(AssetLevelEst!$AI${m["RTM life end (FY)"]}-{FY0})))'
+                    rtm = f'AssetLevelEst!$D${ainfo[s]["r0"] + 17}*MAX(0,MIN(1,(AssetLevelEst!$AI${m["RTM life end (FY)"]}-YEAR({c}$1))/(AssetLevelEst!$AI${m["RTM life end (FY)"]}-{VAL_T})))'
                     f = (f'=SUMPRODUCT(($D$1:$AF$1>{c}$1)*$D{fc}:$AF{fc}*(1+{w})^(-($D{per}:$AF{per}-{k})))'
                          f'+IF({tvy}>YEAR({c}$1),{tv}*(1+{w})^(-({tvp}-{k})),{tv})+{rtm}')
-                    put(ws, f'{c}{r}', f, fmt=NUM1)
+                    if fy == FY0:   # FY26: reported AUM (valuer EV at 31-Mar-26)
+                        put(ws, f'{c}{r}', EV_MAR26[s], fmt=NUM1, color=RED)
+                    else:
+                        put(ws, f'{c}{r}', f, fmt=NUM1)
         tr = a_row(item)
         if item not in ('EBITDA Margin %', 'WACC, %', 'Discount period'):
             put(ws, f'C{tr}', item if item.startswith('Total') else f'Total {item}', bold=True)
@@ -325,6 +341,7 @@ def build_assumption(ws, V, ainfo):
                 c = acol(fy)
                 put(ws, f'{c}{tr}', f'=IF(OR({c}{a_row("Revenue")}=0,{c}{a_row("EBITDA")}=0),"",{c}{a_row("EBITDA")}/{c}{a_row("Revenue")})', fmt=PCT, bold=True)
     note = a_row(A_ITEMS[-1]) + 2
-    put(ws, f'C{note + 2}', 'Check: AUM vs valuer EV', bold=True)
-    put(ws, f'D{note + 2}', '=D{0}-SUM({1})'.format(a_row('AUM (Rs. cr)'), ','.join(f'AssetLevelEst!E{ainfo[s]["r0"] + 18}' for s in SPVS)), fmt=NUM2, fill=CHK_FILL)
+    put(ws, f'C{note + 2}', 'Check: derived EV vs valuer EV (30-Sep-26)', bold=True)
+    put(ws, f'D{note + 2}', '=SUM({0})-SUM({1})'.format(','.join(f'AssetLevelEst!D{ainfo[s]["r0"] + 18}' for s in SPVS),
+                                                   ','.join(f'AssetLevelEst!E{ainfo[s]["r0"] + 18}' for s in SPVS)), fmt=NUM2, fill=CHK_FILL)
     return note + 4

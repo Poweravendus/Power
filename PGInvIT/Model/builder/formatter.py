@@ -355,8 +355,8 @@ def nf_assetlevel(ws, blocks, c1, c2, memo_col):
     for r0 in blocks:
         for r in range(r0 + 1, r0 + 20):
             lab = ws.cell(r, 3).value
-            fmt = {'EBITDA Margin': '0%', 'Present value factor': '#,##0.00', 'Discount period (yrs, mid-year)': '0.0',
-                   'WACC': '0.0%'}.get(lab, N0A)
+            fmt = {'EBITDA Margin': '0%', 'Present value factor': '#,##0.00', 'Discount period (yrs, mid-year)': '0.00',
+                   'WACC': '0.00%'}.get(lab, N0A)
             if lab in bold_rows:
                 font(ws.cell(r, 3), BLACK, bold=True)
             for k in range(c1, c2 + 1):
@@ -368,10 +368,10 @@ def nf_assetlevel(ws, blocks, c1, c2, memo_col):
                     font(c, bold=True)
             if lab == 'Enterprise Value':
                 _nf(ws.cell(r, c1 + 2), '0%')
-        for r in range(r0 + 1, r0 + 16):
+        for r in range(r0 + 1, r0 + 18):
             lab = str(ws.cell(r, memo_col).value or '')
             v = ws.cell(r, memo_col + 1)
-            fmt = ('0.00%' if lab.startswith(('WACC', 'Terminal growth')) else '0.0' if 'period' in lab else '0' if 'TV year' in lab
+            fmt = ('0.00%' if lab.startswith(('WACC', 'Terminal growth')) else '0.00' if 'discounting period' in lab else '0' if ('TV year' in lab or 'life end' in lab) 
                    else '0.0\\x' if 'EV /' in lab else '0.0%' if '%' in lab or 'yield' in lab else '#,##0;\\(#,##0\\);\\-')
             _nf(v, fmt)
 

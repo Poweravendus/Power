@@ -1,12 +1,12 @@
 """Independent audit of the recalculated PGInvIT model against source data."""
 import json, sys, datetime as dt, openpyxl
 sys.path.insert(0, '.')
-from core import SPVS, A_START, A_BLOCK, a_row, acol, scol, SEN, valuer_data, RTM_PV
+from core import SPVS, A_START, A_BLOCK, a_row, acol, scol, SEN, valuer_data, RTM_PV, VAL_T, EV_MAR26
 from rest import ccol
 SP = '/tmp/claude-0/-home-user-Power/562dd684-59fa-5b19-94f2-822ecbb92d34/scratchpad'
 wb = openpyxl.load_workbook(sys.argv[1], data_only=True)
 wf = openpyxl.load_workbook(sys.argv[1])
-V = valuer_data(json.load(open(f'{SP}/build/vr26.json')))
+V = valuer_data(json.load(open(f'{SP}/build/vr27.json')))
 A, L, C, S = wb['Assumption'], wb['AssetLevelEst'], wb['Consolidated'], wb['Sensitivity_Bajaj']
 H = json.load(open(f'{SP}/agentA/consolidated_history.json'))
 fails = []
@@ -22,7 +22,9 @@ for i, s in enumerate(SPVS):
         mx_rev = max(mx_rev, abs(L[f'{acol(fy)}{r0 + 1}'].value - row['rev']))
         mx_fcff = max(mx_fcff, abs(L[f'{acol(fy)}{r0 + 9}'].value - row['fcff']))
 chk('SPV revenue = valuer revenue (all SPVs, all years)', mx_rev < 0.01, f'max diff {mx_rev:.4f} cr')
-chk('SPV FCFF = valuer FCFF (all SPVs, all years)', mx_fcff < 0.002, f'max diff {mx_fcff:.4f} cr')
+chk('SPV FCFF = valuer FCFF (all SPVs, all years; FY27 annualised)', mx_fcff < 0.002, f'max diff {mx_fcff:.4f} cr')
+mx_pv = max(abs(L[f'{acol(2027)}{A_START + A_BLOCK * i + 14}'].value - V[s]['rows'][2027]['fcff_val'] / (1 + V[s]['wacc']) ** V[s]['rows'][2027]['per']) for i, s in enumerate(SPVS))
+chk('FY27 PV uses only the post-valuation-date cash flow (H2 FY27)', mx_pv < 0.01, f'max diff {mx_pv:.4f} cr')
 
 # 2. EV per SPV vs valuer
 for i, s in enumerate(SPVS):
@@ -32,14 +34,17 @@ for i, s in enumerate(SPVS):
 
 # 3. Independent AUM roll-forward (excludes the year's own cash flow)
 def aum(s, t):
-    v = V[s]; w = 0.08; k = t - 2026
+    v = V[s]; w = v['wacc']; k = t - VAL_T
     pv = sum(r['fcff'] / (1 + w) ** (r['per'] - k) for fy, r in v['rows'].items() if fy > t)
     tv = v['tv_fcff'] / w
     pv += tv / (1 + w) ** (v['tv_per'] - k) if v['last_fy'] > t else tv
     end = {'KATL': 2049, 'PPTL': 2051}.get(s, 2027)
-    pv += RTM_PV.get(s, 0) * max(0, min(1, (end - t) / (end - 2026)))
+    pv += RTM_PV.get(s, 0) * max(0, min(1, (end - t) / (end - VAL_T)))
     return pv
-for t in (2026, 2027, 2030, 2040, 2054):
+chk('FY26 AUM = valuer EV at 31-Mar-26 (Rs 8,672 cr)', abs(A[f'{acol(2026)}{a_row("AUM (Rs. cr)")}'].value - sum(EV_MAR26.values())) < 0.01)
+ev_d = sum(L[f'D{A_START + A_BLOCK * i + 18}'].value for i in range(5)); ev_v = sum(V[s]['ev'] for s in SPVS)
+chk('Derived EV at 30-Sep-26 = valuer EV (Rs 8,732 cr) within 0.1%', abs(ev_d / ev_v - 1) < 0.001, f'{ev_d:,.1f} vs {ev_v:,.1f}')
+for t in (2027, 2030, 2040, 2054):
     mine = sum(aum(s, t) for s in SPVS)
     model = A[f'{acol(t)}{a_row("AUM (Rs. cr)")}'].value
     chk(f'AUM FY{t % 100} independent recompute', abs(mine - model) < 0.5, f'{mine:,.1f} vs model {model:,.1f}')

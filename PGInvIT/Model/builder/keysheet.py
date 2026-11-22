@@ -21,7 +21,7 @@ def build_keysheet(ws, S, V):
     hdr = ['#', 'Asset', 'Asset Full Name', 'Type of Tariff', 'Stake Holding', 'States', 'Elements', 'ckt kms', 'MVA',
            'COD', 'Acquisition into InvIT', 'Acquired From', 'EV at IPO', 'AUM (EV)', 'Contract Type',
            'Non-Escalable Charge', 'Change-in-law', 'TSA Expiry']
-    units = ['', '', '', '', '', '', '', 'kms', 'MVA', 'Date', 'Date', '', 'Rs. cr (Dec-20)', 'Rs. cr (Mar-26)', '',
+    units = ['', '', '', '', '', '', '', 'kms', 'MVA', 'Date', 'Date', '', 'Rs. cr (Dec-20)', 'Rs. cr (Sep-26)', '',
              'Rs. cr (CY26)', '% of NEC', 'Date']
     put(ws, 'B2', 'Key Sheet  -  Transmission SPVs', bold=True)
     for k, (h, u) in enumerate(zip(hdr, units)):
