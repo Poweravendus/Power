@@ -25,7 +25,7 @@ VAL_DATE = dt.date(2026, 3, 31)
 UNITS_MN = 909.9992
 UNITS_CR = 90.99992
 PRICE = M['price']
-PRICE_DATE = '20-Nov-26'
+PRICE_DATE = '23-Nov-26'
 
 
 def iso(s):
@@ -125,7 +125,7 @@ def xirr(cfs, ds):
 
 
 LIST_DATE = dt.date(2021, 5, 14)
-LATEST = dt.date(2026, 11, 20)
+LATEST = dt.date(2026, 11, 23)
 ret_total = xirr([-100] + [x[2] for x in dist_q] + [PRICE], [LIST_DATE] + [x[1] for x in dist_q] + [LATEST])
 ret_cap = (PRICE / 100) ** (1 / ((LATEST - LIST_DATE).days / 365)) - 1
 ret_dist = ret_total - ret_cap

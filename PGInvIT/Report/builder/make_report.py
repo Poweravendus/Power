@@ -104,7 +104,7 @@ debt_sp = sum(spv[s]['debt_sponsor'] for s in SPVS)
 P(0, 'POWERGRID Infrastructure Investment Trust')
 t = E[1]
 r = rows(t)
-fill_row(r[0], [None, 'POWERGRID Infrastructure Investment Trust', None, '22-Nov-26'])
+fill_row(r[0], [None, 'POWERGRID Infrastructure Investment Trust', None, '23-Nov-26'])
 fill_row(r[1], [None, 'InvITs', None, 'xx'])
 fill_row(r[2], [None, f1(d.PRICE), None, f0(d.mcap), None, 'xx'])
 fill_row(r[3], [None, f'{pct(dy)} for FY2027', None, 'CRISIL AAA / Stable; ICRA AAA (Stable); CARE AAA; Stable', None, 'NA'])
@@ -565,8 +565,8 @@ rs = rows(t)
 fill_row(rs[0], [None, 'POWERGRID Infrastructure Investment Trust', 'IndiGrid Infrastructure Trust'])
 for k, vals in upd.items():
     fill_row(rs[k], [None] + list(vals))
-fill_row(rs[27], ['Market capitalisation (Rs. crore, 20-Nov-26)'])
-fill_row(rs[29], ['CMP (Rs. per unit, 20-Nov-26)'])
+fill_row(rs[27], ['Market capitalisation (Rs. crore, 23-Nov-26)'])
+fill_row(rs[29], ['CMP (Rs. per unit, 23-Nov-26)'])
 
 # =================================================================== key arguments / risks / monitorables
 args = [

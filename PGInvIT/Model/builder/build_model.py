@@ -13,7 +13,7 @@ from opex import build_opex
 
 SP = '/tmp/claude-0/-home-user-Power/562dd684-59fa-5b19-94f2-822ecbb92d34/scratchpad'
 OUT = sys.argv[1] if len(sys.argv) > 1 else f'{SP}/build/PGInvIT_Model.xlsx'
-PRICE, ENTRY, FIRST_PAY = 103.87, dt.datetime(2026, 11, 20), dt.datetime(2026, 11, 30)
+PRICE, ENTRY, FIRST_PAY = 104.94, dt.datetime(2026, 11, 23), dt.datetime(2026, 11, 30)
 UNITS = 909999200
 
 V, opex, margins, _ = build_opex(f'{SP}/build/vr27.json', f'{SP}/agentC/spv_history.json', f'{SP}/agentA/consolidated_history.json')
