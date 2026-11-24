@@ -1,6 +1,7 @@
 """Build the PGInvIT initiating-coverage report by editing the IndiGrid report in place (formatting untouched)."""
 import copy, json, sys
 import docx
+from lxml import etree
 from dx import *
 import data as d
 from data import f0, f1, f2, pct, SPVS, spv, hist, FULL
@@ -340,17 +341,22 @@ fill_row(rows(t)[2], [None] * 7 + [f2(d.NAV_SEP)])
 fill_row(rows(t)[3], [None] * 7 + [pc(prem, 1, True)])
 ind = [UHP[x].get('individuals') + UHP[x].get('nris') for x in ('2022-03-31', '2026-03-31', '2026-09-30')]
 prem_ig = d.MK['peers']['INDIGRID']['price'] / 148.24 - 1
-p_hdr = add_after(121, t, [('Why the market pays a premium to NAV', True)])
-reasons_p = [
-    ('Buyers price the yield, not the run-off: ', f'Rs. 12 on Rs. {f1(d.PRICE)} is an {pct(dy)} yield against a 7.18% 10-year G-sec, and a yield buyer reads that as a ~4 percentage-point spread. NAV values the same cash flows knowing they shrink from FY28 and end in FY52–FY54; the yield does not show that.'),
-    ('Retail is now the marginal buyer: ', f'individuals (including NRIs) held {ind[0]:.0f}% of units in March 2022, {ind[1]:.0f}% in March 2026 and {ind[2]:.0f}% in September 2026, while foreign investors fell from 23% to about 5% after CPP Investments sold its 10% stake in FY26. Retail investors tend to buy on headline yield.'),
-    ('Quality and scarcity: ', 'a AAA rating, a Government-controlled sponsor, net debt under 5% of AUM and 21 unbroken quarterly distributions make it one of the safest listed yield instruments, and there are few pure transmission InvITs to buy. IndiGrid also trades above its NAV, at ' + pc(prem_ig) + '.'),
-    ('Option value: ', 'debt headroom of about Rs. 3,000 crore and the planned TBCB consortium with POWERGRID could add assets, which NAV does not count.'),
+p_hdr = add_after(121, t, [('What the market may be pricing in: growth options', True)])
+_pp = p_hdr.find(W('pPr')); _sp = _pp.find(W('spacing'))
+if _sp is None:
+    _sp = etree.SubElement(_pp, W('spacing'))
+_sp.set(W('before'), '200')
+growth_p = [
+    ('TBCB consortium with POWERGRID: ', 'the boards of POWERGRID and the Investment Manager have approved a consortium, with POWERGRID as lead partner (26%) and PGInvIT holding 74%, to bid for up to two new TBCB projects worth about Rs. 500 crore. Management called Government approval “advanced” in May 2026; the H1 FY27 report says it is still awaited. The size is capped because SEBI limits under-construction assets to 10% of an InvIT’s value (about Rs. 800–900 crore).'),
+    ('Operational assets from private developers: ', 'management says it is in talks with two or three private transmission owners. 84 inter-state projects are under construction, 41 of them by private developers, and each becomes eligible for an InvIT after one year of operation.'),
+    ('State transmission assets: ', 'about 20 states attended a CEA workshop on monetising transmission assets in December 2024, but management describes the talks as preliminary and has guided to two to three years.'),
+    ('Sector pipeline: ', 'CEA’s plan calls for about Rs. 7.93 lakh crore of transmission investment by 2035-36 to connect 900 GW of non-fossil capacity, plus Rs. 1.91 lakh crore for the Brahmaputra basin by 2035. Management also says it is looking at solar and battery storage assets.'),
+    ('Balance sheet to pay for it: ', 'net debt is 4.7% of AUM against a 70% ceiling, and management says acquisitions will be mainly debt-funded. A unit price above NAV also makes a unit-funded deal cheaper for existing holders.'),
 ]
 prev = p_hdr
-for lead_, txt in reasons_p:
+for lead_, txt in growth_p:
     prev = add_after(183, prev, [(lead_, True), (txt, False)])
-prev = add_after(121, prev, [('Our view: ', True), ('the first reason does most of the work, and it does not survive FY28. At the current price the hold-to-maturity return is ' + pct(irr) + ', below the G-sec yield, so we do not think the premium is justified on fundamentals.', False)])
+prev = add_after(121, prev, [('Our view: ', True), ('these are real options, but none has turned into a deal in five years and POWERGRID itself prefers securitisation to selling assets to the Trust. The consortium is small: its projects would earn revenue only after a 2–3 year build, and PGInvIT’s share would offset a small part of the ~Rs. 290 crore revenue step-down. On our rough maths, replacing the ~Rs. 280 crore annual NDCF gap with debt-funded acquisitions would need around Rs. 5,000 crore of assets, more than the ~Rs. 3,000 crore of debt capacity. We ascribe no value to acquisitions; at the current price the hold-to-maturity return is ' + pct(irr) + ', below the 7.18% G-sec yield.', False)])
 
 # =================================================================== S8: unitholding, ratings
 UH = G['1_unitholding_pattern']
@@ -404,9 +410,7 @@ P(140, [('POWERGRID. ', True), (f'Power Grid Corporation of India Limited was in
                               f'It operates ~1.88 lakh ckm of transmission lines and 294 substations with ~6.6 lakh MVA of transformation capacity, carries ~84% of India’s inter-regional transfer capacity, and reported FY26 consolidated revenue of Rs. {f0(sp["fy26_consolidated"]["revenue_from_operations_rs_cr"])} crore and PAT of Rs. {f0(sp["fy26_consolidated"]["pat_rs_cr"])} crore. '
                               'It is rated AAA by CRISIL, ICRA and CARE. Its role in PGInvIT is threefold – Sponsor, Project Manager and 100% owner of the Investment Manager – while its economic interest is limited to the 15% minimum unitholding. '
                               'POWERGRID is investing ~Rs. 35,000–40,000 crore a year in new transmission capacity, so PGInvIT is a small, mature corner of its business, and management has said the Sponsor currently prefers securitisation to further InvIT monetisation.', False)])
-P(141, [('Government of India. ', True), ('The Government holds 51.34% of POWERGRID and, through the Ministry of Power, appoints the independent directors on the Investment Manager’s board. '
-                                        'Trust governance therefore runs through the public-sector framework: board vacancies wait on ministry orders, and the consortium with POWERGRID to bid for TBCB projects, approved by both boards in 2025, was still awaiting Government approval as of May 2026. '
-                                        'The Investment Manager’s board is currently below the SEBI requirement for independent directors (two independent against three non-independent), under a SEBI relaxation extended to 31 December 2026.', False)])
+P(141, [('Government of India. ', True), ('The Government holds 51.34% of POWERGRID. Its approval is also needed for the consortium with POWERGRID to bid for TBCB projects: both boards approved it in 2025, and the H1 FY27 report says it is still awaiting clearance from the Government of India.', False)])
 P(142, 'Board of Directors – POWERGRID Unchahar Transmission Limited')
 board = [('Shri Naveen Srivastava', 'Chairman; Non-Executive, Non-Independent (POWERGRID)', 'Director (Operations), POWERGRID; ~36 years in transmission O&M and construction; B.Tech (Hons), NIT Durgapur'),
          ('Shri Sanjay Sharma', 'Non-Executive, Non-Independent (POWERGRID)', 'Executive Director (Corporate Planning), POWERGRID; former CEO of PGInvIT; 33+ years'),
@@ -430,6 +434,23 @@ P(153, [('How the tariffs were designed, and why revenue falls. ', True),
     ('Under TBCB, each bidder quotes a charge for each of the 35 contract years, and bids are compared on their levelised value, the present value of the whole schedule. A bidder can therefore ask for more in the early years and less later without changing its score, which front-loads cash into the years when project loans are repaid. '
      'POWERGRID’s bids did exactly this. PPTL, WTL and JPTL charge a flat amount for roughly the first ten years and then about 30% less for the remaining ~25: Rs. 317 crore to Rs. 223 crore, Rs. 352 crore to Rs. 247 crore and Rs. 244 crore to Rs. 171 crore. '
      'All three fall to exactly 70.25% of the earlier level, which points to a formula set at the limit the bid rules allowed rather than to cost. VTL and KATL had the same kind of profile and have already stepped down (VTL in FY23–FY24, KATL in FY26–FY27). From FY28 all five sit on flat charges until their contracts end in FY52–FY54, and with no acquisitions there is nothing to offset the drop.', False)])
+rh = clone_par(E[149], after=E[151])
+set_par(rh, 'Why revenue falls from FY28')
+
+
+def boxed(p_el):
+    ppr = p_el.find(W('pPr'))
+    bdr = etree.SubElement(ppr, W('pBdr'))
+    for side in ('top', 'left', 'bottom', 'right'):
+        e = etree.SubElement(bdr, W(side))
+        e.set(W('val'), 'single'); e.set(W('sz'), '18' if side == 'left' else '4'); e.set(W('space'), '4'); e.set(W('color'), '1F4E79')
+    shd = etree.SubElement(ppr, W('shd'))
+    shd.set(W('val'), 'clear'); shd.set(W('color'), 'auto'); shd.set(W('fill'), 'DEEAF6')
+    ppr.remove(bdr); ppr.remove(shd)
+    ppr.insert(0, shd); ppr.insert(0, bdr)
+
+
+boxed(E[152]); boxed(E[153])
 t = E[155]
 delete_grid_cols(t, [1, 8, 15])
 rs = rows(t)
