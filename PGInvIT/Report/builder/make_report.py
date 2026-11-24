@@ -410,9 +410,9 @@ for p, v in spec:
 P(156, 'Reason for growth and De-growth in Revenue – SPV Wise:')
 t = E[157]
 reasons = {
-    'WTL': ('FY 2023 – first full year of consolidation (FY 2022 covers 13 May 2021 to 31 March 2022) and change-in-law increment of 3.445%', 'FY 2024–26 – flat by design; quoted charges constant at Rs. 352 crore p.a. until July 2027'),
-    'PPTL': ('FY 2023 – first full year of consolidation and change-in-law increment of 2.787%', 'FY 2024–26 – flat by design; quoted charges constant at Rs. 317 crore p.a. until June 2027'),
-    'JPTL': ('FY 2023 – change-in-law increment of 5.226% from March 2022', 'FY 2024–26 – flat by design; quoted charges constant at Rs. 244 crore p.a.'),
+    'WTL': ('FY 2023 – first full year in the Trust (FY 2022 covers only 13 May 2021 to 31 March 2022; annualised, FY 2022 was already at the FY 2023 level)', 'FY 2024–26 – flat by design; quoted charges constant at Rs. 352 crore p.a. until FY 2027, then ~30% lower from FY 2028'),
+    'PPTL': ('FY 2023 – first full year in the Trust (FY 2022 covers only 13 May 2021 to 31 March 2022)', 'FY 2024–26 – flat by design; quoted charges constant at Rs. 317 crore p.a. until FY 2027, then ~30% lower from FY 2028'),
+    'JPTL': ('–', 'FY 2023–26 – flat by design; quoted charges constant at Rs. 244 crore p.a. until FY 2027, then ~30% lower from FY 2028 (FY 2022 already matched a full year despite the shorter period; the reason is not disclosed)'),
     'VTL': ('–', 'FY 2023–24 – scheduled step-down in quoted charges (Rs. 290 crore in contract year 2021 to Rs. 208 crore in 2024)'),
     'KATL': ('FY 2025 – RTM bus reactor (commissioned February 2024) added regulated tariff', 'FY 2026 – quoted charges stepped down from Rs. 65 crore to Rs. 57 crore (July 2025 contract year)'),
 }
