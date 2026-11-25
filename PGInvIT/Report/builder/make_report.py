@@ -347,16 +347,16 @@ if _sp is None:
     _sp = etree.SubElement(_pp, W('spacing'))
 _sp.set(W('before'), '200')
 growth_p = [
-    ('TBCB consortium with POWERGRID: ', 'the boards of POWERGRID and the Investment Manager have approved a consortium, with POWERGRID as lead partner (26%) and PGInvIT holding 74%, to bid for up to two new TBCB projects worth about Rs. 500 crore. Management called Government approval “advanced” in May 2026; the H1 FY27 report says it is still awaited. The size is capped because SEBI limits under-construction assets to 10% of an InvIT’s value (about Rs. 800–900 crore).'),
-    ('Operational assets from private developers: ', 'management says it is in talks with two or three private transmission owners. 84 inter-state projects are under construction, 41 of them by private developers, and each becomes eligible for an InvIT after one year of operation.'),
+    ('TBCB consortium with POWERGRID: ', 'both boards have approved a consortium (POWERGRID lead with 26%, PGInvIT 74%) to bid for up to two TBCB projects worth ~Rs. 500 crore. It sits with the Ministry of Power and DIPAM with no timeline; PGInvIT cannot bid alone as it lacks recent construction experience, and SEBI caps under-construction assets at 10% of InvIT value (~Rs. 870 crore).'),
+    ('Operational assets from private developers: ', 'management says it is in talks with two or three private transmission owners. 91 inter-state projects are under construction, 44 of them by private developers (Q2 FY27 presentation), and each becomes eligible for an InvIT after one year of operation.'),
     ('State transmission assets: ', 'about 20 states attended a CEA workshop on monetising transmission assets in December 2024, but management describes the talks as preliminary and has guided to two to three years.'),
-    ('Sector pipeline: ', 'CEA’s plan calls for about Rs. 7.93 lakh crore of transmission investment by 2035-36 to connect 900 GW of non-fossil capacity, plus Rs. 1.91 lakh crore for the Brahmaputra basin by 2035. Management also says it is looking at solar and battery storage assets.'),
+    ('Sector pipeline: ', 'CEA plans ~Rs. 7.93 lakh crore of transmission capex by 2035-36, plus Rs. 1.91 lakh crore for the Brahmaputra basin and Rs. 1.86 lakh crore under Green Energy Corridor III. Management is also looking at renewable and battery storage assets.'),
     ('Balance sheet to pay for it: ', 'net debt is 4.7% of AUM against a 70% ceiling, and management says acquisitions will be mainly debt-funded. A unit price above NAV also makes a unit-funded deal cheaper for existing holders.'),
 ]
 prev = p_hdr
 for lead_, txt in growth_p:
     prev = add_after(183, prev, [(lead_, True), (txt, False)])
-prev = add_after(121, prev, [('Our view: ', True), ('these are real options, but none has turned into a deal in five years and POWERGRID itself prefers securitisation to selling assets to the Trust. The consortium is small: its projects would earn revenue only after a 2–3 year build, and PGInvIT’s share would offset a small part of the ~Rs. 290 crore revenue step-down. On our rough maths, replacing the ~Rs. 280 crore annual NDCF gap with debt-funded acquisitions would need around Rs. 5,000 crore of assets, more than the ~Rs. 3,000 crore of debt capacity. We ascribe no value to acquisitions; at the current price the hold-to-maturity return is ' + pct(irr) + ', below the 7.18% G-sec yield.', False)])
+prev = add_after(121, prev, [('Our view: ', True), ('real options, but none has become a deal in five years and POWERGRID prefers securitisation. The consortium is small and earns only after a 2–3 year build. Replacing the ~Rs. 250 crore annual NDCF gap with debt-funded deals would need ~Rs. 5,000 crore of assets, above the ~Rs. 3,000 crore debt capacity. We ascribe no value to acquisitions; the hold-to-maturity return is ' + pct(irr) + ', below the 7.18% G-sec yield.', False)])
 
 # =================================================================== S8: unitholding, ratings
 UH = G['1_unitholding_pattern']
@@ -428,7 +428,7 @@ P(150, 'All five SPVs have a long record of high line availability. Their revenu
        'Availability has been above 99.5% at every SPV in every year since listing, and between 99.87% and 100.00% in FY2026. As a result, the portfolio has earned close to the maximum incentive almost every year.')
 _unused = ('The revenue of a transmission SPV is completely delinked from the power demand-supply situation and volatility in electricity prices. Moreover, factors affecting line availability, such as unchecked vegetation, lightning or high ambient temperature causing wear and tear of insulators leading to flashovers, are routine and do not entail significant cost and are easily rectifiable, thereby minimising outage time. Furthermore, any outage due to extreme weather conditions, cyclones or excessive lightning is usually classified as an act of God and is covered under the force majeure clause of the TSA and thus does not impact line availability.')
 P(152, 'The flip side of fixed tariffs is that revenue can only move down. Under the bid tariff profile, the quoted charges of PPTL, WTL and JPTL fall by about 30% from FY2028 (1 April 2027). '
-       f'Both Independent Valuers place this in FY2028, taking consolidated revenue from ~Rs. {f0(c27["rev"])} crore in FY27E to ~Rs. {f0(c28["rev"])} crore in FY28E (-{pc(1 - c28["rev"] / c27["rev"], 0)}), which is consistent with management’s own guidance of a 23–24% decline. '
+       f'Both Independent Valuers place this in FY2028, taking consolidated revenue from ~Rs. {f0(c27["rev"])} crore in FY27E to ~Rs. {f0(c28["rev"])} crore in FY28E (-{pc(1 - c28["rev"] / c27["rev"], 0)}), which is consistent with management’s own guidance of a 22–24% decline (reiterated on the 25-Nov-26 call, with a decline of under 1% a year thereafter). '
        'Quarterly revenue of Rs. 311 crore in Q1 FY27 and Rs. 314 crore in Q2 FY27 confirms that the step-down has not yet started.')
 P(153, [('How the tariffs were designed, and why revenue falls. ', True),
     ('Under TBCB, each bidder quotes a charge for each of the 35 contract years, and bids are compared on their levelised value, the present value of the whole schedule. A bidder can therefore ask for more in the early years and less later without changing its score, which front-loads cash into the years when project loans are repaid. '
@@ -545,8 +545,8 @@ P(186, [('Sponsor dependence: ', True), ('POWERGRID’s ~1.88 lakh ckm network g
 P(187, 'Healthy debt coverage metrics ')
 P(188, f'PGInvIT’s financial risk profile is very strong, evident from its negligible leverage. The net borrowing ratio was {pct(d.NBR_SEP)} as on September 30, 2026, against the 70% regulatory ceiling. '
        'Leverage has headroom to rise sharply if the Trust finds acquisitions, which management has said will be predominantly debt-funded.')
-P(189, f'Gross borrowings stood at Rs. {f0(d.DEBT_SEP)} crore as on 30 September 2026 (Rs. {f0(H[2026]["debt"])} crore at 31 March 2026), against AUM of Rs. {f0(tot_ev)} crore. The book consists of two 16-year secured rupee term loans from HDFC Bank: Rs. 561 crore (at 31 March 2026) linked to the 3-month T-bill (T-bill + 127 bps, drawn March 2022) and Rs. 503 crore linked to the RBI repo rate (repo + 150 bps, drawn December 2024). '
-       'Both are 100% floating, the average cost of debt was 6.97% in FY2026, ~73% of principal is repayable after ten years, and the Trust and the loan facility carry AAA ratings.')
+P(189, f'Gross borrowings stood at Rs. {f0(d.DEBT_SEP)} crore as on 30 September 2026 (Rs. {f0(H[2026]["debt"])} crore at 31 March 2026), against AUM of Rs. {f0(tot_ev)} crore. The book consists of two 16-year secured rupee term loans from HDFC Bank: Rs. 558 crore (at 30 September 2026) linked to the 3-month T-bill (T-bill + 127 bps, 6.56%, drawn March 2022) and Rs. 502 crore linked to the RBI repo rate (repo + 150 bps, 7.00%, drawn December 2024). Each is repayable in 64 quarterly instalments of varying amounts, ending March 2038 and December 2040 respectively. '
+       'Both are 100% floating, the average cost of debt was 6.97% in FY2026, ~69% of principal is repayable after ten years (Q2 FY27 presentation), so repayments are only ~Rs. 8 crore a year today but rise sharply from FY36, peaking at ~Rs. 276 crore in FY38, and the Trust and the loan facility carry AAA ratings.')
 P(190, 'Borrowings, leverage and AUM – FY22 to FY26')
 t = E[191]
 delete_grid_cols(t, [1, 2, 3, 4])
@@ -601,9 +601,9 @@ fill_row(rows(t)[7], [None] + [pc(c['dpu_g']) for c in cc])
 fill_row(rows(t)[8], [None] + [f2(c['dpu']) for c in cc])
 fill_row(rows(t)[9], [None] + [f0(c['actual']) for c in cc])
 fill_row(rows(t)[10], ['Net cash (drawn from reserves)'] + [d.neg0(c['cash_avail'] - c['actual']) if abs(c['cash_avail'] - c['actual']) > 0.5 else '–' for c in cc])
-add_after(121, t, [('FY27E pays the guided Rs. 12, Rs. 33 crore more than NDCF, from cash kept back earlier. ', True),
-    ('From FY28E we assume 100% of NDCF is paid out. NDCF falls 23% with the tariff step-down, so DPU falls to Rs. 8.9. It falls a further 7% in FY29E and then about 2% a year, as SPV taxes rise (the interest deduction shrinks as SPV loans are repaid) and costs escalate. '
-     'Holding Rs. 12 from FY28 would need about Rs. 280 crore a year from reserves; the group held Rs. 651 crore of cash at 30 September 2026, enough for two years at most.', False)])
+add_after(121, t, [(f'FY27E NDCF of Rs. {f0(c27["ndcf"])} crore covers the guided Rs. 12 (Rs. {f0(c27["actual"])} crore) almost exactly; H1 FY27 NDCF was Rs. 546 crore against Rs. 546 crore distributed. ', True),
+    (f'From FY28E we assume 100% of NDCF is paid out. NDCF falls 23% with the tariff step-down, so DPU falls to Rs. {f2(c28["dpu"])}. It falls a further 7% in FY29E and then about 2–3% a year, as SPV taxes rise (the interest deduction shrinks as SPV loans are repaid) and costs escalate. '
+     'Holding Rs. 12 from FY28 would need about Rs. 250 crore a year beyond NDCF. The group held Rs. 651 crore of cash at 30 September 2026; we keep Rs. 300 crore as a minimum balance (debt reserve, SPV working cash, one quarter’s distribution) and use the ~Rs. 350 crore surplus to meet the back-ended HDFC repayments of FY37–FY41, so DPU declines smoothly to ~Rs. 6–6.5 in the late 2030s instead of dipping in the heaviest repayment years.', False)])
 # peers: reorder to PGInvIT | IndiGrid | Anzen and refresh market data
 t = E[208]
 for tr in rows(t):
@@ -669,8 +669,8 @@ for i, (lead, txt) in zip(keep_r, risks):
     P(i, [(lead, True), (txt, False)])
 kill(range(219 + len(risks), 228))
 mons = [
-    ('FY2028 distribution guidance – ', 'whether management guides to a lower DPU for FY2028 or uses reserves and debt to bridge the step-down, and whether NDCF covers the distribution without drawing down reserves.'),
-    ('Acquisitions and the TBCB consortium – ', 'Government approval for the consortium with POWERGRID, the first bid outcome, and any third-party or state-asset acquisition – its size, IRR versus the Trust’s cost of capital, and funding mix.'),
+    ('FY2028 distribution guidance – ', 'management declined to quantify FY28 DPU on the 25-Nov-26 call and said guidance will come later (likely with Q4 FY27 results in May 2027): whether it guides to a lower DPU or uses reserves and debt to bridge the step-down.'),
+    ('Acquisitions and the TBCB consortium – ', 'DIPAM / Government approval for the consortium with POWERGRID (pending, no timeline), the first bid outcome, and any third-party or state-asset acquisition – its size, IRR versus the Trust’s cost of capital, and funding mix.'),
     ('Valuation and tax assumptions – ', 'whether IndiaAppraisers keeps its 4.32% equity risk premium and 7.36% WACC at the March 2027 valuation, and whether its 28.6% SPV tax rate (25.17% previously) is confirmed by management; on our model the higher tax rate costs ~Rs. 10–15 crore of NDCF a year from FY30.'),
     ('O&M contract renewal and costs – ', 'the terms of the renewed O&M agreement with POWERGRID and the trend in O&M and fee expenses as the revenue base shrinks.'),
     ('Availability and interest rates – ', 'SPV-level availability against the 99.75% incentive cap, and the T-bill and repo rates that set the Trust’s floating cost of debt.'),
