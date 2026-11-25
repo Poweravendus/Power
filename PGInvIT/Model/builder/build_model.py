@@ -70,6 +70,8 @@ W['Consolidated'].freeze_panes = 'C4'
 build_cashflows(W['Cashflows_Bajaj']); W['Cashflows_Bajaj'].freeze_panes = 'C4'
 build_irr(W['IRR Calculation_Bajaj'], UNITS, ENTRY)
 build_xirr(W['Sensitivity_Bajaj'])
+from rest import build_debt_schedule
+build_debt_schedule(W['Sensitivity_Bajaj'])
 build_keysheet(W['Key Sheet New'], S, V)
 
 

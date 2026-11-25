@@ -76,7 +76,7 @@ NDCF_Q = {226: 'NDCF at SPV - VTL', 227: 'NDCF at SPV - KATL', 228: 'NDCF at SPV
           237: 'Other income', 238: 'Finance cost on borrowing', 239: 'Debt repayment', 240: 'CAPEX'}
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
-           27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Debt fully repaid by FY (straight line)', 2052, '0'),
+           27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Repayment: HDFC schedule, Sensitivity_Bajaj rows 86-95', None, '0'),
            98: ('Annual amortisation of intangibles', 14.8, NUM1),
            233: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 
@@ -162,7 +162,7 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             56: f'={p}56+{c}272', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}259',
             60: f'=IF({c}241>={c}59,"Yes","No")',
             64: f'={p}64+{c}176', 65: f'={p}65', 66: f'={p}66', 67: f'={p}67+{c}52-{c}59', 68: f'=SUM({c}64:{c}67)', 70: f'={p}70',
-            75: f'={p}78', 76: '=$AK$76', 77: f'=IF({fy}>$AK$77,0,{c}75/($AK$77-{fy}+1))', 78: f'={c}75+{c}76-{c}77',
+            75: f'={p}78', 76: '=$AK$76', 77: f'=Sensitivity_Bajaj!{scol(fy)}$94', 78: f'={c}75+{c}76-{c}77',
             80: f'={p}80', 81: f'={p}81', 82: f'={p}82', 83: f'=SUM({c}80:{c}82)', 84: f'={p}84', 85: f'={p}85', 86: f'={c}78+{c}83+{c}84+{c}85', 88: f'={c}68+{c}70+{c}86',
             90: f'={p}90+{A("Capex")}', 91: f'={p}91+{c}23-({p}98-{c}98)', 92: f'={p}92+{c}29', 93: f'={c}90-{c}91-{c}92', 94: f'={p}94',
             96: f'={p}96', 97: f'={c}96-{c}98', 98: f'=MAX(0,{p}98-$AK$98)', 99: f'={p}99', 100: f'={p}100', 101: f'={p}101', 102: f'={p}102', 103: f'={p}103', 104: f'={p}104', 105: f'=SUM({c}98:{c}104)',

@@ -155,3 +155,65 @@ def build_xirr(ws):
     (d1, t1), (d2, t2) = hdrs['exit'], hdrs['mat']
     put(ws, 'C3', f'=XIRR(C{t1}:{last}{t1},C{d1}:{last}{d1})', fmt=PCT, bold=True)
     put(ws, 'C4', f'=XIRR(C{t2}:{last}{t2},C{d2}:{last}{d2})', fmt=PCT, bold=True)
+
+
+# HDFC term loans (FY26 annual report): T1 Rs 575.59 cr, 64 quarterly instalments of varying amounts from 30-Jun-22 (last Mar-38);
+# T2 Rs 506.00 cr, 64 quarterly instalments from 31-Mar-25 (last Dec-40). Instalment amounts are not disclosed: FY27 = actual run-rate
+# (Rs 2.1 cr a quarter), FY28-FY31 total and the back-ended tail fitted to the disclosed contractual maturity profile at 31-Mar-26.
+DEBT_T1_OPEN = 563.1
+DEBT_REPAY = {
+    'T1': {2027: 4.2, 2028: 5.6, 2029: 6.4, 2030: 7.3, 2031: 8.2, 2032: 13.0, 2033: 20.5, 2034: 32.5, 2035: 51.4, 2036: 81.4, 2037: 128.8},
+    'T2': {2027: 4.2, 2028: 5.7, 2029: 6.6, 2030: 7.4, 2031: 8.3, 2032: 10.9, 2033: 14.3, 2034: 18.9, 2035: 24.8, 2036: 32.6, 2037: 42.9,
+           2038: 56.4, 2039: 74.1, 2040: 97.4},
+}
+DEBT_LAST = {'T1': 2038, 'T2': 2041}
+
+
+def build_debt_schedule(ws):
+    r0 = 86
+    put(ws, f'B{r0 - 2}', 'HDFC TERM LOAN REPAYMENT SCHEDULE  -  Rs. cr', bold=True)
+    put(ws, f'B{r0 - 1}', 'Tranche 1: Rs. 575.6 cr (Mar-22), 64 qtrly instalments Jun-22 to Mar-38. Tranche 2: Rs. 506.0 cr (Dec-24), 64 qtrly instalments Mar-25 to Dec-40', italic=True)
+    put(ws, f'B{r0}', 'Year', bold=True, border_b=True)
+    rows = {'T1': (r0 + 1, r0 + 2, r0 + 3), 'T2': (r0 + 4, r0 + 5, r0 + 6)}
+    lab = {'T1': 'Tranche 1', 'T2': 'Tranche 2'}
+    for t, (ro, rr, rc) in rows.items():
+        put(ws, f'B{ro}', f'{lab[t]}  -  opening')
+        put(ws, f'B{rr}', f'{lab[t]}  -  repayment')
+        put(ws, f'B{rc}', f'{lab[t]}  -  closing', bold=True)
+    rtot, rclose, rchk = r0 + 8, r0 + 9, r0 + 10
+    put(ws, f'B{rtot}', 'Total repayment  (to Consolidated row 77)', bold=True)
+    put(ws, f'B{rclose}', 'Total closing debt', bold=True)
+    put(ws, f'B{rchk}', 'Check: vs Consolidated closing debt', italic=True)
+    for fy in range(2027, FYN + 1):
+        c, pc = scol(fy), scol(fy - 1)
+        put(ws, f'{c}{r0}', fy_label(fy, True), bold=True, align='right', border_b=True)
+        for t, (ro, rr, rc) in rows.items():
+            if fy == 2027:
+                put(ws, f'{c}{ro}', DEBT_T1_OPEN if t == 'T1' else f'=Consolidated!{ccol(2026)}{CR["debt_close"]}-{c}{rows["T1"][0]}',
+                    fmt=NUM1, color=BLUE if t == 'T1' else None)
+            else:
+                put(ws, f'{c}{ro}', f'={pc}{rc}', fmt=NUM1)
+            if fy == DEBT_LAST[t]:
+                put(ws, f'{c}{rr}', f'={c}{ro}', fmt=NUM1)
+            elif fy in DEBT_REPAY[t]:
+                put(ws, f'{c}{rr}', DEBT_REPAY[t][fy], fmt=NUM1, color=BLUE)
+            else:
+                put(ws, f'{c}{rr}', 0, fmt=NUM1)
+            put(ws, f'{c}{rc}', f'={c}{ro}-{c}{rr}', fmt=NUM1, bold=True)
+        put(ws, f'{c}{rtot}', f'={c}{rows["T1"][1]}+{c}{rows["T2"][1]}', fmt=NUM1, bold=True)
+        put(ws, f'{c}{rclose}', f'={c}{rows["T1"][2]}+{c}{rows["T2"][2]}', fmt=NUM1, bold=True)
+        put(ws, f'{c}{rchk}', f'=ROUND({c}{rclose}-Consolidated!{ccol(fy)}{CR["debt_close"]},3)', fmt=NUM1, fill=CHK_FILL)
+    # validation against the disclosed contractual maturity profile (31-Mar-26, principal + interest, Rs. cr)
+    v = rchk + 2
+    put(ws, f'B{v}', 'Check vs FY26 annual report maturity profile (principal + interest, Rs. cr)', bold=True)
+    put(ws, f'C{v}', 'Disclosed', bold=True, align='right'); put(ws, f'D{v}', 'Model', bold=True, align='right'); put(ws, f'E{v}', 'Diff %', bold=True, align='right')
+    def span(a, b):
+        cols = [(scol(y), ccol(y)) for y in range(a, b + 1)]
+        return '+'.join(f'{sc}{rtot}+Consolidated!{cc}{CR["fin"]}' for sc, cc in cols)
+    for k, (lab_, disc, a, b) in enumerate([('Within a year (FY27)', 78.849, 2027, 2027), ('1-5 years (FY28-FY31)', 334.442, 2028, 2031),
+                                             ('Beyond 5 years (FY32 onwards)', 1451.762, 2032, FYN)]):
+        rr = v + 1 + k
+        put(ws, f'B{rr}', lab_)
+        put(ws, f'C{rr}', disc, fmt=NUM1, color=RED)
+        put(ws, f'D{rr}', f'={span(a, b)}', fmt=NUM1)
+        put(ws, f'E{rr}', f'=D{rr}/C{rr}-1', fmt=PCT)
