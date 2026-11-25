@@ -74,9 +74,9 @@ build_keysheet(W['Key Sheet New'], S, V)
 import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
-F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 283,
+F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 285,
                    growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 130, 194, 200, 225, 269, 275])
-for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (128, 221, 242, 283) if not (r == 242 and fy > 2026) and not (r == 283 and fy <= 2026)] + ['G267']:
+for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (128, 221, 242, 285) if not (r == 242 and fy > 2026) and not (r == 285 and fy <= 2026)] + ['G267']:
     F.fill(W['Consolidated'][ref], F.YEL)
 if os.path.exists(qpath):
     F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
@@ -114,7 +114,7 @@ for k in range(3, 3 + len(json.load(open(qpath))['quarters'])):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
 # ---------------- no-fill spacer rows between sections ----------------
-F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 130, 194, 200, 223, 225, 248, 255, 262, 269, 275}, 4, 283)
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 130, 194, 200, 223, 225, 248, 255, 262, 269, 275}, 4, 285)
 if os.path.exists(qpath):
     wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
@@ -123,7 +123,7 @@ if os.path.exists(qpath):
 # ---------------- number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
-F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 283)
+F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 285)
 pct_rows = [a_row(it, i) for it in ('EBITDA Margin %', 'WACC, %') for i in range(len(SPVS))] + [a_row('EBITDA Margin %')]
 per_rows = [a_row('Discount period', i) for i in range(len(SPVS))]
 F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK'), CI('AM'), CI('AN')])

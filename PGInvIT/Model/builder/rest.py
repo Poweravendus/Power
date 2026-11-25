@@ -49,7 +49,7 @@ def build_cashflows(ws):
             (11, 'Add:', 'Other Income', CR['oi'], 1), (12, 'Less:', 'Tax', CR['tax'], -1), (13, None, 'WC Movement', CR['wc_cf'], 1),
             (14, 'Less', 'Capex', CR['capex_cf'], 1), (15, 'Add:', 'Proceeds of long term borrowings', CR['debt_add'], 1),
             (16, 'Add:', 'Capital Raise', 176, 1), (18, None, 'Cash Available for Debt Servicing', None, 0),
-            (20, 'Less:', 'Interest paid', CR['fin'], -1), (21, 'Less:', 'Repayment of long term borrowings', CR['debt_rep'], -1),
+            (20, 'Less:', 'Interest paid', CR['fin'], -1), (21, 'Less:', 'Repayment of borrowings (net of amount funded from surplus cash)', 284, -1),
             (23, None, 'NDCF (to Trust, after debt service)', None, 0)]
     for r, pre, lab, src, sign in rows:
         if pre:
