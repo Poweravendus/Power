@@ -75,7 +75,7 @@ def build_cashflows(ws):
 
 
 def build_irr(ws, units, val_date):
-    """Annual NDCF to the Trust, 3/4 of the entry year, IRR() on the row; yield = NDCF / amount invested."""
+    """Annual NDCF to the Trust, 2/4 of the entry year (Q3+Q4 FY27), IRR() on the row; yield = NDCF / amount invested."""
     std_sheet(ws, colA=40)
     last = L(3 + FYN - 2027)
     put(ws, 'A2', 'No. of Units')
@@ -90,7 +90,8 @@ def build_irr(ws, units, val_date):
     for k, fy in enumerate(range(2027, FYN + 1)):
         c = L(3 + k)
         put(ws, f'{c}8', f'=Cashflows_Bajaj!{c}3', bold=True, align='center')
-        put(ws, f'{c}9', f'=Cashflows_Bajaj!{c}23/4*3' if fy == 2027 else f'=Cashflows_Bajaj!{c}23', fmt=NUM)
+        # entry 23-Nov-26 is after the Q2 FY27 record date (17-Nov-26): the buyer gets only Q3 and Q4 of FY27
+        put(ws, f'{c}9', f'=Cashflows_Bajaj!{c}23/4*2' if fy == 2027 else f'=Cashflows_Bajaj!{c}23', fmt=NUM)
         put(ws, f'{c}14', f'={c}8', bold=True, align='center')
         put(ws, f'{c}15', f'={c}9/(-$B$9)', fmt=PCT)
     put(ws, 'C9', ws['C9'].value, fmt=NUM)
@@ -98,3 +99,59 @@ def build_irr(ws, units, val_date):
     put(ws, 'B11', f'=IRR(B9:{last}9)', fmt=PCT, bold=True)
     put(ws, 'A14', 'Distribution Yield % on CMP', bold=True)
     put(ws, 'A15', 'Bajaj Life Projection', bold=True)
+
+
+def build_xirr(ws):
+    """IndiGrid-style unitholder cash-in-hand XIRR: quarterly DPU/4, exit at NAV (hold to exit) or residual cash (hold to maturity)."""
+    import calendar
+    qs = [(2027, 3), (2027, 4)] + [(fy, q) for fy in range(2028, FYN + 1) for q in (1, 2, 3, 4)]
+    cols = [L(4 + k) for k in range(len(qs))]
+    last = cols[-1]
+    put(ws, 'B3', 'XIRR  -  hold to exit (exit at NAV)', bold=True)
+    put(ws, 'B4', 'XIRR  -  hold to maturity', bold=True)
+    put(ws, 'B5', 'Include residual cash at maturity?')
+    put(ws, 'C5', 'Yes', color=BLUE, align='right')
+    put(ws, 'D5', '<< Yes = cash left on the balance sheet in FY54E is returned to unitholders at the end. No = distributions only', italic=True)
+    hdrs = {}
+    for name, r0 in (('exit', 64), ('mat', 75)):
+        put(ws, f'B{r0 - 1}' if name == 'exit' else f'B{r0 - 1}', 'UNITHOLDER CASH FLOWS  -  Rs. per unit' if name == 'exit' else None, bold=True)
+        if name == 'exit':
+            put(ws, f'B{r0}', 'HOLD TO EXIT  -  sell at NAV at end of', bold=True)
+            put(ws, f'C{r0}', 'FY31E', color=BLUE, bold=True, align='right')
+            put(ws, f'D{r0}', f'=YEARFRAC($C${r0 + 3},DATE(2000+VALUE(MID($C${r0},3,2)),3,31))', fmt='0.0" years"', italic=True)
+        else:
+            put(ws, f'B{r0}', 'HOLD TO MATURITY  -  last TSA ends FY54', bold=True)
+        rf, rq, rd, re_, rdist, rex, rtot = r0 + 1, r0 + 2, r0 + 3, r0 + 4, r0 + 5, r0 + 6, r0 + 7
+        hdrs[name] = (rd, rtot)
+        put(ws, f'B{rf}', 'Financial year', bold=True, border_b=True)
+        put(ws, f'C{rf}', 'Entry', bold=True, align='right', border_b=True)
+        put(ws, f'B{rq}', 'Quarter (distribution for)')
+        put(ws, f'B{rd}', 'Payment date (quarter end)')
+        put(ws, f'C{rd}', "='IRR Calculation_Bajaj'!B3", fmt='dd-mmm-yy')
+        put(ws, f'B{re_}', 'Entry price')
+        put(ws, f'C{re_}', '=-$C$2', fmt=NUM2)
+        put(ws, f'B{rdist}', 'Distribution  (DPU / 4)')
+        put(ws, f'C{rdist}', 0, fmt=NUM2)
+        put(ws, f'B{rex}', 'Exit at NAV' if name == 'exit' else 'Residual cash returned (FY54E closing cash / units)')
+        put(ws, f'C{rex}', 0, fmt=NUM2)
+        put(ws, f'B{rtot}', 'Total cash', bold=True)
+        put(ws, f'C{rtot}', f'=C{re_}+C{rdist}+C{rex}', fmt=NUM2, bold=True)
+        for k, ((fy, q), c) in enumerate(zip(qs, cols)):
+            put(ws, f'{c}{rf}', fy_label(fy, True), bold=True, align='right', border_b=True)
+            put(ws, f'{c}{rq}', f'Q{q}', align='right')
+            if k == 0:
+                put(ws, f'{c}{rd}', '=DATE(2026,12,31)', fmt='dd-mmm-yy')
+            else:
+                put(ws, f'{c}{rd}', f'=EOMONTH({cols[k - 1]}{rd},3)', fmt='dd-mmm-yy')
+            put(ws, f'{c}{re_}', 0, fmt=NUM2)
+            dpu = f'HLOOKUP({c}${rf},Consolidated!$C$3:${C_LAST}${CR["dpu"]},{CR["dpu"] - 2},0)/4'
+            if name == 'exit':
+                put(ws, f'{c}{rdist}', f'=IF({c}${rd}<=DATE(2000+VALUE(MID($C${r0},3,2)),3,31),{dpu},0)', fmt=NUM2)
+                put(ws, f'{c}{rex}', f'=IF(AND({c}${rf}=$C${r0},{c}${rq}="Q4"),HLOOKUP({c}${rf},Consolidated!$C$3:${C_LAST}${CR["nav"]},{CR["nav"] - 2},0),0)', fmt=NUM2)
+            else:
+                put(ws, f'{c}{rdist}', f'={dpu}', fmt=NUM2)
+                put(ws, f'{c}{rex}', f'=IF($C$5="Yes",Consolidated!${C_LAST}${CR["cash"]}/Consolidated!${C_LAST}${CR["units"]},0)' if c == last else 0, fmt=NUM2)
+            put(ws, f'{c}{rtot}', f'={c}{re_}+{c}{rdist}+{c}{rex}', fmt=NUM2, bold=True)
+    (d1, t1), (d2, t2) = hdrs['exit'], hdrs['mat']
+    put(ws, 'C3', f'=XIRR(C{t1}:{last}{t1},C{d1}:{last}{d1})', fmt=PCT, bold=True)
+    put(ws, 'C4', f'=XIRR(C{t2}:{last}{t2},C{d2}:{last}{d2})', fmt=PCT, bold=True)

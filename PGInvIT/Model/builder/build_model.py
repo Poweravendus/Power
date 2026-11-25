@@ -51,6 +51,7 @@ for fy in range(2022, FYN + 1):
     c = scol(fy)
     put(ws, f'{c}{r + 3}', f'={c}{r}+{c}{r + 1}-{c}{r + 2}', fmt=NUM1, bold=True)
 build_sens_returns(ws, ENTRY, FIRST_PAY)
+from rest import build_xirr
 ws.freeze_panes = 'C8'
 
 ainfo = build_assetlevel(W['AssetLevelEst'], V, margins, hist)
@@ -68,6 +69,7 @@ build_consolidated(W['Consolidated'], H, drivers, QCOL, QROWS)
 W['Consolidated'].freeze_panes = 'C4'
 build_cashflows(W['Cashflows_Bajaj']); W['Cashflows_Bajaj'].freeze_panes = 'C4'
 build_irr(W['IRR Calculation_Bajaj'], UNITS, ENTRY)
+build_xirr(W['Sensitivity_Bajaj'])
 build_keysheet(W['Key Sheet New'], S, V)
 
 
