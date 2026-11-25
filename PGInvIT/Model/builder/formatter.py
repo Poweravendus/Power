@@ -175,6 +175,8 @@ def fmt_sensitivity(ws, SEN, hist_c1, hist_c2, fc_c2, n_spv, exit_last_col, mat_
     font(ws.cell(r0 - 2, 2), BLACK, bold=True)
     # debt mirror
     d = SEN['debt']
+    if ws.cell(d, 2).value is None:
+        return
     band(ws, d, d + 5, 2, 2, DG)
     band(ws, d, d + 5, hist_c2 + 1, fc_c2, LG)
     for r in range(d, d + 6):
@@ -388,12 +390,14 @@ def nf_sensitivity(ws, SEN, hist_c2, fc_c2, n_spv, exit_last, mat_last):
     for r in range(SEN['ladder'], SEN['ladder'] + 5):
         _nf(ws.cell(r, 3), '0.00%')
     d = SEN['debt']
+    if ws.cell(d, 2).value is None:
+        return
     for r in range(d, d + 6):
         for k in range(3, fc_c2 + 1):
             _nf(ws.cell(r, k), '0.00%' if r == d + 4 else N0B)
 
 
-CONS_NF = {7: '0%', 18: '0%', 19: '0%', 21: '0%', 24: '0.0%', 27: '0.0%', 41: '0%', 53: '0%', 54: '0%', 57: '0.0%',
+CONS_NF = {**{r: '#,##0.0_);(#,##0.0)' for r in range(276, 284)}, 7: '0%', 18: '0%', 19: '0%', 21: '0%', 24: '0.0%', 27: '0.0%', 41: '0%', 53: '0%', 54: '0%', 57: '0.0%',
            58: N1C, 232: '0%', 255: '0.0%', 256: N1C, 262: N0A, 263: N0A, 264: N0A, 265: N1C, 266: '0%',
            267: '#,##0.00', 271: N1C, 272: '#,##0.0;\\(#,##0.0\\)'}
 

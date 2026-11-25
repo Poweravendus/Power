@@ -1,7 +1,7 @@
 """Consolidated sheet: P&L, balance sheet, cash flow, NDCF, distribution and NAV (FY22-FY26 actual, FY27E-FY54E)."""
 from common import *
 from core import SPVS, a_row, acol, FYN, SEN, scol
-from rest import CR, ccol, clabel, C_FY0, C_HIST_LAST
+from rest import CR, ccol, clabel, C_FY0, C_HIST_LAST, DEBT_REPAY, DEBT_LAST
 
 ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growth (red italics), 'p' percent
     2: ('Consolidated', 'h'), 3: ('P&L, Rs. cr', 'h'), 6: ('Revenue from operations', 'b'), 7: ('growth, %', 'g'),
@@ -70,13 +70,20 @@ ROWS = {  # row: (label, kind)  kind: 'h' header, 'b' bold, '' normal, 'g' growt
     262: ('AUM/ Value of InvIT Assets - Enterprise Value', 'b'), 263: ('Less: Net Debt', ''), 264: ('Equity', 'b'), 265: ('Equity/ Share', 'b'),
     266: ('Net Debt/ AUM (D/E)', 'p'),
     269: ('Capital Raise', 'h'), 270: ('Rs. cr', ''), 271: ('Price at which dilution happens (prior-year NAV)', ''), 272: ('Additional Units Issued, cr', ''),
+    275: ('Debt Repayment Schedule - HDFC term loans, Rs. cr', 'h'),
+    276: ('Tranche 1 (Rs. 575.6 cr, Mar-22) - opening', ''), 277: ('Tranche 1 - repayment', ''), 278: ('Tranche 1 - closing', 'b'),
+    279: ('Tranche 2 (Rs. 506.0 cr, Dec-24) - opening', ''), 280: ('Tranche 2 - repayment', ''), 281: ('Tranche 2 - closing', 'b'),
+    282: ('Total repayment', 'b'), 283: ('Check: closing vs Closing Balance (row 78)', ''),
 }
 NDCF_Q = {226: 'NDCF at SPV - VTL', 227: 'NDCF at SPV - KATL', 228: 'NDCF at SPV - PPTL', 229: 'NDCF at SPV - WTL', 230: 'NDCF at SPV - JPTL',
           233: 'Cash flow from operating activities', 234: 'Interest income', 235: 'Dividend income', 236: 'Repayment of capital (SPV debt)',
           237: 'Other income', 238: 'Finance cost on borrowing', 239: 'Debt repayment', 240: 'CAPEX'}
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
-           27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Repayment: HDFC schedule, Sensitivity_Bajaj rows 86-95', None, '0'),
+           27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Repayment: see Debt Repayment Schedule, rows 275-283', None, '0'),
+           276: ('Tranche 1 outstanding at 31-Mar-26 (estimate; split not disclosed)', 563.1, NUM1),
+           277: ('64 qtrly instalments of varying amounts, Jun-22 to Mar-38 (FY26 AR, borrowings note)', None, '0'),
+           280: ('64 qtrly instalments of varying amounts, Mar-25 to Dec-40; FY27 at actual Rs 2.1 cr/qtr, later years fitted to FY26 AR maturity profile', None, '0'),
            98: ('Annual amortisation of intangibles', 14.8, NUM1),
            233: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 
@@ -162,7 +169,7 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             56: f'={p}56+{c}272', 57: f'=IFERROR({c}58/{p}58-1,"")', 58: f'={c}59/{c}56', 59: f'={c}259',
             60: f'=IF({c}241>={c}59,"Yes","No")',
             64: f'={p}64+{c}176', 65: f'={p}65', 66: f'={p}66', 67: f'={p}67+{c}52-{c}59', 68: f'=SUM({c}64:{c}67)', 70: f'={p}70',
-            75: f'={p}78', 76: '=$AK$76', 77: f'=Sensitivity_Bajaj!{scol(fy)}$94', 78: f'={c}75+{c}76-{c}77',
+            75: f'={p}78', 76: '=$AK$76', 77: f'={c}282', 78: f'={c}75+{c}76-{c}77',
             80: f'={p}80', 81: f'={p}81', 82: f'={p}82', 83: f'=SUM({c}80:{c}82)', 84: f'={p}84', 85: f'={p}85', 86: f'={c}78+{c}83+{c}84+{c}85', 88: f'={c}68+{c}70+{c}86',
             90: f'={p}90+{A("Capex")}', 91: f'={p}91+{c}23-({p}98-{c}98)', 92: f'={p}92+{c}29', 93: f'={c}90-{c}91-{c}92', 94: f'={p}94',
             96: f'={p}96', 97: f'={c}96-{c}98', 98: f'=MAX(0,{p}98-$AK$98)', 99: f'={p}99', 100: f'={p}100', 101: f'={p}101', 102: f'={p}102', 103: f'={p}103', 104: f'={p}104', 105: f'=SUM({c}98:{c}104)',
@@ -192,6 +199,10 @@ def build_consolidated(ws, H, drivers, qcol, qrows):
             260: f'=IF(AND(ROUND({c}251-{c}259,2)>=0,{c}259/{c}251>=0.9),"ok","not ok")',
             262: f'={A("AUM (Rs. cr)")}', 263: f'={c}78-{c}112', 264: f'={c}262-{c}263', 265: f'={c}264/{c}56',
             266: f'=IF({c}262=0,"",{c}263/{c}262)', 270: 0, 271: f'={p}265', 272: f'=IFERROR({c}270/{c}271,0)',
+            276: (f'=$AK$276' if fy == C_HIST_LAST + 1 else f'={p}278'), 277: (f'={c}276' if fy == DEBT_LAST['T1'] else DEBT_REPAY['T1'].get(fy, 0)),
+            278: f'={c}276-{c}277',
+            279: (f'={p}78-{c}276' if fy == C_HIST_LAST + 1 else f'={p}281'), 280: (f'={c}279' if fy == DEBT_LAST['T2'] else DEBT_REPAY['T2'].get(fy, 0)),
+            281: f'={c}279-{c}280', 282: f'={c}277+{c}280', 283: f'=ROUND({c}278+{c}281-{c}78,3)',
         }
         for r, form in f.items():
             kind = ROWS.get(r, ('', ''))[1]
