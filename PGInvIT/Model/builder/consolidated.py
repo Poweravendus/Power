@@ -82,11 +82,11 @@ NDCF_Q = {226: 'NDCF at SPV - VTL', 227: 'NDCF at SPV - KATL', 228: 'NDCF at SPV
 DRIVERS = {9: ('Escalation of IM fee, % p.a.', 0.05, PCT), 14: ('Trust-level expenses, FY26 base (Rs. cr)', None, NUM1),
            21: ('Yield on opening cash', None, PCT2), 24: ('D&A rate on average gross block', None, PCT2),
            27: ('Interest rate on borrowings', None, PCT2), 76: ('New borrowings', 0.0, NUM), 77: ('Repayment: see Debt Repayment Schedule, rows 275-283', None, '0'),
-           276: ('Tranche 1 outstanding at 31-Mar-26 (estimate; split not disclosed)', 563.1, NUM1),
+           276: ('Tranche 1 at 31-Mar-26: Q2 FY27 PPT Rs 558.3 cr at 30-Sep-26 + H1 repayment', 560.4, NUM1),
            112: ('Minimum cash balance (debt reserve, SPV working cash, one quarter distribution)', 300.0, NUM),
-           283: ('Repayment above this (Rs. cr p.a.) is funded from cash above the minimum balance', 75.0, NUM),
+           283: ('Repayment above this (Rs. cr p.a.) is funded from cash above the minimum balance', 95.0, NUM),
            277: ('64 qtrly instalments of varying amounts, Jun-22 to Mar-38 (FY26 AR, borrowings note)', None, '0'),
-           280: ('64 qtrly instalments of varying amounts, Mar-25 to Dec-40; FY27 at actual Rs 2.1 cr/qtr, later years fitted to FY26 AR maturity profile', None, '0'),
+           280: ('64 qtrly instalments of varying amounts, Mar-25 to Dec-40; FY27 at actual Rs 2.1 cr/qtr; later years fitted to FY26 AR maturity profile and Q2 FY27 PPT (~69% of repayment after 10 years)', None, '0'),
            98: ('Annual amortisation of intangibles', 14.8, NUM1),
            233: ('Tax at Trust, Rs. cr p.a. (FY26 actual)', 3.06, NUM1)}
 

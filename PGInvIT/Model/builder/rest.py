@@ -104,11 +104,11 @@ def build_irr(ws, units, val_date):
 # HDFC term loans (FY26 annual report): T1 Rs 575.59 cr, 64 quarterly instalments of varying amounts from 30-Jun-22 (last Mar-38);
 # T2 Rs 506.00 cr, 64 quarterly instalments from 31-Mar-25 (last Dec-40). Instalment amounts are not disclosed: FY27 = actual run-rate
 # (Rs 2.1 cr a quarter), FY28-FY31 total and the back-ended tail fitted to the disclosed contractual maturity profile at 31-Mar-26.
-DEBT_T1_OPEN = 563.1
-DEBT_REPAY = {
-    'T1': {2027: 4.2, 2028: 5.6, 2029: 6.4, 2030: 7.3, 2031: 8.2, 2032: 13.0, 2033: 20.5, 2034: 32.5, 2035: 51.4, 2036: 81.4, 2037: 128.8},
-    'T2': {2027: 4.2, 2028: 5.7, 2029: 6.6, 2030: 7.4, 2031: 8.3, 2032: 10.9, 2033: 14.3, 2034: 18.9, 2035: 24.8, 2036: 32.6, 2037: 42.9,
-           2038: 56.4, 2039: 74.1, 2040: 97.4},
+DEBT_T1_OPEN = 560.4   # Q2 FY27 PPT: T1 Rs 558.3 cr and T2 Rs 501.6 cr at 30-Sep-26, plus H1 FY27 repayment (Rs 4.1 cr) split equally
+DEBT_REPAY = {   # fitted to: Q2 FY27 PPT '~69% of repayment post 10 years' and FY26 AR contractual maturity profile (all three buckets)
+    'T1': {2027: 4.1, 2028: 5.6, 2029: 6.4, 2030: 7.3, 2031: 8.2, 2032: 7.6, 2033: 13.5, 2034: 23.9, 2035: 42.3, 2036: 74.8, 2037: 132.4},
+    'T2': {2027: 4.1, 2028: 5.7, 2029: 6.6, 2030: 7.4, 2031: 8.3, 2032: 1.4, 2033: 2.4, 2034: 4.2, 2035: 7.5, 2036: 13.3, 2037: 23.5,
+           2038: 41.7, 2039: 73.7, 2040: 130.5},
 }
 DEBT_LAST = {'T1': 2038, 'T2': 2041}
 
