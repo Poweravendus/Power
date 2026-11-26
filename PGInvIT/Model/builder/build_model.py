@@ -140,6 +140,26 @@ F.nf_simple(W['IRR Calculation_Bajaj'], 15, 15, 3, 3 + FYN - 2027, '0.0%', pct_r
 F.nf_simple(W['IRR Calculation_Bajaj'], 18, 18, 3, 3 + FYN - 2027, '#,##0.00')
 F.nf_simple(W['IRR Calculation_Bajaj'], 22, 22, 3, 3 + FYN - 2027, '#,##0.00')
 W['IRR Calculation_Bajaj']['B2'].number_format = 'General'
+# ---- IRR sheet: boxed tables (yield, DPU, NAV) as in the Bajaj template ----
+from openpyxl.styles import Border, Side, PatternFill, Font, Alignment
+_wi = W['IRR Calculation_Bajaj']; _th = Side(style='thin', color='FF808080'); _bx = Border(left=_th, right=_th, top=_th, bottom=_th)
+_hdr = PatternFill('solid', fgColor='FFD9E1F2'); _lab = PatternFill('solid', fgColor='FFF2F2F2')
+_lastc = 3 + FYN - 2027
+for _h, _v in ((14, 15), (17, 18), (21, 22)):
+    for _k in range(1, _lastc + 1):
+        for _r in (_h, _v):
+            _c = _wi.cell(_r, _k); _c.border = _bx
+            if _r == _h or _k <= 2:
+                _c.fill = _hdr if _r == _h else _lab
+            if _r == _h and _k >= 3:
+                _c.font = Font(name='Arial', size=9, bold=True); _c.alignment = Alignment(horizontal='center')
+            if _k == 1:
+                _c.font = Font(name='Arial', size=9, bold=True)
+            if _r == _v and _k >= 3:
+                _c.alignment = Alignment(horizontal='center')
+_wi['B11'].fill = PatternFill('solid', fgColor='FFFFFF00')
+_wi['B11'].border = _bx
+
 for n in names:
     finish_sheet(W[n])
 wb.save(OUT)
