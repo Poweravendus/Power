@@ -34,7 +34,8 @@ W = {n: wb.create_sheet(n) for n in names}
 build_sensitivity(W['Sensitivity_Bajaj'], V, hist, margins, PRICE, ENTRY)
 # working-capital days (hist from Consolidated, forecast = FY26 actual held flat)
 ws = W['Sensitivity_Bajaj']; r = SEN['wc']
-put(ws, f'B{r - 2}', 'WORKING CAPITAL  -  DAYS (consolidated; forecast balances held at FY26 level, so no WC cash flow)', bold=True)
+put(ws, f'B{r - 2}', 'WORKING CAPITAL  -  DAYS (consolidated; receivable days stepped up from FY28 so the tariff step-down does not release cash)', bold=True)
+RECV_DAYS_FY28 = 71.0
 put(ws, f'B{r - 1}', 'Days', bold=True, border_b=True)
 for fy in range(S_FY0, FYN + 1):
     put(ws, f'{scol(fy)}{r - 1}', fy_label(fy, fy > 2026), bold=True, align='right', border_b=True)
@@ -45,7 +46,10 @@ for k, (lab, crow) in enumerate([('Receivable Days', 195), ('Inventory Days', 19
         if fy <= 2026:
             put(ws, f'{c}{r + k}', f'=Consolidated!{ccol(fy)}{crow}', fmt=NUM1, color=RED)
         else:
-            put(ws, f'{c}{r + k}', f'=Consolidated!{ccol(fy)}{crow}', fmt=NUM1)
+            if lab == 'Receivable Days' and fy >= 2028:
+                put(ws, f'{c}{r + k}', RECV_DAYS_FY28, fmt=NUM1, color=BLUE)   # raised once so the FY28 tariff step does not release receivables
+            else:
+                put(ws, f'{c}{r + k}', f'=$H{r + k}' if fy > 2027 else f'=H{r + k}', fmt=NUM1, color=BLUE)
 put(ws, f'B{r + 3}', 'Working Capital Days', bold=True)
 for fy in range(2022, FYN + 1):
     c = scol(fy)
