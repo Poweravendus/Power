@@ -34,7 +34,7 @@ W = {n: wb.create_sheet(n) for n in names}
 build_sensitivity(W['Sensitivity_Bajaj'], V, hist, margins, PRICE, ENTRY)
 # working-capital days (hist from Consolidated, forecast = FY26 actual held flat)
 ws = W['Sensitivity_Bajaj']; r = SEN['wc']
-put(ws, f'B{r - 2}', 'WORKING CAPITAL  -  DAYS (consolidated)', bold=True)
+put(ws, f'B{r - 2}', 'WORKING CAPITAL  -  DAYS (consolidated; forecast balances held at FY26 level, so no WC cash flow)', bold=True)
 put(ws, f'B{r - 1}', 'Days', bold=True, border_b=True)
 for fy in range(S_FY0, FYN + 1):
     put(ws, f'{scol(fy)}{r - 1}', fy_label(fy, fy > 2026), bold=True, align='right', border_b=True)
@@ -45,7 +45,7 @@ for k, (lab, crow) in enumerate([('Receivable Days', 195), ('Inventory Days', 19
         if fy <= 2026:
             put(ws, f'{c}{r + k}', f'=Consolidated!{ccol(fy)}{crow}', fmt=NUM1, color=RED)
         else:
-            put(ws, f'{c}{r + k}', f'=$H{r + k}' if fy > 2027 else f'=H{r + k}', fmt=NUM1, color=BLUE)
+            put(ws, f'{c}{r + k}', f'=Consolidated!{ccol(fy)}{crow}', fmt=NUM1)
 put(ws, f'B{r + 3}', 'Working Capital Days', bold=True)
 for fy in range(2022, FYN + 1):
     c = scol(fy)
@@ -74,9 +74,9 @@ build_keysheet(W['Key Sheet New'], S, V)
 import formatter as F
 from core import A_ITEMS, a_row, A_START, A_BLOCK
 from rest import ccol as _cc
-F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 285,
+F.fmt_consolidated(W['Consolidated'], 3, CI(_cc(2026)), CI(_cc(2027)), CI(_cc(FYN)), 283,
                    growth_rows=[7, 18, 19, 41, 53, 54, 57], header_rows=[2, 3, 62, 130, 194, 200, 225, 269, 275])
-for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (128, 221, 242, 285) if not (r == 242 and fy > 2026) and not (r == 285 and fy <= 2026)] + ['G267']:
+for ref in [f'{_cc(fy)}{r}' for fy in range(2022, FYN + 1) for r in (128, 221, 242, 283) if not (r == 242 and fy > 2026) and not (r == 283 and fy <= 2026)] + ['G267']:
     F.fill(W['Consolidated'][ref], F.YEL)
 if os.path.exists(qpath):
     F.fmt_qtrly(W['Qtrly'], 2 + len(json.load(open(qpath))['quarters']))
@@ -114,7 +114,7 @@ for k in range(3, 3 + len(json.load(open(qpath))['quarters'])):
     wq.column_dimensions[L(k)].width = 9
 wq.column_dimensions['B'].width = 52
 # ---------------- no-fill spacer rows between sections ----------------
-F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 130, 194, 200, 223, 225, 248, 255, 262, 269, 275}, 4, 285)
+F.unfill_spacers(W['Consolidated'], 2, CI(_cc(FYN)), {62, 130, 194, 200, 223, 225, 248, 255, 262, 269, 275}, 4, 283)
 if os.path.exists(qpath):
     wq = W['Qtrly']; lastq = 2 + len(json.load(open(qpath))['quarters'])
     starts = {r for r in range(1, wq.max_row + 1) if wq.cell(r, 2).value in
@@ -123,7 +123,7 @@ if os.path.exists(qpath):
 # ---------------- number formats, row by row ----------------
 F.nf_assetlevel(W['AssetLevelEst'], [A_START + A_BLOCK * i for i in range(len(SPVS))], 4, CI(acol(FYN)), CI('AH'))
 F.nf_sensitivity(W['Sensitivity_Bajaj'], SEN, CI(scol(2026)), CI(scol(FYN)), len(SPVS), 4 + 20, 3 + (FYN - 2026) * 4 - 1)
-F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 285)
+F.nf_consolidated(W['Consolidated'], 3, CI(_cc(FYN)), 283)
 pct_rows = [a_row(it, i) for it in ('EBITDA Margin %', 'WACC, %') for i in range(len(SPVS))] + [a_row('EBITDA Margin %')]
 per_rows = [a_row('Discount period', i) for i in range(len(SPVS))]
 F.nf_assumption(W['Assumption'], pct_rows, per_rows, 4, CI(acol(FYN)), [CI('AI'), CI('AJ'), CI('AK'), CI('AM'), CI('AN')])
@@ -133,6 +133,8 @@ F.nf_simple(W['Cashflows_Bajaj'], 4, 25, 3, 3 + FYN - 2027, F.N0B)
 F.nf_simple(W['IRR Calculation_Bajaj'], 5, 9, 2, 3 + FYN - 2027, F.N0B)
 F.nf_simple(W['IRR Calculation_Bajaj'], 11, 11, 2, 2, '0.0%', pct_rows=(11,))
 F.nf_simple(W['IRR Calculation_Bajaj'], 15, 15, 3, 3 + FYN - 2027, '0.0%', pct_rows=(15,))
+F.nf_simple(W['IRR Calculation_Bajaj'], 18, 18, 3, 3 + FYN - 2027, '#,##0.00')
+F.nf_simple(W['IRR Calculation_Bajaj'], 22, 22, 3, 3 + FYN - 2027, '#,##0.00')
 W['IRR Calculation_Bajaj']['B2'].number_format = 'General'
 for n in names:
     finish_sheet(W[n])

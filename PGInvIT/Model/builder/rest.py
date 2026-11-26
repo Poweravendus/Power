@@ -49,7 +49,7 @@ def build_cashflows(ws):
             (11, 'Add:', 'Other Income', CR['oi'], 1), (12, 'Less:', 'Tax', CR['tax'], -1), (13, None, 'WC Movement', CR['wc_cf'], 1),
             (14, 'Less', 'Capex', CR['capex_cf'], 1), (15, 'Add:', 'Proceeds of long term borrowings', CR['debt_add'], 1),
             (16, 'Add:', 'Capital Raise', 176, 1), (18, None, 'Cash Available for Debt Servicing', None, 0),
-            (20, 'Less:', 'Interest paid', CR['fin'], -1), (21, 'Less:', 'Repayment of borrowings (net of amount funded from surplus cash)', 284, -1),
+            (20, 'Less:', 'Interest paid', CR['fin'], -1), (21, 'Less:', 'Repayment of long term borrowings', CR['debt_rep'], -1),
             (23, None, 'NDCF (to Trust, after debt service)', None, 0)]
     for r, pre, lab, src, sign in rows:
         if pre:
@@ -94,7 +94,15 @@ def build_irr(ws, units, val_date):
         put(ws, f'{c}9', f'=Cashflows_Bajaj!{c}23/4*2' if fy == 2027 else f'=Cashflows_Bajaj!{c}23', fmt=NUM)
         put(ws, f'{c}14', f'={c}8', bold=True, align='center')
         put(ws, f'{c}15', f'={c}9/(-$B$9)', fmt=PCT)
+        put(ws, f'{c}17', f'=Cashflows_Bajaj!{c}3', bold=True, align='center', border_b=True)
+        put(ws, f'{c}18', f'=Consolidated!{ccol(fy)}{CR["dpu"]}', fmt=NUM2)
+        put(ws, f'{c}21', f'=Cashflows_Bajaj!{c}3', bold=True, align='center', border_b=True)
+        put(ws, f'{c}22', f'=Consolidated!{ccol(fy)}{CR["nav"]}', fmt=NUM2)
     put(ws, 'C9', ws['C9'].value, fmt=NUM)
+    put(ws, 'C8', 'H2 FY2027', bold=True, align='center')
+    put(ws, 'C14', 'H2 FY2027', bold=True, align='center')
+    put(ws, 'A18', 'DPU Per Unit (Rs.)', bold=True)
+    put(ws, 'A22', 'NAV (Rs. per unit, 31-Mar)', bold=True)
     put(ws, 'A11', 'IRR', bold=True)
     put(ws, 'B11', f'=IRR(B9:{last}9)', fmt=PCT, bold=True)
     put(ws, 'A14', 'Distribution Yield % on CMP', bold=True)
