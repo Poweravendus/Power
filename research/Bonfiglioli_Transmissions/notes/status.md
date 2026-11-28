@@ -18,7 +18,7 @@
 1. Why does India earn ~2x the group's EBITDA margin while paying 6.8% of revenue back as royalty + fees + commission? Will the parent ask for more (royalty base, service-fee allocation) now that minorities share the profit?
 2. Group customers take ~120-150 days to pay vs ~80 days for third parties (Pros p.330): is BTL financing the group's distribution?
 3. GE (largest customer FY25, 11.4% of revenue) is down ~30% in 2026; how much of FY27 wind depends on GE coming back, and on US tariffs?
-4. Why did the company pay Rs.110 cr of dividend to the parent in H1FY26, weeks before an IPO in which it raised nothing?
+4. Why did the company pay Rs.110 cr of dividend to the parent in H1FY26, months before an IPO in which it raised nothing?
 5. Income-tax officers disallowed part of the BSPA service charges in five assessment years (Pros p.338): what does that say about the arm's-length level of the fees?
 
 ## Open questions
